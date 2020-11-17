@@ -364,9 +364,7 @@ void USBPD_PE_Task(void const *argument)
 
   for(;;)
   {
-    {
-      _timing = USBPD_PE_StateMachine_SNK(_port);
-    }
+   _timing = USBPD_PE_StateMachine_SNK(_port);
     osMessageGet(PEQueueId[_port],_timing);
   }
 }

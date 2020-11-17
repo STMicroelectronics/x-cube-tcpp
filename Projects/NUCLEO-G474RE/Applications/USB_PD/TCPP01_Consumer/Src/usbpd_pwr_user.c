@@ -112,7 +112,7 @@
   *         @arg @ref USBPD_PWR_TYPE_C_PORT_1
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_Init(uint32_t Instance)
+__weak int32_t BSP_USBPD_PWR_Init(uint32_t Instance)
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_Init */
   /* Check if instance is valid       */
@@ -133,7 +133,7 @@ int32_t BSP_USBPD_PWR_Init(uint32_t Instance)
   *         @arg @ref USBPD_PWR_TYPE_C_PORT_1
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_Deinit(uint32_t Instance)
+__weak int32_t BSP_USBPD_PWR_Deinit(uint32_t Instance)
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_Deinit */
   /* Check if instance is valid       */
@@ -155,7 +155,7 @@ int32_t BSP_USBPD_PWR_Deinit(uint32_t Instance)
   *         @arg @ref USBPD_PWR_TYPE_C_PORT_1
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_VBUSInit(uint32_t Instance)
+__weak int32_t BSP_USBPD_PWR_VBUSInit(uint32_t Instance)
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_VBUSInit */
   /* Check if instance is valid       */
@@ -182,7 +182,7 @@ int32_t BSP_USBPD_PWR_VBUSInit(uint32_t Instance)
   *         @arg @ref USBPD_PWR_TYPE_C_PORT_1
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_VBUSDeInit(uint32_t Instance)
+__weak int32_t BSP_USBPD_PWR_VBUSDeInit(uint32_t Instance)
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_VBUSDeInit */
   /* Check if instance is valid       */
@@ -203,7 +203,7 @@ int32_t BSP_USBPD_PWR_VBUSDeInit(uint32_t Instance)
   *         @arg @ref USBPD_PWR_TYPE_C_PORT_1
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_VBUSOn(uint32_t Instance)
+__weak int32_t BSP_USBPD_PWR_VBUSOn(uint32_t Instance)
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_VBUSOn */
   /* Check if instance is valid       */
@@ -229,7 +229,7 @@ int32_t BSP_USBPD_PWR_VBUSOn(uint32_t Instance)
   *         @arg @ref USBPD_PWR_TYPE_C_PORT_1
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_VBUSOff(uint32_t Instance)
+__weak int32_t BSP_USBPD_PWR_VBUSOff(uint32_t Instance)
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_VBUSOff */
   /* Check if instance is valid       */
@@ -258,7 +258,7 @@ int32_t BSP_USBPD_PWR_VBUSOff(uint32_t Instance)
   * @param  MaxOperatingCurrent the Max Operating Current (in mA)
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_VBUSSetVoltage_Fixed(uint32_t Instance,
+__weak int32_t BSP_USBPD_PWR_VBUSSetVoltage_Fixed(uint32_t Instance,
                                            uint32_t VbusTargetInmv,
                                            uint32_t OperatingCurrent,
                                            uint32_t MaxOperatingCurrent)
@@ -286,7 +286,7 @@ int32_t BSP_USBPD_PWR_VBUSSetVoltage_Fixed(uint32_t Instance,
   * @param  MaxOperatingCurrent the Max Operating Current (in mA)
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_VBUSSetVoltage_Variable(uint32_t Instance,
+__weak int32_t BSP_USBPD_PWR_VBUSSetVoltage_Variable(uint32_t Instance,
                                               uint32_t VbusTargetMinInmv,
                                               uint32_t VbusTargetMaxInmv,
                                               uint32_t OperatingCurrent,
@@ -315,7 +315,7 @@ int32_t BSP_USBPD_PWR_VBUSSetVoltage_Variable(uint32_t Instance,
   * @param  MaxOperatingPower the Max Operating Power (in mW)
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_VBUSSetVoltage_Battery(uint32_t Instance,
+__weak int32_t BSP_USBPD_PWR_VBUSSetVoltage_Battery(uint32_t Instance,
                                              uint32_t VbusTargetMin,
                                              uint32_t VbusTargetMax,
                                              uint32_t OperatingPower,
@@ -343,7 +343,7 @@ int32_t BSP_USBPD_PWR_VBUSSetVoltage_Battery(uint32_t Instance,
   * @param  Delta Delta between with previous APDO (in mV), 0 means APDO start
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_VBUSSetVoltage_APDO(uint32_t Instance,
+__weak int32_t BSP_USBPD_PWR_VBUSSetVoltage_APDO(uint32_t Instance,
                                           uint32_t VbusTargetInmv,
                                           uint32_t OperatingCurrent,
                                           int32_t Delta)
@@ -368,7 +368,7 @@ int32_t BSP_USBPD_PWR_VBUSSetVoltage_APDO(uint32_t Instance,
   * @param  pVoltage Pointer on measured voltage level (in mV)
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_VBUSGetVoltage(uint32_t Instance, uint32_t *pVoltage)
+__weak int32_t BSP_USBPD_PWR_VBUSGetVoltage(uint32_t Instance, uint32_t *pVoltage)
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_VBUSGetVoltage */
 
@@ -393,7 +393,7 @@ int32_t BSP_USBPD_PWR_VBUSGetVoltage(uint32_t Instance, uint32_t *pVoltage)
   * @param  pCurrent Pointer on measured current level (in mA)
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_VBUSGetCurrent(uint32_t Instance, int32_t *pCurrent)
+__weak int32_t BSP_USBPD_PWR_VBUSGetCurrent(uint32_t Instance, int32_t *pCurrent)
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_VBUSGetCurrent */
   /* Check if instance is valid       */
@@ -423,7 +423,7 @@ int32_t BSP_USBPD_PWR_VBUSGetCurrent(uint32_t Instance, int32_t *pCurrent)
   *         @arg @ref USBPD_PWR_TYPE_C_CC2
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_VCONNInit(uint32_t Instance,
+__weak int32_t BSP_USBPD_PWR_VCONNInit(uint32_t Instance,
                                 uint32_t CCPinId)
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_VCONNInit */
@@ -449,7 +449,7 @@ int32_t BSP_USBPD_PWR_VCONNInit(uint32_t Instance,
   *         @arg @ref USBPD_PWR_TYPE_C_CC2
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_VCONNDeInit(uint32_t Instance,
+__weak int32_t BSP_USBPD_PWR_VCONNDeInit(uint32_t Instance,
                                   uint32_t CCPinId)
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_VCONNDeInit */
@@ -475,7 +475,7 @@ int32_t BSP_USBPD_PWR_VCONNDeInit(uint32_t Instance,
   *         @arg @ref USBPD_PWR_TYPE_C_CC2
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_VCONNOn(uint32_t Instance,
+__weak int32_t BSP_USBPD_PWR_VCONNOn(uint32_t Instance,
                               uint32_t CCPinId)
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_VCONNOn */
@@ -501,7 +501,7 @@ int32_t BSP_USBPD_PWR_VCONNOn(uint32_t Instance,
   *         @arg @ref USBPD_PWR_TYPE_C_CC2
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_VCONNOff(uint32_t Instance,
+__weak int32_t BSP_USBPD_PWR_VCONNOff(uint32_t Instance,
                                uint32_t CCPinId)
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_VCONNOff */
@@ -528,7 +528,7 @@ int32_t BSP_USBPD_PWR_VCONNOff(uint32_t Instance,
   * @param  pState VCONN status (1: On, 0: Off)
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_VCONNIsOn(uint32_t Instance,
+__weak int32_t BSP_USBPD_PWR_VCONNIsOn(uint32_t Instance,
                                 uint32_t CCPinId, uint8_t *pState)
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_VCONNIsOn */
@@ -555,7 +555,7 @@ int32_t BSP_USBPD_PWR_VCONNIsOn(uint32_t Instance,
   * @param  VoltageThreshold VBUS disconnection voltage threshold (in mV)
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_SetVBUSDisconnectionThreshold(uint32_t Instance,
+__weak int32_t BSP_USBPD_PWR_SetVBUSDisconnectionThreshold(uint32_t Instance,
                                                     uint32_t VoltageThreshold)
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_SetVBUSDisconnectionThreshold */
@@ -582,7 +582,7 @@ int32_t BSP_USBPD_PWR_SetVBUSDisconnectionThreshold(uint32_t Instance,
   * @param  pfnVBUSDetectCallback callback function pointer
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_RegisterVBUSDetectCallback(uint32_t  Instance,
+__weak int32_t BSP_USBPD_PWR_RegisterVBUSDetectCallback(uint32_t  Instance,
                                                  USBPD_PWR_VBUSDetectCallbackFunc *pfnVBUSDetectCallback)
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_RegisterVBUSDetectCallback */
@@ -605,7 +605,7 @@ int32_t BSP_USBPD_PWR_RegisterVBUSDetectCallback(uint32_t  Instance,
   * @param  pState VBUS status (1: On, 0: Off)
   * @retval BSP status
   */
-int32_t BSP_USBPD_PWR_VBUSIsOn(uint32_t Instance, uint8_t *pState)
+__weak int32_t BSP_USBPD_PWR_VBUSIsOn(uint32_t Instance, uint8_t *pState)
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_VBUSIsOn */
   /* Check if instance is valid       */
@@ -623,6 +623,33 @@ int32_t BSP_USBPD_PWR_VBUSIsOn(uint32_t Instance, uint8_t *pState)
   *pState = 0u;
   return ret;
   /* USER CODE END BSP_USBPD_PWR_VBUSIsOn */
+}
+
+/**
+  * @brief  Set state of VCC (specific functions)
+  * @param  Instance Type-C port identifier
+  *         This parameter can be take one of the following values:
+  *         @arg @ref USBPD_PWR_TYPE_C_PORT_1
+  * @param  State VCC state
+  * @retval BSP status
+  */
+__weak int32_t BSP_USBPD_PWR_VCCSetState(uint32_t Instance, uint32_t State)
+{
+  /* USER CODE BEGIN BSP_USBPD_PWR_VCCSetState */
+  /* Check if instance is valid       */
+  int32_t ret = BSP_ERROR_NONE;
+
+  if (Instance != USBPD_PWR_TYPE_C_PORT_1)
+  {
+    ret = BSP_ERROR_WRONG_PARAM;
+  }
+  else
+  {
+    ret = BSP_ERROR_FEATURE_NOT_SUPPORTED;
+    PWR_DEBUG_TRACE(Instance, "ADVICE: Update BSP_USBPD_PWR_VCCSetState");
+  }
+  return ret;
+  /* USER CODE END BSP_USBPD_PWR_VCCSetState */
 }
 
 /**

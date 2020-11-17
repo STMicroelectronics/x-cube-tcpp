@@ -35,6 +35,7 @@ extern "C" {
 #include "stm32g4xx_ll_gpio.h"
 #include "stm32g4xx_ll_rcc.h"
 #include "stm32g4xx_ll_usart.h"
+#include "stm32g4xx_ll_lpuart.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
@@ -55,24 +56,24 @@ extern "C" {
       Definitions for TRACE Hw information
 -------------------------------------------------------------------------------*/
 
-#define TRACER_EMB_IS_INSTANCE_LPUART_TYPE           0UL /* set to 0UL as USART is used */
+#define TRACER_EMB_IS_INSTANCE_LPUART_TYPE           1UL /* set to 1UL as LPUART is used instead of USART */
 
-#define TRACER_EMB_USART_INSTANCE                    USART1
+#define TRACER_EMB_USART_INSTANCE                    LPUART1
 
-#define TRACER_EMB_TX_GPIO                           GPIOC
-#define TRACER_EMB_TX_PIN                            LL_GPIO_PIN_4
-#define TRACER_EMB_TX_AF                             LL_GPIO_AF_7
-#define TRACER_EMB_TX_GPIO_ENABLE_CLOCK()            LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOC)
-#define TRACER_EMB_RX_GPIO                           GPIOC
-#define TRACER_EMB_RX_PIN                            LL_GPIO_PIN_5
-#define TRACER_EMB_RX_AF                             LL_GPIO_AF_7
-#define TRACER_EMB_RX_GPIO_ENABLE_CLOCK()            LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOC)
+#define TRACER_EMB_TX_GPIO                           GPIOA
+#define TRACER_EMB_TX_PIN                            LL_GPIO_PIN_2
+#define TRACER_EMB_TX_AF                             LL_GPIO_AF_12
+#define TRACER_EMB_TX_GPIO_ENABLE_CLOCK()            LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOA)
+#define TRACER_EMB_RX_GPIO                           GPIOA
+#define TRACER_EMB_RX_PIN                            LL_GPIO_PIN_3
+#define TRACER_EMB_RX_AF                             LL_GPIO_AF_12
+#define TRACER_EMB_RX_GPIO_ENABLE_CLOCK()            LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOA)
 
-#define TRACER_EMB_ENABLE_CLK_USART()                LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_USART1)
-#define TRACER_EMB_DISABLE_CLK_USART()               LL_APB2_GRP1_DisableClock(LL_APB2_GRP1_PERIPH_USART1)
+#define TRACER_EMB_ENABLE_CLK_USART()                LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_LPUART1)
+#define TRACER_EMB_DISABLE_CLK_USART()               LL_APB1_GRP2_DisableClock(LL_APB1_GRP2_PERIPH_LPUART1)
 #define TRACER_EMB_SET_CLK_SOURCE_USART()            /* No need for clock source selection in case of USART3 // LL_RCC_SetUSARTClockSource(LL_RCC_USART3_CLKSOURCE_PCLK2) */
-#define TRACER_EMB_USART_IRQ                         USART1_IRQn
-#define TRACER_EMB_USART_IRQHANDLER                  USART1_IRQHandler
+#define TRACER_EMB_USART_IRQ                         LPUART1_IRQn
+#define TRACER_EMB_USART_IRQHANDLER                  LPUART1_IRQHandler
 #define TRACER_EMB_TX_AF_FUNCTION                    LL_GPIO_SetAFPin_0_7
 #define TRACER_EMB_RX_AF_FUNCTION                    LL_GPIO_SetAFPin_0_7
 
@@ -81,7 +82,7 @@ extern "C" {
                                                        LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_DMAMUX1);     \
                                                        LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_DMA1);                               \
                                                        }while(0)
-#define TRACER_EMB_TX_DMA_REQUEST                    LL_DMAMUX_REQ_USART1_TX
+#define TRACER_EMB_TX_DMA_REQUEST                    LL_DMAMUX_REQ_LPUART1_TX
 #define TRACER_EMB_TX_DMA_CHANNEL                    LL_DMA_CHANNEL_3
 #define TRACER_EMB_ENABLECHANNEL                     LL_DMA_EnableChannel
 #define TRACER_EMB_DISABLECHANNEL                    LL_DMA_DisableChannel

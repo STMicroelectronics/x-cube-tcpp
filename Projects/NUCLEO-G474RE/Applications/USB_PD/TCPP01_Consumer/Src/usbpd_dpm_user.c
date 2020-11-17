@@ -213,9 +213,8 @@ void USBPD_DPM_UserCableDetection(uint8_t PortNum, USBPD_CAD_EVENT State)
    /* Format and send a notification to GUI if enabled */
     if (NULL != DPM_GUI_FormatAndSendNotification)
     {
-      DPM_GUI_FormatAndSendNotification(PortNum, DPM_GUI_NOTIF_ISCONNECTED, 0);
+      DPM_GUI_FormatAndSendNotification(PortNum, DPM_GUI_NOTIF_ISCONNECTED | DPM_GUI_NOTIF_POWER_EVENT, 0);
     }
-    break;
   default :
     /* Format and send a notification to GUI if enabled */
     if (NULL != DPM_GUI_FormatAndSendNotification)
