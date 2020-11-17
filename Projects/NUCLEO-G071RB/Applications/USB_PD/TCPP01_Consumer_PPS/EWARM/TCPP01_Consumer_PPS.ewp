@@ -220,13 +220,14 @@
                 <debug>1</debug>
                 <option>
                     <name>CCDefines</name>
+                    <state>USE_STM32G0XX_NUCLEO</state>
                     <state>STM32G071xx</state>
                     <state>USE_HAL_DRIVER</state>
                     <state>USE_FULL_LL_DRIVER</state>
                     <state>_RTOS</state>
                     <state>USBPD_PORT_COUNT=1</state>
                     <state>_SNK</state>
-                    <state>USBPDCORE_LIB_PD3_CONFIG_1</state>
+                    <state>USBPDCORE_LIB_PD3_FULL</state>
                     <state>_TRACE</state>
                     <state>_GUI_INTERFACE</state>
                     <state>NUCLEO_MB1360A</state>
@@ -1082,6 +1083,9 @@
                 <name>$PROJ_DIR$\..\Src\usbpd.c</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\Src\usbpd_dpm_core.c</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\Src\usbpd_dpm_user.c</name>
             </file>
             <file>
@@ -1099,12 +1103,6 @@
         <name>Drivers</name>
         <group>
             <name>BSP</name>
-            <group>
-                <name>STM32G0xx_Nucleo</name>
-                <file>
-                    <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\BSP\STM32G0xx_Nucleo\stm32g0xx_nucleo.c</name>
-                </file>
-            </group>
             <group>
                 <name>x-nucleo-usbpdm1</name>
                 <file>
@@ -1218,13 +1216,10 @@
                 <group>
                     <name>Core</name>
                     <file>
-                        <name>$PROJ_DIR$\..\..\..\..\..\..\Middlewares\ST\STM32_USBPD_Library\Core\src\usbpd_dpm_core.c</name>
-                    </file>
-                    <file>
                         <name>$PROJ_DIR$\..\..\..\..\..\..\Middlewares\ST\STM32_USBPD_Library\Core\src\usbpd_trace.c</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\..\..\..\..\..\Middlewares\ST\STM32_USBPD_Library\Core\lib\USBPDCORE_PD3_CONFIG_1_CM0PLUS_wc32.a</name>
+                        <name>$PROJ_DIR$\..\..\..\..\..\..\Middlewares\ST\STM32_USBPD_Library\Core\lib\USBPDCORE_PD3_FULL_CM0PLUS_wc32.a</name>
                     </file>
                 </group>
                 <group>

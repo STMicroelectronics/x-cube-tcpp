@@ -335,7 +335,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>--C99</MiscControls>
-              <Define>STM32G071xx,USE_HAL_DRIVER,USE_FULL_LL_DRIVER,_RTOS,USBPD_PORT_COUNT=1,_SNK,USBPDCORE_LIB_PD3_CONFIG_1,_TRACE,_GUI_INTERFACE,NUCLEO_MB1360A,USBPDM1_VCC_FEATURE_ENABLED,USBPDM1_DB_OUT_FEATURE_ENABLED</Define>
+              <Define>USE_STM32G0XX_NUCLEO,STM32G071xx,USE_HAL_DRIVER,USE_FULL_LL_DRIVER,_RTOS,USBPD_PORT_COUNT=1,_SNK,USBPDCORE_LIB_PD3_FULL,_TRACE,_GUI_INTERFACE,NUCLEO_MB1360A,USBPDM1_VCC_FEATURE_ENABLED,USBPDM1_DB_OUT_FEATURE_ENABLED, __DEBUG_CAD</Define>
               <Undefine></Undefine>
               <IncludePath>../Inc;../../../../../../Drivers/CMSIS/Device/ST/STM32G0xx/Include;../../../../../../Drivers/STM32G0xx_HAL_Driver/Inc;../../../../../../Drivers/BSP/STM32G0xx_Nucleo;../../../../../../Drivers/BSP/Components/Common;../../../../../../Drivers/CMSIS/Include;../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0;../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include;../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc;../../../../../../Utilities/TRACER_EMB;../../../../../../Middlewares/ST/STM32_USBPD_Library/Devices/STM32G0XX/inc;../../../../../../Utilities/GUI_INTERFACE;../../../../../../Drivers/BSP/P-NUCLEO-USBPDM1</IncludePath>
             </VariousControls>
@@ -411,6 +411,11 @@
               <FileType>1</FileType>
               <FilePath>../Src/usbpd_pwr_if.c</FilePath>
             </File>
+            <File>
+              <FileName>usbpd_dpm_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\usbpd_dpm_core.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -420,16 +425,6 @@
               <FileName>readme.txt</FileName>
               <FileType>5</FileType>
               <FilePath>../readme.txt</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Drivers/BSP/STM32G0xx_Nucleo</GroupName>
-          <Files>
-            <File>
-              <FileName>stm32g0xx_nucleo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../../../../../../Drivers/BSP/STM32G0xx_Nucleo/stm32g0xx_nucleo.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -601,25 +596,30 @@
               <FileType>1</FileType>
               <FilePath>../../../../../../Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_ll_utils.c</FilePath>
             </File>
+            <File>
+              <FileName>stm32g0xx_ll_adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\STM32G0xx_HAL_Driver\Src\stm32g0xx_ll_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32g0xx_ll_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\Drivers\STM32G0xx_HAL_Driver\Src\stm32g0xx_ll_gpio.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Middlewares/ST/STM32_USBPD_Library/Core</GroupName>
           <Files>
             <File>
-              <FileName>usbpd_dpm_core.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/src/usbpd_dpm_core.c</FilePath>
-            </File>
-            <File>
               <FileName>usbpd_trace.c</FileName>
               <FileType>1</FileType>
               <FilePath>../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/src/usbpd_trace.c</FilePath>
             </File>
             <File>
-              <FileName>USBPDCORE_PD3_CONFIG_1_CM0PLUS_Keil.lib</FileName>
+              <FileName>USBPDCORE_PD3_FULL_CM0PLUS_Keil.lib</FileName>
               <FileType>4</FileType>
-              <FilePath>..\..\..\..\..\..\Middlewares\ST\STM32_USBPD_Library\Core\lib\USBPDCORE_PD3_CONFIG_1_CM0PLUS_Keil.lib</FilePath>
+              <FilePath>..\..\..\..\..\..\Middlewares\ST\STM32_USBPD_Library\Core\lib\USBPDCORE_PD3_FULL_CM0PLUS_Keil.lib</FilePath>
             </File>
           </Files>
         </Group>
