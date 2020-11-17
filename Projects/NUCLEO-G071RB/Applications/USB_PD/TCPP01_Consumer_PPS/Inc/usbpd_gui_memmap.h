@@ -48,16 +48,21 @@
    ADDR_FLASH_LAST_PAGE : Flash address value of begining of USBPD settings page
    ADDR_FLASH_PAGE_END : Flash address value of end of USBPD settings page
 */
-#define ADDR_FLASH_PAGE_63      0x0801F800u   /* Base @ of Page 63, 2 Kbytes  */
-#define ADDR_FLASH_PAGE_END     (ADDR_FLASH_PAGE_63 + 0x800u - 1) /* 0x800 => FLASH_PAGE_SIZE */
-#define INDEX_PAGE              63u           /* Page 63                      */
 
-#define GUI_FLASH_ADDR_NB_PDO_SNK_P0  0x0801F800u
-#define GUI_FLASH_ADDR_NB_PDO_SRC_P0  0x0801F801u
-#define GUI_FLASH_ADDR_NB_PDO_SNK_P1  0x0801F802u
-#define GUI_FLASH_ADDR_NB_PDO_SRC_P1  0x0801F803u
+#if defined (FLASH_OPTR_DBANK)
+#define INDEX_PAGE              ((FLASH_PAGE_NB * 2U) - 1U)                    /* Index of latest page */
+#else
+#define INDEX_PAGE              (FLASH_PAGE_NB - 1U)                           /* Index of latest page */
+#endif /* FLASH_OPTR_DBANK */
+#define ADDR_FLASH_LAST_PAGE    (FLASH_BASE + (INDEX_PAGE * FLASH_PAGE_SIZE))  /* Base @ of latest page */
+#define ADDR_FLASH_PAGE_END     (ADDR_FLASH_LAST_PAGE + FLASH_PAGE_SIZE - 1U)
 
-#define GUI_FLASH_ADDR_PDO_SRC_P0      (ADDR_FLASH_PAGE_63 + 8) 
+#define GUI_FLASH_ADDR_NB_PDO_SNK_P0  (ADDR_FLASH_LAST_PAGE)
+#define GUI_FLASH_ADDR_NB_PDO_SRC_P0  (ADDR_FLASH_LAST_PAGE + 1U)
+#define GUI_FLASH_ADDR_NB_PDO_SNK_P1  (ADDR_FLASH_LAST_PAGE + 2U)
+#define GUI_FLASH_ADDR_NB_PDO_SRC_P1  (ADDR_FLASH_LAST_PAGE + 3U)
+
+#define GUI_FLASH_ADDR_PDO_SRC_P0      (ADDR_FLASH_LAST_PAGE + 8U)
 /* New Address should be modulo 8 */
 /* New Address = (Previous Address + (size / 8 * 8) + ((size % 8) + 7) / 8 * 8) */
 #define GUI_FLASH_ADDR_PDO_SNK_P0      (GUI_FLASH_ADDR_PDO_SRC_P0 + ((USBPD_MAX_NB_PDO * 4) / 8 * 8) + ((((USBPD_MAX_NB_PDO * 4) & 0x07) + 7) / 8 * 8 ))
@@ -66,16 +71,15 @@
 
 #define GUI_FLASH_ADDR_DPM_SETTINGS    (GUI_FLASH_ADDR_PDO_SNK_P1 + ((USBPD_MAX_NB_PDO * 4) / 8 * 8) + ((((USBPD_MAX_NB_PDO * 4) & 0x07) + 7) / 8 * 8 ))
 
-/* Define by default USBPD_PORT_COUNT to 2 */
-#define GUI_FLASH_ADDR_DPM_USER_SETTINGS  (GUI_FLASH_ADDR_DPM_SETTINGS + (sizeof(USBPD_SettingsTypeDef) * 2 /*USBPD_PORT_COUNT*/))
+#define GUI_FLASH_ADDR_DPM_USER_SETTINGS  (GUI_FLASH_ADDR_DPM_SETTINGS + (sizeof(USBPD_SettingsTypeDef) * USBPD_PORT_COUNT))
 
-#define GUI_FLASH_ADDR_DPM_VDM_SETTINGS   (GUI_FLASH_ADDR_DPM_USER_SETTINGS + (sizeof(USBPD_USER_SettingsTypeDef) * 2 /*USBPD_PORT_COUNT*/))
+#define GUI_FLASH_ADDR_DPM_VDM_SETTINGS   (GUI_FLASH_ADDR_DPM_USER_SETTINGS + (sizeof(USBPD_USER_SettingsTypeDef) * USBPD_PORT_COUNT))
 
-#define GUI_FLASH_ADDR_DPM_ID_SETTINGS    (GUI_FLASH_ADDR_DPM_VDM_SETTINGS + (sizeof(USBPD_VDM_SettingsTypeDef) * 2 /*USBPD_PORT_COUNT*/))
+#define GUI_FLASH_ADDR_DPM_ID_SETTINGS    (GUI_FLASH_ADDR_DPM_VDM_SETTINGS + (sizeof(USBPD_VDM_SettingsTypeDef) * USBPD_PORT_COUNT))
 
-#define GUI_FLASH_ADDR_RESERVED           (GUI_FLASH_ADDR_DPM_ID_SETTINGS + (sizeof(USBPD_IdSettingsTypeDef) * 2 /*USBPD_PORT_COUNT*/))
+#define GUI_FLASH_ADDR_RESERVED           (GUI_FLASH_ADDR_DPM_ID_SETTINGS + (sizeof(USBPD_IdSettingsTypeDef) * USBPD_PORT_COUNT))
 
-#define GUI_FLASH_SIZE_RESERVED           (ADDR_FLASH_PAGE_END - GUI_FLASH_ADDR_RESERVED)
+#define GUI_FLASH_SIZE_RESERVED           (int32_t)(ADDR_FLASH_PAGE_END - GUI_FLASH_ADDR_RESERVED)
 
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/

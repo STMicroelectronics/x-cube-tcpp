@@ -18,12 +18,7 @@
   */
 
 /* Replace the header file names with the ones of the target platform */
-#include "stm32g0xx_nucleo.h"
-#include "stm32g0xx_ll_adc.h"
-#include "stm32g0xx_ll_bus.h"
-#include "stm32g0xx_ll_gpio.h"
-#include "stm32g0xx_ll_rcc.h"
-#include "usbpdm1_errno.h"
+#include "main.h"
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __USBPDM1_CONF_H__

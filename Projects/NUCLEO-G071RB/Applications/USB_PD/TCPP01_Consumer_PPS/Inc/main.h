@@ -26,15 +26,20 @@ extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "cmsis_os.h"
-#include "usbpd_core.h"
-#include "usbpd_dpm_core.h"
-#include "usbpd_hw_if.h"
-#if defined(_GUI_INTERFACE)
-#include "gui_api.h"
-#endif /* _GUI_INTERFACE */
+#include "stm32g0xx_hal.h"
+#include "stm32g0xx_ll_adc.h"
+#include "stm32g0xx_ll_dma.h"
+#include "stm32g0xx_ll_lpuart.h"
+#include "stm32g0xx_ll_rcc.h"
+#include "stm32g0xx_ll_bus.h"
+#include "stm32g0xx_ll_system.h"
+#include "stm32g0xx_ll_exti.h"
+#include "stm32g0xx_ll_cortex.h"
+#include "stm32g0xx_ll_utils.h"
+#include "stm32g0xx_ll_pwr.h"
+#include "stm32g0xx_ll_ucpd.h"
+#include "stm32g0xx_ll_gpio.h"
 
-#include <string.h>
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -63,6 +68,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define VCC_PIN_Pin LL_GPIO_PIN_10
+#define VCC_PIN_GPIO_Port GPIOC
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

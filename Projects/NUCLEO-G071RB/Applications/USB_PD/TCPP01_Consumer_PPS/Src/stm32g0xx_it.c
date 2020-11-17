@@ -21,12 +21,16 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32g0xx_it.h"
-#include "stm32g0xx.h"
+#include "FreeRTOS.h"
+#include "task.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#if defined(_DISCO)
-#include "demo_disco.h"
-#endif
+#include "usbpd_def.h"
+#include "usbpd_dpm_core.h"
+#include "usbpd_hw_if.h"
+#if defined(_GUI_INTERFACE)
+#include "gui_api.h"
+#endif /* _GUI_INTERFACE */
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -66,7 +70,7 @@
 /* USER CODE END EV */
 
 /******************************************************************************/
-/*           Cortex-M0+ Processor Interruption and Exception Handlers          */ 
+/*           Cortex-M0+ Processor Interruption and Exception Handlers          */
 /******************************************************************************/
 /**
   * @brief This function handles Non maskable interrupt.
@@ -109,6 +113,14 @@ void SysTick_Handler(void)
 
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
+#if (INCLUDE_xTaskGetSchedulerState == 1 )
+  if (xTaskGetSchedulerState() != taskSCHEDULER_NOT_STARTED)
+  {
+#endif /* INCLUDE_xTaskGetSchedulerState */
+  xPortSysTickHandler();
+#if (INCLUDE_xTaskGetSchedulerState == 1 )
+  }
+#endif /* INCLUDE_xTaskGetSchedulerState */
   /* USER CODE BEGIN SysTick_IRQn 1 */
 
   /* USER CODE END SysTick_IRQn 1 */
@@ -128,47 +140,53 @@ void UCPD1_2_IRQHandler(void)
 {
   /* USER CODE BEGIN UCPD1_2_IRQn 0 */
   USBPD_PORT0_IRQHandler();
-  
-#if USBPD_PORT_COUNT == 2  
-  USBPD_PORT1_IRQHandler();
-#endif
   /* USER CODE END UCPD1_2_IRQn 0 */
   /* USER CODE BEGIN UCPD1_2_IRQn 1 */
 
   /* USER CODE END UCPD1_2_IRQn 1 */
 }
 
-#if defined(_GUI_INTERFACE) || defined(_TRACE)
-#if TRACER_EMB_DMA_MODE == 1UL
 /**
-  * @brief This function handles DMA1 channel 4 & 7 interrupts.
+  * @brief This function handles DMA1 channel 2 and channel 3 interrupts.
   */
-void TRACER_EMB_TX_DMA_IRQHANDLER(void)
+void DMA1_Channel2_3_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Channel2_3_IRQn 0 */
+
+  /* USER CODE END DMA1_Channel2_3_IRQn 0 */
+
+  /* USER CODE BEGIN DMA1_Channel2_3_IRQn 1 */
+
+  /* USER CODE END DMA1_Channel2_3_IRQn 1 */
+}
+
+/**
+  * @brief This function handles DMA1 channel 4, channel 5, channel 6, channel 7 and DMAMUX1 interrupts.
+  */
+void DMA1_Ch4_7_DMAMUX1_OVR_IRQHandler(void)
 {
   /* USER CODE BEGIN DMA1_Ch4_7_DMAMUX1_OVR_IRQn 0 */
    TRACER_EMB_IRQHandlerDMA();
   /* USER CODE END DMA1_Ch4_7_DMAMUX1_OVR_IRQn 0 */
-  
+
   /* USER CODE BEGIN DMA1_Ch4_7_DMAMUX1_OVR_IRQn 1 */
 
   /* USER CODE END DMA1_Ch4_7_DMAMUX1_OVR_IRQn 1 */
 }
-#endif
 
 /**
   * @brief This function handles USART3, USART4 and LPUART1 interrupts / LPUART1 wake-up interrupt through EXTI line 28.
   */
-void TRACER_EMB_USART_IRQHANDLER(void)
+void USART3_4_LPUART1_IRQHandler(void)
 {
   /* USER CODE BEGIN USART3_4_LPUART1_IRQn 0 */
   TRACER_EMB_IRQHandlerUSART();
   /* USER CODE END USART3_4_LPUART1_IRQn 0 */
-  
+
   /* USER CODE BEGIN USART3_4_LPUART1_IRQn 1 */
 
   /* USER CODE END USART3_4_LPUART1_IRQn 1 */
 }
-#endif /*_GUI_INTERFACE || _TRACE */
 
 /* USER CODE BEGIN 1 */
 

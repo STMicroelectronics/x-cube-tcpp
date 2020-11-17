@@ -1,8 +1,8 @@
-# X-CUBE-TCPP MCU Firmware Package
+# X-CUBE-USBPDM1 MCU Firmware Package
 
-**X-CUBE-TCPP** is an STMicroelectronics original initiative. It uses for USB Type-C and Power Delivery software expansion for STM32Cube (UM2073).
+**X-CUBE-USBPDM1** is an STMicroelectronics original initiative. It uses for USB Type-C and Power Delivery software expansion for STM32Cube (UM2073).
 
-**X-CUBE-TCPP** is a USB-IF certified Expansion Package and consists of libraries, drivers, sources, APIs and application examples running on STM32G0 Series microcontrollers.
+**X-CUBE-USBPDM1** is a USB-IF certified Expansion Package and consists of libraries, drivers, sources, APIs and application examples running on STM32G0 Series microcontrollers.
 
 Check the ST web page : [USB Type-C and Power Delivery](https://www.st.com/en/applications/connectivity/usb-type-c-and-power-delivery.html#overview) for more details.
 

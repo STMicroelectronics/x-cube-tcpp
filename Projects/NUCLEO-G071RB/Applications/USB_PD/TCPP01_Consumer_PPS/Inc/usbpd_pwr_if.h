@@ -38,17 +38,13 @@
 
 /* Exported typedef ----------------------------------------------------------*/
 /* Exported define -----------------------------------------------------------*/
-#define BSP_PWR_INVALID_VALUE           0xFFFFFFFFu   /* Invalid value set during issue with voltage setting */
-#define BSP_PWR_TIMEOUT_PDO             250u          /* Timeout for PDO to PDO or PDO to APDO at 250ms */
-#define USBPD_PWR_TIMEOUT_APDO            25u           /* Timeout for APDO to APDO at 25ms */
-
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /** @defgroup USBPD_USER_PWR_IF_Exported_Macros USBPD PWR IF Exported Macros
   * @{
   */
 
-/* enumeration of the different power status available for VBUS */    
+/* enumeration of the different power status available for VBUS */
 typedef enum{
   USBPD_PWR_BELOWVSAFE0V,
   USBPD_PWR_VSAFE5V,
@@ -106,6 +102,21 @@ USBPD_StatusTypeDef USBPD_PWR_IF_SupplyReady(uint8_t PortNum, USBPD_VSAFE_Status
   */
 USBPD_StatusTypeDef USBPD_PWR_IF_ReadVA(uint8_t PortNum, uint16_t *pVoltage, uint16_t *pCurrent);
 
+/**
+  * @brief  Enables the VConn on the port.
+  * @param  PortNum Port number
+  * @param  CC      Specifies the CCx to be selected based on @ref CCxPin_TypeDef structure
+  * @retval USBPD Status
+  */
+USBPD_StatusTypeDef USBPD_PWR_IF_Enable_VConn(uint8_t PortNum, CCxPin_TypeDef CC);
+
+/**
+  * @brief  Disable the VConn on the port.
+  * @param  PortNum Port number
+  * @param  CC      Specifies the CCx to be selected based on @ref CCxPin_TypeDef structure
+  * @retval USBPD Status
+  */
+USBPD_StatusTypeDef USBPD_PWR_IF_Disable_VConn(uint8_t PortNum, CCxPin_TypeDef CC);
 
 /**
   * @brief  Allow PDO data reading from PWR_IF storage.
@@ -138,19 +149,26 @@ USBPD_StatusTypeDef USBPD_PWR_IF_SearchRequestedPDO(uint8_t PortNum, uint32_t Rd
 void USBPD_PWR_IF_Alarm(void);
 
 /**
-  * @brief  Function to check validity between SNK PDO and power user settings
-  * @param  PortNum Port number
-  * @retval USBPD Status
-  */
-USBPD_StatusTypeDef USBPD_PWR_IF_CheckUpdateSNKPower(uint8_t PortNum);
-
-/**
-  * @brief the function is called to get VBUS power status.
-  * @param PortNum
-  * @param PowerTypeStatus
+  * @brief Function is called to get VBUS power status.
+  * @param PortNum Port number
+  * @param PowerTypeStatus  Power type status based on @ref USBPD_VBUSPOWER_STATUS
   * @retval UBBPD_TRUE or USBPD_FALSE
   */
 uint8_t USBPD_PWR_IF_GetVBUSStatus(uint8_t PortNum, USBPD_VBUSPOWER_STATUS PowerTypeStatus);
+
+/**
+  * @brief Function is called to set the VBUS threshold when a request has been accepted.
+  * @param PortNum Port number
+  * @retval None
+  */
+void USBPD_PWR_IF_UpdateVbusThreshold(uint8_t PortNum);
+
+/**
+  * @brief Function is called to reset the VBUS threshold when there is a power reset.
+  * @param PortNum Port number
+  * @retval None
+  */
+void USBPD_PWR_IF_ResetVbusThreshold(uint8_t PortNum);
 
 /**
   * @}

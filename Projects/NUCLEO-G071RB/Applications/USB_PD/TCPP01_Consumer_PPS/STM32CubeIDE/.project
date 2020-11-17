@@ -52,6 +52,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/Src/usbpd.c</locationURI>
 		</link>
 		<link>
+			<name>Application/User/usbpd_dpm_core.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Src/usbpd_dpm_core.c</locationURI>
+		</link>
+		<link>
 			<name>Application/User/usbpd_dpm_user.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/Src/usbpd_dpm_user.c</locationURI>
@@ -60,6 +65,11 @@
 			<name>Application/User/usbpd_pwr_if.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/Src/usbpd_pwr_if.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/usbpd_vdm_user.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Src/usbpd_vdm_user.c</locationURI>
 		</link>
 		<link>
 			<name>Drivers/CMSIS/system_stm32g0xx.c</name>
@@ -242,11 +252,6 @@
 			<locationURI>PARENT-6-PROJECT_LOC/Utilities/TRACER_EMB/tracer_emb_hw.c</locationURI>
 		</link>
 		<link>
-			<name>Drivers/BSP/STM32G0xx_Nucleo/stm32g0xx_nucleo.c</name>
-			<type>1</type>
-			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/STM32G0xx_Nucleo/stm32g0xx_nucleo.c</locationURI>
-		</link>
-		<link>
 			<name>Drivers/BSP/x-nucleo-usbpdm1/usbpdm1_usbpd_pwr.c</name>
 			<type>1</type>
 			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/P-NUCLEO-USBPDM1/usbpdm1_usbpd_pwr.c</locationURI>
@@ -270,11 +275,6 @@
 			<name>Middlewares/Third_Party/FreeRTOS/timers.c</name>
 			<type>1</type>
 			<locationURI>PARENT-6-PROJECT_LOC/Middlewares/Third_Party/FreeRTOS/Source/timers.c</locationURI>
-		</link>
-		<link>
-			<name>Middlewares/ST/STM32_USBPD_Library/Core/usbpd_dpm_core.c</name>
-			<type>1</type>
-			<locationURI>PARENT-6-PROJECT_LOC/Middlewares/ST/STM32_USBPD_Library/Core/src/usbpd_dpm_core.c</locationURI>
 		</link>
 		<link>
 			<name>Middlewares/ST/STM32_USBPD_Library/Core/usbpd_trace.c</name>

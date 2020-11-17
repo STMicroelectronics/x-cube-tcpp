@@ -23,6 +23,8 @@
 #define _GUI_API_H
 
 /* Includes ------------------------------------------------------------------*/
+#include "main.h"
+#include "usbpd_def.h"
 
 /** @addtogroup STM32_USBPD_LIBRARY
   * @{
@@ -237,6 +239,7 @@ USBPD_FunctionalState GUI_IsRunning(void);
 #if !defined(USE_STM32_UTILITY_OS)
 void                  GUI_Execute(void);
 #endif /* !USE_STM32_UTILITY_OS */
+void                  GUI_RegisterCallback_FreeText(USBPD_StatusTypeDef (*CB_FreeText)(uint8_t, uint8_t*, uint16_t));
 /**
   * @}
   */

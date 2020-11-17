@@ -28,10 +28,11 @@
 /* Includes ------------------------------------------------------------------*/
 #include "usbpd_pdo_defs.h"
 #include "usbpd_dpm_user.h"
-#if defined(_GUI_INTERFACE)
+#include "usbpd_vdm_user.h"
+
 #include "gui_api.h"
 #include "usbpd_gui_memmap.h"
-#endif /* _GUI_INTERFACE */
+
 /* USER CODE BEGIN Includes */
 /* Section where include file can be added */
 
@@ -41,7 +42,7 @@
 /* Define VID, PID,... manufacturer parameters */
 #define USBPD_VID (0x0483u)     /*!< Vendor ID (assigned by the USB-IF)                     */
 #define USBPD_PID (0x0002u)     /*!< Product ID (assigned by the manufacturer)              */
-#define USBPD_XID (0x0000AAAAU) /*!< Value provided by the USB-IF assigned to the product   */
+#define USBPD_XID (0xF0000003u) /*!< Value provided by the USB-IF assigned to the product   */
 
 /* USER CODE BEGIN Define */
 /* Section where Define can be added */
@@ -57,46 +58,49 @@
 /* Private variables ---------------------------------------------------------*/
 #ifndef __USBPD_DPM_CORE_C
 extern USBPD_SettingsTypeDef            DPM_Settings[USBPD_PORT_COUNT];
-extern USBPD_IdSettingsTypeDef          DPM_ID_Settings[USBPD_PORT_COUNT];
-extern USBPD_USER_SettingsTypeDef       DPM_USER_Settings[USBPD_PORT_COUNT];
 #else /* __USBPD_DPM_CORE_C */
 USBPD_SettingsTypeDef       DPM_Settings[USBPD_PORT_COUNT] =
 {
   {
-    .PE_SupportedSOP = USBPD_SUPPORTED_SOP_SOP, /* Supported SOP : SOP      */
+    .PE_SupportedSOP = USBPD_SUPPORTED_SOP_SOP    , /* Supported SOP : SOP, SOP' SOP" SOP'Debug SOP"Debug */
     .PE_SpecRevision = USBPD_SPECIFICATION_REV3,/* spec revision value                                     */
     .PE_DefaultRole = USBPD_PORTPOWERROLE_SNK,  /* Default port role                                       */
-    .PE_RoleSwap = USBPD_FALSE,                 /* support port role swap                                  */
+    .PE_RoleSwap = USBPD_FALSE,                  /* support port role swap                                  */
     .PE_VDMSupport = USBPD_FALSE,
     .PE_RespondsToDiscovSOP = USBPD_FALSE,      /*!< Can respond successfully to a Discover Identity */
     .PE_AttemptsDiscovSOP = USBPD_FALSE,        /*!< Can send a Discover Identity */
-    .PE_PingSupport = USBPD_FALSE,              /* support Ping (only for PD3.0)                           */
+    .PE_PingSupport = USBPD_FALSE,              /* support Ping (only for PD3.0)                                            */
     .PE_CapscounterSupport = USBPD_FALSE,       /* support caps counter                                    */
-    .CAD_RoleToggle = USBPD_FALSE,              /* cad role toogle                                         */
-    .CAD_TryFeature = USBPD_FALSE,              /* cad try feature                                         */
-    .CAD_AccesorySupport = USBPD_FALSE,         /* cas accessory support                                   */
+    .CAD_RoleToggle = USBPD_FALSE,               /* CAD role toggle                                         */
+    .CAD_TryFeature = 0,              /* CAD try feature                                         */
+    .CAD_AccesorySupport = USBPD_FALSE,         /* CAD accessory support                                   */
     .PE_PD3_Support.d =                           /*!< PD3 SUPPORT FEATURE                                              */
     {
-      .PE_UnchunkSupport                = USBPD_FALSE,  /*!< Unchunked mode Support                */
-      .PE_FastRoleSwapSupport           = USBPD_FALSE,  /* support fast role swap only spec revsion 3.0            */
-      .Is_GetPPSStatus_Supported        = USBPD_TRUE,   /*!< PPS message supported or not by DPM */
+      .PE_UnchunkSupport                = USBPD_FALSE,  /* support Unchunked mode (valid only spec revision 3.0)   */
+      .PE_FastRoleSwapSupport           = USBPD_FALSE,   /* support fast role swap only spec revsion 3.0            */
+      .Is_GetPPSStatus_Supported        = USBPD_TRUE,  /*!< PPS message NOT supported by PE stack */
       .Is_SrcCapaExt_Supported          = USBPD_FALSE,  /*!< Source_Capabilities_Extended message supported or not by DPM */
-      .Is_Alert_Supported               = USBPD_FALSE,  /*!< Alert message supported or not by DPM */
-      .Is_GetStatus_Supported           = USBPD_FALSE,  /*!< Status message supported or not by DPM */
+      .Is_Alert_Supported               = USBPD_FALSE,   /*!< Alert message supported or not by DPM */
+      .Is_GetStatus_Supported           = USBPD_FALSE,   /*!< Status message supported or not by DPM (Is_Alert_Supported should be enabled) */
       .Is_GetManufacturerInfo_Supported = USBPD_FALSE,  /*!< Manufacturer_Info message supported or not by DPM */
       .Is_GetCountryCodes_Supported     = USBPD_FALSE,  /*!< Country_Codes message supported or not by DPM */
       .Is_GetCountryInfo_Supported      = USBPD_FALSE,  /*!< Country_Info message supported or not by DPM */
       .Is_SecurityRequest_Supported     = USBPD_FALSE,  /*!< Security_Response message supported or not by DPM */
-      .Is_FirmUpdateRequest_Supported   = USBPD_FALSE,  /*!< Firmware update response message not supported by PE */
-      .Is_GetBattery_Supported          = USBPD_FALSE,  /*!< Get Battery Capabitity and Status messages supported by PE */
+      .Is_FirmUpdateRequest_Supported   = USBPD_FALSE,  /*!< Firmware update response message supported by PE */
     },
 
-    .CAD_SRCToggleTime          = 40,                    /* uint8_t CAD_SRCToggleTime; */
-    .CAD_SNKToggleTime          = 40,                    /* uint8_t CAD_SNKToggleTime; */
+    .CAD_SRCToggleTime = 0,                    /* uint8_t CAD_SRCToggleTime; */
+    .CAD_SNKToggleTime = 0,                    /* uint8_t CAD_SNKToggleTime; */
   }
 };
 
+#endif /* !__USBPD_DPM_CORE_C */
+
 /* USER CODE BEGIN Variable */
+#ifndef __USBPD_DPM_CORE_C
+extern USBPD_IdSettingsTypeDef          DPM_ID_Settings[USBPD_PORT_COUNT];
+extern USBPD_USER_SettingsTypeDef       DPM_USER_Settings[USBPD_PORT_COUNT];
+#else /* __USBPD_DPM_CORE_C */
 /* Section where Variable can be added */
 USBPD_IdSettingsTypeDef          DPM_ID_Settings[USBPD_PORT_COUNT] =
 {

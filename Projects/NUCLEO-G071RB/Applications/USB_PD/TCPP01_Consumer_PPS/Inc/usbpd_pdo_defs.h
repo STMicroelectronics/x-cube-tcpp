@@ -24,9 +24,12 @@
 
 #ifdef __cplusplus
  extern "C" {
-#endif 
+#endif
 
 /* Includes ------------------------------------------------------------------*/
+#include "main.h"
+#include "usbpd_def.h"
+
 /* USER CODE BEGIN Includes */
 #if defined(_GUI_INTERFACE)
 #include "usbpd_gui_memmap.h"
@@ -113,56 +116,50 @@ typedef struct
 
 #ifndef __USBPD_PWR_IF_C
 extern uint8_t USBPD_NbPDO[4];
-
+extern uint32_t PORT0_PDO_ListSRC[USBPD_MAX_NB_PDO];
 extern uint32_t PORT0_PDO_ListSNK[USBPD_MAX_NB_PDO];
 #else
-
-uint8_t USBPD_NbPDO[4] = {(PORT0_NB_SINKPDO + PORT0_NB_SINKAPDO), 
-                          ((PORT0_NB_SOURCEPDO + PORT0_NB_SOURCEAPDO)),
-                          ((PORT1_NB_SINKPDO + PORT1_NB_SINKAPDO)),
-                          ((PORT1_NB_SOURCEPDO + PORT1_NB_SOURCEAPDO))};
-
+uint8_t USBPD_NbPDO[4] = {(PORT0_NB_SINKPDO),
+                          (PORT0_NB_SOURCEPDO)};
+/* Definition of Source PDO for Port 0 */
+uint32_t PORT0_PDO_ListSRC[USBPD_MAX_NB_PDO] =
+{
+  /* PDO 1 */
+        (0x00000000U),
+  /* PDO 2 */
+        (0x00000000U),
+  /* PDO 3 */
+        (0x00000000U),
+  /* PDO 4 */
+        (0x00000000U),
+  /* PDO 5 */
+        (0x00000000U),
+  /* PDO 6 */
+        (0x00000000U),
+  /* PDO 7 */
+        (0x00000000U)
+};
 
 /* Definition of Sink PDO for Port 0 */
 uint32_t PORT0_PDO_ListSNK[USBPD_MAX_NB_PDO] =
 {
   /* PDO 1 */
-  ( ((PWR_A_10MA(USBPD_CORE_PDO_SNK_FIXED_MAX_CURRENT/1000.0)) << USBPD_PDO_SNK_FIXED_OP_CURRENT_Pos)    |
-    ((PWR_V_50MV(USBPD_BOARD_REQUESTED_VOLTAGE_MV/1000.0)) << USBPD_PDO_SNK_FIXED_VOLTAGE_Pos) |
-     USBPD_PDO_SNK_FIXED_FRS_NOT_SUPPORTED                                                     |
-     USBPD_PDO_SNK_FIXED_EXT_POWER_AVAILABLE                                                   |
-     USBPD_PDO_SRC_FIXED_USBSUSPEND_NOT_SUPPORTED                                              |
-     USBPD_PDO_SNK_FIXED_HIGHERCAPAB_NOT_SUPPORTED                                             |
-     USBPD_PDO_SNK_FIXED_DRP_NOT_SUPPORTED                                                     |
-     USBPD_PDO_TYPE_FIXED
-  ),
+        (0x220191F4U),
   /* PDO 2 */
-  ( ((PWR_A_10MA(USBPD_CORE_PDO_SNK_FIXED_MAX_CURRENT/1000.0)) << USBPD_PDO_SNK_FIXED_OP_CURRENT_Pos)    |
-    ((PWR_V_50MV(9000/1000.0)) << USBPD_PDO_SNK_FIXED_VOLTAGE_Pos) |
-     USBPD_PDO_TYPE_FIXED
-  ),
+        (0x0002D1F4U),
   /* PDO 3 */
-  ( ((PWR_A_10MA(USBPD_CORE_PDO_SNK_FIXED_MAX_CURRENT/1000.0)) << USBPD_PDO_SNK_FIXED_OP_CURRENT_Pos)    |
-    ((PWR_V_50MV(15000/1000.0)) << USBPD_PDO_SNK_FIXED_VOLTAGE_Pos) |
-     USBPD_PDO_TYPE_FIXED
-  ),
+        (0x0004B1F4U),
   /* PDO 4 */
-  ( ((PWR_A_10MA(USBPD_CORE_PDO_SNK_FIXED_MAX_CURRENT/1000.0)) << USBPD_PDO_SNK_FIXED_OP_CURRENT_Pos)    |
-    ((PWR_V_50MV(USBPD_BOARD_MAX_VOLTAGE_MV/1000.0)) << USBPD_PDO_SNK_FIXED_VOLTAGE_Pos) |
-     USBPD_PDO_TYPE_FIXED
-  ),
-  /* PDO 5 : SRC APDO */ 
-  ( (((PWR_A_50MA(USBPD_PDO_APDO_MAX_CURRENT)) << USBPD_PDO_SNK_APDO_MAX_CURRENT_Pos) & (USBPD_PDO_SNK_APDO_MAX_CURRENT_Msk))  |
-    (((PWR_V_100MV(USBPD_PDO_APDO_MIN_VOLTAGE)) << USBPD_PDO_SNK_APDO_MIN_VOLTAGE_Pos) & (USBPD_PDO_SNK_APDO_MIN_VOLTAGE_Msk)) |
-    (((PWR_V_100MV(USBPD_PDO_APDO_MAX_VOLTAGE)) << USBPD_PDO_SNK_APDO_MAX_VOLTAGE_Pos) & (USBPD_PDO_SNK_APDO_MAX_VOLTAGE_Msk)) |
-     USBPD_PDO_TYPE_APDO
-  ),
-  /* PDO 6 */ (0x00000000U),
-  /* PDO 7 */ (0x00000000U)
+        (0xC0762164U),
+  /* PDO 5 */
+        (0x00000000U),
+  /* PDO 6 */
+        (0x00000000U),
+  /* PDO 7 */
+        (0x00000000U)
 };
 
-
-#endif /* __USBPD_PWR_IF_C */
+#endif
 
 /* Exported functions --------------------------------------------------------*/
 

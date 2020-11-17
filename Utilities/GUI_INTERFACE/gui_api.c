@@ -538,6 +538,7 @@ const uint8_t* (*pCB_HWBoardVersion)(void)  = NULL;
 const uint8_t* (*pCB_HWPDType)(void)        = NULL;
 uint16_t (*pCB_GetVoltage)(uint8_t)         = NULL;
 int16_t  (*pCB_GetCurrent)(uint8_t)         = NULL;
+USBPD_StatusTypeDef (*pCB_FreeText)(uint8_t, uint8_t*, uint16_t) = NULL;
 
 GUI_HandleTypeDef GUI_SaveInformation[USBPD_PORT_COUNT];
 
@@ -1683,6 +1684,15 @@ void GUI_SaveInfo(uint8_t PortNum, uint8_t DataId, uint8_t *Ptr, uint32_t Size)
   }
 }
 
+/**
+  * @brief  Register callback function to be used with Free Text feature
+  * @param  CB_FreeText Callback function to register (port number, payload and size)
+  * @retval None
+  */
+void GUI_RegisterCallback_FreeText(USBPD_StatusTypeDef (*CB_FreeText)(uint8_t, uint8_t*, uint16_t))
+{
+  pCB_FreeText = CB_FreeText;
+}
 
 /**
   * @}
@@ -2017,6 +2027,8 @@ static void Request_MessageReq(uint8_t PortNum, uint8_t* instruction, uint8_t *p
     break;
   case GUI_MSG_VDM_UNSTRUCTURED :
     break;
+#endif /* _VDM || _VCONN_SUPPORT */
+#if defined(_VDM)
   case GUI_MSG_DISPLAY_PORT_STATUS :
     {
       uint32_t dp_status;
@@ -2081,8 +2093,6 @@ static void Request_MessageReq(uint8_t PortNum, uint8_t* instruction, uint8_t *p
     break;
   case GUI_MSG_DISPLAY_PORT_ATTENTION :
     break;
-#endif /* _VDM || _VCONN_SUPPORT */
-#if defined(_VDM)
   case GUI_MSG_VDM_ATTENTION :
     {
       uint16_t svid = 0;
@@ -3204,8 +3214,15 @@ static void Send_DpmRegisterWriteCnf(uint8_t PortNum, uint8_t *pEncodedMsg, uint
   */
 static USBPD_StatusTypeDef Manage_FreeText(uint8_t PortNum, uint8_t *pPayload, uint16_t Size)
 {
-  USBPD_TRACE_Add(USBPD_TRACE_DEBUG, PortNum, 0, pPayload, Size);
-  return USBPD_OK;
+  USBPD_StatusTypeDef _status = USBPD_FAIL;
+
+  if (NULL != pCB_FreeText)
+  {
+    pCB_FreeText(PortNum, pPayload, Size);
+    _status = USBPD_OK;
+  }
+
+  return _status;
 }
 
 /**

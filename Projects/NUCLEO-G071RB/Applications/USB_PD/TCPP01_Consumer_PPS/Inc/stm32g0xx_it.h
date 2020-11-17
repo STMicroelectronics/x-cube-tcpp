@@ -24,7 +24,7 @@
 
 #ifdef __cplusplus
  extern "C" {
-#endif 
+#endif
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -53,12 +53,12 @@ void NMI_Handler(void);
 void HardFault_Handler(void);
 void SysTick_Handler(void);
 void UCPD1_2_IRQHandler(void);
-#if defined(_TRACE)||defined(_GUI_INTERFACE)
-void TRACER_EMB_USART_IRQHANDLER(void);
-#if TRACER_EMB_DMA_MODE == 1UL
-void TRACER_EMB_TX_DMA_IRQHANDLER(void);
-#endif
-#endif /*_TRACE || _GUI_INTERFACE */
+void DMA1_Channel2_3_IRQHandler(void);
+void DMA1_Ch4_7_DMAMUX1_OVR_IRQHandler(void);
+void USART3_4_LPUART1_IRQHandler(void);
+/* USER CODE BEGIN EFP */
+
+/* USER CODE END EFP */
 
 #ifdef __cplusplus
 }

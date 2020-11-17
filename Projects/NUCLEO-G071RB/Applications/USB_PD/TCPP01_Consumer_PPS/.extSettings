@@ -1,0 +1,8 @@
+[ProjectFiles]
+HeaderPath=..\..\..\..\..\..\Drivers\BSP\P-NUCLEO-USBPDM1
+[Others]
+Define=USE_STM32G0XX_NUCLEO;NUCLEO_MB1360A;USBPDM1_DB_OUT_FEATURE_ENABLED;USBPDM1_VCC_FEATURE_ENABLED
+HALModule=
+[Groups]
+Doc=../readme.txt;
+Drivers/BSP/P-NUCLEO-USBPDM1=../../../../../../Drivers/BSP/P-NUCLEO-USBPDM1/usbpdm1_usbpd_pwr.c;

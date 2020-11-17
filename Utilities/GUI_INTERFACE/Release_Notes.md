@@ -38,7 +38,93 @@ The application can be found in ST website:
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section12" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section14" checked aria-hidden="true">
+<label for="collapse-section14" aria-hidden="true">V1.10.2 / 13-May-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+
+  Headline
+  --------
+  Add "usbpd_def.h" include in gui_api.h (usbpd_def.h types used in gui_api.h)
+
+  : Fixed bugs list
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.26
+- STM32CubeIDE v1.2.0
+
+## Supported Devices and boards
+
+  All STM32xx devices implementing a USBPD application able to communicate with CubeMonitor_UCPD
+
+## Backward compatibility
+
+  No compatibility break with previous version
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section13" aria-hidden="true">
+<label for="collapse-section13" aria-hidden="true">V1.10.1 / 14-Apr.-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+
+  Headline
+  --------
+  User functions for VDM display port should be under switch VDM only
+
+  : Fixed bugs list
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.26
+- System Workbench STM32 (SW4STM32) toolchain V2.7.2
+
+## Supported Devices and boards
+
+  All STM32xx devices implementing a USBPD application able to communicate with CubeMonitor_UCPD
+
+## Backward compatibility
+
+  No compatibility break with previous version
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section12" aria-hidden="true">
 <label for="collapse-section12" aria-hidden="true">V1.10.0 / 07-Apr.-2020</label>
 <div>
 
