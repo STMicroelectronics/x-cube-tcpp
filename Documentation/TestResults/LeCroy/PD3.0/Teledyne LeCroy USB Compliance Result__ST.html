@@ -1,0 +1,521 @@
+<html>
+   <head>
+       <title>Teledyne LeCroy USB Compliance Suite Overview Result</title>
+        <style type='text/css'>
+﻿Html {        font-family: Arial, Helvetica, sans-serif;    font-size: 11px;    text-align: left;    margin: 0 auto 0 auto;    width: 100%;}body {    margin: 0 auto 0 auto;    width: 100%;    font-family: Arial, Helvetica, sans-serif;    font-size: 11px;    text-align: left;}.title {    font-size: 18px;    text-align: center;    margin-bottom: 10px;    font-family: verdana, Geneva, Tahoma, sans-serif;}#tbl_header {    font-size: 11px;    margin-top: 20px;    margin-bottom: 0px;    color: #666666;}.date {    margin: 0px;    width: 100%;    text-align: right;    padding-right: 10px;    padding-top: 0px;    font-size: 10px;    color: #666666;    padding-bottom: 3px;}.center {text-align: center;}.testSummary {    text-align: center;    float: left;    width: 33%;}#tbl_main {    color: #666;    font-size: 11px;    border: #ccc 1px solid;    width: 100%;    border-radius: 3px;    border-collapse: collapse;}#tbl_main th {    text-align: center;    text-shadow: 1px 1px 0px #fff;    background: #DFDFDF;    font-weight: bold;    font-size: 12px;    border: 1px solid #C0C0C0;}#tbl_main td {    padding: 4px;    border: 1px solid #C0C0C0;    text-align: justify;}#tbl_main .header_bunch {    background-color: #F0F0F0;    font-weight: bold;}#tbl_main .result {    text-align: center;    width: 32px;}#tbl_main .test_case {    width: 35%;    }#tbl_main .description {    width: 65%;}#tbl_main .repeat {    font-weight: bold;    font-style: italic;}#tbl_main .iteration {    border-width: 1px;    border-color: #CCCCCC;    border-top-style: dashed;    border-bottom-style: dashed;}#tbl_main .state .test_case {    border-width: 0px;    font-weight: bold;}#tbl_main .iteration .test_case {    border-width: 0px;}#tbl_main .iteration .result {    border-width: 0px;}#tbl_main .state .result {    border-width: 0px;    font-weight: bold;}#tbl_main .iteration .description, #tbl_main .state .description {    border-width: 0px;}#tbl_result {    margin-top: 8px;    font-size: 11px;    font-weight: bold;    color: #666666;}#tbl_result td {    width: 150px;}#footer {    margin-top: 8px;}#tbl_footer {    font-family: verdana, Geneva, Tahoma, sans-serif;    font-size: 8px;    color: #808080;    border-top-style: solid;    border-top-width: 1px;    border-top-color: #999999;}#tbl_main .pass {    background-color: #00CC00;    color: #FFFFFF;}#tbl_main .fail {    background-color: #CC0000;    color: #FFFFFF;}#tbl_main .NA {    background-color: #C0C0C0;    color: #FFFFFF;}#tbl_main .iteration .pass {    color: #00CC00;    background-color: #FFFFFF;}#tbl_main .iteration .fail {    color: #CC0000;    background-color: #FFFFFF;}#tbl_main .iteration.NA {    color: #C0C0C0;    background-color: #FFFFFF;}#tbl_main .state .pass {    color: #00CC00;    background-color: #C6FFC6;}#tbl_main .state .fail {    color: #CC0000;    background-color: #FFC4C4;}#tbl_main .state.NA {    color: #AAAAAA;    background-color: #EFEFEF;}        
+</style>
+   </head>
+   <body>
+       <div class='header'>
+           <div class='title'> Teledyne LeCroy USB Compliance Suite Overview Result </div>
+           <table ID='tbl_header'>
+               <tr><th>Device Under Test</th></tr>
+                <tr><td>Vendor Name</td><td>STMicroelectronics</td</tr>
+                <tr><td>Model_Part_Number</td><td>X-NUCLEO-USBPDM1-G0</td></tr>
+                <tr><td>Product_Revision</td><td>1.0</td></tr>
+                <tr><td>UUT Alias</td><td>ST</td></tr>
+           </table>
+            <div class='date'>Wednesday, April 22, 2020 - 19:54</div>
+       </div>
+            <div> PD 3.0</div>
+       <table ID = 'tbl_main'>
+           <thead>
+               <tr>
+                    <th class='test_case'>Compliance Test</th>
+                    <th class='result'>Result</th>
+                    <th class='description'>Description</th>
+               </tr>
+            </thead>
+           <tbody>
+               <tr>
+                    <td>TD PD.LL3.E01 GoodCRC Specification Revision compatibility</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr class='iteration'>
+                    <td class='test_case' style='text-indent: 10px'>Revision_00b</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr class='iteration'>
+                    <td class='test_case' style='text-indent: 10px'>Revision_01b</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr class='iteration'>
+                    <td class='test_case' style='text-indent: 10px'>Revision_10b</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.LL3.E02 Retransmission</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.LL3.E03 GoodCRC Compatibility with PD2</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E01 Source Capabilities Fields Checks</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E02 Accept Fields Checks</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E03 PS_RDY Fields Checks</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E04 Specification Revision Check after Contract</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E05 Source_Capabilities_Extended sent timely</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E06 Source_Capabilities_Extended Fields Checks</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E07 Battery Status sent timely</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E08 Battery Status Fields Checks</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E09 Battery Status Fields Checks - Invalid Battery reference</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E10 Unrecognized Message Received in Ready State</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E11 Get_Status Fields Checks</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E12 Get_Battery_Status Fields Checks</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E13 Status sent timely</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E14 Status Fields Checks</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E15 Battery_Capabilities sent timely</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E16 Battery_Capabilities Fields Checks</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E17 Battery_Capabilities Fields Checks - Invalid Battery Reference</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E18 Manufacturer_Info sent timely</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E19 Manufacturer_Info Fields Checks</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E20 Manufacturer_Info Fields Checks - Invalid Manufacturer Info Target</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E21 Manufacturer_Info Fields Checks - Invalid Manufacturer Info Ref</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E22 Cable Type Detection</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E23 Vconn Swap</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E24 Unexpected Message Received in Ready State</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E25 Receiving chunked extended message</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E26 Soft_Reset sent regardless of Rp value</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E27 PPS_Status Sent Timely</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E28 PPS_Status Fields Check</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E29 SourcePPSCommTimer Deadline</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E30 SourcePPSCommTimer Timeout</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E31 SourcePPSCommTimer Stopped</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E32 ChunkSenderResponseTimer Timeout</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E33 Country_Codes Sent Timely</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E34 Country_Codes Fields Checks</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E35 Country_Info Sent Timely</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SRC3.E36 Country_Info Fields Checks</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E01 Request Fields Checks</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E02 Unrecognized Message Received in Ready State</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E03 Get_Source_Cap_Extended Fields Checks</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E04 SenderResponseTimer Deadline - Source_Capabilities_Extended</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E05 SenderResponseTimer Timeout - Source_Capabilities_Extended</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E06 Get_Status Fields Checks</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E07 Get_Battery_Status Fields Checks</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr class='iteration'>
+                    <td class='test_case' style='text-indent: 10px'>Unchunked_Extended_Messages_Supported_1</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr class='iteration'>
+                    <td class='test_case' style='text-indent: 10px'>Unchunked_Extended_Messages_Supported_0</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E08 Status sent timely</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E09 Manufacturer_Info sent timely</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E10 Source_Capabilities_Extended sent timely</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Consumer/Provider"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E11 Receiving chunked extended message</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E12 Soft_Reset sent regardless of Rp value</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E13 SinkPPSPeriodicTimer Timeout</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E14 Request Fields Checks - PPS</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E15 Status Fields Checks</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr class='iteration'>
+                    <td class='test_case' style='text-indent: 10px'>Unchunked_Extended_Messages_Supported_1</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr class='iteration'>
+                    <td class='test_case' style='text-indent: 10px'>Unchunked_Extended_Messages_Supported_0</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E16 Manufacturer_Info Fields Checks</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr class='iteration'>
+                    <td class='test_case' style='text-indent: 10px'>Unchunked_Extended_Messages_Supported_1</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr class='iteration'>
+                    <td class='test_case' style='text-indent: 10px'>Unchunked_Extended_Messages_Supported_0</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E17 Manufacturer_Info Fields Checks - Invalid Manufacturer Info Target</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr class='iteration'>
+                    <td class='test_case' style='text-indent: 10px'>Unchunked_Extended_Messages_Supported_1</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr class='iteration'>
+                    <td class='test_case' style='text-indent: 10px'>Unchunked_Extended_Messages_Supported_0</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E18 Manufacturer_Info Fields Checks - Invalid Manufacturer Info Ref</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr class='iteration'>
+                    <td class='test_case' style='text-indent: 10px'>Unchunked_Extended_Messages_Supported_1</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr class='iteration'>
+                    <td class='test_case' style='text-indent: 10px'>Unchunked_Extended_Messages_Supported_0</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.SNK3.E19 ChunkSenderResponseTimer Timeout</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.VDM3.E01 Fields Checks - Discover Identity</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.VDM3.E02 Unrecognized VID in Unstructured VDM</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.VNDI3.E01 Source Capabilities</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.VNDI3.E02 Request</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.VNDI3.E03 VDM Identity</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.VNDI3.E04 Manufacturer Info</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.VNDI3.E05 Chunking Implemented</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.VNDI3.E06 Unchunked_Extended_Messages_Supported</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.VNDI3.E07 Security_Msgs_Supported</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.VNDI3.E08 Sink Capabilities</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.VNDI3.E09 Source_Capabilities_Extended</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.VNDI3.E10 PR_Swap - Source</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.VNDI3.E11 PR_Swap - Sink</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+               <tr>
+                    <td>TD PD.VNDI3.E12 FR_Swap Without Signaling - Source</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid PD_PORT_TYPE for this TD :  "Provider Only"  "Provider/Consumer"  "Dual Role Port" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.CBL3.E01 Receiving Chunked Extended Message</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid VIF_PRODUCT_TYPE for this TD :  "Cable" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.CBL3.E02 ChunkSenderResponseTimer Timeout</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid VIF_PRODUCT_TYPE for this TD :  "Cable" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.CBL3.E03 Manufacturer_Info Fields Checks</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid VIF_PRODUCT_TYPE for this TD :  "Cable" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.CBL3.E04 Manufacturer_Info Fields Checks - Invalid Manufacturer Info Target</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid VIF_PRODUCT_TYPE for this TD :  "Cable" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.CBL3.E05 Unrecognized Message Received</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid VIF_PRODUCT_TYPE for this TD :  "Cable" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.CBL3.E06 Not Saving Specification Revision</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid VIF_PRODUCT_TYPE for this TD :  "Cable" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.CBL3.E07 Status sent timely</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid VIF_PRODUCT_TYPE for this TD :  "Cable" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.CBL3.E08 Status Fields Checks</td>
+                    <td class='result NA'>N/A</td>
+                    <td class='description'>Valid VIF_PRODUCT_TYPE for this TD :  "Cable" </td>
+               </tr>
+               <tr>
+                    <td>TD PD.PRSISNK3.E01 Collision Avoidance after PR_Swap</td>
+                    <td class='result pass'>Pass</td>
+                    <td class='description'></td>
+               </tr>
+           </tbody>
+       </table>
+       <table ID='tbl_result'>
+            <tr><td>Total Tests</td><td>81</td></tr>
+            <tr><td>Passed Tests</td><td>32</td></tr>
+            <tr><td>Failed Tests</td><td>0</td></tr>
+            <tr><td>N/A Tests</td><td>49</td></tr>
+            <tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+       </table>
+       <div ID='footer'>
+           <table ID='tbl_footer'>
+                <tr><td>USB Compliance Suite Version</td><td>4.04 Build 879</td></tr>
+                <tr><td>USB Protocol Suite Version</td><td> 8.21 Build 3302</td></tr>
+                <tr><td>Analyzer</td><td>Voyager M310P</td><td>19114:  BusEngine  0.71             Firmware  2.19</td></tr>
+           </table>
+       </div>
+   </body>
+</html>

@@ -1,0 +1,65 @@
+<module name="Devices"> reference-branch="v2.0.0">
+  <nonProject>
+    <transform> <orig>Code/src/usbpd_cad_hw_if.c</orig>                     <dest>$PROJECT$/src/usbpd_cad_hw_if.c</dest>    </transform>
+    <transform> <orig>Code/src/usbpd_hw.c</orig>                     <dest>$PROJECT$/src/usbpd_hw.c</dest>    </transform>
+    <transform> <orig>Code/src/usbpd_hw_if_it.c</orig>                     <dest>$PROJECT$/src/usbpd_hw_if_it.c</dest>    </transform>
+    <transform> <orig>Code/src/usbpd_phy.c</orig>                     <dest>$PROJECT$/src/usbpd_phy.c</dest>    </transform>
+    <transform> <orig>Code/src/usbpd_phy_hw_if.c</orig>                     <dest>$PROJECT$/src/usbpd_phy_hw_if.c</dest>    </transform>
+    <transform> <orig>Code/src/usbpd_pwr_hw_if.c</orig>                     <dest>$PROJECT$/src/usbpd_pwr_hw_if.c</dest>    </transform>
+    <transform> <orig>Code/src/usbpd_timersserver.c</orig>                     <dest>$PROJECT$/src/usbpd_timersserver.c</dest>    </transform>
+    <transform> <orig>Code/inc/usbpd_cad_hw_if.h</orig>                     <dest>$PROJECT$/inc/usbpd_cad_hw_if.h</dest>    </transform>
+    <transform> <orig>Code/inc/usbpd_devices_conf_template.h</orig>                     <dest>$PROJECT$/inc/usbpd_devices_conf_template.h</dest>    </transform>
+    <transform> <orig>Code/inc/usbpd_hw.h</orig>                     <dest>$PROJECT$/inc/usbpd_hw.h</dest>    </transform>
+    <transform> <orig>Code/inc/usbpd_hw_if.h</orig>                     <dest>$PROJECT$/inc/usbpd_hw_if.h</dest>    </transform>
+    <transform> <orig>Code/inc/usbpd_phy.h</orig>                     <dest>$PROJECT$/inc/usbpd_phy.h</dest>    </transform>
+    <transform> <orig>Code/inc/usbpd_timersserver.h</orig>                     <dest>$PROJECT$/inc/usbpd_timersserver.h</dest>    </transform>
+
+    <!-- ========== NUMBER OF UCPD INSTANCE ========== -->
+    <define type="INSTANCE_NUMBER">
+    <description>Number of UCPD instances</description>
+      <name>GENERATOR_INSTANCE_NUMBER_1</name> <!-- only UCPD1 instance is present -->
+      <name>GENERATOR_INSTANCE_NUMBER_2</name> <!-- UCPD1 & UCPD2 instances are presents -->
+    </define>
+    <keyword name="COPYRIGHT"        type="string"></keyword>
+    <keyword name="UCPD_IRQ"        type="string"></keyword>
+    <keyword name="CODE_STYLE_ADDON_SPACES_0_OR_4"        type="string"></keyword>
+    <keyword name="FRSCC1_PORT_ENABLE_CLOCK"        type="string"></keyword>
+    <keyword name="FRSCC1_ALTERNATE_FUNCTION"        type="string"></keyword>
+    <keyword name="FRSCC2_PORT_ENABLE_CLOCK"        type="string"></keyword>
+    <keyword name="FRSCC2_ALTERNATE_FUNCTION"        type="string"></keyword>
+    <keyword name="REG_NAME_DMARX"        type="string"></keyword>
+  </nonProject>
+
+  <project name="STM32G4XX"> 
+    <define type="INSTANCE_NUMBER"><name>GENERATOR_INSTANCE_NUMBER_1</name></define>
+    <keyword name="COPYRIGHT"              type="string">2018</keyword>
+    <keyword name="UCPD_IRQ"              type="string">UCPD1_IRQ</keyword>
+    <keyword name="CODE_STYLE_ADDON_SPACES_0_OR_4"      type="string"></keyword>
+    <keyword name="FRSCC1_PORT_ENABLE_CLOCK"            type="string">LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOA)</keyword>
+    <keyword name="FRSCC1_ALTERNATE_FUNCTION"           type="string">LL_GPIO_AF_14</keyword>
+    <keyword name="FRSCC2_PORT_ENABLE_CLOCK"            type="string">LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOB)</keyword>
+    <keyword name="FRSCC2_ALTERNATE_FUNCTION"           type="string">LL_GPIO_AF_14</keyword>
+    <keyword name="REG_NAME_DMARX"                      type="string">CMAR</keyword>
+  </project>
+  <project name="STM32G0XX"> 
+    <define type="INSTANCE_NUMBER"><name>GENERATOR_INSTANCE_NUMBER_2</name></define>
+    <keyword name="COPYRIGHT"              type="string">2017</keyword>
+    <keyword name="UCPD_IRQ"              type="string">UCPD1_2_IRQ</keyword>
+    <keyword name="CODE_STYLE_ADDON_SPACES_0_OR_4"        type="string">    </keyword>
+    <keyword name="FRSCC1_PORT_ENABLE_CLOCK"              type="string">LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA)</keyword>
+    <keyword name="FRSCC1_ALTERNATE_FUNCTION"              type="string">LL_GPIO_AF_4</keyword>
+    <keyword name="FRSCC2_PORT_ENABLE_CLOCK"              type="string">LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOB)</keyword>
+    <keyword name="FRSCC2_ALTERNATE_FUNCTION"              type="string">LL_GPIO_AF_6</keyword>
+    <keyword name="REG_NAME_DMARX"                      type="string">CMAR</keyword>  </project>
+  <project name="STM32L5XX"> 
+    <define type="INSTANCE_NUMBER"><name>GENERATOR_INSTANCE_NUMBER_1</name></define>
+    <keyword name="COPYRIGHT"              type="string">2019</keyword>
+    <keyword name="UCPD_IRQ"              type="string">UCPD1_IRQ</keyword>
+    <keyword name="CODE_STYLE_ADDON_SPACES_0_OR_4"        type="string"></keyword>
+    <keyword name="FRSCC1_PORT_ENABLE_CLOCK"              type="string">LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOA)</keyword>
+    <keyword name="FRSCC1_ALTERNATE_FUNCTION"              type="string">LL_GPIO_AF_14</keyword>
+    <keyword name="FRSCC2_PORT_ENABLE_CLOCK"              type="string">LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOB)</keyword>
+    <keyword name="FRSCC2_ALTERNATE_FUNCTION"              type="string">LL_GPIO_AF_14</keyword>
+    <keyword name="REG_NAME_DMARX"                      type="string">CM0AR</keyword>
+    </project>
+</module>

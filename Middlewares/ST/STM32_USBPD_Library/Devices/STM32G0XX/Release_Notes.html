@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Release Notes for STM32 USB-C Power Delivery G0 Device Driver</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="_htmresc/mini-st.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div class="row">
+<div class="col-sm-12 col-lg-4">
+<div class="card fluid">
+<div class="sectione dark">
+<center>
+<h1 id="release-notes-for-stm32-usb-c-power-delivery-g0-device-driver"><small>Release Notes for</small> STM32 USB-C Power Delivery G0 Device Driver</h1>
+<p>Copyright © 2018 STMicroelectronics<br />
+</p>
+<a href="https://www.st.com" class="logo"><img src="_htmresc/st_logo.png" alt="ST logo" /></a>
+</center>
+</div>
+</div>
+<h1 id="license">License</h1>
+<p>This software component is licensed by ST under Ultimate Liberty license SLA0044, the "License"; You may not use this component except in compliance with the License. You may obtain a copy of the License at:</p>
+<p><a href="http://www.st.com/SLA0044">http://www.st.com/SLA0044</a></p>
+<h1 id="purpose">Purpose</h1>
+<p>The USB-PD device driver provides a set of functions to manage the physical layer (i.e. low level of the type C state machine and low level of message transport). This includes :</p>
+<ul>
+<li><p>Type C state machine: SRC, SNK or DRP</p></li>
+<li><p>Physical layer : message handling SOP, SOP’, SOP’’, HARDRESET, …</p></li>
+<li><p>Timer server to handle GOODCRC, PRL repetition timing</p></li>
+</ul>
+<p>The USB-PD library is developed following the Universal Serial Bus Power Delivery Specification Revision 3.0, V2.0 (August, 2019) and Universal Serial Bus type-C Cable and Connector Specification, Revision 2.0 (August 2019). It has passed successfully the official certification.</p>
+</div>
+<section id="update-history" class="col-sm-12 col-lg-8">
+<h1>Update History</h1>
+<div class="collapse">
+<input type="checkbox" id="collapse-section8" checked aria-hidden="true"> <label for="collapse-section8" aria-hidden="true">V3.0.0 / 07-Apr-2020</label>
+<div>
+<h2 id="main-changes">Main Changes</h2>
+<h3 id="maintenance-release">Maintenance release</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Ticket 76935 - CAD power role overwritten in configuration _SRC &amp; _SNK</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">update to avoid issue in errorrecovery when prower role swap failed</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">UCPD IT should be not enabled for NoPD configuration</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fix a pb with NRTOS version on Keil environment (Ellisys test failed)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TD.PD.C.E5 patch for NRTOS application</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Solve issue in DISCO configuration (SINK not working at all since integration of BSP V2.6)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ticket 70979 - Ellisys 4.9.4 Source Vconn Swap (Testing Ufp) failed</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Solve randomness reloading of CC1 and CC2 values in local variables in CAD_Check_HW() function according to optimizations options, code sequences.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Improve the disconnection timing to avoid issue with Ellisys (4.8.3)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Align new BSP Power interfaces with BSP v2.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Initialize power in init function to avoid issues with safety</td>
+</tr>
+</tbody>
+</table>
+<h2 id="known-limitations">Known Limitations</h2>
+<p>Outstanding bugs list : None</p>
+<p>Requirements not met or planned in a forthcoming release : None</p>
+<h2 id="development-toolchains-and-compilers">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27.1.0</li>
+<li>System Workbench STM32 (SW4STM32) toolchain V2.7.2</li>
+</ul>
+<h2 id="supported-devices-and-boards">Supported Devices and boards</h2>
+<p>All STM32G0xx devices embedding USBPD IP. This tag has been used for official certification of G0 + TCPP01 (SINK PPS 100W - TID3036)</p>
+<h2 id="backward-compatibility">Backward compatibility</h2>
+<p>No compatibility break with previous version</p>
+<h2 id="dependencies">Dependencies</h2>
+<p>This software release is compatible with USB-C Power Delivery Core Stack Library v2.11.0 or v3.0.0</p>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section7"  aria-hidden="true"> <label for="collapse-section7" aria-hidden="true">V2.6.0 / 10-Apr-2019</label>
+<div>
+<h2 id="main-changes-1">Main Changes</h2>
+<h3 id="maintenance-release-1">Maintenance release</h3>
+<table>
+<caption>Fixed bugs list</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">[LOWPOWER] update to allow stop mode in attached cases</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[LOWPOWER] improvement link with lowpower management</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">[LOWPOWER] rework aroun VBUS init/deinit TIMER Init/Deinit</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ticket 64288 - USBPD_PHY_GetRetryTimerValue</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Udpate to improve the state machine : increase timing detection, symetrie VBUSInit, VBUSDeInit</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Change switch SRC to _SRC</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Conf_template.h updates.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Add DMA LL Struct initialisation function call.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Rework around CC disabled</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Add TIMDenit management - add VBUSDenit - add VCONNDeinit - state machine detection optimization</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Detach not detected in NRTOS in case of switch from SRC to RA (ellisys)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Update to avoid wrong detection</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Trace in case of attachement read the CC state from register</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Change return value from uint32_t to uint16_t for HW_IF_PWR_GetVoltage (compatibility with F0)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Add a workaround to fix a glitch issue in NRTOS version</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Udpate exported function description for CAD and timerserver</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Update PHY function description</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Remove USE_STM32G081B_EVAL_REVx switches</td>
+</tr>
+</tbody>
+</table>
+<h2 id="known-limitations-1">Known limitations</h2>
+<p>Outstanding bugs list : None</p>
+<p>Requirements not met or planned in a forthcoming release : None</p>
+<h2 id="development-toolchains-and-compilers-1">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25</li>
+<li>System Workbench STM32 (SW4STM32) toolchain V2.7.2</li>
+</ul>
+<h2 id="supported-devices-and-boards-1">Supported Devices and boards</h2>
+<p>All STM32G0xx devices embedding USBPD IP</p>
+<h2 id="backward-compatibility-1">Backward compatibility</h2>
+<p>This version introduces a compatibility break compared to previous version (HW IF PWR interface update)</p>
+<h2 id="dependencies-1">Dependencies</h2>
+<p>This software release is compatible with USB-C Power Delivery Core Stack Library v2.6.0</p>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section6" aria-hidden="true"> <label for="collapse-section6" aria-hidden="true">V2.5.0 / 10-Dec-2018</label>
+<div>
+<h2 id="main-changes-2">Main Changes</h2>
+<h3 id="maintenance-release-2">Maintenance release</h3>
+<table>
+<caption>Fixed bugs list</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Editorial correction (renaming toogle by toggle)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Wrong parameter for errorrecovery</td>
+</tr>
+</tbody>
+</table>
+<h2 id="known-limitations-2">Known limitations</h2>
+<p>Outstanding bugs list : None</p>
+<p>Requirements not met or planned in a forthcoming release : None</p>
+<h2 id="development-toolchains-and-compilers-2">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25</li>
+<li>System Workbench STM32 (SW4STM32) toolchain V2.7.2</li>
+</ul>
+<h2 id="supported-devices-and-boards-2">Supported Devices and boards</h2>
+<p>All STM32G0xx devices embedding USBPD IP</p>
+<h2 id="backward-compatibility-2">Backward compatibility</h2>
+<p>This version introduces a compatibility break compared to previous version (HW IF PWR interface update)</p>
+<h2 id="dependencies-2">Dependencies</h2>
+<p>NA</p>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section5" aria-hidden="true"> <label for="collapse-section5" aria-hidden="true">V2.4.0 / 15-Nov-2018</label>
+<div>
+<h2 id="main-changes-3">Main Changes</h2>
+<h3 id="maintenance-release-3">Maintenance release</h3>
+<table>
+<caption>Fixed bugs list ## Known limitations</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Update for cubemx integration</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Remove BSP reference, now managed trough the header file usbpd_devices_conf.h</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Remove reference to disco board</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Update for error recovery management</td>
+</tr>
+</tbody>
+</table>
+<p>Outstanding bugs list : None</p>
+<p>Requirements not met or planned in a forthcoming release : None</p>
+<h2 id="development-toolchains-and-compilers-3">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25</li>
+<li>System Workbench STM32 (SW4STM32) toolchain V2.7.2</li>
+</ul>
+<h2 id="supported-devices-and-boards-3">Supported Devices and boards</h2>
+<p>All STM32G0xx devices embedding USBPD IP</p>
+<h2 id="backward-compatibility-3">Backward compatibility</h2>
+<p>This version introduces a compatibility break compared to previous version (HW IF PWR interface update)</p>
+<h2 id="dependencies-3">Dependencies</h2>
+<p>NA</p>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section4" aria-hidden="true"> <label for="collapse-section4" aria-hidden="true">V2.3.0 / 09-Oct-2018</label>
+<div>
+<h2 id="main-changes-4">Main Changes</h2>
+<h3 id="maintenance-release-4">Maintenance release</h3>
+<table>
+<caption>Fixed bugs list ## Known limitations</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">LL_UCPD_Init prototype misalignment</td>
+</tr>
+</tbody>
+</table>
+<p>Outstanding bugs list : None</p>
+<p>Requirements not met or planned in a forthcoming release : None</p>
+<h2 id="development-toolchains-and-compilers-4">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25</li>
+<li>System Workbench STM32 (SW4STM32) toolchain V2.7.2</li>
+</ul>
+<h2 id="supported-devices-and-boards-4">Supported Devices and boards</h2>
+<p>All STM32G0xx devices embedding USBPD IP</p>
+<h2 id="backward-compatibility-4">Backward compatibility</h2>
+<p>This version introduces a compatibility break compared to previous version (HW IF PWR interface update)</p>
+<h2 id="dependencies-4">Dependencies</h2>
+<p>NA</p>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section3" aria-hidden="true"> <label for="collapse-section3" aria-hidden="true">V2.2.0 / 07-Sep-2018</label>
+<div>
+<h2 id="main-changes-5">Main Changes</h2>
+<h3 id="maintenance-release-5">Maintenance release</h3>
+<table>
+<caption>Fixed bugs list ## Known limitations</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Minor update to avoid detection behavior in case of vconn management</td>
+</tr>
+</tbody>
+</table>
+<p>Outstanding bugs list : None</p>
+<p>Requirements not met or planned in a forthcoming release : None</p>
+<h2 id="development-toolchains-and-compilers-5">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25</li>
+<li>System Workbench STM32 (SW4STM32) toolchain V2.7.2</li>
+</ul>
+<h2 id="supported-devices-and-boards-5">Supported Devices and boards</h2>
+<p>All STM32G0xx devices embedding USBPD IP</p>
+<h2 id="backward-compatibility-5">Backward compatibility</h2>
+<p>This version introduces a compatibility break compared to previous version (HW IF PWR interface update)</p>
+<h2 id="dependencies-5">Dependencies</h2>
+<p>NA</p>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section2" aria-hidden="true"> <label for="collapse-section2" aria-hidden="true">V2.1.1 / 15-Jun-2018</label>
+<div>
+<h2 id="main-changes-6">Main Changes</h2>
+<h3 id="maintenance-release-6">Maintenance release</h3>
+<table>
+<caption>Fixed bugs list</caption>
+<thead>
+<tr class="header">
+<th>Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Main change add a file usbpd_devices_conf.h to configure the device</td>
+</tr>
+</tbody>
+</table>
+<h2 id="known-limitations-3">Known limitations</h2>
+<p>Outstanding bugs list : None</p>
+<p>Requirements not met or planned in a forthcoming release : None</p>
+<h2 id="development-toolchains-and-compilers-6">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25</li>
+<li>System Workbench STM32 (SW4STM32) toolchain V2.7.2</li>
+</ul>
+<h2 id="supported-devices-and-boards-6">Supported Devices and boards</h2>
+<p>All STM32G0xx devices embedding USBPD IP</p>
+<h2 id="backward-compatibility-6">Backward compatibility</h2>
+<p>This version introduces a compatibility break compared to previous version (HW IF PWR interface update)</p>
+<h2 id="dependencies-6">Dependencies</h2>
+<p>NA</p>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section1" aria-hidden="true"> <label for="collapse-section1" aria-hidden="true">V1.0.0 / 13-Sep-2017</label>
+<div>
+<h2 id="main-changes-7">Main Changes</h2>
+<h3 id="initial-release">Initial release</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">First official version for STM32G0xx device (source code available).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="known-limitations-4">Known limitations</h2>
+<p>Outstanding bugs list : None</p>
+<p>Requirements not met or planned in a forthcoming release : None</p>
+<h2 id="development-toolchains-and-compilers-7">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25</li>
+<li>System Workbench STM32 (SW4STM32) toolchain V2.7.2</li>
+</ul>
+<h2 id="supported-devices-and-boards-7">Supported Devices and boards</h2>
+<p>All STM32G0xx devices embedding USBPD IP</p>
+<h2 id="backward-compatibility-7">Backward compatibility</h2>
+<p>This version introduces a compatibility break compared to previous version (HW IF PWR interface update)</p>
+<h2 id="dependencies-7">Dependencies</h2>
+<p>NA</p>
+</div>
+</div>
+</section>
+</div>
+<footer class="sticky">
+<p>For complete documentation on <strong>STM32 32-bit Arm Cortex MCUs</strong>, visit: <a href="http://www.st.com/STM32">http://www.st.com/STM32</a></p>
+This release note uses up to date web standards and, for this reason, should not be opened with Internet Explorer but preferably with popular browsers such as Google Chrome, Mozilla Firefox, Opera or Microsoft Edge.
+</footer>
+</body>
+</html>
