@@ -1,13 +1,16 @@
-# X-CUBE-USBPDM1 MCU Firmware Package
+# X-CUBE-TCPP MCU Firmware Package
 
-**X-CUBE-USBPDM1** is an STMicroelectronics original initiative. It uses for USB Type-C and Power Delivery software expansion for STM32Cube (UM2073).
+**X-CUBE-TCPP** is an STMicroelectronics original initiative. It uses for USB Type-C and Power Delivery software expansion for STM32Cube (UM2073).
 
-**X-CUBE-USBPDM1** is a USB-IF certified Expansion Package and consists of libraries, drivers, sources, APIs and application examples running on STM32G0 Series microcontrollers.
+**X-CUBE-TCPP** is a USB-IF certified Expansion Package and consists of libraries, drivers, sources, APIs and application examples running on STM32G0 and STM32G4 Series microcontrollers.
 
 Check the ST web page : [USB Type-C and Power Delivery](https://www.st.com/en/applications/connectivity/usb-type-c-and-power-delivery.html#overview) for more details.
 
-One PPS sink example is provided to help to develop applications based on USB-PD.
+In this package, it contains different applications:
+  * A [PPS Sink example on STM32G0](https://github.com/STMicroelectronics/x-cube-tcpp/tree/main/Projects/NUCLEO-G071RB/Applications/USB_PD/USBPDM1_Consumer_PPS) and a [Sink example on STM32G4](https://github.com/STMicroelectronics/x-cube-tcpp/tree/main/Projects/NUCLEO-G474RE/Applications/USB_PD/USBPDM1_Consumer) are provided to help to develop applications based on USB-PD.
 The "Core" of the stack is delivered in library format while the "Device" part, in open source format, offers high level of flexibility to match the design considerations.
+  * A [LPM sink example on STM32G0](https://github.com/STMicroelectronics/x-cube-tcpp/tree/main/Projects/NUCLEO-G071RB/Applications/USB_PD/USBPDM1_Consumer_LPM) is provided to explain how to use the USB-PD application in low power mode
+
 This Expansion Package is demonstrated on one hardware implementation, but can easily be ported to any STM32 including the UCPD periperal.
 Included features
 * Debug tools for trace and power delivery configuration (using [ STM32CubeMonUCPD ](https://www.st.com/en/development-tools/stm32cubemonucpd.html)
