@@ -18,8 +18,8 @@
       and I-Cache are disabled, and all peripherals are off except internal
       SRAM, Flash and JTAG.
 
-      (+) There is no prescaler on High speed (AHBs) and Low speed (APBs) busses:
-          all peripherals mapped on these busses are running at HSI speed.
+      (+) There is no prescaler on High speed (AHBs) and Low speed (APBs) buses:
+          all peripherals mapped on these buses are running at HSI speed.
       (+) The clock for all peripherals is switched off, except the SRAM and FLASH.
       (+) All GPIOs are in analog mode, except the JTAG pins which
           are assigned to be used for debug purpose.
@@ -29,7 +29,7 @@
       (+) Configure the clock source to be used to drive the System clock
           (if the application needs higher frequency/performance)
       (+) Configure the System clock frequency and Flash settings
-      (+) Configure the AHB and APB busses prescalers
+      (+) Configure the AHB and APB buses prescalers
       (+) Enable the clock for the peripheral(s) to be used
       (+) Configure the clock source(s) for peripherals which clocks are not
           derived from the System clock (USB, RNG, USART, LPUART, FDCAN, some TIMERs,
@@ -119,7 +119,7 @@ static uint32_t          RCC_GetSysClockFreqFromPLLSource(void);
  ===============================================================================
     [..]
       This section provides functions allowing to configure the internal and external oscillators
-      (HSE, HSI, LSE, LSI, PLL, CSS and MCO) and the System busses clocks (SYSCLK, AHB, APB1
+      (HSE, HSI, LSE, LSI, PLL, CSS and MCO) and the System buses clocks (SYSCLK, AHB, APB1
        and APB2).
 
     [..] Internal/external clock and PLL configuration
@@ -149,14 +149,14 @@ static uint32_t          RCC_GetSysClockFreqFromPLLSource(void);
          (+) MCO (microcontroller clock output): used to output LSI, HSI, LSE, HSE,
              main PLL clock, system clock or RC48 clock (through a configurable prescaler) on PA8 pin.
 
-    [..] System, AHB and APB busses clocks configuration
+    [..] System, AHB and APB buses clocks configuration
          (+) Several clock sources can be used to drive the System clock (SYSCLK): HSI,
              HSE and main PLL.
              The AHB clock (HCLK) is derived from System clock through configurable
              prescaler and used to clock the CPU, memory and peripherals mapped
              on AHB bus (DMA, GPIO...). APB1 (PCLK1) and APB2 (PCLK2) clocks are derived
              from AHB clock through configurable prescalers and used to clock
-             the peripherals mapped on these busses. You can use
+             the peripherals mapped on these buses. You can use
              "HAL_RCC_GetSysClockFreq()" function to retrieve the frequencies of these clocks.
 
          -@- All the peripheral clocks are derived from the System clock (SYSCLK) except:
@@ -715,7 +715,7 @@ HAL_StatusTypeDef HAL_RCC_OscConfig(RCC_OscInitTypeDef  *RCC_OscInitStruct)
 }
 
 /**
-  * @brief  Initialize the CPU, AHB and APB busses clocks according to the specified
+  * @brief  Initialize the CPU, AHB and APB buses clocks according to the specified
   *         parameters in the RCC_ClkInitStruct.
   * @param  RCC_ClkInitStruct  pointer to an RCC_OscInitTypeDef structure that
   *         contains the configuration information for the RCC peripheral.
@@ -952,7 +952,7 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef  *RCC_ClkInitStruct, ui
     [..]
     This subsection provides a set of functions allowing to:
 
-    (+) Ouput clock to MCO pin.
+    (+) Output clock to MCO pin.
     (+) Retrieve current clock frequencies.
     (+) Enable the Clock Security System.
 
@@ -1000,7 +1000,7 @@ void HAL_RCC_MCOConfig(uint32_t RCC_MCOx, uint32_t RCC_MCOSource, uint32_t RCC_M
   /* MCO Clock Enable */
   MCO1_CLK_ENABLE();
 
-  /* Configue the MCO1 pin in alternate function mode */
+  /* Configure the MCO1 pin in alternate function mode */
   GPIO_InitStruct.Pin = MCO1_PIN;
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;

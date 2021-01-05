@@ -39,20 +39,25 @@
 <ul>
 <li>New set of inline function for direct and atomic register access</li>
 <li>One-shot operations that can be used by the HAL drivers or from application level.</li>
-<li>Fully Independant from HAL and can be used in standalone usage (without HAL drivers)</li>
+<li>Fully Independent from HAL and can be used in standalone usage (without HAL drivers)</li>
 <li>Full features coverage of the all the supported peripherals.</li>
 </ul>
 </div>
 <div class="col-sm-12 col-lg-8">
 <h1 id="update-history">Update History</h1>
 <div class="collapse">
-<input type="checkbox" id="collapse-section4" checked aria-hidden="true"> <label for="collapse-section4" aria-hidden="true">V1.2.0RC1 / 03-April-2020</label>
+<input type="checkbox" id="collapse-section4" checked aria-hidden="true"> <label for="collapse-section4" aria-hidden="true">V1.2.0 / 26-June-2020</label>
 <div>
 <h2 id="main-changes">Main Changes</h2>
 <h3 id="maintenance-release">Maintenance Release</h3>
 <ul>
 <li>Add support for STM32G491xx and STM32G4A1 part numbers</li>
-<li>General updates to fix known defects and enhancements implementation</li>
+<li><p>General updates to fix known defects and enhancements implementation</p></li>
+<li><strong>HAL/LL GPIO</strong> update
+<ul>
+<li>Enhancement GPIO_TogglePin API to allow the toggling of many pins</li>
+<li>Update GPIO initialization sequence to avoid unwanted pulse on GPIO Pin’s</li>
+</ul></li>
 <li><strong>HAL/LL HRTIM</strong> update
 <ul>
 <li>Constants renaming:
@@ -72,10 +77,36 @@
 <li>Update HAL_I2S_DMAStop() API to be more safe
 <ul>
 <li>Add a check on BSY, TXE and RXNE flags before disabling the I2S</li>
-<li>Update HAL_I2S_DMAStop() API to fix multi-call transfer issue(to avoid re-initializing the I2S for the next transfer).</li>
 </ul></li>
+<li>Update HAL_I2S_DMAStop() API to fix multi-call transfer issue(to avoid re-initializing the I2S for the next transfer).
+<ul>
 <li>Add __HAL_I2SEXT_FLUSH_RX_DR() and __HAL_I2S_FLUSH_RX_DR() macros to flush the remaining data inside DR registers.</li>
 <li>Add new ErrorCode define: HAL_I2S_ERROR_BUSY_LINE_RX</li>
+</ul></li>
+</ul></li>
+<li><strong>HAL/LL SPI</strong> update
+<ul>
+<li>Update HAL_SPI_Init() API
+<ul>
+<li>To avoid setting the BaudRatePrescaler in case of Slave Motorola Mode</li>
+<li>Use the bit-mask for SPI configuration</li>
+</ul></li>
+<li>Update Transmit/Receive processes in half-duplex mode
+<ul>
+<li>Disable the SPI instance before setting BDIOE bit</li>
+</ul></li>
+<li>Update SPI_DMAReceiveCplt() API to handle efficiently the repeated transfers.
+<ul>
+<li>Disable TX DMA request only in bidirectional receive mode.</li>
+</ul></li>
+<li>Fix wrong timeout management
+<ul>
+<li>Calculate Timeout based on a software loop to avoid blocking issue if Systick is disabled</li>
+</ul></li>
+</ul></li>
+<li><strong>HAL SAI</strong> update
+<ul>
+<li>Update HAL_SAI_Init() API to correct the formula in case of SPDIF is wrong</li>
 </ul></li>
 <li><strong>HAL/LL ADC</strong> update
 <ul>
@@ -108,12 +139,51 @@
 <li>Update peripheral clock to support <strong>STM32G491/STM32G4A1</strong> devices:
 <ul>
 <li>HAL_RCCEx_GetPeriphCLKConfig</li>
-<li>IS_RCC_PERIPHCLOCK ## Development Toolchains and Compilers</li>
+<li>IS_RCC_PERIPHCLOCK</li>
 </ul></li>
 </ul></li>
+<li><strong>HAL/LL TIM</strong> driver
+<ul>
+<li>Align HAL/LL TIM driver with latest updates and enhancements</li>
+<li>Add new macros to enable and disable the fast mode when using the one pulse mode to output a waveform with a minimum delay
+<ul>
+<li>__HAL_TIM_ENABLE_OCxFAST() and __HAL_TIM_DISABLE_OCxFAST().</li>
+</ul></li>
+<li>Update HAL_TIMEx_MasterConfigSynchronization() API to avoid functional errors and assert fails when using some TIM instances as input trigger.
+<ul>
+<li>Replace IS_TIM_SYNCHRO_INSTANCE() macro by IS_TIM_MASTER_INSTANCE() macro.</li>
+<li>Add IS_TIM_SLAVE_INSTANCE() macro to check on TIM_SMCR_MSM bit.</li>
+</ul></li>
+<li>Remove ‘register’ storage class specifier from LL TIM driver.</li>
+<li>Add new API HAL_TIM_DMABurst_MultiWriteStart() allowing to configure the DMA Burst to transfer multiple Data from the memory to the TIM peripheral</li>
+<li>Add new API HAL_TIM_DMABurst_MultiReadStart() allowing to configure the DMA Burst to transfer Data from the TIM peripheral to the memory</li>
+</ul></li>
+<li><strong>HAL/LL UART</strong> driver
+<ul>
+<li>Update UART polling processes to handle efficiently the Lock mechanism
+<ul>
+<li>Move the process unlock at the top of the HAL_UART_Receive() and HAL_UART_Transmit() API.</li>
+</ul></li>
+<li>Update UART BRR calculation for ROM size gain</li>
+<li>Remove ‘register’ storage class specifier from LL UART driver.</li>
+</ul></li>
+<li><strong>HAL/LL USART</strong> driver
+<ul>
+<li>Remove ‘register’ storage class specifier from LL USART driver.</li>
+</ul></li>
+<li><strong>HAL/LL USB</strong> driver
+<ul>
+<li>Fix USB Bulk transfer double buffer mode</li>
+<li>Remove register keyword from USB defined macros as no more supported by c++ compiler</li>
+<li>minor rework USBD_Start and USBD_Stop API, stop device to be handled by HAL_PCD_DeInit()</li>
+<li>Correct some word spelling issues</li>
+</ul></li>
+</ul>
+<h2 id="development-toolchains-and-compilers">Development Toolchains and Compilers</h2>
+<ul>
 <li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.40.1</li>
-<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27.1</li>
-<li>STM32CubeIDE toolchain V1.3.0</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain <strong>V5.29</strong></li>
+<li>STM32CubeIDE toolchain <strong>V1.4.0</strong></li>
 </ul>
 <h2 id="supported-devices">Supported Devices</h2>
 <ul>
@@ -189,17 +259,12 @@
 </ul></li>
 <li>Update HAL_HRTIM_DLLCalibrationStart() and HAL_HRTIM_DLLCalibrationStart_IT() API by setting HRTIM state ready to avoid some unstable behavior of the TIMER E.</li>
 <li>Add new check field in the IS_HRTIM_EVENTSRC() macro to check also on EVENT</li>
-<li>Add a new check in the HAL_HRTIM_EventConfig() API on event and event source thru the IS_HRTIM_EVENTSRC() macro</li>
+<li>Add a new check in the HAL_HRTIM_EventConfig() API on event and event source through the IS_HRTIM_EVENTSRC() macro</li>
 <li>Remove UPDGAT bits reset from the HRTIM_TimingUnitWaveform_Control() API</li>
 <li>Add a lock and unlock handle process in the HAL_HRTIM_SimpleOCChannelConfig() API</li>
 </ul></li>
 <li><strong>HAL I2C</strong> update
 <ul>
-<li>Update HAL I2C processes to report ErrorCode when wrong I2C start conditionoccurs
-<ul>
-<li>Add new ErrorCode define: HAL_I2C_WRONG_START</li>
-<li>Set ErrorCode parameter in I2C handle to HAL_I2C_WRONG_START</li>
-</ul></li>
 <li>Update I2C_DMAAbort() APIs to fix hardfault issue when hdmatx and hdmarx parameters in i2c handle aren’t initialized (NULL pointer).
 <ul>
 <li>Add additional check on hi2c-&gt;hdmtx and hi2c-&gt;hdmarx before resetting DMA Tx/Rx complete callbacks</li>
@@ -260,7 +325,7 @@
 <li>__HAL_TIM_UIFREMAP_ENABLE()</li>
 <li>__HAL_TIM_UIFREMAP_DISABLE()/__HAL_TIM_GET_UIFCPY macro</li>
 </ul></li>
-<li>Add new mecanism to check whether the update interrupt flag (UIF) copy is set or not
+<li>Add new mechanism to check whether the update interrupt flag (UIF) copy is set or not
 <ul>
 <li>Add the __HAL_TIM_GET_UIFCPY() macro in the HAL driver</li>
 <li>Add LL_TIM_IsActiveUIFCPY() API in the LL driver</li>
@@ -273,9 +338,9 @@
 <li>Remove useless TIM trigger selector</li>
 <li>Fix bug when using multiple DMA request to different channels of same timer
 <ul>
-<li>Introduce DMA burst state managment mechanism
+<li>Introduce DMA burst state management mechanism
 <ul>
-<li>Add a new stucture for DMA Burst States definition : HAL_TIM_DMABurstStateTypeDef</li>
+<li>Add a new structure for DMA Burst States definition : HAL_TIM_DMABurstStateTypeDef</li>
 <li>Update __HAL_TIM_RESET_HANDLE_STATE to support DMABurstState</li>
 <li>Add a new API HAL_TIM_DMABurstState() to get the actual state of a DMA burst operation</li>
 <li>Add DMABurstState, the DMA burst operation state, in the TIM_HandleTypeDef structure</li>
@@ -283,7 +348,7 @@
 <li>Add new API TIM_DMADelayPulseNCplt() for TIM DMA Delay Pulse complete callback (complementary channel)</li>
 </ul></li>
 </ul></li>
-<li>Implement TIM channel state managment mechanism
+<li>Implement TIM channel state management mechanism
 <ul>
 <li>Add new macro
 <ul>
@@ -293,7 +358,7 @@
 </ul></li>
 <li>Add new API HAL_TIM_GetActiveChannel()</li>
 <li>Add new API HAL_TIM_GetChannelState() to get actual state of the TIM channel</li>
-<li>Add a new stucture for TIM channel States definition : HAL_TIM_ChannelStateTypeDef</li>
+<li>Add a new structure for TIM channel States definition : HAL_TIM_ChannelStateTypeDef</li>
 <li>Update __HAL_TIM_RESET_HANDLE_STATE to support ChannelState and ChannelNState</li>
 <li>Add a new element in the TIM_HandleTypeDef structure : ChannelState to manage TIM channel operation stat.</li>
 <li>Add a new element in the TIM_HandleTypeDef structure : ChannelNState to manage TIM complementary channel operation state</li>
@@ -317,7 +382,7 @@
 <li>API LL_PLL_ConfigSystemClock_HSI() and API LL_PLL_ConfigSystemClock_HSE() updated to set back the AHB prescaler to 1 after it has been temporarily set to 2 to avoid undershoot when configuring PLL at high frequencies.</li>
 </ul></li>
 </ul>
-<h2 id="development-toolchains-and-compilers">Development Toolchains and Compilers</h2>
+<h2 id="development-toolchains-and-compilers-1">Development Toolchains and Compilers</h2>
 <ul>
 <li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3</li>
 <li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27.1</li>
@@ -419,7 +484,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="development-toolchains-and-compilers-1">Development Toolchains and Compilers</h2>
+<h2 id="development-toolchains-and-compilers-2">Development Toolchains and Compilers</h2>
 <ul>
 <li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2</li>
 <li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25</li>
@@ -440,7 +505,7 @@
 <h2 id="main-changes-3">Main Changes</h2>
 <h3 id="first-release">First release</h3>
 <p>First official release of HAL (Hardware Abstraction Layer) and LL (Low layers) drivers to support STM32G431/41xx, STM32G471xx, STM32G473/83xx and STM32G474/84xx.</p>
-<h2 id="development-toolchains-and-compilers-2">Development Toolchains and Compilers</h2>
+<h2 id="development-toolchains-and-compilers-3">Development Toolchains and Compilers</h2>
 <ul>
 <li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2</li>
 <li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25</li>

@@ -1,0 +1,8 @@
+[ProjectFiles]
+HeaderPath=..\..\..\..\..\..\Drivers\BSP\X-NUCLEO-USBPDM1
+[Others]
+Define=USE_STM32G4XX_NUCLEO
+HALModule=
+[Groups]
+Doc=../readme.txt;
+Drivers/BSP/X-NUCLEO-USBPDM1=../../../../../../Drivers/BSP/X-NUCLEO-USBPDM1/usbpdm1_usbpd_pwr.c;

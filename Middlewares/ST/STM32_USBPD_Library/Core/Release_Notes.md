@@ -1,18 +1,17 @@
 ---
 pagetitle: Release Notes for STM32 USB-C Power Delivery Core Stack Library
 lang: en
+header-includes: <link rel="icon" type="image/x-icon" href="_htmresc/favicon.png" />
 ---
 
 ::: {.row}
 ::: {.col-sm-12 .col-lg-4}
 
-::: {.card .fluid}
-::: {.sectione .dark}
 <center>
 # <small>Release Notes for</small> STM32 USB-C Power Delivery Core Stack Library
 Copyright &copy; 2018 STMicroelectronics\
     
-[![ST logo](_htmresc/st_logo.png)](https://www.st.com){.logo}
+[![ST logo](_htmresc/st_logo_2020.png)](https://www.st.com){.logo}
 </center>
 :::
 :::
@@ -35,12 +34,14 @@ This implementation covers features of modules as :
 
 The library is provided in binary format, comes on top of the STM32Cube HAL driver and offers all the APIs required to develop an USB PD application.
 
-The USB-PD library is developed following the Universal Serial Bus Power Delivery Specification Revision 3.0, V1.2 (June 06, 2018) and Universal Serial Bus type-C Cable 
-and Connector Specification, Revision 1.3 (July 14, 2017). It has passed successfully the official certification.
+The USB-PD library is developed following the Universal Serial Bus Power Delivery Specification Revision 3.0, V2.0 (August 29, 2019) and Universal Serial Bus type-C Cable 
+and Connector Specification, Revision 2.0 (August, 2019). It has passed successfully the official certification.
 
 Here is the list of references to user documents:
 
-- UM2552 : USB power delivery User Manual
+- [ST page](https://www.st.com/en/applications/connectivity/usb-type-c-and-power-delivery.html): Key features of the new USB Type-C™ connector
+- [UM2552](https://www.st.com/resource/en/user_manual/dm00598101-managing-usb-power-delivery-systems-with-stm32-microcontrollers-stmicroelectronics.pdf): USB power delivery User Manual
+- [WIKI Page](https://wiki.st.com/stm32mcu/wiki/USB_Power_Delivery_overview): USB Power Delivery overview
 
 :::
 
@@ -48,7 +49,116 @@ Here is the list of references to user documents:
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section24" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section26" checked aria-hidden="true">
+<label for="collapse-section26" aria-hidden="true">V3.2.0 / 08-July-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+
+  Headline
+  --------
+  Ticket 89559 - SOPSupported not well reset after detach
+  Ticket 88095 - DR_swap management issue
+  Ticket 82098 - LeCroy new merge test : fail on PRSWAP because tester expecting Hard Reset
+  Keep USBPD_CAD_Process API for all the configuration
+  Ticket 86359 - PE_datatrole is not aligned to PE_powerRole in DPM_UserCableDetection
+  Ticket 87230 - SOFT_RESET sent to SOP1 is not well manage
+  Ticket 88065 - cable_reset management to be improved
+  Ticket 86356 - Correct misspelled words
+  Ticket 84586 - Provide external API in CAD to allow application to know which RP present in Sink
+  Ticket 87313 - Should not answer GoodCRC to SOP1 soft reset
+  Ticket 86769 - TxOK / TxNG should not be toggled while in PD2 second part to reset the PD capabilities in case of HARDRESET
+  Ticket 85670 - Expose RX buffer size to the devices module (to avoid buffer overflow)
+  Reduce size of USBPD_SettingsTypeDef in case of NO_PD configuration
+  Remove notification USBPD_NOTIF_PROTOCOL_ERROR when stack has received a NAK message to VDM identity request
+  Move before resetting VCONN status to be able to correctly switch off VCONN during detach
+  Ticket 73501 - Add UFP and VPD VDOs for VDM discovery identity
+  Add ErrorRecovery API and remove CAD detection API
+  Improve the AMS management to discard any PD send if a message is already present inside the fifo
+  Ticket 85232 - Message discarded wrongly while in PD2
+  Ticket 85110 - TEST.PD.VDM.SRC.01 fail on LeCroy
+  Add new API USBPD_PHY_FastRoleSwapReception
+  Set FRS as a PD3 feature
+  Integration of the FRS on SRC and SNK state machine
+  Remove trace process
+  
+  : Fixed bugs list
+
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE V1.2.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+NA
+
+## Dependencies
+
+Dependancies with TRACER_EMB V1.4.0
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section25" aria-hidden="true">
+<label for="collapse-section25" aria-hidden="true">V3.1.0 / 14-Apr.-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+
+  Headline
+  --------
+  BIST no more enabled in TCPM
+  Ticket 84461 - Indicate when trace is lost
+  Ticket 84336 - Bad answer to UVDM msge.
+  Ticket 84582 - Hard reset not detected by PE during power negotiation
+  Update to avoid issue to send a control message
+  Add a check on Resistor in case of VBUS lost (manage HardReset Sequence)
+  Update to use a new ID for TCPM trace
+  
+  : Fixed bugs list
+
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE V1.2.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+For TCPM implementation, updates have been done on FUSB307 component (tag v3.0.0).
+
+## Dependencies
+
+Dependancies with TRACER_EMB V1.4.0
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section24" aria-hidden="true">
 <label for="collapse-section24" aria-hidden="true">V3.0.0 / 26-Mar.-2020</label>
 <div>
 
@@ -66,7 +176,7 @@ Here is the list of references to user documents:
   [PE] Discard shall be done only if there is incoming message
   [TCPM] Update for TCPM compilation
   [PRL] update for TCPC mode
-  [PRL] Ticket 81964 - Add an optionnal mechansime to manage the tx discard and tx abort by UCPD IP
+  [PRL] Ticket 81964 - Add an optional mechansime to manage the tx discard and tx abort by UCPD IP
   [PE] Lecroy TEST.PD.VDM.SNK.7 Unrecognized VID in Unstructured VDM
   [PE] Ticket 81972 - TD PD.SRC3.E27 and TD PD.SRC3.E28 - Testing Downstream Port
   [PE] Reset the spec revision + data role in case of HardReset
@@ -96,7 +206,7 @@ Here is the list of references to user documents:
 
 ## Backward compatibility
 Implementation of CR Ticket 81963 and Ticket 81964 leads to some interface changes between USBPD Core and USBPD Device driver modules.
-In order to use thise version of USBPD Core module, please ensure version of USBPD Device driver module mentions compatibility with this v3.0.0 USBPD Core.
+In order to use this version of USBPD Core module, please ensure version of USBPD Device driver module mentions compatibility with this v3.0.0 USBPD Core.
 (Example for STM32G4xx => use g4_v4.0.0 or higher version of USBPD Device
          for STM32L5xx => use l5_v2.0.0 or higher version of USBPD Device
 		 ...
@@ -335,7 +445,7 @@ In order to use thise version of USBPD Core module, please ensure version of USB
   Ticket 60694 - SINK needs to be able to issue a Hard reset
   [DEF]Ticket 58358 - Missing PPS Power Limited Bit
   [PE] AMS should be started only if message has been sent to port partner
-  [PE] PE state machine in should be called immediately during PPS negociation to enter correctly in ready_wait state
+  [PE] PE state machine in should be called immediately during PPS negotiation to enter correctly in ready_wait state
   [PE] Fix few MISRA warnings
   [PE] Add Prorocol_error notification in case of wrong received VDM Discovery identity.
   [PE] remove callback trace for VDM specific (move to dpm_user)
@@ -510,7 +620,7 @@ Maintenance release
   [USBPD][CORE][PRL] Add debug switch _PRL_DEBUG_DISABLE_BIST_TRACE (not enabled) to disable BIST message in the traces
   [USBPD][CORE][PE] Minor updates due to compilation issue when __DEBUG_LEVEL is set to 2
   [USBPD][CORE][PE] Disable RX during SNK hard reset sequence
-  [USBPD][CORE][PE] Ticket 55984 - SRC3.E25 fail: issue in chuncking tests
+  [USBPD][CORE][PE] Ticket 55984 - SRC3.E25 fail: issue in chunking tests
   [USBPD][CORE][PE] Ticket 55899 - [USBPD][PE] Collision avoidance once an Explicit Contract is in place
   [USBPD][CORE][DEF] TD.PD.SNK3.E15 Status Fields Check - add power status field in SCB structure
   [USBPD][G0] update to allow the treatment of an incoming message when waiting for sinkTxNG timeout
@@ -591,7 +701,7 @@ Maintenance release
   [CORE][PE] Ticket 55899 - [USBPD][PE] Collision avoidance once an Explicit Contract is in place - bis
   [CORE][PE] Ticket 55899 - [USBPD][PE] Collision avoidance once an Explicit Contract is in place - Third
   [CORE][PE] Ticket 55899 - [USBPD][PE] Collision avoidance once an Explicit Contract is in place
-  [CORE][PE] Ticket 55984 - SRC3.E25 fail: issue in chuncking tests
+  [CORE][PE] Ticket 55984 - SRC3.E25 fail: issue in chunking tests
   [CORE][PE] Ticket 56156 - ALERT message shouldn't be considered as AMS message
   [CORE][PE] Update for memory optimizations
   [CORE][PRL] : Restore default value for PRL_RETRY_TIMER_VALUE in case of Keil or SW4STM32
@@ -603,7 +713,7 @@ Maintenance release
   [G0] Fix Ellisys issue SRC3.E29
   [G0] increase tsendertimer to 29ms and update the HardReset state change to use notimeout
   [G0] remove GUI and User application init, move inside main.c
-  [G0] sperate the emb tracer and usbpd application
+  [G0] separate the emb tracer and usbpd application
   [G0] update to allow the treatment of an incoming message when waiting for sinkTxNG timeout
   [G0][PPS] Move start of the timer PE_SRCPPSCommTimer in PE_SRC_READY state
   [G0]Move PE_UnchunkSupport & PE_FastRoleSwapSupport in PD3 structure + add PE_FirmUpdateResponseSupport
@@ -634,7 +744,7 @@ Maintenance release
   [PPS] Fix issues on Ellisys (SCR3.E28, E30, E31...)
   [PPS] Fix issues on Ellisys (SNK.E13, E14)
   [PPS]Reduce value of PE_TPPSTIMEOUT to 14s
-  [STACK] Align with modifcations done onb G0
+  [STACK] Align with modifications done onb G0
   [STACK] Align with new inclusion model done on G0
   [VCONN] Add USBPD_PE_EvaluateVconnSwap function + change switch from _VCONN_SWAP to _VCONN_SUPPORT
   [VCONN] Evaluate VConn swap in VCONN substate machine
@@ -647,7 +757,7 @@ Maintenance release
   [VDM] Solve MQP PROT-R3-DISCOV test failed on VDM3.E1
   add a function ptr to handle automatic update of the trace if NULL means no trace
   Add support of VCONN and some PD3.0 features (Manufacturer info...)
-  considere REJECTED/NOT SUPPORTED valid in case of GETSOURCE_CAP done by source
+  considered REJECTED/NOT SUPPORTED valid in case of GETSOURCE_CAP done by source
   correction for gotomin scenario
   correction for TD.PD.SNK3.E12
   correction for VDM3.E2
@@ -666,11 +776,11 @@ Maintenance release
   Notification done with only one parameter
   patch TD.PD.DPU.E2 Status Update Command
   PD3.0 manufacturer info management
-  PRL alignement with GO
-  remove inside PE dpm dependance + lib regeneration
+  PRL alignment with GO
+  remove inside PE dpm dependence + lib regeneration
   remove patch to disable RX incompatible with hard reset management
   Ticket 34122 - [DPM] VBUS should be kept enabled when NonPD capable with Rd is present
-  Ticket 35350 - Add error recory managment inside USBPD stack
+  Ticket 35350 - Add error recory management inside USBPD stack
   Update PDO typedefs and constants for reflecting Rev3.0 specs (addition of Unchunk support in PDO Source Fixed, and FRS required current in PDO Sink Fixed).
   update USBPD_PE_Request_CtrlMessage to handle more CTRL message
   Vconn Swap and PD3 integration (Core)

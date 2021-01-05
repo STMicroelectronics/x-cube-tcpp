@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Release Notes for X-CUBE-USBPDM1 Package</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Release Notes for X-CUBE-TCPP Package</title>
 
 <style type="text/css">
 code{white-space: pre-wrap;}
@@ -13,7 +13,7 @@ div.column{display: inline-block; vertical-align: top; width: 50%;}
 <div class="sectione dark">
 <center>
 <h1 id="release-notes-for-x-cube-TCPP"><small>Release
-Notes for</small> <strong>X-CUBE-USBPDM1</strong></h1>
+Notes for</small> <strong>X-CUBE-TCPP</strong></h1>
 <p>Copyright © 2020 STMicroelectronics<br>
 </p>
 <a href="https://www.st.com" class="logo"><img src="_htmresc/st_logo.png" alt="ST logo"></a>
@@ -29,9 +29,9 @@ compliance with the License. You may obtain a copy of the License at:</p>
 </div>
 </div>
 <h1 id="purpose">Purpose</h1>
-<p>The <strong>X-CUBE-USBPDM1</strong> software package
+<p>The <strong>X-CUBE-TCPP</strong> software package
 is an expansion for <strong>STM32Cube</strong>.</p>
-<p style="text-align: center;"><img style="width: 300px; height: 226px;" alt="STM32G071 Nucleo64 and X-NUCLEO-USBPDM1" src="_htmresc/ST15291_X-NUCLEO-USBPDM1_NUCLEO-G071.jpg"></p>
+<p style="text-align: center;"><img style="width: 300px; height: 226px;" alt="STM32G071 Nucleo64 and X-NUCLEO-TCPP" src="_htmresc/ST15291_X-NUCLEO-USBPDM1_NUCLEO-G071.jpg"></p>
 <p>This software provides is a USB-IF certified Expansion Package
 and consists of libraries, drivers, sources, APIs and application
 example running on STM32G0 Series microcontrollers.</p>
@@ -93,37 +93,87 @@ toolchain V5.25.2 + ST-LINK/V2</li>
 <h2 id="supported-devices-and-boards-2">Supported Devices
 and Boards</h2>
 <ul>
-<li><a href="https://www.st.com/en/evaluation-tools/nucleo-g071rb.html">STM32G071
-Nucleo64</a>
+<li><a href="https://www.st.com/en/evaluation-tools/nucleo-g071rb.html">STM32G071</a>, and <a href="https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-g474re.html">STM32G474RE-C04 </a>Nucleo 64
 </li>
 <li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-power-drive-hw/x-nucleo-usbpdm1.html">X-NUCLEO-USBPDM1</a></li>
 </ul>
-
+<div class="collapse"><input id="collapse-section4" checked="checked" aria-hidden="true" type="checkbox"> <label for="collapse-section4" aria-hidden="true"><strong>v2.1.0/ 18-December-2020</strong></label>
 <div class="col-sm-12 col-lg-8">
 <h1 id="update-history">Update History</h1>
-<div class="collapse">
-<input id="collapse-section1" checked="checked" aria-hidden="true" type="checkbox"> <label for="collapse-section1" aria-hidden="true"><strong>v2.0.2/ 17-July-2020</strong></label>
-<div>
 <h2 id="main-changes">Main Change</h2>
-Solved compilation issue with Keil and IAR for the NUCLEO-G071RB\Applications\USB_PD\TCPP01_Consumer_PPS\ project<br>
+<li>One low power application added for G0 : <a href="Projects/NUCLEO-G071RB/Applications/USB_PD/USBPDM1_Consumer_LPM/readme.txt">USBPDM1_Consumer_LPM </a></li>
+<li>Update USBPD core library version to 3.2.0</li>
+<li>CMSIS DEVICES G4 V1.2.0RC1 -> V1.2.0</li>
+<li>Rename BSP Board P-NUCLEO-USBPM1 to X-NUCLEO-USBPM1</li>
+<li>Rename G0 and G4 applications TCPP01_Consumer_PPS to USBPDM1_Consumer_PPS</li>
+<li>TRACER_EMB V1.3.0 to V1.5.0</li>
+<li>GUI_INTERFACE to GUI_V1.12.0</li>
+<h2 id="contents-1">Contents</h2>
+<table>
+<thead><tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+<th style="text-align: left;">Document</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PD core stack library</td>
+<td style="text-align: left;">3.2.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Core/Release_Notes.html">Release Note</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STM32G4xx HAL</td>
+<td style="text-align: left;">1.2.0</td>
+<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers/STM32G4xx_HAL_Driver/Release_Notes.html">Release Note</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STM32G4xx CMSIS</td>
+<td style="text-align: left;">1.2.0</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/Apache-2.0">Apache-2.0</a></td>
+<td style="text-align: left;"><a href="Drivers/CMSIS/Device/ST/STM32G4xx/Release_Notes.html">Release Note</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">X-NUCLEO-USBPDM1 BSP</td>
+<td style="text-align: left;">1.1.0</td>
+<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers/BSP/X-NUCLEO-USBPDM1/Release_Notes.html">Release Note</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRACER_EMB</td>
+<td style="text-align: left;">1.3.0</td>
+<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Utilities/TRACER_EMB/Release_Notes.html">Release Note</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GUI_INTERFACE</td>
+<td style="text-align: left;">1.10.0</td>
+<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Utilities/GUI_INTERFACE/Release_Notes.html">Release Note</a></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="collapse">
-<input id="collapse-section2" checked="checked" aria-hidden="true" type="checkbox"> <label for="collapse-section2" aria-hidden="true"><strong>v2.0.1/ 01-July-2020</strong></label>
+<input id="collapse-section1" aria-hidden="true" type="checkbox"> <label for="collapse-section1" aria-hidden="true"><strong>v2.0.1/ 01-July-2020</strong></label>
 <div>
 <h2 id="main-changes">Main Change</h2>
 Changed USART1 to LPUART1 for G4 project, to match with MB1367-G474RE-C04 hardware version<br>
 </div>
 </div>
 <div class="collapse">
-<input id="collapse-section3" checked="checked" aria-hidden="true" type="checkbox"> <label for="collapse-section3" aria-hidden="true"><strong>v2.0.0/ 15-June-2020</strong></label>
+<input id="collapse-section2"  aria-hidden="true" type="checkbox"> <label for="collapse-section2" aria-hidden="true"><strong>v2.0.0/ 15-June-2020</strong></label>
 <div>
 <h2 id="main-changes">Main Change</h2>
 G4 project added<br>
 </div>
 </div>
 <div class="collapse">
-<input id="collapse-section4" checked="checked" aria-hidden="true" type="checkbox"> <label for="collapse-section4" aria-hidden="true"><strong>v1.0.0/ 01-May-2020</strong></label>
+<input id="collapse-section3" aria-hidden="true" type="checkbox"> <label for="collapse-section3" aria-hidden="true"><strong>v1.0.0/ 01-May-2020</strong></label>
 <div>
 <h2 id="main-changes">Main Changes</h2>
 Initial release
@@ -143,15 +193,13 @@ Initial release
 <td style="text-align: left;">PD core stack library</td>
 <td style="text-align: left;">3.0.0</td>
 <td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
-<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Core/Release_Notes.html">Release
-Note</a></td>
+<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Core/Release_Notes.html">Release Note</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">G0 Devices</td>
 <td style="text-align: left;">3.0.0</td>
 <td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
-<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Devices/STM32G0XX/Release_Notes.html">Release
-Note</a></td>
+<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Devices/STM32G0XX/Release_Notes.html">Release Note</a></td>
 </tr>
 </tbody>
 </table>

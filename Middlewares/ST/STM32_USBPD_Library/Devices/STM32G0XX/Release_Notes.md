@@ -43,7 +43,100 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section8" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section9" checked aria-hidden="true">
+<label for="collapse-section9" aria-hidden="true">v3.2.0 / 17-Sep-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+  Headline
+  ----------------------------------------------------------
+  [USBPD][G0] Patch to avoid reception validated by GOODCRC during Error Recovery
+  [USBPD][G0] patch to avoid detection interrupt in the TCPP01 case
+  [USBPD][G0] Update to manage the low power mode in TCPP01 context
+
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- System Workbench STM32 (SW4STM32) toolchain V2.7.2
+
+## Supported Devices and boards
+
+  All STM32G0xx devices embedding USBPD IP
+
+## Backward compatibility
+
+  No compatibility break with previous version
+
+## Dependencies
+
+ This software release is compatible with USB-C Power Delivery Core Stack Library v2.6.0
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section9" aria-hidden="true">
+<label for="collapse-section9" aria-hidden="true">v3.1.0 / 11-Jun-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+  Headline
+  ----------------------------------------------------------
+  Ticket 86356 - Correct misspelled words
+  Remove condition for CAD_StateMachine prototype
+  Add USBPDM1_VCC_FEATURE_ENABLED switch from all the series
+  Ticket 84586 - Provide external API in CAD to allow application to know which RP present in Sink
+  Ticket 87567 - Source path are missing for MW and Utilities
+  Add debug code to display the message discarded at PHY level
+  CAD_AccesorySupport not defined for NO_PD
+  Increase tCCDebounce as delay removed from application
+  Integration of the FRS, need core adding FRS callback
+  Patch to avoid reception validated by GOODCRC during Error Recovery
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27.1.0
+- STM32CubeIDE v1.2.0
+
+## Supported Devices and boards
+
+  All STM32G0xx devices embedding USBPD IP
+
+## Backward compatibility
+
+  No compatibility break with previous version
+
+## Dependencies
+
+ This software release is compatible with USB-C Power Delivery Core Stack Library v3.2.0
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section8" aria-hidden="true">
 <label for="collapse-section8" aria-hidden="true">V3.0.0 / 07-Apr-2020</label>
 <div>
 
@@ -73,7 +166,6 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 
 ## Development Toolchains and Compilers
 
-
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
 - RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27.1.0
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
@@ -93,8 +185,6 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 </div>
 :::
 
-
-
 ::: {.collapse}
 <input type="checkbox" id="collapse-section7"  aria-hidden="true">
 <label for="collapse-section7" aria-hidden="true">V2.6.0 / 10-Apr-2019</label>
@@ -110,7 +200,7 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
   [LOWPOWER] improvement link with lowpower management
   [LOWPOWER] rework aroun VBUS init/deinit TIMER Init/Deinit
   Ticket 64288 - USBPD_PHY_GetRetryTimerValue
-  Udpate to improve the state machine : increase timing detection, symetrie VBUSInit, VBUSDeInit
+  Update to improve the state machine : increase timing detection, symetrie VBUSInit, VBUSDeInit
   Change switch SRC to _SRC
   Conf_template.h updates.
   Add DMA LL Struct initialisation function call.
@@ -118,10 +208,10 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
   Add TIMDenit management - add VBUSDenit - add VCONNDeinit - state machine detection optimization
   Detach not detected in NRTOS in case of switch from SRC to RA (ellisys)
   Update to avoid wrong detection
-  Trace in case of attachement read the CC state from register
+  Trace in case of attachment read the CC state from register
   Change return value from uint32_t to uint16_t for HW_IF_PWR_GetVoltage (compatibility with F0)
   Add a workaround to fix a glitch issue in NRTOS version
-  Udpate exported function description for CAD and timerserver
+  Update exported function description for CAD and timerserver
   Update PHY function description
   Remove USE_STM32G081B_EVAL_REVx switches
 
@@ -173,28 +263,18 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 
 ## Known limitations
 
-  Outstanding bugs list : None
-
-  Requirements not met or planned in a forthcoming release : None
 
 ## Development Toolchains and Compilers
 
-- IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
-- System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
 
-  All STM32G0xx devices embedding USBPD IP
 
 ## Backward compatibility
 
-  This version introduces a compatibility break compared to previous version (HW IF PWR interface update)
 
 ## Dependencies
 
-  NA
-  
 </div>
 :::
 
@@ -216,30 +296,21 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 
   
   : Fixed bugs list
+
 ## Known limitations
 
-  Outstanding bugs list : None
-
-  Requirements not met or planned in a forthcoming release : None
 
 ## Development Toolchains and Compilers
 
-- IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
-- System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
 
-  All STM32G0xx devices embedding USBPD IP
 
 ## Backward compatibility
 
-  This version introduces a compatibility break compared to previous version (HW IF PWR interface update)
 
 ## Dependencies
 
-  NA
-  
 </div>
 :::
 
@@ -257,30 +328,21 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
   LL_UCPD_Init prototype misalignment
   
   : Fixed bugs list
+
 ## Known limitations
 
-  Outstanding bugs list : None
-
-  Requirements not met or planned in a forthcoming release : None
 
 ## Development Toolchains and Compilers
 
-- IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
-- System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
 
-  All STM32G0xx devices embedding USBPD IP
 
 ## Backward compatibility
 
-  This version introduces a compatibility break compared to previous version (HW IF PWR interface update)
 
 ## Dependencies
 
-  NA
-  
 </div>
 :::
 
@@ -298,30 +360,21 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
   Minor update to avoid detection behavior in case of vconn management
   
   : Fixed bugs list
+
 ## Known limitations
 
-  Outstanding bugs list : None
-
-  Requirements not met or planned in a forthcoming release : None
 
 ## Development Toolchains and Compilers
 
-- IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
-- System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
 
-  All STM32G0xx devices embedding USBPD IP
 
 ## Backward compatibility
 
-  This version introduces a compatibility break compared to previous version (HW IF PWR interface update)
 
 ## Dependencies
 
-  NA
-  
 </div>
 :::
 
@@ -342,28 +395,18 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 
 ## Known limitations
 
-  Outstanding bugs list : None
-
-  Requirements not met or planned in a forthcoming release : None
 
 ## Development Toolchains and Compilers
 
-- IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
-- System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
 
-  All STM32G0xx devices embedding USBPD IP
 
 ## Backward compatibility
 
-  This version introduces a compatibility break compared to previous version (HW IF PWR interface update)
 
 ## Dependencies
 
-  NA
-  
 </div>
 :::
 
@@ -382,28 +425,18 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 
 ## Known limitations
 
-  Outstanding bugs list : None
-
-  Requirements not met or planned in a forthcoming release : None
 
 ## Development Toolchains and Compilers
 
-- IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
-- System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
 
-  All STM32G0xx devices embedding USBPD IP
 
 ## Backward compatibility
 
-  This version introduces a compatibility break compared to previous version (HW IF PWR interface update)
 
 ## Dependencies
 
-  NA
-  
 </div>
 :::
 

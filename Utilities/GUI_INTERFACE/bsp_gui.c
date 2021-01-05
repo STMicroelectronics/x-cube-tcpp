@@ -21,6 +21,10 @@
 #if defined(_GUI_INTERFACE)
 #include "bsp_gui.h"
 #include "usbpd_dpm_conf.h"
+#if GUI_FLASH_MAGIC_NUMBER
+#include "usbpd_trace.h"
+#include "tracer_emb.h"
+#endif /* GUI_FLASH_MAGIC_NUMBER */
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private Defines */
@@ -29,6 +33,15 @@ extern uint8_t USBPD_NbPDO[4];
 #if defined(_VDM)
 extern USBPD_VDM_SettingsTypeDef   DPM_VDM_Settings[USBPD_PORT_COUNT];
 #endif /* _VDM */
+#if GUI_FLASH_MAGIC_NUMBER
+uint64_t MagicNumber = 0xDEADBABEDEADF00DU;
+#endif /* GUI_FLASH_MAGIC_NUMBER */
+/* Private Macro */
+#if GUI_FLASH_MAGIC_NUMBER
+#define GUI_CHECK_IF_MEMORY_IS_CORRUPTED(__ADDR__)
+#else
+#define GUI_CHECK_IF_MEMORY_IS_CORRUPTED(__ADDR__) if (0xFFFFFFFFu != *((uint32_t*)(__ADDR__)))
+#endif /* GUI_FLASH_MAGIC_NUMBER */
 
 /* Private function prototypes -----------------------------------------------*/
 static GUI_StatusTypeDef        LoadPDOFromFlash(uint32_t Address, uint32_t *pListOfPDO);
@@ -39,7 +52,11 @@ static GUI_StatusTypeDef        SaveSettingsInFlash(uint32_t Address, uint32_t *
 GUI_StatusTypeDef BSP_GUI_LoadDataFromFlash(void)
 {
   GUI_StatusTypeDef _status = GUI_ERROR;
+#if GUI_FLASH_MAGIC_NUMBER
+  uint32_t _addr = GUI_FLASH_MAGIC_NUMBER;
+#else
   uint32_t _addr = GUI_FLASH_ADDR_NB_PDO_SNK_P0;
+#endif /* GUI_FLASH_MAGIC_NUMBER */
 
   /* Check that we did not reach the end of page */
   if (GUI_FLASH_SIZE_RESERVED < 0)
@@ -47,8 +64,23 @@ GUI_StatusTypeDef BSP_GUI_LoadDataFromFlash(void)
     goto _exit;
   }
 
-  /* Update USBPD_NbPDO? */
-  if (0xFFFFFFFFu != *((uint32_t*)_addr))
+#if GUI_FLASH_MAGIC_NUMBER
+  /* check that GUI area has not been corrupted */
+  if ((0xFFFFFFFFu != *((uint32_t*)_addr)) && (MagicNumber != *((uint64_t*)_addr)))
+  {
+    /* Memory has been corrupted */
+    USBPD_TRACE_Add(USBPD_TRACE_DEBUG, 0U, 0U, (uint8_t*)"GUI Memory is corrupted", sizeof("GUI Memory is corrupted"));
+    goto _exit;
+  }
+  if (0xFFFFFFFFu == *((uint32_t*)_addr))
+  {
+    /* Memory is empty no need to retrieve data from GUI area */
+    goto _exit;
+  }
+  _addr = GUI_FLASH_ADDR_NB_PDO_SNK_P0;
+#endif /* GUI_FLASH_MAGIC_NUMBER */
+
+  GUI_CHECK_IF_MEMORY_IS_CORRUPTED(_addr)
   {
     uint32_t* _ptr = (uint32_t*)USBPD_NbPDO;
     USPBPD_WRITE32 (_ptr,*((uint32_t*)_addr));
@@ -172,19 +204,27 @@ GUI_StatusTypeDef BSP_GUI_SaveDataInFlash(void)
     FLASH->SR = FLASH_SR_OPTVERR;
   }
 #endif
-  status = HAL_OK == HAL_FLASHEx_Erase(&erase_init, &page_error) ? GUI_OK : GUI_ERASE_ERROR;
+  status = (HAL_OK == HAL_FLASHEx_Erase(&erase_init, &page_error)) ? GUI_OK : GUI_ERASE_ERROR;
 
   /* If Erase is OK, program the new data */
   if ((0xFFFFFFFF == page_error) && (GUI_OK == status))
   {
+#if GUI_FLASH_MAGIC_NUMBER
+    /* Save magic Number */
+    status = (HAL_OK == HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, GUI_FLASH_MAGIC_NUMBER, MagicNumber)) ? GUI_OK : GUI_WRITE_ERROR;
+#endif /* GUI_FLASH_MAGIC_NUMBER */
+
 #ifdef GUI_FLASH_ADDR_NB_PDO_SNK_P0
-    /* Save the nb of sink and src PDO */
-    uint64_t value = 0;
-    value |= USBPD_NbPDO[0];
-    value |= (USBPD_NbPDO[1] << 8);
-    value |= (USBPD_NbPDO[2] << 16);
-    value |= (USBPD_NbPDO[3] << 24);
-   status = HAL_OK == HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, GUI_FLASH_ADDR_NB_PDO_SNK_P0, value)? GUI_OK : GUI_WRITE_ERROR;
+    if (GUI_OK == status)
+    {
+      /* Save the nb of sink and src PDO */
+      uint64_t value = 0;
+      value |= USBPD_NbPDO[0];
+      value |= (USBPD_NbPDO[1] << 8);
+      value |= (USBPD_NbPDO[2] << 16);
+      value |= (USBPD_NbPDO[3] << 24);
+     status = (HAL_OK == HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, GUI_FLASH_ADDR_NB_PDO_SNK_P0, value)) ? GUI_OK : GUI_WRITE_ERROR;
+    }
 #endif  /* GUI_FLASH_ADDR_NB_PDO_SNK_P0 */
 
 #if defined(_SRC) || defined(_DRP)
@@ -250,7 +290,7 @@ GUI_StatusTypeDef BSP_GUI_SaveDataInFlash(void)
 #endif /* _VDM */
   }
 
-  /* Lock the flash afer end of operations */
+  /* Lock the flash after end of operations */
   HAL_FLASH_Lock();
 
   /* Enable interrupts */
@@ -328,7 +368,7 @@ static GUI_StatusTypeDef LoadPDOFromFlash(uint32_t Address, uint32_t *pListOfPDO
   GUI_StatusTypeDef _status = GUI_ERROR;
 
   /* Check if FLASH is not empty to retrieve the data. Nethertheless keep data in the RAM */
-  if (0xFFFFFFFFu != *((uint32_t*)_addr))
+  GUI_CHECK_IF_MEMORY_IS_CORRUPTED(_addr)
   {
     uint32_t _index;
     for (_index = 0; _index < USBPD_MAX_NB_PDO; _index++)
@@ -347,7 +387,7 @@ static GUI_StatusTypeDef LoadSettingsFromFlash(uint32_t Address, uint32_t *pSett
   GUI_StatusTypeDef _status = GUI_ERROR;
 
   /* Check if FLASH is not empty to retrieve the data. Nethertheless keep data in the RAM */
-  if (0xFFFFFFFFu != *((uint32_t*)_addr))
+  GUI_CHECK_IF_MEMORY_IS_CORRUPTED(_addr)
   {
     memcpy(pSettings, ((uint32_t*)_addr), Size);
     _status = GUI_OK;

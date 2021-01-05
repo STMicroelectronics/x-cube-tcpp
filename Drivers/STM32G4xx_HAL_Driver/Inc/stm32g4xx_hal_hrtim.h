@@ -1137,7 +1137,7 @@ typedef void (* pHRTIM_TIMxCallbackTypeDef)(HRTIM_HandleTypeDef *hhrtim,    /*!<
 #define HRTIM_TIM_ADROM_BOTH      0x00000000U              /*!< Roll-over event which triggers */
 #define HRTIM_TIM_ADROM_CREST     (HRTIM_TIMCR2_ADROM_1)   /*!< the */
 #define HRTIM_TIM_ADROM_VALLEY    (HRTIM_TIMCR2_ADROM_0)   /*!< ADC */
-#define HRTIM_TIM_OUTROM_BOTH     0x00000000U              /*!< Roll-over event which sets and/or resets the ouputs */
+#define HRTIM_TIM_OUTROM_BOTH     0x00000000U              /*!< Roll-over event which sets and/or resets the outputs */
 #define HRTIM_TIM_OUTROM_CREST    (HRTIM_TIMCR2_OUTROM_1)  /*!< as per HRTIM_SETxyR */
 #define HRTIM_TIM_OUTROM_VALLEY   (HRTIM_TIMCR2_OUTROM_0)  /*!< and HRTIM_RSTxyR settings */
 #define HRTIM_TIM_ROM_BOTH        0x00000000U              /*!< Roll-over event with the following destinations: IRQ and DMA requests,*/
@@ -1189,7 +1189,7 @@ typedef void (* pHRTIM_TIMxCallbackTypeDef)(HRTIM_HandleTypeDef *hhrtim,    /*!<
   * @{
   * @brief Constants defining the polarity of a timer output
   */
-#define HRTIM_OUTPUTPOLARITY_HIGH    (0x00000000U)           /*!< Output is acitve HIGH */
+#define HRTIM_OUTPUTPOLARITY_HIGH    (0x00000000U)           /*!< Output is active HIGH */
 #define HRTIM_OUTPUTPOLARITY_LOW     (HRTIM_OUTR_POL1)       /*!< Output is active LOW */
 /**
   * @}

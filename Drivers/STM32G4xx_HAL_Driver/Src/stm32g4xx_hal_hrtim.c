@@ -2711,7 +2711,7 @@ HAL_StatusTypeDef HAL_HRTIM_SimplePWMStop_DMA(HRTIM_HandleTypeDef * hhrtim,
   *                    @arg HRTIM_CAPTUREUNIT_1: Capture unit 1
   *                    @arg HRTIM_CAPTUREUNIT_2: Capture unit 2
   * @param  pSimpleCaptureChannelCfg pointer to the simple capture configuration structure
-  * @note When the timer operates in simple capture mode the capture is trigerred
+  * @note When the timer operates in simple capture mode the capture is triggered
   *       by the designated external event and GPIO input is implicitly used as event source.
   *       The cature can be triggered by a rising edge, a falling edge or both
   *       edges on event channel.
@@ -6582,7 +6582,7 @@ HAL_StatusTypeDef HAL_HRTIM_WaveformCountStop_IT(HRTIM_HandleTypeDef * hhrtim,
   *                   @arg HRTIM_TIMERID_TIMER_E
   *                   @arg HRTIM_TIMERID_TIMER_F
   * @retval HAL status
-  * @note This function enables the dma request(s) mentionned in the timer
+  * @note This function enables the dma request(s) mentioned in the timer
   *       configuration data structure for every timers to start.
   * @note The source memory address, the destination memory address and the
   *       size of each DMA transfer are specified at timer configuration time
@@ -6929,7 +6929,7 @@ HAL_StatusTypeDef HAL_HRTIM_SoftwareCapture(HRTIM_HandleTypeDef * hhrtim,
   *                   @arg HRTIM_TIMERUPDATE_E
   *                   @arg HRTIM_TIMERUPDATE_F
   * @retval HAL status
-  * @note The 'software update' bits in the HRTIM conrol register 2 register are
+  * @note The 'software update' bits in the HRTIM control register 2 register are
   *       automatically reset by hardware
   */
 HAL_StatusTypeDef HAL_HRTIM_SoftwareUpdate(HRTIM_HandleTypeDef * hhrtim,
@@ -7013,7 +7013,7 @@ HAL_StatusTypeDef HAL_HRTIM_SwapTimerOutput(HRTIM_HandleTypeDef * hhrtim,
   *                   @arg HRTIM_TIMERRESET_TIMER_E
   *                   @arg HRTIM_TIMERRESET_TIMER_F
   * @retval HAL status
-  * @note The 'software reset' bits in the HRTIM conrol register 2  are
+  * @note The 'software reset' bits in the HRTIM control register 2  are
   *       automatically reset by hardware
   */
 HAL_StatusTypeDef HAL_HRTIM_SoftwareReset(HRTIM_HandleTypeDef * hhrtim,
@@ -7719,7 +7719,7 @@ uint32_t HAL_HRTIM_WaveformGetOutputState(HRTIM_HandleTypeDef * hhrtim,
 
   if ((hhrtim->Instance->sCommonRegs.OENR & output_bit) != (uint32_t)RESET)
   {
-    /* Output is enabled: output in RUN state (whatever ouput disable status is)*/
+    /* Output is enabled: output in RUN state (whatever output disable status is)*/
     output_state = HRTIM_OUTPUTSTATE_RUN;
   }
   else
@@ -9199,7 +9199,7 @@ static void HRTIM_MasterWaveform_Config(HRTIM_HandleTypeDef * hhrtim,
   hrtim_mcr &= ~(HRTIM_MCR_DACSYNC);
   hrtim_mcr |= pTimerCfg->DACSynchro;
 
-  /* Enable/Disable preload meachanism for timer registers */
+  /* Enable/Disable preload mechanism for timer registers */
   hrtim_mcr &= ~(HRTIM_MCR_PREEN);
   hrtim_mcr |= pTimerCfg->PreloadEnable;
 
@@ -9284,7 +9284,7 @@ static void  HRTIM_TimingUnitWaveform_Config(HRTIM_HandleTypeDef * hhrtim,
   hrtim_timcr &= ~(HRTIM_TIMCR_DACSYNC);
   hrtim_timcr |= pTimerCfg->DACSynchro;
 
-  /* Enable/Disable preload meachanism for timer registers */
+  /* Enable/Disable preload mechanism for timer registers */
   hrtim_timcr &= ~(HRTIM_TIMCR_PREEN);
   hrtim_timcr |= pTimerCfg->PreloadEnable;
 

@@ -2525,11 +2525,11 @@ typedef struct
 
 #define COMP_CSR_BRGEN_Pos         (22U)
 #define COMP_CSR_BRGEN_Msk         (0x1UL << COMP_CSR_BRGEN_Pos)               /*!< 0x00400000 */
-#define COMP_CSR_BRGEN             COMP_CSR_BRGEN_Msk                          /*!< Comparator voltage scaler enable */
+#define COMP_CSR_BRGEN             COMP_CSR_BRGEN_Msk                          /*!< Comparator scaler bridge enable */
 
 #define COMP_CSR_SCALEN_Pos        (23U)
 #define COMP_CSR_SCALEN_Msk        (0x1UL << COMP_CSR_SCALEN_Pos)              /*!< 0x00800000 */
-#define COMP_CSR_SCALEN            COMP_CSR_SCALEN_Msk                         /*!< Comparator scaler bridge enable */
+#define COMP_CSR_SCALEN            COMP_CSR_SCALEN_Msk                         /*!< Comparator voltage scaler enable */
 
 #define COMP_CSR_VALUE_Pos         (30U)
 #define COMP_CSR_VALUE_Msk         (0x1UL << COMP_CSR_VALUE_Pos)               /*!< 0x40000000 */
@@ -5125,12 +5125,6 @@ typedef struct
 #define FLASH_ECCR_ECCIE_Pos              (24U)
 #define FLASH_ECCR_ECCIE_Msk              (0x1UL << FLASH_ECCR_ECCIE_Pos)      /*!< 0x01000000 */
 #define FLASH_ECCR_ECCIE                  FLASH_ECCR_ECCIE_Msk
-#define FLASH_ECCR_ECCC2_Pos              (28U)
-#define FLASH_ECCR_ECCC2_Msk              (0x1UL << FLASH_ECCR_ECCC2_Pos)      /*!< 0x10000000 */
-#define FLASH_ECCR_ECCC2                  FLASH_ECCR_ECCC2_Msk
-#define FLASH_ECCR_ECCD2_Pos              (29U)
-#define FLASH_ECCR_ECCD2_Msk              (0x1UL << FLASH_ECCR_ECCD2_Pos)      /*!< 0x20000000 */
-#define FLASH_ECCR_ECCD2                  FLASH_ECCR_ECCD2_Msk
 #define FLASH_ECCR_ECCC_Pos               (30U)
 #define FLASH_ECCR_ECCC_Msk               (0x1UL << FLASH_ECCR_ECCC_Pos)       /*!< 0x40000000 */
 #define FLASH_ECCR_ECCC                   FLASH_ECCR_ECCC_Msk
@@ -5171,6 +5165,9 @@ typedef struct
 #define FLASH_OPTR_WWDG_SW_Pos            (19U)
 #define FLASH_OPTR_WWDG_SW_Msk            (0x1UL << FLASH_OPTR_WWDG_SW_Pos)    /*!< 0x00080000 */
 #define FLASH_OPTR_WWDG_SW                FLASH_OPTR_WWDG_SW_Msk
+#define FLASH_OPTR_PB4_PUPEN_Pos          (22U)
+#define FLASH_OPTR_PB4_PUPEN_Msk          (0x1UL << FLASH_OPTR_PB4_PUPEN_Pos)  /*!< 0x00400000 */
+#define FLASH_OPTR_PB4_PUPEN              FLASH_OPTR_PB4_PUPEN_Msk
 #define FLASH_OPTR_nBOOT1_Pos             (23U)
 #define FLASH_OPTR_nBOOT1_Msk             (0x1UL << FLASH_OPTR_nBOOT1_Pos)     /*!< 0x00800000 */
 #define FLASH_OPTR_nBOOT1                 FLASH_OPTR_nBOOT1_Msk

@@ -39,7 +39,8 @@
             (+++) Configure the declared DMA handle structure with the required Tx/Rx parameters.
             (+++) Configure the DMA Tx/Rx channel.
             (+++) Associate the initialized DMA handle to the UART DMA Tx/Rx handle.
-            (+++) Configure the priority and enable the NVIC for the transfer complete interrupt on the DMA Tx/Rx channel.
+            (+++) Configure the priority and enable the NVIC for the transfer complete
+                  interrupt on the DMA Tx/Rx channel.
 
     (#) Program the Baud Rate, Word Length, Stop Bit, Parity, Prescaler value , Hardware
         flow control and Mode (Receiver/Transmitter) in the huart handle Init structure.
@@ -844,55 +845,57 @@ HAL_StatusTypeDef HAL_UART_UnRegisterCallback(UART_HandleTypeDef *huart, HAL_UAR
     switch (CallbackID)
     {
       case HAL_UART_TX_HALFCOMPLETE_CB_ID :
-        huart->TxHalfCpltCallback = HAL_UART_TxHalfCpltCallback;               /* Legacy weak  TxHalfCpltCallback       */
+        huart->TxHalfCpltCallback = HAL_UART_TxHalfCpltCallback;               /* Legacy weak  TxHalfCpltCallback    */
         break;
 
       case HAL_UART_TX_COMPLETE_CB_ID :
-        huart->TxCpltCallback = HAL_UART_TxCpltCallback;                       /* Legacy weak TxCpltCallback            */
+        huart->TxCpltCallback = HAL_UART_TxCpltCallback;                       /* Legacy weak TxCpltCallback         */
         break;
 
       case HAL_UART_RX_HALFCOMPLETE_CB_ID :
-        huart->RxHalfCpltCallback = HAL_UART_RxHalfCpltCallback;               /* Legacy weak RxHalfCpltCallback        */
+        huart->RxHalfCpltCallback = HAL_UART_RxHalfCpltCallback;               /* Legacy weak RxHalfCpltCallback     */
         break;
 
       case HAL_UART_RX_COMPLETE_CB_ID :
-        huart->RxCpltCallback = HAL_UART_RxCpltCallback;                       /* Legacy weak RxCpltCallback            */
+        huart->RxCpltCallback = HAL_UART_RxCpltCallback;                       /* Legacy weak RxCpltCallback         */
         break;
 
       case HAL_UART_ERROR_CB_ID :
-        huart->ErrorCallback = HAL_UART_ErrorCallback;                         /* Legacy weak ErrorCallback             */
+        huart->ErrorCallback = HAL_UART_ErrorCallback;                         /* Legacy weak ErrorCallback          */
         break;
 
       case HAL_UART_ABORT_COMPLETE_CB_ID :
-        huart->AbortCpltCallback = HAL_UART_AbortCpltCallback;                 /* Legacy weak AbortCpltCallback         */
+        huart->AbortCpltCallback = HAL_UART_AbortCpltCallback;                 /* Legacy weak AbortCpltCallback      */
         break;
 
       case HAL_UART_ABORT_TRANSMIT_COMPLETE_CB_ID :
-        huart->AbortTransmitCpltCallback = HAL_UART_AbortTransmitCpltCallback; /* Legacy weak AbortTransmitCpltCallback */
+        huart->AbortTransmitCpltCallback = HAL_UART_AbortTransmitCpltCallback; /* Legacy weak
+                                                                                  AbortTransmitCpltCallback          */
         break;
 
       case HAL_UART_ABORT_RECEIVE_COMPLETE_CB_ID :
-        huart->AbortReceiveCpltCallback = HAL_UART_AbortReceiveCpltCallback;   /* Legacy weak AbortReceiveCpltCallback  */
+        huart->AbortReceiveCpltCallback = HAL_UART_AbortReceiveCpltCallback;   /* Legacy weak
+                                                                                  AbortReceiveCpltCallback           */
         break;
 
       case HAL_UART_WAKEUP_CB_ID :
-        huart->WakeupCallback = HAL_UARTEx_WakeupCallback;                     /* Legacy weak WakeupCallback            */
+        huart->WakeupCallback = HAL_UARTEx_WakeupCallback;                     /* Legacy weak WakeupCallback         */
         break;
 
       case HAL_UART_RX_FIFO_FULL_CB_ID :
-        huart->RxFifoFullCallback = HAL_UARTEx_RxFifoFullCallback;             /* Legacy weak RxFifoFullCallback        */
+        huart->RxFifoFullCallback = HAL_UARTEx_RxFifoFullCallback;             /* Legacy weak RxFifoFullCallback     */
         break;
 
       case HAL_UART_TX_FIFO_EMPTY_CB_ID :
-        huart->TxFifoEmptyCallback = HAL_UARTEx_TxFifoEmptyCallback;           /* Legacy weak TxFifoEmptyCallback       */
+        huart->TxFifoEmptyCallback = HAL_UARTEx_TxFifoEmptyCallback;           /* Legacy weak TxFifoEmptyCallback    */
         break;
 
       case HAL_UART_MSPINIT_CB_ID :
-        huart->MspInitCallback = HAL_UART_MspInit;                             /* Legacy weak MspInitCallback           */
+        huart->MspInitCallback = HAL_UART_MspInit;                             /* Legacy weak MspInitCallback        */
         break;
 
       case HAL_UART_MSPDEINIT_CB_ID :
-        huart->MspDeInitCallback = HAL_UART_MspDeInit;                         /* Legacy weak MspDeInitCallback         */
+        huart->MspDeInitCallback = HAL_UART_MspDeInit;                         /* Legacy weak MspDeInitCallback      */
         break;
 
       default :
@@ -1000,13 +1003,16 @@ HAL_StatusTypeDef HAL_UART_UnRegisterCallback(UART_HandleTypeDef *huart, HAL_UAR
     (#) In Non-Blocking mode transfers, possible errors are split into 2 categories.
         Errors are handled as follows :
        (+) Error is considered as Recoverable and non blocking : Transfer could go till end, but error severity is
-           to be evaluated by user : this concerns Frame Error, Parity Error or Noise Error in Interrupt mode reception .
-           Received character is then retrieved and stored in Rx buffer, Error code is set to allow user to identify error type,
-           and HAL_UART_ErrorCallback() user callback is executed. Transfer is kept ongoing on UART side.
+           to be evaluated by user : this concerns Frame Error, Parity Error or Noise Error
+           in Interrupt mode reception .
+           Received character is then retrieved and stored in Rx buffer, Error code is set to allow user
+           to identify error type, and HAL_UART_ErrorCallback() user callback is executed.
+           Transfer is kept ongoing on UART side.
            If user wants to abort it, Abort services should be called by user.
        (+) Error is considered as Blocking : Transfer could not be completed properly and is aborted.
            This concerns Overrun Error In Interrupt mode reception and all errors in DMA mode.
-           Error code is set to allow user to identify error type, and HAL_UART_ErrorCallback() user callback is executed.
+           Error code is set to allow user to identify error type, and HAL_UART_ErrorCallback()
+           user callback is executed.
 
     -@- In the Half duplex communication, it is forbidden to run the transmit
         and receive process in parallel, the UART state HAL_UART_STATE_BUSY_TX_RX can't be useful.
@@ -1049,7 +1055,7 @@ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, u
     huart->ErrorCode = HAL_UART_ERROR_NONE;
     huart->gState = HAL_UART_STATE_BUSY_TX;
 
-    /* Init tickstart for timeout managment*/
+    /* Init tickstart for timeout management */
     tickstart = HAL_GetTick();
 
     huart->TxXferSize  = Size;
@@ -1139,7 +1145,7 @@ HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, ui
     huart->ErrorCode = HAL_UART_ERROR_NONE;
     huart->RxState = HAL_UART_STATE_BUSY_RX;
 
-    /* Init tickstart for timeout managment*/
+    /* Init tickstart for timeout management */
     tickstart = HAL_GetTick();
 
     huart->RxXferSize  = Size;
@@ -1554,7 +1560,7 @@ HAL_StatusTypeDef HAL_UART_DMAResume(UART_HandleTypeDef *huart)
     /* Clear the Overrun flag before resuming the Rx transfer */
     __HAL_UART_CLEAR_FLAG(huart, UART_CLEAR_OREF);
 
-    /* Reenable PE and ERR (Frame error, noise error, overrun error) interrupts */
+    /* Re-enable PE and ERR (Frame error, noise error, overrun error) interrupts */
     SET_BIT(huart->Instance->CR1, USART_CR1_PEIE);
     SET_BIT(huart->Instance->CR3, USART_CR3_EIE);
 
@@ -1650,7 +1656,8 @@ HAL_StatusTypeDef HAL_UART_DMAStop(UART_HandleTypeDef *huart)
 HAL_StatusTypeDef HAL_UART_Abort(UART_HandleTypeDef *huart)
 {
   /* Disable TXE, TC, RXNE, PE, RXFT, TXFT and ERR (Frame error, noise error, overrun error) interrupts */
-  CLEAR_BIT(huart->Instance->CR1, (USART_CR1_RXNEIE_RXFNEIE | USART_CR1_PEIE | USART_CR1_TXEIE_TXFNFIE | USART_CR1_TCIE));
+  CLEAR_BIT(huart->Instance->CR1, (USART_CR1_RXNEIE_RXFNEIE | USART_CR1_PEIE | USART_CR1_TXEIE_TXFNFIE |
+                                   USART_CR1_TCIE));
   CLEAR_BIT(huart->Instance->CR3, USART_CR3_EIE | USART_CR3_RXFTIE | USART_CR3_TXFTIE);
 
   /* Disable the UART DMA Tx request if enabled */
@@ -1863,7 +1870,8 @@ HAL_StatusTypeDef HAL_UART_Abort_IT(UART_HandleTypeDef *huart)
   uint32_t abortcplt = 1U;
 
   /* Disable interrupts */
-  CLEAR_BIT(huart->Instance->CR1, (USART_CR1_PEIE | USART_CR1_TCIE | USART_CR1_RXNEIE_RXFNEIE | USART_CR1_TXEIE_TXFNFIE));
+  CLEAR_BIT(huart->Instance->CR1, (USART_CR1_PEIE | USART_CR1_TCIE | USART_CR1_RXNEIE_RXFNEIE |
+                                   USART_CR1_TXEIE_TXFNFIE));
   CLEAR_BIT(huart->Instance->CR3, (USART_CR3_EIE | USART_CR3_RXFTIE | USART_CR3_TXFTIE));
 
   /* If DMA Tx and/or DMA Rx Handles are associated to UART Handle, DMA Abort complete callbacks should be initialised
@@ -2959,9 +2967,9 @@ HAL_StatusTypeDef UART_SetConfig(UART_HandleTypeDef *huart)
       }
       else
       {
-        /* Check computed UsartDiv value is in allocated range 
+        /* Check computed UsartDiv value is in allocated range
            (it is forbidden to write values lower than 0x300 in the LPUART_BRR register) */
-        usartdiv = (uint32_t)(UART_DIV_LPUART(pclk, (uint64_t)huart->Init.BaudRate, huart->Init.ClockPrescaler));
+        usartdiv = (uint32_t)(UART_DIV_LPUART(pclk, huart->Init.BaudRate, huart->Init.ClockPrescaler));
         if ((usartdiv >= LPUART_BRR_MIN) && (usartdiv <= LPUART_BRR_MAX))
         {
           huart->Instance->BRR = usartdiv;
@@ -2970,7 +2978,8 @@ HAL_StatusTypeDef UART_SetConfig(UART_HandleTypeDef *huart)
         {
           ret = HAL_ERROR;
         }
-      } /* if ( (lpuart_ker_ck_pres < (3 * huart->Init.BaudRate) ) || (lpuart_ker_ck_pres > (4096 * huart->Init.BaudRate) )) */
+      } /* if ( (lpuart_ker_ck_pres < (3 * huart->Init.BaudRate) ) ||
+                (lpuart_ker_ck_pres > (4096 * huart->Init.BaudRate) )) */
     } /* if (pclk != 0) */
   }
   /* Check UART Over Sampling to set Baud Rate Register */
@@ -3152,7 +3161,7 @@ HAL_StatusTypeDef UART_CheckIdleState(UART_HandleTypeDef *huart)
   /* Initialize the UART ErrorCode */
   huart->ErrorCode = HAL_UART_ERROR_NONE;
 
-  /* Init tickstart for timeout managment*/
+  /* Init tickstart for timeout management */
   tickstart = HAL_GetTick();
 
   /* Check if the Transmitter is enabled */
@@ -3206,7 +3215,8 @@ HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, uint32_
     {
       if (((HAL_GetTick() - Tickstart) > Timeout) || (Timeout == 0U))
       {
-        /* Disable TXE, RXNE, PE and ERR (Frame error, noise error, overrun error) interrupts for the interrupt process */
+        /* Disable TXE, RXNE, PE and ERR (Frame error, noise error, overrun error)
+           interrupts for the interrupt process */
         CLEAR_BIT(huart->Instance->CR1, (USART_CR1_RXNEIE_RXFNEIE | USART_CR1_PEIE | USART_CR1_TXEIE_TXFNFIE));
         CLEAR_BIT(huart->Instance->CR3, USART_CR3_EIE);
 
@@ -3224,18 +3234,19 @@ HAL_StatusTypeDef UART_WaitOnFlagUntilTimeout(UART_HandleTypeDef *huart, uint32_
         {
           /* Clear Receiver Timeout flag*/
           __HAL_UART_CLEAR_FLAG(huart, UART_CLEAR_RTOF);
-          
-          /* Disable TXE, RXNE, PE and ERR (Frame error, noise error, overrun error) interrupts for the interrupt process */
+
+          /* Disable TXE, RXNE, PE and ERR (Frame error, noise error, overrun error)
+             interrupts for the interrupt process */
           CLEAR_BIT(huart->Instance->CR1, (USART_CR1_RXNEIE_RXFNEIE | USART_CR1_PEIE | USART_CR1_TXEIE_TXFNFIE));
           CLEAR_BIT(huart->Instance->CR3, USART_CR3_EIE);
 
           huart->gState = HAL_UART_STATE_READY;
           huart->RxState = HAL_UART_STATE_READY;
           huart->ErrorCode = HAL_UART_ERROR_RTO;
-          
+
           /* Process Unlocked */
           __HAL_UNLOCK(huart);
-          
+
           return HAL_TIMEOUT;
         }
       }
@@ -3617,7 +3628,7 @@ static void UART_DMARxOnlyAbortCallback(DMA_HandleTypeDef *hdma)
 }
 
 /**
-  * @brief TX interrrupt handler for 7 or 8 bits data word length .
+  * @brief TX interrupt handler for 7 or 8 bits data word length .
   * @note   Function is called under interruption only, once
   *         interruptions have been enabled by HAL_UART_Transmit_IT().
   * @param huart UART handle.
@@ -3646,7 +3657,7 @@ static void UART_TxISR_8BIT(UART_HandleTypeDef *huart)
 }
 
 /**
-  * @brief TX interrrupt handler for 9 bits data word length.
+  * @brief TX interrupt handler for 9 bits data word length.
   * @note   Function is called under interruption only, once
   *         interruptions have been enabled by HAL_UART_Transmit_IT().
   * @param huart UART handle.
@@ -3678,7 +3689,7 @@ static void UART_TxISR_16BIT(UART_HandleTypeDef *huart)
 }
 
 /**
-  * @brief TX interrrupt handler for 7 or 8 bits data word length and FIFO mode is enabled.
+  * @brief TX interrupt handler for 7 or 8 bits data word length and FIFO mode is enabled.
   * @note   Function is called under interruption only, once
   *         interruptions have been enabled by HAL_UART_Transmit_IT().
   * @param huart UART handle.
@@ -3718,7 +3729,7 @@ static void UART_TxISR_8BIT_FIFOEN(UART_HandleTypeDef *huart)
 }
 
 /**
-  * @brief TX interrrupt handler for 9 bits data word length and FIFO mode is enabled.
+  * @brief TX interrupt handler for 9 bits data word length and FIFO mode is enabled.
   * @note   Function is called under interruption only, once
   *         interruptions have been enabled by HAL_UART_Transmit_IT().
   * @param huart UART handle.
@@ -3786,7 +3797,7 @@ static void UART_EndTransmit_IT(UART_HandleTypeDef *huart)
 }
 
 /**
-  * @brief RX interrrupt handler for 7 or 8 bits data word length .
+  * @brief RX interrupt handler for 7 or 8 bits data word length .
   * @param huart UART handle.
   * @retval None
   */
@@ -3834,7 +3845,7 @@ static void UART_RxISR_8BIT(UART_HandleTypeDef *huart)
 }
 
 /**
-  * @brief RX interrrupt handler for 9 bits data word length .
+  * @brief RX interrupt handler for 9 bits data word length .
   * @note   Function is called under interruption only, once
   *         interruptions have been enabled by HAL_UART_Receive_IT()
   * @param huart UART handle.
@@ -3886,7 +3897,7 @@ static void UART_RxISR_16BIT(UART_HandleTypeDef *huart)
 }
 
 /**
-  * @brief RX interrrupt handler for 7 or 8  bits data word length and FIFO mode is enabled.
+  * @brief RX interrupt handler for 7 or 8  bits data word length and FIFO mode is enabled.
   * @note   Function is called under interruption only, once
   *         interruptions have been enabled by HAL_UART_Receive_IT()
   * @param huart UART handle.
@@ -3914,7 +3925,8 @@ static void UART_RxISR_8BIT_FIFOEN(UART_HandleTypeDef *huart)
         /* Disable the UART Parity Error Interrupt and RXFT interrupt*/
         CLEAR_BIT(huart->Instance->CR1, USART_CR1_PEIE);
 
-        /* Disable the UART Error Interrupt: (Frame error, noise error, overrun error) and RX FIFO Threshold interrupt */
+        /* Disable the UART Error Interrupt: (Frame error, noise error, overrun error)
+           and RX FIFO Threshold interrupt */
         CLEAR_BIT(huart->Instance->CR3, (USART_CR3_EIE | USART_CR3_RXFTIE));
 
         /* Rx process is completed, restore huart->RxState to Ready */
@@ -3958,7 +3970,7 @@ static void UART_RxISR_8BIT_FIFOEN(UART_HandleTypeDef *huart)
 }
 
 /**
-  * @brief RX interrrupt handler for 9 bits data word length and FIFO mode is enabled.
+  * @brief RX interrupt handler for 9 bits data word length and FIFO mode is enabled.
   * @note   Function is called under interruption only, once
   *         interruptions have been enabled by HAL_UART_Receive_IT()
   * @param huart UART handle.
@@ -3988,7 +4000,8 @@ static void UART_RxISR_16BIT_FIFOEN(UART_HandleTypeDef *huart)
         /* Disable the UART Parity Error Interrupt and RXFT interrupt*/
         CLEAR_BIT(huart->Instance->CR1, USART_CR1_PEIE);
 
-        /* Disable the UART Error Interrupt: (Frame error, noise error, overrun error) and RX FIFO Threshold interrupt */
+        /* Disable the UART Error Interrupt: (Frame error, noise error, overrun error)
+           and RX FIFO Threshold interrupt */
         CLEAR_BIT(huart->Instance->CR3, (USART_CR3_EIE | USART_CR3_RXFTIE));
 
         /* Rx process is completed, restore huart->RxState to Ready */

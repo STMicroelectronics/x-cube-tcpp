@@ -44,7 +44,53 @@ and Connector Specification, Revision 1.3 (July 14, 2017).
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section11" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section9" checked aria-hidden="true">
+<label for="collapse-section9" aria-hidden="true">v4.1.0 / 17-Sep-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+  Headline
+  ----------------------------------------------------------
+  Integration of the FRS feature on G4, L5, U5
+  Ticket 84586 - Provide external API in CAD to allow application to know which RP present in Sink
+  Add USBPDM1_VCC_FEATURE_ENABLED switch from all the series
+  Remove condition for CAD_StateMachine prototype
+  Correct misspelled words
+  Ticket 92910 -Need to increase delay before reading CC values after VCC activation of TCPP01
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE V1.2.0 
+
+## Supported Devices and boards
+
+  All STM32G4xx devices embedding USBPD IP
+
+## Backward compatibility
+
+  No compatibility break with previous version
+
+## Dependencies
+
+ This software release is compatible with USB-C Power Delivery Core Stack Library v3.2.0
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section11" aria-hidden="true">
 <label for="collapse-section11" aria-hidden="true">V4.0.1 / 6-June-2020</label>
 <div>
 
@@ -129,7 +175,7 @@ and Connector Specification, Revision 1.3 (July 14, 2017).
 :::
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section8" aria-hidden="true">
+<input type="checkbox" id="collapse-section8"  aria-hidden="true">
 <label for="collapse-section8" aria-hidden="true">v3.1.0 / 04-Feb-2020</label>
 <div>
 

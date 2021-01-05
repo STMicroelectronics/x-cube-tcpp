@@ -662,8 +662,8 @@ HAL_StatusTypeDef HAL_OPAMPEx_SelfCalibrateAll(OPAMP_HandleTypeDef *hopamp1, OPA
 #endif
 
     /* Self calibration is successful  */
-    /* Store calibration(user timming) results in init structure. */
-    /* Select user timming mode */
+    /* Store calibration(user timing) results in init structure. */
+    /* Select user timing mode */
 
     /* Write calibration result N */
     hopamp1->Init.TrimmingValueN = trimmingvaluen1;
@@ -689,7 +689,7 @@ HAL_StatusTypeDef HAL_OPAMPEx_SelfCalibrateAll(OPAMP_HandleTypeDef *hopamp1, OPA
     hopamp6->Init.TrimmingValueP = trimmingvaluep6;
 #endif
 
-    /* Select user timming mode */
+    /* Select user timing mode */
     /* And updated with calibrated settings */
     hopamp1->Init.UserTrimming = OPAMP_TRIMMING_USER;
     hopamp2->Init.UserTrimming = OPAMP_TRIMMING_USER;

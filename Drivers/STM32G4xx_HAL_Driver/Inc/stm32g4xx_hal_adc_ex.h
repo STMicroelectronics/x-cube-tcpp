@@ -114,7 +114,7 @@ typedef struct
                                                Note: This parameter must be modified when no conversion is on going on both regular and injected groups (ADC disabled, or ADC enabled
                                                without continuous mode or external trigger that could launch a conversion). */
 
-  uint32_t InjectedOffsetSign;                /*!< Define if the offset should be substracted (negative sign) or added (positive sign) from or to the raw converted data.
+  uint32_t InjectedOffsetSign;                /*!< Define if the offset should be subtracted (negative sign) or added (positive sign) from or to the raw converted data.
                                                This parameter can be a value of @ref ADCEx_OffsetSign.
                                                Note: This parameter must be modified when no conversion is on going on both regular and injected groups (ADC disabled, or ADC enabled without continuous mode or external trigger that could launch a conversion). */
   FunctionalState InjectedOffsetSaturation;   /*!< Define if the offset should be saturated upon under or over flow.
@@ -293,7 +293,7 @@ typedef struct
 /** @defgroup ADCEx_OffsetSign ADC Extended Offset Sign
   * @{
   */
-#define ADC_OFFSET_SIGN_NEGATIVE      (0x00000000UL)          /*!< Offset sign negative, offset is substracted */
+#define ADC_OFFSET_SIGN_NEGATIVE      (0x00000000UL)          /*!< Offset sign negative, offset is subtracted */
 #define ADC_OFFSET_SIGN_POSITIVE      (ADC_OFR1_OFFSETPOS)   /*!< Offset sign positive, offset is added  */
 /**
   * @}
@@ -429,7 +429,7 @@ typedef struct
   *         Usage of this macro is not the Standard way of multimode
   *         configuration and can lead to have HAL ADC handles status
   *         misaligned. Usage of this macro must be limited to cases
-  *         mentionned above.
+  *         mentioned above.
   * @param __HANDLE__ ADC handle.
   * @retval None
   */

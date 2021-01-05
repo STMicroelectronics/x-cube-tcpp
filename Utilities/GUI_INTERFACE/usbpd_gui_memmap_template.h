@@ -43,19 +43,22 @@
 
 /* Following definitions should be adapted to used Flash configuration :
    INDEX_PAGE : represents the number of the page used for storing USBPD settings (usually the last page)
-   ADDR_FLASH_LAST_PAGE : Flash address value of begining of USBPD settings page
+   ADDR_FLASH_LAST_PAGE : Flash address value of beginning of USBPD settings page
    ADDR_FLASH_PAGE_END : Flash address value of end of USBPD settings page
 */
 #define INDEX_PAGE              (FLASH_PAGE_NB - 1u)          /* Index of latest page                      */
 #define ADDR_FLASH_LAST_PAGE    (FLASH_BASE + (INDEX_PAGE * FLASH_PAGE_SIZE))  /* Base @ of latest page    */
 #define ADDR_FLASH_PAGE_END     (ADDR_FLASH_LAST_PAGE + FLASH_PAGE_SIZE - 1u) 
 
-#define GUI_FLASH_ADDR_NB_PDO_SNK_P0  (ADDR_FLASH_LAST_PAGE)
-#define GUI_FLASH_ADDR_NB_PDO_SRC_P0  (ADDR_FLASH_LAST_PAGE + 1U)
-#define GUI_FLASH_ADDR_NB_PDO_SNK_P1  (ADDR_FLASH_LAST_PAGE + 2U)
-#define GUI_FLASH_ADDR_NB_PDO_SRC_P1  (ADDR_FLASH_LAST_PAGE + 3U)
+#define GUI_FLASH_MAGIC_NUMBER         ADDR_FLASH_LAST_PAGE
+/* should be aligned on double word */
+#define GUI_FLASH_ADDR_NB_PDO_SNK_P0   (GUI_FLASH_MAGIC_NUMBER + 8u)
+#define GUI_FLASH_ADDR_NB_PDO_SRC_P0   (GUI_FLASH_ADDR_NB_PDO_SNK_P0 + 1u)
+#define GUI_FLASH_ADDR_NB_PDO_SNK_P1   (GUI_FLASH_ADDR_NB_PDO_SRC_P0 + 1u)
+#define GUI_FLASH_ADDR_NB_PDO_SRC_P1   (GUI_FLASH_ADDR_NB_PDO_SNK_P1 + 1u)
 
-#define GUI_FLASH_ADDR_PDO_SRC_P0      (ADDR_FLASH_LAST_PAGE + 8U) 
+/* should be aligned on double word */
+#define GUI_FLASH_ADDR_PDO_SRC_P0      (GUI_FLASH_MAGIC_NUMBER + 16u)
 /* New Address should be modulo 8 */
 /* New Address = (Previous Address + (size / 8 * 8) + ((size % 8) + 7) / 8 * 8) */
 #define GUI_FLASH_ADDR_PDO_SNK_P0      (GUI_FLASH_ADDR_PDO_SRC_P0 + ((USBPD_MAX_NB_PDO * 4) / 8 * 8) + ((((USBPD_MAX_NB_PDO * 4) & 0x07) + 7) / 8 * 8 ))

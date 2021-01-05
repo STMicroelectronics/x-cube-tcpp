@@ -49,7 +49,7 @@ Various template file are provided to easily build an application. They can be a
 # Update History
 ::: {.collapse}
 <input type="checkbox" id="collapse-section4" checked aria-hidden="true">
-<label for="collapse-section4" aria-hidden="true">V1.2.0RC1 / 03-April-2020</label>
+<label for="collapse-section4" aria-hidden="true">V1.2.0 / 26-June-2020</label>
 <div>
 
 ## Main Changes
@@ -70,6 +70,8 @@ Various template file are provided to easily build an application. They can be a
   - Rename **"TIM7_DAC_IRQHandler"** to **"TIM7_IRQHandler"** in MDK-ARM startup file for STM32G431xx/441xx/bk1cb devices
   - Remove HRTIM_BMTRGR useless constant definitions
   - Remove ADC_CFGR2_LFTRIG useless constant definitions
+  - Update HSE default value in system_stm32g4xx.c: 24MHz instead of 8MHz
+  - Add License.md and Readme.md files required for GitHub publication
 
   : Fixed bugs list
 \
@@ -81,8 +83,8 @@ Various template file are provided to easily build an application. They can be a
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain **V8.40.1**
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27.1
-- STM32CubeIDE toolchain V1.3.0
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.29
+- STM32CubeIDE toolchain V1.4.0
 
 ## Supported Devices and boards
 
@@ -119,7 +121,7 @@ General updates to fix known defects and enhancements implementation
 
   Headline
   --------
-  Update STM32G473/483 startup files to support FDCAN2/3 intances
+  Update STM32G473/483 startup files to support FDCAN2/3 instances
   Remove IS_TIM_SYNCHRO_INSTANCE macro from device header files
 
   : Fixed bugs list

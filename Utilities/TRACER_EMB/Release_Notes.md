@@ -33,8 +33,114 @@ This driver is used for the embedded USB-PD tracer used to debug USB-PD applicat
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section4" checked aria-hidden="true">
-<label for="collapse-section4" aria-hidden="true">V1.3.0 / 26-March-2020</label>
+<input type="checkbox" id="collapse-section8" checked aria-hidden="true">
+<label for="collapse-section8" aria-hidden="true">V1.5.0 / 2-Jul.-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+## Contents
+
+  Headline
+  --------
+  Code aligned to support U5
+  update for GPDMA link with LL update
+  Ticket 84212 - Trace non functional with STM32F4
+  Remove TRACER_EMB_TX_Process prototype in tracer_emb.h
+  remove the TX processing
+
+  : Fixed bugs list
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE v1.2.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section7" aria-hidden="true">
+<label for="collapse-section7" aria-hidden="true">V1.4.1 / 16-Apr.-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+## Contents
+
+  Headline
+  --------
+  Remove reference to USBPD
+
+  : Fixed bugs list
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE v1.2.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section6" aria-hidden="true">
+<label for="collapse-section6" aria-hidden="true">V1.4.0 / 14-Apr.-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+## Contents
+
+  Headline
+  --------
+  * Ticket 84461 Indicate when trace is lost
+
+  : Fixed bugs list
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE v1.2.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section5" aria-hidden="true">
+<label for="collapse-section5" aria-hidden="true">V1.3.0 / 26-March-2020</label>
 <div>
 
 ## Main Changes

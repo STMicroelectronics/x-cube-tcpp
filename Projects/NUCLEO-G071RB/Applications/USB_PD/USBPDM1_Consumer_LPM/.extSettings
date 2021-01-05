@@ -1,0 +1,12 @@
+[ProjectFiles]
+HeaderPath=..\..\..\..\..\..\Drivers\BSP\X-NUCLEO-USBPDM1
+HeaderPath=..\..\..\..\..\..\Utilities\timer
+HeaderPath=..\..\..\..\..\..\Utilities\lpm\tiny_lpm
+[Others]
+Define=USE_STM32G0XX_NUCLEO;NUCLEO_MB1360A;USBPDM1_DB_OUT_FEATURE_ENABLED;USBPDM1_VCC_FEATURE_ENABLED
+HALModule=
+[Groups]
+Doc=../readme.txt;
+Drivers/BSP/X-NUCLEO-USBPDM1=../../../../../../Drivers/BSP/X-NUCLEO-USBPDM1/usbpdm1_usbpd_pwr.c;
+Utilities=../../../../../../Utilities/lpm/tiny_lpm/stm32_lpm.c;
+Utilities=../../../../../../Utilities/timer/stm32_timer.c;
