@@ -4,7 +4,7 @@
 
 **X-CUBE-TCPP** is a USB-IF certified Expansion Package and consists of libraries, drivers, sources, APIs and application examples running on STM32G0 and STM32G4 Series microcontrollers.
 
-Check the ST web page : [USB Type-C and Power Delivery](https://www.st.com/en/applications/connectivity/usb-type-c-and-power-delivery.html#overview) for more details.
+Check the ST web page : [USB Type-C and Power Delivery](https://www.st.com/content/st_com/en/stm32-usb-c.html) for more details.
 
 In this package, it contains different applications:
   * A [PPS Sink example on STM32G0](https://github.com/STMicroelectronics/x-cube-tcpp/tree/main/Projects/NUCLEO-G071RB/Applications/USB_PD/USBPDM1_Consumer_PPS) and a [Sink example on STM32G4](https://github.com/STMicroelectronics/x-cube-tcpp/tree/main/Projects/NUCLEO-G474RE/Applications/USB_PD/USBPDM1_Consumer) are provided to help to develop applications based on USB-PD.
