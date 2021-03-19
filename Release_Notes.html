@@ -1,312 +1,546 @@
 <!DOCTYPE html>
-<html><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Release Notes for X-CUBE-TCPP Package</title>
-
-<style type="text/css">
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
-</style>
-<link rel="stylesheet" href="_htmresc/mini-st.css"></head>
-<body link="blue" vlink="blue">
-<div class="sectione dark">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Release Notes for X-CUBE-TCPP Package</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="_htmresc/mini-st_2020.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="icon" type="image/x-icon" href="_htmresc/favicon.png" />
+</head>
+<body>
+<div class="row">
+<div class="col-sm-12 col-lg-4">
 <center>
-<h1 id="release-notes-for-x-cube-TCPP"><small>Release
-Notes for</small> <strong>X-CUBE-TCPP</strong></h1>
-<p>Copyright © 2020 STMicroelectronics<br>
+<h1 id="release-notes-for-x-cube-tcpp">Release Notes for <mark>&lt;X-CUBE-TCPP&gt;</mark></h1>
+<p>Copyright © 2020 STMicroelectronics<br />
 </p>
-<a href="https://www.st.com" class="logo"><img src="_htmresc/st_logo.png" alt="ST logo"></a>
+<a href="https://www.st.com" class="logo"><img src="_htmresc/st_logo_2020.png" alt="ST logo" /></a>
 </center>
-</div>
-<div style="width: 1034px;" class="Section1"><br>
-<div id="license" class="topic1">
-<h2>License</h2>
-<p>This software package is licensed by ST under ST license
-SLA0048,&nbsp;the "License"; You may not use this package except in
-compliance with the License. You may obtain a copy of the License at:</p>
-<p style="text-align: center;"><a href="http://www.st.com/SLA0048" target="_blank">http://www.st.com/SLA0048</a></p>
-</div>
-</div>
+<h1 id="license">License</h1>
+<p>This software package is licensed by ST under SLA0048 the “License”; You may not use this component except in compliance with the License. You may obtain a copy of the License at:</p>
+<p><a href="http://www.st.com/SLA0048">st.com/SLA0048</a></p>
 <h1 id="purpose">Purpose</h1>
-<p>The <strong>X-CUBE-TCPP</strong> software package
-is an expansion for <strong>STM32Cube</strong>.</p>
-<p style="text-align: center;"><img style="width: 300px; height: 226px;" alt="STM32G071 Nucleo64 and X-NUCLEO-TCPP" src="_htmresc/ST15291_X-NUCLEO-USBPDM1_NUCLEO-G071.jpg"></p>
-<p>This software provides is a USB-IF certified Expansion Package
-and consists of libraries, drivers, sources, APIs and application
-example running on STM32G0 Series microcontrollers.</p>
-Check the ST web page : <a href="https://www.st.com/en/applications/connectivity/usb-type-c-and-power-delivery.html#overview">USB
-Type-C and Power Delivery</a> for more details.<br>
-<br>
-One PPS sink example is provided to help to develop applications based
-on ST USB-PD stack.<br>
-The "Core" of the stack is delivered in library format while the
-"Device" part, in open source format, offers high level of flexibility
-to match the design considerations.<br>
-This Expansion Package is demonstrated on one hardware implementation,
-but can easily be ported to any STM32 including the UCPD periperal.<br>
-Included features :<br>
+<p><strong>X-CUBE-TCPP</strong> is an STMicroelectronics original initiative. It uses for USB Type-C and Power Delivery software expansion for STM32Cube (<a href="https://www.st.com/resource/en/user_manual/dm00432311-development-guidelines-for-stm32cube-expansion-packages-stmicroelectronics.pdf">UM2285</a>).</p>
+<p><strong>X-CUBE-TCPP</strong> is a USB-IF certified Expansion Package (<strong>USB Type-C Rev 1.2 and Power Delivery 3.0 with 100 W PPS support</strong>) and consists of libraries, drivers, sources, APIs and application examples running on STM32 Series GP microcontrollers embedding Type-C and power delivery management (thanks to the embedded UCPD PHY integrated in STM32G4, STM32G0 and STM32L5).</p>
+<p>For the other STM32 GP MCU without embedded UCPD PHY (like STM32L4, STM32F0…), this package demonstrates how to comply with Type-C specification.</p>
+<p>All the applications available in this package need to have the <a href="https://www.st.com/en/protection-devices/tcpp01-m12.html">TCPP01-M12</a> integrated. The TCPP01-M12 (Type-C port protection) is a single chip solution for USB Type-C port protection that facilitates the migration from USB legacy connectors type-A or type-B to USB Type-C connectors.</p>
+<p>STMicroelectronics package has been certified by USB-IF through the reference <a href="https://cms.usb.org/usb/cms/device/40004">TID 3036</a> and <a href="https://cms.usb.org/usb_device/certificate/42552">TID 5205</a>.</p>
+<p>Check the ST web page : <a href="https://www.st.com/content/st_com/en/stm32-usb-c.html">USB Type-C and Power Delivery</a> for more details.</p>
+<p>The figure below shows the overall architecture:</p>
+<p><img src="_htmresc/archi_stack_G0.JPG" /></p>
+<h2 id="boards-available">Boards available</h2>
 <ul>
-<li> Debug tools for trace and power delivery configuration
-(using <a href="https://www.st.com/en/development-tools/stm32cubemonucpd.html">STM32CubeMonUCPD</a>)<br>
-</li>
-<li> USB-PD 2.0/3.0+PPS compliant<br>
-</li>
-<li> Tested with TCPP01
-</li>
+<li><p><a href="https://www.st.com/en/evaluation-tools/nucleo-g071rb.html">NUCLEO-G071RB</a>, <a href="https://www.st.com/en/evaluation-tools/nucleo-g474re.html">NUCLEO-G474RE</a> and <a href="https://www.st.com/en/evaluation-tools/nucleo-l412rb-p.html">NUCLEO-L412RB-P</a></p></li>
+<li><p><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-power-drive-hw/x-nucleo-usbpdm1.html">X-NUCLEO-USBPDM1</a></p></li>
 </ul>
-<p>The figure below shows the overall architecture.</p>
-<p style="text-align: center;"><img style="width: 566px; height: 279px;" alt="USB PD stack architecture" src="_htmresc/archi_stack_G0.JPG"></p>
+<p><img src="_htmresc/ST15291_X-NUCLEO-USBPDM1_NUCLEO-G071.jpg" alt="X-NUCLEO-USBPDM1_NUCLEO-G071" width="50%"/></p>
 <ul>
-<li>The application provide examples of how to use the code.</li>
-<li>The drivers abstract low level details of the hardware and
-allow the middleware layer to provide functionalities in a hardware
-independent fashion.&nbsp;</li>
-<li>At the bottom layer there are the HW components: the
-STM32G0
-MCU and the shield containing the TCPP01 protection chip, and the
-Type-C connector.</li>
+<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-power-drive-hw/x-nucleo-snk1m1.html">X-NUCLEO-SNK1M1</a></li>
 </ul>
-<p>Here is the list of references to user documents:</p>
-<ul>
-<li><a href="https://www.st.com/resource/en/application_note/dm00663511-how-to-build-a-simple-usbpd-sink-application-with-stm32cubemx-stmicroelectronics.pdf">AN5418</a>
-: application to create a simple application from STM32CubeMX
-<a href="https://www.youtube.com/watch?v=Z_Sn6CBbz-k">(Corresponding
-video) </a></li>
-<li><a href="https://www.st.com/stm32cube">STM32Cube</a>
-: STM32Cube</li>
-<li><a href="https://www.st.com/en/development-tools/stm32cubemonucpd.html">STM32CubeMonUCPD</a>
-: Monitoring and configuration software tool for STM32 USB-C and Power
-Delivery 3.0 applications</li>
-<li><a href="https://www.st.com/content/ccc/resource/technical/document/user_manual/group1/aa/15/14/5d/f5/b8/4a/fc/DM00598101/files/DM00598101.pdf/jcr:content/translations/en.DM00598101.pdf%29">UM2552</a>
-: USBPD stack user manual</li>
-</ul>
-<h2 id="development-toolchains-and-compilers-2">Development
-Toolchains and Compilers</h2>
-<ul>
-<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3 +
-STLink/V2</li>
-<li>RealView Microcontroller Development Kit (MDK-ARM)
-toolchain V5.25.2 + ST-LINK/V2</li>
-<li>STM32CubeIDE Version 1.3.0 + ST-LINK/V2</li>
-</ul>
-<h2 id="supported-devices-and-boards-2">Supported Devices
-and Boards</h2>
-<ul>
-<li><a href="https://www.st.com/en/evaluation-tools/nucleo-g071rb.html">STM32G071</a>, and <a href="https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-g474re.html">STM32G474RE-C04 </a>Nucleo 64
-</li>
-<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-power-drive-hw/x-nucleo-usbpdm1.html">X-NUCLEO-USBPDM1</a></li>
-</ul>
-<div class="collapse"><input id="collapse-section4" checked="checked" aria-hidden="true" type="checkbox"> <label for="collapse-section4" aria-hidden="true"><strong>v2.1.0/ 18-December-2020</strong></label>
-<div class="col-sm-12 col-lg-8">
-<h1 id="update-history">Update History</h1>
-<h2 id="main-changes">Main Change</h2>
-<li>One low power application added for G0 : <a href="Projects/NUCLEO-G071RB/Applications/USB_PD/USBPDM1_Consumer_LPM/readme.txt">USBPDM1_Consumer_LPM </a></li>
-<li>Update USBPD core library version to 3.2.0</li>
-<li>CMSIS DEVICES G4 V1.2.0RC1 -> V1.2.0</li>
-<li>Rename BSP Board P-NUCLEO-USBPM1 to X-NUCLEO-USBPM1</li>
-<li>Rename G0 and G4 applications TCPP01_Consumer_PPS to USBPDM1_Consumer_PPS</li>
-<li>TRACER_EMB V1.3.0 to V1.5.0</li>
-<li>GUI_INTERFACE to GUI_V1.12.0</li>
-<h2 id="contents-1">Contents</h2>
+<p><img src="_htmresc/x_nucleo_snk1m1.png" alt="X-NUCLEO-SNK1M1_NUCLEO-G071" width="50%"/></p>
+<h2 id="applications">Applications</h2>
 <table>
-<thead><tr class="header">
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">Version</th>
-<th style="text-align: left;">License</th>
-<th style="text-align: left;">Document</th>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 16%" />
+<col style="width: 30%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Applications</th>
+<th>Board</th>
+<th>Shield</th>
+<th>Short Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">PD core stack library</td>
-<td style="text-align: left;">3.2.0</td>
-<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
-<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Core/Release_Notes.html">Release Note</a></td>
+<td><a href="./Projects/NUCLEO-G071RB/Applications/USB_PD/USBPDM1_Sink_PPS">USBPDM1_Sink_PPS</a></td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-USBPDM1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application (with <strong>PPS</strong>) running on STM32G0XX devices, with X-NUCLEO-USBPDM1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./Projects/NUCLEO-G071RB/Applications/USB_PD/USBPDM1_Sink_LPM">USBPDM1_Sink_LPM</a></td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-USBPDM1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application (with <strong>Low Power Mode</strong>) running on STM32G0XX devices, with X-NUCLEO-USBPDM1 shield plugged.</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">STM32G4xx HAL</td>
-<td style="text-align: left;">1.2.0</td>
+<td><a href="./Projects/NUCLEO-G474RE/Applications/USB_PD/USBPDM1_Sink">USBPDM1_Sink</a></td>
+<td>NUCLEO-G474RE</td>
+<td>X-NUCLEO-USBPDM1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application running on STM32G4XX devices, with X-NUCLEO-USBPDM1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./Projects/NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink">SNK1M1_Sink</a></td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-SNK1M1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application (with <strong>PPS</strong>) running on STM32G0XX devices, with X-NUCLEO-SNK1M1 shield plugged.</td>
+</tr>
+<tr class="odd">
+<td><a href="./Projects/NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink">SNK1M1_Sink</a></td>
+<td>NUCLEO-G474RE</td>
+<td>X-NUCLEO-SNK1M1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application (with <strong>PPS</strong> and <strong>USB MSC</strong> cohabitation) running on STM32G4XX devices, with X-NUCLEO-SNK1M1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./Projects/NUCLEO-L412RB-P/Applications/USB_PD/SNK1M1_Sink_TypeC_Only">SNK1M1_Sink_TypeC_Only</a></td>
+<td>NUCLEO-L412RB-P</td>
+<td>X-NUCLEO-SNK1M1</td>
+<td>Use of Type-C Consumer application (with <strong>USB MSC</strong> enumeration) running on STM32L4XX devices, with X-NUCLEO-SNK1M1 shield plugged.</td>
+</tr>
+</tbody>
+</table>
+<p>This Expansion Package is demonstrated on one hardware implementation, but can easily be ported to any STM32 including the UCPD periperal.</p>
+<p>Here is the list of references to the user documents:</p>
+<ul>
+<li><a href="https://www.st.com/resource/en/application_note/dm00536349-usb-typec-power-delivery-using-stm32xx-series-mcus-and-stm32xxx-series-mpus-stmicroelectronics.pdf">AN5225</a>: [ USB Type-C™ Power Delivery using STM32xx Series MCUs and STM32xxx Series MPUs]</li>
+<li><a href="https://www.st.com/resource/en/user_manual/dm00598101-managing-usb-power-delivery-systems-with-stm32-microcontrollers-stmicroelectronics.pdf">UM2552</a>: [ Managing USB power delivery stack with STM32 microcontrollers]</li>
+<li><a href="https://www.st.com/resource/en/application_note/dm00663511-how-to-build-a-simple-usbpd-sink-application-with-stm32cubemx-stmicroelectronics.pdf">AN5418</a>: [ An application to create a simple application from STM32CubeMX]</li>
+<li><a href="https://www.youtube.com/watch?v=-vsJhNIaHxE&amp;feature=youtu.be">AN5418-Video</a>: [ An application to create a simple application from STM32CubeMX]</li>
+</ul>
+</div>
+<section id="update-history" class="col-sm-12 col-lg-8">
+<h1>Update history</h1>
+<div class="collapse">
+<input type="checkbox" id="collapse-section5" checked aria-hidden="true"> <label for="collapse-section5" aria-hidden="true">v2.2.0/ 18-February-2021</label>
+<div>
+<h2 id="main-changes">Main changes</h2>
+<h3 id="maintenance-release">Maintenance release</h3>
+<p>Maintenance release and product update</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="Projects/NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink/readme.txt">Add Sink application based on X-NUCLEO-SNK1M1 for G0</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="Projects/NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink/readme.txt">Add Sink application based on X-NUCLEO-SNK1M1 for G4</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="Projects/NUCLEO-L412RB-P/Applications/USB_PD/SNK1M1_Sink_TypeC_Only/readme.txt">Add Type-C application based on X-NUCLEO-SNK1M1 for L4</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rename applications forX-NUCLEO-USBPDM1 (Consumer -&gt; Sink)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contents">Contents</h2>
+<p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
+<p>Components</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+<th style="text-align: left;">Release note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">STM32G0xx HAL Drivers</td>
+<td style="text-align: left;">V1.4.0 <span class="icon-st-update"></span></td>
 <td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
-<td style="text-align: left;"><a href="Drivers/STM32G4xx_HAL_Driver/Release_Notes.html">Release Note</a></td>
+<td style="text-align: left;"><a href="Drivers/STM32G0xx_HAL_Driver/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STM32L4xx HAL Drivers</td>
+<td style="text-align: left;">V1.12.0 <span class="icon-st-add"></span></td>
+<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers/STM32L4xx_HAL_Driver/Release_Notes.html">release note URL</a></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">STM32G4xx CMSIS</td>
-<td style="text-align: left;">1.2.0</td>
+<td style="text-align: left;">STM32L4xx CMSIS</td>
+<td style="text-align: left;">V1.7.0 <span class="icon-st-add"></span></td>
 <td style="text-align: left;"><a href="https://opensource.org/licenses/Apache-2.0">Apache-2.0</a></td>
-<td style="text-align: left;"><a href="Drivers/CMSIS/Device/ST/STM32G4xx/Release_Notes.html">Release Note</a></td>
+<td style="text-align: left;"><a href="Drivers/CMSIS/Device/ST/STM32L4xx/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STM32L4xx_Nucleo</td>
+<td style="text-align: left;">V2.1.6 <span class="icon-st-add"></span></td>
+<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers/BSP/STM32L4xx_Nucleo/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STM32_USB_Device_Library</td>
+<td style="text-align: left;">V2.6.0 <span class="icon-st-add"></span></td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Middlewares/ST/STM32_USB_Device_Library/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GUI_INTERFACE</td>
+<td style="text-align: left;">V1.13.0 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Utilities/GUI_INTERFACE/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STM32_USBPD_Library/CORE</td>
+<td style="text-align: left;">V3.3.1 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Core/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STM32_USBPD_Library/DEVICES_G0</td>
+<td style="text-align: left;">g0_v3.2.1 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Middlewares\ST\STM32_USBPD_Library\Devices\STM32G0XX\Release_Notes.html">release note URL</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="known-limitations">Known limitations</h2>
+<p>Outstanding bugs list</p>
+<h2 id="development-toolchains-and-compilers">Development toolchains and compilers</h2>
+<ul>
+<li>[IAR Embedded Workbench for ARM] [EWARM V8.50.4 + STLink/V2]</li>
+<li>[RealView Microcontroller Development Kit] [MDK-ARM V5.25.2 + ST-LINK/V2]</li>
+<li>[STM32CubeIDE] <a href="https://www.st.com/en/development-tools/stm32cubeide.html">V1.6.0 + ST-LINK/V2</a></li>
+</ul>
+<h2 id="supported-devices-and-boards">Supported devices and boards</h2>
+<ul>
+<li>NUCLEO-G071RB, NUCLEO-G474RE and NUCLEO-L412RB-P</li>
+<li>X-NUCLEO-USBPDM1</li>
+<li>X-NUCLEO-SNK1M1</li>
+</ul>
+<h2 id="backward-compatibility">Backward compatibility</h2>
+<p>Not applicable</p>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section4" aria-hidden="true"> <label for="collapse-section4" aria-hidden="true">v2.1.0/ 18-December-2020</label>
+<div>
+<h2 id="main-changes-1">Main changes</h2>
+<h3 id="maintenance-release-1">Maintenance release</h3>
+<p>Maintenance release and product update</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="Projects/NUCLEO-G071RB/Applications/USB_PD/USBPDM1_Consumer_LPM/readme.txt">One low power application added for G0</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rename BSP Board P-NUCLEO-USBPM1 to X-NUCLEO-USBPM1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Rename G0 and G4 applications TCPP01_Consumer_PPS to USBPDM1_Consumer_PPS</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contents-1">Contents</h2>
+<p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
+<p>Components</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+<th style="text-align: left;">Release note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">STM32G4xx HAL Drivers</td>
+<td style="text-align: left;">V1.2.0 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers/STM32G4xx_HAL_Driver/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STM32G4xx CMSIS</td>
+<td style="text-align: left;">V1.2.0 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/Apache-2.0">Apache-2.0</a></td>
+<td style="text-align: left;"><a href="Drivers/CMSIS/Device/ST/STM32G4xx/Release_Notes.html">release note URL</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">X-NUCLEO-USBPDM1 BSP</td>
-<td style="text-align: left;">1.1.0</td>
+<td style="text-align: left;">V1.1.0 <span class="icon-st-update"></span></td>
 <td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
-<td style="text-align: left;"><a href="Drivers/BSP/X-NUCLEO-USBPDM1/Release_Notes.html">Release Note</a></td>
+<td style="text-align: left;"><a href="Drivers/BSP/X-NUCLEO-USBPDM1/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GUI_INTERFACE</td>
+<td style="text-align: left;">V1.10.0 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Utilities/GUI_INTERFACE/Release_Notes.html">release note URL</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">TRACER_EMB</td>
-<td style="text-align: left;">1.3.0</td>
+<td style="text-align: left;">V1.3.0 <span class="icon-st-update"></span></td>
 <td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
-<td style="text-align: left;"><a href="Utilities/TRACER_EMB/Release_Notes.html">Release Note</a></td>
+<td style="text-align: left;"><a href="Utilities/TRACER_EMB/Release_Notes.html">release note URL</a></td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">GUI_INTERFACE</td>
-<td style="text-align: left;">1.10.0</td>
-<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
-<td style="text-align: left;"><a href="Utilities/GUI_INTERFACE/Release_Notes.html">Release Note</a></td>
+<tr class="even">
+<td style="text-align: left;">STM32_USBPD_Library</td>
+<td style="text-align: left;">V3.2.0 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Core/Release_Notes.html">release note URL</a></td>
 </tr>
 </tbody>
 </table>
+<h2 id="known-limitations-1">Known limitations</h2>
+<p>Outstanding bugs list</p>
+<h2 id="development-toolchains-and-compilers-1">Development toolchains and compilers</h2>
+<ul>
+<li>[IAR Embedded Workbench for ARM] [EWARM V8.32.3 + STLink/V2]</li>
+<li>[RealView Microcontroller Development Kit] [MDK-ARM V5.25.2 + ST-LINK/V2]</li>
+<li>[STM32CubeIDE] <a href="https://www.st.com/en/development-tools/stm32cubeide.html">V1.5.0 + ST-LINK/V2</a></li>
+</ul>
+<h2 id="supported-devices-and-boards-1">Supported devices and boards</h2>
+<ul>
+<li>NUCLEO-G071RB and NUCLEO-G474RE</li>
+<li>X-NUCLEO-USBPDM1</li>
+</ul>
+<h2 id="backward-compatibility-1">Backward compatibility</h2>
+<p>Not applicable</p>
 </div>
 </div>
 <div class="collapse">
-<input id="collapse-section1" aria-hidden="true" type="checkbox"> <label for="collapse-section1" aria-hidden="true"><strong>v2.0.1/ 01-July-2020</strong></label>
+<input type="checkbox" id="collapse-section3" aria-hidden="true"> <label for="collapse-section3" aria-hidden="true">v2.0.1 / 01-July-2020</label>
 <div>
-<h2 id="main-changes">Main Change</h2>
-Changed USART1 to LPUART1 for G4 project, to match with MB1367-G474RE-C04 hardware version<br>
-</div>
-</div>
-<div class="collapse">
-<input id="collapse-section2"  aria-hidden="true" type="checkbox"> <label for="collapse-section2" aria-hidden="true"><strong>v2.0.0/ 15-June-2020</strong></label>
-<div>
-<h2 id="main-changes">Main Change</h2>
-G4 project added<br>
-</div>
-</div>
-<div class="collapse">
-<input id="collapse-section3" aria-hidden="true" type="checkbox"> <label for="collapse-section3" aria-hidden="true"><strong>v1.0.0/ 01-May-2020</strong></label>
-<div>
-<h2 id="main-changes">Main Changes</h2>
-Initial release
-<h2 id="contents-1">Contents</h2>
+<h2 id="main-changes-2">Main changes</h2>
+<h3 id="maintenance-release-2">Maintenance release</h3>
+<p>Maintenance release and product update</p>
 <table>
-<caption>Middlewares<br>
-</caption>
-<thead><tr class="header">
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">Version</th>
-<th style="text-align: left;">License</th>
-<th style="text-align: left;">Document</th>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">PD core stack library</td>
-<td style="text-align: left;">3.0.0</td>
-<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
-<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Core/Release_Notes.html">Release Note</a></td>
+<td style="text-align: left;">Changed USART1 to LPUART1 for G4 project, to match with MB1367-G474RE-C04 hardware version</td>
 </tr>
+</tbody>
+</table>
+<h2 id="contents-2">Contents</h2>
+<p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
+<p>Components</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+<th style="text-align: left;">Release note</th>
+</tr>
+</thead>
+<tbody>
 <tr class="odd">
+<td style="text-align: left;">STM32_USBPD_Library</td>
+<td style="text-align: left;">V3.0.0 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Core/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">G0 Devices</td>
-<td style="text-align: left;">3.0.0</td>
+<td style="text-align: left;">V3.0.0 <span class="icon-st-update"></span></td>
 <td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
-<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Devices/STM32G0XX/Release_Notes.html">Release Note</a></td>
+<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Devices/STM32G0XX/Release_Notes.html">release note URL</a></td>
 </tr>
 </tbody>
 </table>
+<h2 id="known-limitations-2">Known limitations</h2>
+<p>Outstanding bugs list</p>
+<h2 id="development-toolchains-and-compilers-2">Development toolchains and compilers</h2>
+<ul>
+<li>[IAR Embedded Workbench for ARM] [EWARM V8.32.3 + STLink/V2]</li>
+<li>[RealView Microcontroller Development Kit] [MDK-ARM V5.25.2 + ST-LINK/V2]</li>
+<li>[STM32CubeIDE] <a href="https://www.st.com/en/development-tools/stm32cubeide.html">V1.5.0 + ST-LINK/V2</a></li>
+</ul>
+<h2 id="supported-devices-and-boards-2">Supported devices and boards</h2>
+<ul>
+<li>NUCLEO-G071RB and NUCLEO-G474RE</li>
+<li>X-NUCLEO-USBPDM1</li>
+</ul>
+<h2 id="backward-compatibility-2">Backward compatibility</h2>
+<p>Not applicable</p>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section2" aria-hidden="true"> <label for="collapse-section2" aria-hidden="true">v2.0.0 / 15-June-2020</label>
+<div>
+<h2 id="main-changes-3">Main changes</h2>
+<h3 id="maintenance-release-3">Maintenance release</h3>
+<p>Maintenance release and product update</p>
 <table>
-<caption>Drivers<br>
-</caption>
-<thead><tr class="header">
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">Version</th>
-<th style="text-align: left;">License</th>
-<th style="text-align: left;">Document</th>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
 </tr>
 </thead>
 <tbody>
+<tr class="odd">
+<td style="text-align: left;">G4 project added</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contents-3">Contents</h2>
+<p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
+<h2 id="known-limitations-3">Known limitations</h2>
+<p>Outstanding bugs list</p>
+<h2 id="development-toolchains-and-compilers-3">Development toolchains and compilers</h2>
+<ul>
+<li>[IAR Embedded Workbench for ARM] [EWARM V8.32.3 + STLink/V2]</li>
+<li>[RealView Microcontroller Development Kit] [MDK-ARM V5.25.2 + ST-LINK/V2]</li>
+<li>[STM32CubeIDE] <a href="https://www.st.com/en/development-tools/stm32cubeide.html">V1.5.0 + ST-LINK/V2</a></li>
+</ul>
+<h2 id="supported-devices-and-boards-3">Supported devices and boards</h2>
+<ul>
+<li>NUCLEO-G071RB and NUCLEO-G474RE</li>
+<li>X-NUCLEO-USBPDM1</li>
+</ul>
+<h2 id="backward-compatibility-3">Backward compatibility</h2>
+<p>Not applicable</p>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section1" aria-hidden="true"> <label for="collapse-section1" aria-hidden="true">v1.0.0/ 01-May-2020</label>
+<div>
+<h2 id="main-changes-4">Main changes</h2>
+<h3 id="maintenance-release-4">Maintenance release</h3>
+<p>Initial release</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Initial release</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contents-4">Contents</h2>
+<p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
+<p>Components</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+<th style="text-align: left;">Release note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">STM32G0xx HAL Drivers</td>
+<td style="text-align: left;">V1.3.0 <span class="icon-st-add"></span></td>
+<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers/STM32G0xx_HAL_Driver/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STM32G4xx HAL Drivers</td>
+<td style="text-align: left;">V1.2.0RC1 <span class="icon-st-add"></span></td>
+<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers/STM32G4xx_HAL_Driver/Release_Notes.html">release note URL</a></td>
+</tr>
 <tr class="odd">
 <td style="text-align: left;">STM32G0xx CMSIS</td>
-<td style="text-align: left;">1.3.0</td>
-<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
-<td style="text-align: left;"><a href="Drivers/CMSIS/Device/ST/STM32G0xx/Release_Notes.html">Release
-notes</a></td>
+<td style="text-align: left;">V1.3.0 <span class="icon-st-add"></span></td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/Apache-2.0">Apache-2.0</a></td>
+<td style="text-align: left;"><a href="Drivers/CMSIS/Device/ST/STM32G4xx/Release_Notes.html">release note URL</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">STM32G4xx CMSIS</td>
-<td style="text-align: left;">1.2.0RC1</td>
+<td style="text-align: left;">V1.2.0 <span class="icon-st-add"></span></td>
 <td style="text-align: left;"><a href="https://opensource.org/licenses/Apache-2.0">Apache-2.0</a></td>
-<td style="text-align: left;"><a href="Drivers/CMSIS/Device/ST/STM32G4xx/Release_Notes.html">Release
-notes</a></td>
+<td style="text-align: left;"><a href="Drivers/CMSIS/Device/ST/STM32G4xx/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">X-NUCLEO-USBPDM1 BSP</td>
+<td style="text-align: left;">V1.0.0 <span class="icon-st-add"></span></td>
+<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers/BSP/X-NUCLEO-USBPDM1/Release_Notes.html">release note URL</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">STM32G0xx HAL</td>
-<td style="text-align: left;">1.3.0</td>
-<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
-<td style="text-align: left;"><a href="Drivers/STM32G0xx_HAL_Driver/Release_Notes.html">Release
-notes</a></td>
+<td style="text-align: left;">STM32G0xx_Nucleo</td>
+<td style="text-align: left;">V1.1.0 <span class="icon-st-add"></span></td>
+<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers/BSP/STM32G0xx_Nucleo/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STM32G4xx_Nucleo</td>
+<td style="text-align: left;">V1.0.0 <span class="icon-st-add"></span></td>
+<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers/BSP/STM32G4xx_Nucleo/Release_Notes.html">release note URL</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">STM32G4xx HAL</td>
-<td style="text-align: left;">1.2.0RC1</td>
-<td style="text-align: left;"><a href="https://opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
-<td style="text-align: left;"><a href="Drivers/STM32G4xx_HAL_Driver/Release_Notes.html">Release
-notes</a></td>
+<td style="text-align: left;">GUI_INTERFACE</td>
+<td style="text-align: left;">V1.10.0 <span class="icon-st-add"></span></td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Utilities/GUI_INTERFACE/Release_Notes.html">release note URL</a></td>
 </tr>
-</tbody>
-</table>
-<table>
-<caption>Utilities<br>
-</caption>
-<thead><tr class="header">
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">Version</th>
-<th style="text-align: left;">License</th>
-<th style="text-align: left;">Document</th>
-</tr>
-</thead>
-<tbody>
 <tr class="odd">
 <td style="text-align: left;">TRACER_EMB</td>
-<td style="text-align: left;">1.3.0</td>
+<td style="text-align: left;">V1.3.0 <span class="icon-st-add"></span></td>
 <td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
-<td style="text-align: left;"><a href="Utilities/TRACER_EMB/Release_Notes.html">Release
-Note</a></td>
+<td style="text-align: left;"><a href="Utilities/TRACER_EMB/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STM32_USBPD_Library</td>
+<td style="text-align: left;">V3.0.0 <span class="icon-st-add"></span></td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Core/Release_Notes.html">release note URL</a></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">GUI_INTERFACE</td>
-<td style="text-align: left;">1.10.0</td>
-<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
-<td style="text-align: left;"><a href="Utilities/GUI_INTERFACE/Release_Notes.html">Release
-Note</a></td>
+<td style="text-align: left;">G0 Devices</td>
+<td style="text-align: left;">V3.0.0 <span class="icon-st-add"></span></td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Devices/STM32G0XX/Release_Notes.html">release note URL</a></td>
 </tr>
 </tbody>
 </table>
-<table>
-<caption>Component<br>
-</caption>
-<thead><tr class="header">
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">Version</th>
-<th style="text-align: left;">License</th>
-<th style="text-align: left;">Document</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">X-NUCLEO-USBPDM1</td>
-<td style="text-align: left;">1.0.0</td>
-<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
-<td style="text-align: left;"><a href="Drivers/BSP/P-NUCLEO-USBPDM1/Release_Notes.html">Release
-Note</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">STM32G0xx_Nucleo BSP</td>
-<td style="text-align: left;">1.1.0</td>
-<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
-<td style="text-align: left;"><a href="Drivers/BSP/STM32G0xx_Nucleo/Release_Notes.html">Release
-Note</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">STM32G4xx_Nucleo BSP</td>
-<td style="text-align: left;">1.0.0</td>
-<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
-<td style="text-align: left;"><a href="Drivers/BSP/STM32G4xx_Nucleo/Release_Notes.html">Release
-Note</a></td>
-</tr>
-</tbody>
-</table>
+<h2 id="known-limitations-4">Known limitations</h2>
+<p>Outstanding bugs list</p>
+<h2 id="development-toolchains-and-compilers-4">Development toolchains and compilers</h2>
+<ul>
+<li>[IAR Embedded Workbench for ARM] [EWARM V8.32.3 + STLink/V2]</li>
+<li>[RealView Microcontroller Development Kit] [MDK-ARM V5.25.2 + ST-LINK/V2]</li>
+<li>[STM32CubeIDE] <a href="https://www.st.com/en/development-tools/stm32cubeide.html">V1.5.0 + ST-LINK/V2</a></li>
+</ul>
+<h2 id="supported-devices-and-boards-4">Supported devices and boards</h2>
+<ul>
+<li>NUCLEO-G071RB and NUCLEO-G474RE</li>
+<li>X-NUCLEO-USBPDM1</li>
+</ul>
+<h2 id="backward-compatibility-4">Backward compatibility</h2>
+<p>Not applicable</p>
 </div>
 </div>
+</section>
 </div>
-
-</body></html>
+<footer class="sticky">
+<div class="columns">
+<div class="column" style="width:95%;">
+<p>For complete documentation on <strong>STM32 Series</strong> , visit: <a href="http://www.st.com/STM32">www.st.com/STM32</a>]</p>
+</div><div class="column" style="width:5%;">
+<p><abbr title="Based on template cx566953 version 2.0">Info</abbr></p>
+</div>
+</div>
+</footer>
+</body>
+</html>

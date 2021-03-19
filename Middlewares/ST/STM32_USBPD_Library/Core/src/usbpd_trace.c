@@ -69,7 +69,7 @@
 #define __TRACE_SET_TAG_ID(_PORT_, _TAG_)  (((_PORT_) << TRACE_PORT_BIT_POSITION) | (_TAG_))
 
 #define TRACER_EMB_WRITE_DATA(_POSITION_,_DATA_)  TRACER_EMB_WriteData((_POSITION_),(_DATA_));\
-                                                  (_POSITION_) = ((_POSITION_) + 1u);
+  (_POSITION_) = ((_POSITION_) + 1u);
 
 /**
   * @}
@@ -85,7 +85,7 @@ const uint8_t OverFlow_String[] = { TLV_SOF, TLV_SOF, TLV_SOF, TLV_SOF,   /* Buf
                                     0x0,                                  /* PortNum */
                                     0x0,                                  /* SOP */
                                     0x0, 0x0F,                                                    /* Size */
-                                    'T','R','A','C','E',' ','O','V','E','R','_','F','L','O','W',  /* Data */
+                                    'T', 'R', 'A', 'C', 'E', ' ', 'O', 'V', 'E', 'R', '_', 'F', 'L', 'O', 'W', /* Data */
                                     TLV_EOF, TLV_EOF, TLV_EOF, TLV_EOF                            /* Buffer end */
                                   };
 
@@ -153,7 +153,7 @@ void  USBPD_TRACE_Add(TRACE_EVENT Type, uint8_t PortNum, uint8_t Sop, uint8_t *P
     TRACER_EMB_WRITE_DATA(_writepos, __TRACE_SET_TAG_ID((PortNum + 1u), DEBUG_STACK_MESSAGE));
     /* Copy the LENGTH */
     TRACER_EMB_WRITE_DATA(_writepos, (uint8_t)((Size + TRACE_SIZE_HEADER_TRACE) >> 8u));
-    TRACER_EMB_WRITE_DATA(_writepos, (uint8_t)(Size+ TRACE_SIZE_HEADER_TRACE));
+    TRACER_EMB_WRITE_DATA(_writepos, (uint8_t)(Size + TRACE_SIZE_HEADER_TRACE));
 
     /* Trace type */
     TRACER_EMB_WRITE_DATA(_writepos, (uint8_t)Type);

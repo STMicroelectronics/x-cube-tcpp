@@ -415,7 +415,9 @@ uint32_t CAD_StateMachine_SNK(uint8_t PortNum, USBPD_CAD_EVENT *pEvent, CCxPin_T
   uint32_t _timing = CAD_DEFAULT_TIME;
 
 #if defined(USBPDM1_VCC_FEATURE_ENABLED)
-   BSP_USBPD_PWR_VCCSetState(PortNum, 1);
+  /* Enable type C state machine */
+  CLEAR_BIT(Ports[PortNum].husbpd->CR, UCPD_CR_CC1TCDIS | UCPD_CR_CC2TCDIS);
+  BSP_USBPD_PWR_VCCSetState(PortNum, 1);
 #endif /* USBPDM1_VCC_FEATURE_ENABLED */
 
   /*Check CAD STATE*/
@@ -698,6 +700,8 @@ uint32_t CAD_StateMachine_SNK(uint8_t PortNum, USBPD_CAD_EVENT *pEvent, CCxPin_T
       break;
     default :
      BSP_USBPD_PWR_VCCSetState(PortNum, 0);
+     /* Disable the C state machine */
+     SET_BIT(Ports[PortNum].husbpd->CR, UCPD_CR_CC1TCDIS | UCPD_CR_CC2TCDIS);
      break;
     }
 #endif /* USBPDM1_VCC_FEATURE_ENABLED */
@@ -1143,17 +1147,12 @@ void CAD_Check_HW_SNK(uint8_t PortNum)
   */
 
 #if defined(_LOW_POWER) || defined(USBPDM1_VCC_FEATURE_ENABLED)
-  /* Enable type C state machine */
-  CLEAR_BIT(Ports[PortNum].husbpd->CR, UCPD_CR_CC1TCDIS | UCPD_CR_CC2TCDIS);
-
   for(int32_t index=0; index < 200/2; index++){ __DSB();};
 
   /* Read the CC line */
   CC1_value = Ports[PortNum].husbpd->SR & UCPD_SR_TYPEC_VSTATE_CC1;
   CC2_value = Ports[PortNum].husbpd->SR & UCPD_SR_TYPEC_VSTATE_CC2;
 
-  /* Disable the C state machine */
-  SET_BIT(Ports[PortNum].husbpd->CR, UCPD_CR_CC1TCDIS | UCPD_CR_CC2TCDIS);
 #else
   CC1_value = Ports[PortNum].husbpd->SR & UCPD_SR_TYPEC_VSTATE_CC1;
   CC2_value = Ports[PortNum].husbpd->SR & UCPD_SR_TYPEC_VSTATE_CC2;
@@ -1271,7 +1270,7 @@ static uint32_t ManageStateDetached_SNK(uint8_t PortNum)
          )
     {
       /* A Sink with Accessory support shall transition to Unattached.Accessory within tDRPTransition
-      after the state of both the CC1 and CC2 pins is SNK.Open for tDRP - dcSRC.DRP · tDRP, or if directed.*/
+      after the state of both the CC1 and CC2 pins is SNK.Open for tDRP - dcSRC.DRP / tDRP, or if directed.*/
       if ( (HAL_GetTick() - _handle->CAD_tToggle_start) > CAD_ACCESSORY_TOGGLE)
       {
         _handle->cstate = USBPD_CAD_STATE_UNATTACHED_ACCESSORY;

@@ -1,0 +1,9 @@
+[ProjectFiles]
+HeaderPath=..\..\..\..\..\..\Drivers\BSP\STM32L4xx_Nucleo
+[Others]
+Define=USE_STM32L4XX_NUCLEO_64_SMPS
+HALModule=
+[Groups]
+Doc=../readme.txt;
+Application/User=../Src/usbpd_usb_if.c;
+Drivers/BSP/STM32L4xx_Nucleo=../../../../../../Drivers/BSP/STM32L4xx_Nucleo/stm32l4xx_nucleo.c;

@@ -7,14 +7,13 @@ header-includes: <link rel="icon" type="image/x-icon" href="_htmresc/favicon.png
 ::: {.row}
 ::: {.col-sm-12 .col-lg-4}
 
+
 <center>
-# <small>Release Notes for</small> STM32 USB-C Power Delivery Core Stack Library
+# Release Notes for STM32 USB-C Power Delivery Core Stack Library
 Copyright &copy; 2018 STMicroelectronics\
-    
+
 [![ST logo](_htmresc/st_logo_2020.png)](https://www.st.com){.logo}
 </center>
-:::
-:::
 
 # License
 
@@ -49,7 +48,155 @@ Here is the list of references to user documents:
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section26" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section28" checked aria-hidden="true">
+<label for="collapse-section28" aria-hidden="true">V3.3.1 / 17-Feb.-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+**Fixed bugs list**
+
+  Headline
+  --------
+  Ticket 101532 - Update timer in Low Power Mode not correctly set
+
+
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE V1.4.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+NA
+
+## Dependencies
+
+NA
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section27" aria-hidden="true">
+<label for="collapse-section27" aria-hidden="true">V3.3.0 / 26-Nov-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+
+  Headline
+  --------
+  Ticket 90290 - Enable VCONN support in MIN_SRC library
+  [PE] Update to avoid PE lock when called PE_Wakeup inside a critical section
+  Ticket 90333 - add a MIN_DRP configuration in the stack libraries
+  [CAD] Hard fault issue detected with CortexM33 (L5)
+  [LPM] replace the LPM call by tiny_lpm function
+  [PE] Ticket 91038 - new sop' msge shouldn't be sent after src_cap till DUT is not in explicit
+  [PE] Ticket 90995 - PE_SNK state machine state change abnormally
+  Add mechanism to guarantee the GoodCRC timing
+  Ticket 75762 - Implement BIST Shared Capacity Test Mode message
+  Ticket 87301 - The RP resistor shall be reset to the default value during the HardReset AMS
+  [PE] Ticket 92315 - Hard fault in the usbpd stack library if USBPD_PE_GetDataInfo not implemented in the application
+  [PE] Ticket 93543 - Role alignment during HardReset
+  [PE] Ticket 93949 - TxOK/NG shouldn't be checked in PD2
+  [DOC] Update to add timeout information inside the MSC 
+  Ticket 94216 - conflict when PE perform HardReset and CAD a detach
+  Rework InitCore function 
+  MISRA corrections
+  Codespell and MCUAStyle corrections
+  [DRD] update around the identical data role for SRC and SNK
+  [SRC] add a notification USBPD_NOTIFY_STATE_SRC_READY
+  [PE] Ticket 95410 - PE_powerrole after power swap
+  [CORE] Update to be aligned with latest USB-PD spec (remove the 2nd UFP VDO)
+  [PE] Add defines for conditions on PE_Request_Control
+  [PE] AMC and AMA deprecated in PD3.0. AMA only used in PD2.0.
+  [PE] Ticket 96025 - Soft_reset should be sent prior to HardReset in case of non response of src_cap post PR_swap
+  Ticket 96061 - Tests TD4.3.x failed on Lecroy with NO_PD Sink version
+  Ticket 96089 - Add a system of hook function to request an action of USB stack
+  Ticket 96219 - Avoid double definition with LE16 & LE32 macros used in usbh.def
+  
+  
+  : Fixed bugs list
+
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE V1.4.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+NA
+
+## Dependencies
+
+Dependencies with TRACER_EMB V1.4.0 or latest
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section26" aria-hidden="true">
+<label for="collapse-section26" aria-hidden="true">V3.2.1 / 8-October-2020</label>
+<div>
+
+## Main Changes
+
+### Patch release
+
+
+## Contents
+
+  Headline
+  --------
+  Ticket 94216 - conflict when PE perform HardReset and CAD a detach
+  
+  : Fixed bugs list
+
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE V1.2.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+NA
+
+## Dependencies
+
+Dependencies with TRACER_EMB V1.4.0
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section26" aria-hidden="true">
 <label for="collapse-section26" aria-hidden="true">V3.2.0 / 08-July-2020</label>
 <div>
 
@@ -106,7 +253,7 @@ NA
 
 ## Dependencies
 
-Dependancies with TRACER_EMB V1.4.0
+Dependencies with TRACER_EMB V1.4.0
 
 </div>
 :::
@@ -152,7 +299,7 @@ For TCPM implementation, updates have been done on FUSB307 component (tag v3.0.0
 
 ## Dependencies
 
-Dependancies with TRACER_EMB V1.4.0
+Dependencies with TRACER_EMB V1.4.0
 
 </div>
 :::
@@ -663,7 +810,7 @@ Maintenance release
   [USBPD][CORE] Increase PE Stack size for Authentication configs
   [G0] correction retry patch
   [G0] manage retry according the current spec revision value
-  [G0] Patch ellisys test TD.PD.SRC3.E26 Soft reset dend Regarless of Rp value
+  [G0] Patch ellisys test TD.PD.SRC3.E26 Soft reset sent regardless of Rp value
   [G0] report gotomin + CtrlMessage capability from G0
   [PRL] PD revision should be set to 0 in GoodCRC message only if PD2.0
   add the cable reset tracking inside the tracer

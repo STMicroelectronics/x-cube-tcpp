@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VIF xmlns="http://usb.org/VendorInfoFile.xsd">
+  <VIF_Specification>3.12</VIF_Specification>
+  <VIF_App>
+    <Vendor>USB-IF</Vendor>
+    <Name>Vendor Info File Editor</Name>
+    <Version>3.1.0.2</Version>
+  </VIF_App>
+  <Vendor_Name>STMicroelectronics</Vendor_Name>
+  <Model_Part_Number>X-NUCLEO-USBPDM1-G0_PPS</Model_Part_Number>
+  <Product_Revision>1.0</Product_Revision>
+  <TID>0</TID>
+  <VIF_Product_Type value="0">Port Product</VIF_Product_Type>
+  <Certification_Type value="0">End Product</Certification_Type>
+  <Product>
+    <Product_VID value="1155">0483</Product_VID>
+  </Product>
+  <Component>
+    <Port_Label>0</Port_Label>
+    <Connector_Type value="2">Type-C®</Connector_Type>
+    <USB4_Supported value="false" />
+    <USB_PD_Support value="true" />
+    <PD_Port_Type value="0">Consumer Only</PD_Port_Type>
+    <Type_C_State_Machine value="1">SNK</Type_C_State_Machine>
+    <Port_Battery_Powered value="false" />
+    <BC_1_2_Support value="0">None</BC_1_2_Support>
+    <PD_Spec_Revision_Major value="3" />
+    <PD_Spec_Revision_Minor value="0" />
+    <PD_Spec_Version_Major value="2" />
+    <PD_Spec_Version_Minor value="0" />
+    <PD_Specification_Revision value="2">Revision 3</PD_Specification_Revision>
+    <SOP_Capable value="true" />
+    <SOP_P_Capable value="false" />
+    <SOP_PP_Capable value="false" />
+    <SOP_P_Debug_Capable value="false" />
+    <SOP_PP_Debug_Capable value="false" />
+    <Manufacturer_Info_Supported_Port value="false" />
+    <Unconstrained_Power value="true" />
+    <ID_Header_Connector_Type_SOP value="2">USB Type-C® Receptacle</ID_Header_Connector_Type_SOP>
+    <Chunking_Implemented_SOP value="true" />
+    <Unchunked_Extended_Messages_Supported value="false" />
+    <Security_Msgs_Supported_SOP value="false" />
+    <Num_Fixed_Batteries value="0" />
+    <Num_Swappable_Battery_Slots value="0" />
+    <USB_Comms_Capable value="false" />
+    <DR_Swap_To_DFP_Supported value="false" />
+    <DR_Swap_To_UFP_Supported value="false" />
+    <VCONN_Swap_To_On_Supported value="false" />
+    <VCONN_Swap_To_Off_Supported value="false" />
+    <Responds_To_Discov_SOP_UFP value="false" />
+    <Responds_To_Discov_SOP_DFP value="false" />
+    <Attempts_Discov_SOP value="false" />
+    <Type_C_Can_Act_As_Host value="false" />
+    <Type_C_Can_Act_As_Device value="false" />
+    <Type_C_Supports_Audio_Accessory value="false" />
+    <Type_C_Supports_VCONN_Powered_Accessory value="false" />
+    <Type_C_Is_VCONN_Powered_Accessory value="false" />
+    <Type_C_Is_Debug_Target_SNK value="false" />
+    <Captive_Cable value="false" />
+    <Type_C_Port_On_Hub value="false" />
+    <Type_C_Power_Source value="2">Both</Type_C_Power_Source>
+    <Type_C_Sources_VCONN value="false" />
+    <Type_C_Is_Alt_Mode_Controller value="false" />
+    <PD_Power_As_Sink value="100000">100000 mW</PD_Power_As_Sink>
+    <No_USB_Suspend_May_Be_Set value="true" />
+    <GiveBack_May_Be_Set value="false" />
+    <Higher_Capability_Set value="false" />
+    <FR_Swap_Reqd_Type_C_Current_As_Initial_Source value="0">FR_Swap not supported</FR_Swap_Reqd_Type_C_Current_As_Initial_Source>
+    <Num_Snk_PDOs value="5" />
+    <SnkPdoList>
+      <SnkPDO>
+        <Snk_PDO_Supply_Type value="0">Fixed</Snk_PDO_Supply_Type>
+        <Snk_PDO_Voltage value="100">5000 mV</Snk_PDO_Voltage>
+        <Snk_PDO_Op_Current value="500">5000 mA</Snk_PDO_Op_Current>
+      </SnkPDO>
+      <SnkPDO>
+        <Snk_PDO_Supply_Type value="0">Fixed</Snk_PDO_Supply_Type>
+        <Snk_PDO_Voltage value="180">9000 mV</Snk_PDO_Voltage>
+        <Snk_PDO_Op_Current value="500">5000 mA</Snk_PDO_Op_Current>
+      </SnkPDO>
+      <SnkPDO>
+        <Snk_PDO_Supply_Type value="0">Fixed</Snk_PDO_Supply_Type>
+        <Snk_PDO_Voltage value="300">15000 mV</Snk_PDO_Voltage>
+        <Snk_PDO_Op_Current value="500">5000 mA</Snk_PDO_Op_Current>
+      </SnkPDO>
+      <SnkPDO>
+        <Snk_PDO_Supply_Type value="0">Fixed</Snk_PDO_Supply_Type>
+        <Snk_PDO_Voltage value="400">20000 mV</Snk_PDO_Voltage>
+        <Snk_PDO_Op_Current value="500">5000 mA</Snk_PDO_Op_Current>
+      </SnkPDO>
+      <SnkPDO>
+        <Snk_PDO_Supply_Type value="3">PPS</Snk_PDO_Supply_Type>
+        <Snk_PDO_Min_Voltage value="33">3300 mV</Snk_PDO_Min_Voltage>
+        <Snk_PDO_Max_Voltage value="59">5900 mV</Snk_PDO_Max_Voltage>
+        <Snk_PDO_Op_Current value="100">5000 mA</Snk_PDO_Op_Current>
+      </SnkPDO>
+    </SnkPdoList>
+  </Component>
+</VIF>

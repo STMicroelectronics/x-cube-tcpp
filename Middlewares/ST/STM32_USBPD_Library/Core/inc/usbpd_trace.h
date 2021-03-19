@@ -40,7 +40,8 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported define -----------------------------------------------------------*/
-typedef enum {
+typedef enum
+{
   TCPM_TRACE_CORE_ALERT,    /*!< ALERT_TASK */
   TCPM_TRACE_ALERT,         /*!< USBPD_TCPM_alert */
   TCPM_TRACE_ALERT_CLEAR,   /*!< USBPD_TCPM_alert: tcpc_clear_alert */
