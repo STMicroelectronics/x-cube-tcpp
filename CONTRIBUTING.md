@@ -17,7 +17,7 @@ But check the following boxes before posting an issue:
 When you have checked the previous boxes. You will find two templates Issues (Bug Report or Other Issue) available in the **Issues** tab of the repo
 
 ### 3. Pull Requests
-For the moment, the Pull Request feature is not deployed. STMicrolectronics is working on a Contributor License Agreement procedure
+For the moment, the Pull Request feature is not deployed. STMicroelectronics is working on a Contributor License Agreement procedure
 
 
    
