@@ -7,20 +7,13 @@ header-includes: <link rel="icon" type="image/x-icon" href="_htmresc/favicon.png
 ::: {.row}
 ::: {.col-sm-12 .col-lg-4}
 
+
 <center>
-# <small>Release Notes for</small> STM32 USB-C Power Delivery G0 Device Driver
+# Release Notes for STM32 USB-C Power Delivery G0 Device Driver
 Copyright &copy; 2018 STMicroelectronics\
-    
+
 [![ST logo](_htmresc/st_logo_2020.png)](https://www.st.com){.logo}
 </center>
-
-# License
-
-This software component is licensed by ST under Ultimate Liberty license
-SLA0044, the \"License\"; You may not use this component except in
-compliance with the License. You may obtain a copy of the License at:
-
-[http://www.st.com/SLA0044](http://www.st.com/SLA0044)
 
 # Purpose
 
@@ -39,9 +32,10 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 ::: {.col-sm-12 .col-lg-8}
 # Update History
 
+
 ::: {.collapse}
-<input type="checkbox" id="collapse-section9" checked aria-hidden="true">
-<label for="collapse-section9" aria-hidden="true">v3.2.1 / 9-March-2021</label>
+<input type="checkbox" id="collapse-section12" checked aria-hidden="true">
+<label for="collapse-section12" aria-hidden="true">v3.3.1 / 21-Jun-2021</label>
 <div>
 
 ## Main Changes
@@ -50,7 +44,9 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 
   Headline
   ----------------------------------------------------------
-  Ticket 102691 - Change the management of VCC pin for TCPP01
+  Release Note and Licensing model update
+  Correction of USBPD Core stack version mentioned in Dependencies
+
 
 ## Known Limitations
 
@@ -61,9 +57,9 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 ## Development Toolchains and Compilers
 
 
-- IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.4
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25.2
-- [STM32CubeIDE] [V1.6.0 + ST-LINK/V2](https://www.st.com/en/development-tools/stm32cubeide.html)
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.6
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.31
+- STM32CubeIDE v1.7.0
 
 ## Supported Devices and boards
 
@@ -75,14 +71,59 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 
 ## Dependencies
 
- This software release is compatible with USB-C Power Delivery Core Stack Library v2.6.0
+ This software release is compatible with USB-C Power Delivery Core Stack Library v4.0.0
 
 </div>
 :::
 
+
 ::: {.collapse}
-<input type="checkbox" id="collapse-section9" aria-hidden="true">
-<label for="collapse-section9" aria-hidden="true">v3.2.0 / 17-Sep-2020</label>
+<input type="checkbox" id="collapse-section11" aria-hidden="true">
+<label for="collapse-section11" aria-hidden="true">v3.3.0 / 12-Mar-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+  Headline
+  ----------------------------------------------------------
+  [USBPD][DEVICES][TCPP03] : Enable TCPP03 support in G0 serie
+
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.26
+- STM32CubeIDE v1.2.0
+
+## Supported Devices and boards
+
+  All STM32G0xx devices embedding USBPD IP
+
+## Backward compatibility
+
+  No compatibility break with previous version
+
+## Dependencies
+
+ This software release is compatible with USB-C Power Delivery Core Stack Library v3.2.0
+
+</div>
+:::
+
+
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section10"  aria-hidden="true">
+<label for="collapse-section10" aria-hidden="true">v3.2.0 / 17-Sep-2020</label>
 <div>
 
 ## Main Changes
@@ -106,8 +147,8 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
-- System Workbench STM32 (SW4STM32) toolchain V2.7.2
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- STM32CubeIDE v1.2.0
 
 ## Supported Devices and boards
 
@@ -135,11 +176,11 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 
   Headline
   ----------------------------------------------------------
-  Ticket 86356 - Correct misspelled words
+  Correct misspelled words
   Remove condition for CAD_StateMachine prototype
   Add USBPDM1_VCC_FEATURE_ENABLED switch from all the series
-  Ticket 84586 - Provide external API in CAD to allow application to know which RP present in Sink
-  Ticket 87567 - Source path are missing for MW and Utilities
+  Provide external API in CAD to allow application to know which RP present in Sink
+  Source path are missing for MW and Utilities
   Add debug code to display the message discarded at PHY level
   CAD_AccesorySupport not defined for NO_PD
   Increase tCCDebounce as delay removed from application
@@ -155,7 +196,7 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27.1.0
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - STM32CubeIDE v1.2.0
 
 ## Supported Devices and boards
@@ -184,13 +225,13 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 
   Headline
   ----------------------------------------------------------
-  Ticket 76935 - CAD power role overwritten in configuration _SRC & _SNK
+  CAD power role overwritten in configuration _SRC & _SNK
   update to avoid issue in errorrecovery when prower role swap failed
   UCPD IT should be not enabled for NoPD configuration
   Fix a pb with NRTOS version on Keil environment (Ellisys test failed)
   TD.PD.C.E5 patch for NRTOS application
   Solve issue in DISCO configuration (SINK not working at all since integration of BSP V2.6)
-  Ticket 70979 -  Ellisys 4.9.4 Source Vconn Swap (Testing Ufp) failed
+  Ellisys 4.9.4 Source Vconn Swap (Testing Ufp) failed
   Solve randomness reloading of CC1 and CC2 values in local variables in CAD_Check_HW() function according to optimizations options, code sequences.
   Improve the disconnection timing to avoid issue with Ellisys (4.8.3)
   Align new BSP Power interfaces with BSP v2.6
@@ -205,7 +246,7 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27.1.0
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -237,7 +278,7 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
   [LOWPOWER] update to allow stop mode in attached cases
   [LOWPOWER] improvement link with lowpower management
   [LOWPOWER] rework aroun VBUS init/deinit TIMER Init/Deinit
-  Ticket 64288 - USBPD_PHY_GetRetryTimerValue
+  USBPD_PHY_GetRetryTimerValue
   Update to improve the state machine : increase timing detection, symetrie VBUSInit, VBUSDeInit
   Change switch SRC to _SRC
   Conf_template.h updates.
@@ -264,7 +305,7 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -482,13 +523,10 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 :::
 
 <footer class="sticky">
-::: {.columns}
-::: {.column width="95%"}
-For complete documentation on **STM32 Series** ,
-visit: [www.st.com/STM32](http://www.st.com/STM32)]
-:::
-::: {.column width="5%"}
-<abbr title="Based on template cx566953 version 2.0">Info</abbr>
-:::
-:::
+For complete documentation on **STM32 32-bit Arm Cortex MCUs**,
+visit: [http://www.st.com/STM32](http://www.st.com/STM32)
+
+This release note uses up to date web standards and, for this reason, should not
+be opened with Internet Explorer but preferably with popular browsers such as
+Google Chrome, Mozilla Firefox, Opera or Microsoft Edge.
 </footer>

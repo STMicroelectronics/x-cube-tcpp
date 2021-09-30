@@ -15,13 +15,6 @@ Copyright &copy; 2018 STMicroelectronics\
 [![ST logo](_htmresc/st_logo_2020.png)](https://www.st.com){.logo}
 </center>
 
-# License
-
-This software component is licensed by ST under Ultimate Liberty license SLA0044, the "License"; 
-You may not use this component except in compliance with the License. You may obtain a copy of the License at:
-
-[http://www.st.com/SLA0044](http://www.st.com/SLA0044)
-
 # Purpose
 
 The USB-PD core stack library component provides SW implementation of the USB-PD protocol stack, as described in USB-IF specifications.
@@ -48,7 +41,60 @@ Here is the list of references to user documents:
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section28" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section29" checked aria-hidden="true">
+<label for="collapse-section29" aria-hidden="true">V4.0.0 / 6-May-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+**Fixed bugs list**
+
+  Headline
+  --------
+  Ticket 105958 - Messages should be discarded when device was about to send HardReset
+  Ticket 105732 - messages must be discarded when VBUS is out of range (like during HR)
+  NO_PD mode only, a type C state machine shall runs therefore the CAD task must be created
+  Add the data role reset during hard reset AMS
+  Astyle update
+  OS update around the thread creation
+  OS Add the support of the ThreadX RTOS
+  Ticket 103308 - Stack state machine issue seen in PHY.E2/E3
+  Codespell update 
+  OS PE task management improvement to replace create/terminate by suspend/resume
+  OS Add file usbpd_os_port.h to manage the OS portability
+  Update in Task definition and creation macros for CMSIS RTOS V2
+  OS improvement of the os porting layer
+  [CAD] VconnCCIs shall be set for a snk attachment
+  Ticket 101501 - When an Hard Reset receive too quickly after a message the hardreset is not done"
+  MISRAC2012 update 
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE V1.4.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+NA
+
+## Dependencies
+
+NA
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section28" aria-hidden="true">
 <label for="collapse-section28" aria-hidden="true">V3.3.1 / 17-Feb.-2021</label>
 <div>
 
@@ -108,7 +154,7 @@ NA
   [LPM] replace the LPM call by tiny_lpm function
   [PE] Ticket 91038 - new sop' msge shouldn't be sent after src_cap till DUT is not in explicit
   [PE] Ticket 90995 - PE_SNK state machine state change abnormally
-  Add mechanism to guarantee the GoodCRC timing
+  Add mechanisme to guarantee the goodcrc timing
   Ticket 75762 - Implement BIST Shared Capacity Test Mode message
   Ticket 87301 - The RP resistor shall be reset to the default value during the HardReset AMS
   [PE] Ticket 92315 - Hard fault in the usbpd stack library if USBPD_PE_GetDataInfo not implemented in the application
@@ -128,7 +174,7 @@ NA
   [PE] Ticket 96025 - Soft_reset should be sent prior to HardReset in case of non response of src_cap post PR_swap
   Ticket 96061 - Tests TD4.3.x failed on Lecroy with NO_PD Sink version
   Ticket 96089 - Add a system of hook function to request an action of USB stack
-  Ticket 96219 - Avoid double definition with LE16 & LE32 macros used in usbh.def
+  Ticket 96219 Avoid double definition with LE16 & LE32 macros used in usbh.def
   
   
   : Fixed bugs list

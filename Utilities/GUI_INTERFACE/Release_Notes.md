@@ -17,7 +17,7 @@ Copyright &copy; 2018 STMicroelectronics\
 
 # License
 
-This software component is licensed by ST under BSD 3-Clause license, the "License"; 
+This software component is licensed by ST under BSD 3-Clause license, the "License";
 You may not use this component except in compliance with the License. You may obtain a copy of the License at:
 
 [http://www.opensource.org/licenses/BSD-3-Clause](http://www.opensource.org/licenses/BSD-3-Clause)
@@ -36,7 +36,94 @@ The application can be found in ST website:
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section17" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section18" checked aria-hidden="true">
+<label for="collapse-section18" aria-hidden="true">V2.0.0 / 3-May-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+**Fixed bugs list**
+
+  Headline
+  --------
+  New API USBPD_InitOS introduced to handle threadX requirement
+  Add an API GUI_Reset for erasing PDO area
+  Correct warning (pointless comparison of unsigned integer with zero in bsp_gui.c)
+  [THREADX] remove pool allocation inside the stack and Add a pool pointer on the InitOS function
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.50
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.26
+- STM32CubeIDE v1.6.0
+
+## Supported Devices and boards
+
+  All STM32xx devices implementing a USBPD application able to communicate with CubeMonitor_UCPD
+
+## Backward compatibility
+
+  None
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section17" aria-hidden="true">
+<label for="collapse-section17" aria-hidden="true">V1.14.0 / 19-Feb-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+**Fixed bugs list**
+
+  Headline
+  --------
+  Update to manage the rename of _LIB_ID imported from the USB-PD library
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.26
+- STM32CubeIDE v1.2.0
+
+## Supported Devices and boards
+
+  All STM32xx devices implementing a USBPD application able to communicate with CubeMonitor_UCPD
+
+## Backward compatibility
+
+  This version should be used after TRACER_EMB version V1.4.0 due to a remove of the prototype TRACER_EMB_WakeUpProcess 
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section17" aria-hidden="true">
 <label for="collapse-section17" aria-hidden="true">V1.13.0 / 26-Oct.-2020</label>
 <div>
 

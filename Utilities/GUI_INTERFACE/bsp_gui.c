@@ -22,8 +22,10 @@
 #include "bsp_gui.h"
 #include "usbpd_dpm_conf.h"
 #if defined(GUI_FLASH_MAGIC_NUMBER)
+#if defined(_TRACE)
 #include "usbpd_trace.h"
 #include "tracer_emb.h"
+#endif /* _TRACE */
 #endif /* GUI_FLASH_MAGIC_NUMBER */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -68,7 +70,7 @@ GUI_StatusTypeDef BSP_GUI_LoadDataFromFlash(void)
 #endif /* GUI_FLASH_MAGIC_NUMBER */
 
   /* Check that we did not reach the end of page */
-  if (GUI_FLASH_SIZE_RESERVED < 0U)
+  if (GUI_FLASH_ADDR_RESERVED > ADDR_FLASH_PAGE_END)
   {
     goto _exit;
   }
@@ -83,8 +85,10 @@ GUI_StatusTypeDef BSP_GUI_LoadDataFromFlash(void)
 #warning "Flash program option undefined"
 #endif  /* FLASH_TYPEPROGRAM_DOUBLEWORD */
   {
+#if defined(_TRACE)
     /* Memory has been corrupted */
     USBPD_TRACE_Add(USBPD_TRACE_DEBUG, 0U, 0U, (uint8_t *)"GUI Memory is corrupted", sizeof("GUI Memory is corrupted"));
+#endif /* _TRACE */
     goto _exit;
   }
   if (0xFFFFFFFFu == *((uint32_t *)_addr))
@@ -192,7 +196,7 @@ _exit:
   return _status;
 }
 
-GUI_StatusTypeDef BSP_GUI_SaveDataInFlash(void)
+GUI_StatusTypeDef BSP_GUI_EraseDataInFlash(void)
 {
   GUI_StatusTypeDef status = GUI_OK;
   FLASH_EraseInitTypeDef erase_init;
@@ -205,6 +209,13 @@ GUI_StatusTypeDef BSP_GUI_SaveDataInFlash(void)
   (void)HAL_FLASH_Unlock();
 
   /* Erase the page associated to the GUI parameters */
+#if defined(FLASH_CR_SER)
+  /* Fill EraseInit structure*/
+  erase_init.TypeErase     = FLASH_TYPEERASE_SECTORS;
+  erase_init.VoltageRange  = FLASH_VOLTAGE_RANGE_3;
+  erase_init.Sector        = FLASH_SECTOR_ID;
+  erase_init.NbSectors     = 1;
+#else
   erase_init.TypeErase  = FLASH_TYPEERASE_PAGES;
 
 #if defined(STM32F072xB)|| defined(STM32F051x8)
@@ -228,6 +239,66 @@ GUI_StatusTypeDef BSP_GUI_SaveDataInFlash(void)
     FLASH->SR = FLASH_SR_OPTVERR;
   }
 #endif /* FLASH_SR_OPTVERR */
+#endif /* FLASH_CR_SER */
+
+  if (HAL_OK != HAL_FLASHEx_Erase(&erase_init, &page_error))
+  {
+    status = GUI_ERASE_ERROR;
+  }
+
+  /* Lock the flash after end of operations */
+  (void) HAL_FLASH_Lock();
+
+  /* Enable interrupts */
+  __enable_irq();
+
+  return status;
+}
+
+GUI_StatusTypeDef BSP_GUI_SaveDataInFlash(void)
+{
+  GUI_StatusTypeDef status = GUI_OK;
+  FLASH_EraseInitTypeDef erase_init;
+  uint32_t page_error;
+
+  /* Disable interrupts */
+  __disable_irq();
+
+  /* Init Flash registers for writing */
+  (void)HAL_FLASH_Unlock();
+
+  /* Erase the page associated to the GUI parameters */
+#if defined(FLASH_CR_SER)
+  /* Fill EraseInit structure*/
+  erase_init.TypeErase     = FLASH_TYPEERASE_SECTORS;
+  erase_init.VoltageRange  = FLASH_VOLTAGE_RANGE_3;
+  erase_init.Sector        = FLASH_SECTOR_ID;
+  erase_init.NbSectors     = 1;
+#else
+  erase_init.TypeErase  = FLASH_TYPEERASE_PAGES;
+
+#if defined(STM32F072xB)|| defined(STM32F051x8)
+  erase_init.PageAddress  = ADDR_FLASH_LAST_PAGE;
+#else
+  erase_init.Page       = INDEX_PAGE;
+#endif /* STM32F072xB || STM32F051x8 */
+#if defined (FLASH_OPTR_DBANK)
+  erase_init.Banks      = FLASH_BANK_2;
+#elif defined(FLASH_BANK_2)
+  erase_init.Banks      = FLASH_BANK_2;
+#elif defined(FLASH_BANK_1)
+  erase_init.Banks      = FLASH_BANK_1;
+#endif /* FLASH_OPTR_DBANK */
+  erase_init.NbPages    = 1;
+
+#if defined(FLASH_SR_OPTVERR)
+  /* Specific handling of STM32G0 and STM32G4 flash devices for allowing erase operations */
+  if (FLASH->SR != 0x00)
+  {
+    FLASH->SR = FLASH_SR_OPTVERR;
+  }
+#endif /* FLASH_SR_OPTVERR */
+#endif /* FLASH_CR_SER */
 
   if (HAL_OK != HAL_FLASHEx_Erase(&erase_init, &page_error))
   {

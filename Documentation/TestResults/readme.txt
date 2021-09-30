@@ -42,15 +42,45 @@ You will find different reports done on different configuration.
    * Application: Projects\NUCLEO-G071RB\Applications\USB_PD\USBPDM1_Sink_PPS
    * VIF: STMicroelectronics_USBPDM1_Sink_PPS_STM32G071RB_VIF.xml 
 
+ - Ellisys\x-cube-tcpp_v3.0.0_NUCLEO-G071RB_DRP1M1_USB Compliance Report.html
+   * Test report done on Ellisys tool with application 'NUCLEO-G071RB-DRP1M1_DRP'
+   * Application: Projects\NUCLEO-G071RB\Applications\USB_PD\DRP1M1_DRP
+   * VIF: STMicroelectronics_DRP1M1_DRP_STM32G071RB_VIF.xml 
+ 
+ - MQP\x-cube-tcpp_v3.0.0_NUCLEO-G071RB-SNK1M1_Sink_SNK1M1_Sink-xxxx.htm
+   * Test report done on MQP tool with application 'NUCLEO-G071RB-SNK1M1_Sink'
+   * Application: Projects\NUCLEO-G071RB\Applications\USB_PD\SNK1M1_Sink
+   * VIF: STMicroelectronics_SNK1M1_Sink_STM32G071RB_VIF.xml 
+
+ - MQP\x-cube-tcpp_v3.0.0_NUCLEO-G071RB-USBPDM1_Sink_LPM_USBPDM1_Sink_LPM-xxxx.htm
+   * Test report done on MQP tool with application 'NUCLEO-G071RB-USBPDM1_Sink_LPM'
+   * Application: Projects\NUCLEO-G071RB\Applications\USB_PD\USBPDM1_Sink_LPM
+   * VIF: STMicroelectronics_SNK1M1_Sink__LPM_STM32G071RB_VIF.xml 
+
+ - MQP\x-cube-tcpp_v3.0.0_NUCLEO-G071RB-USBPDM1_Sink_PPS_USBPDM1_Sink_PPS-xxxx.htm
+   * Test report done on MQP tool with application 'NUCLEO-G071RB-USBPDM1_Sink_PPS'
+   * Application: Projects\NUCLEO-G071RB\Applications\USB_PD\USBPDM1_Sink_PPS
+   * VIF: STMicroelectronics_SNK1M1_Sink_PPS_STM32G071RB_VIF.xml 
+
+ - MQP\x-cube-tcpp_v3.0.0_NUCLEO-G474RE_DRP1M1_xxxx.html
+   * Test report done on Ellisys tool with application 'NUCLEO-G474RE-DRP1M1_DRP'
+   * Application: Projects\NUCLEO-G474RE\Applications\USB_PD\DRP1M1_DRP
+   * VIF: STMicroelectronics_DRP1M1_DRP_STM32G474RE_VIF.xml 
+
 @par Hardware and Software environment
 
-  - This example runs on NUCLEO-G071RB board with either a X-NUCLEO-SNK1M1 or X-NUCLEO-USBPDM1.
+  - Applications which are using X-NUCLEO-SNK1M1 (resp. X-NUCLEO-USBPDM1) could also be executed 
+    on Nucleo boards with X-NUCLEO-USBPDM1 (resp. X-NUCLEO-SNK1M1) plugged. 
+	Both additional boards are considered equivalent.
+  - Applications whose name contains "DRP1M1" could only be executed on Nucleo boards with X-NUCLEO-DRP1M1 plugged. 
 
   - Ellisys configuration:
   Generator used Ellisys USB Explorer 350 (EX350-62238)
   Analyzer used Ellisys USB Explorer 350 (EX350-62239)
-  Software version: Report generated with version 3.1.7608
+  Software version: Report generated with version 3.1.7851
 
+ - MQP configuration : V6.32.00
+ 
 @par How to use it?
 
  * <h3><center>&copy; COPYRIGHT STMicroelectronics</center></h3>

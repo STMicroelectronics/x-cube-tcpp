@@ -214,9 +214,9 @@ typedef struct
   * @{
   */
 extern GUI_USER_ParamsTypeDef GUI_USER_Params[USBPD_PORT_COUNT];
-#if !defined(_RTOS)
+#if !(defined(_RTOS) || defined(USBPD_THREADX))
 extern __IO uint32_t      GUI_Flag;
-#endif /* !_RTOS */
+#endif /* !(_RTOS || USBPD_THREADX) */
 
 /**
   * @}
@@ -229,6 +229,9 @@ extern __IO uint32_t      GUI_Flag;
 
 USBPD_FunctionalState GUI_Init(const uint8_t *(*CB_HWBoardVersion)(void), const uint8_t *(*CB_HWPDType)(void),
                                uint16_t (*CB_GetVoltage)(uint8_t), int16_t (*CB_GetCurrent)(uint8_t));
+uint32_t              GUI_InitOS(void *MemoryPtr);
+void                  GUI_Reset(void);
+
 void                  GUI_Start(void);
 void                  GUI_TimerCounter(void);
 uint32_t              GUI_RXProcess(uint32_t Event);

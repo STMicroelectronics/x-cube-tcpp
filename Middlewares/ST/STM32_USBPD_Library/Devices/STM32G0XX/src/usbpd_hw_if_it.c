@@ -6,13 +6,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2021 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -187,12 +186,16 @@ void PORTx_IRQHandler(uint8_t PortNum)
       LL_UCPD_ClearFlag_FRS(hucpd);
       if (USBPD_PORTPOWERROLE_SNK == Ports[PortNum].params->PE_PowerRole)
       {
-        /* we shall calculate the FRS timing to confirm the timing */
-        Ports[PortNum].cbs.USBPD_HW_IF_TX_FRSReception(PortNum);
+        /* Confirm the FRS by checking if an RP is always present on the current CC line
+           we should wait min 6us to refresh the type C state machine */
+        for(uint32_t delay=0; delay < 30; delay++){ __DSB(); }       
+        
+        if (0 != (hucpd->SR & (UCPD_SR_TYPEC_VSTATE_CC1 | UCPD_SR_TYPEC_VSTATE_CC2)))
+        {
+          Ports[PortNum].cbs.USBPD_HW_IF_TX_FRSReception(PortNum);
+        }
       }
     }
   }
 }
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
 

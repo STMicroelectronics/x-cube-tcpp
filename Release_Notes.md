@@ -31,8 +31,10 @@ running on STM32 Series GP microcontrollers embedding Type-C and power delivery 
 
 For the other STM32 GP MCU without embedded UCPD PHY (like STM32L4, STM32F0...), this package demonstrates how to comply with Type-C specification. 
 
-All the applications available in this package need to have the [TCPP01-M12](https://www.st.com/en/protection-devices/tcpp01-m12.html) integrated. 
+All the applications available in this package need to have either the [TCPP01-M12](https://www.st.com/en/protection-devices/tcpp01-m12.html) or the [TCPP03-M20](https://www.st.com/en/protection-devices/tcpp03-m20.html) integrated. 
+
 The TCPP01-M12 (Type-C port protection) is a single chip solution for USB Type-C port protection that facilitates the migration from USB legacy connectors type-A or type-B to USB Type-C connectors. 
+The TCPP03-M20 (Type-C port protection) is a single chip solution for USB Type-C port protection in the context of Dual Role Power applications. 
 
 STMicroelectronics package has been certified by USB-IF through the reference [TID 3036](https://cms.usb.org/usb/cms/device/40004) and [TID 5205](https://cms.usb.org/usb_device/certificate/42552).   
 
@@ -53,6 +55,10 @@ The figure below shows the overall architecture:
   
 <img src="_htmresc/x_nucleo_snk1m1.png" alt="X-NUCLEO-SNK1M1_NUCLEO-G071" width="50%"/>
 
+  * [X-NUCLEO-DRP1M1](https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-power-drive-hw/x-nucleo-drp1m1.html)
+  
+<img src="_htmresc/x_nucleo_drp1m1.png" alt="X-NUCLEO-DRP1M1_NUCLEO-G071" width="50%"/>
+
 ## Applications
 |   Applications     |     Board     | Shield                     |       Short Description      |
 |--------------------|---------------|----------------------------|------------------------------|
@@ -62,6 +68,9 @@ The figure below shows the overall architecture:
 | [SNK1M1_Sink](./Projects/NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink)| NUCLEO-G071RB | X-NUCLEO-SNK1M1|Use of USB Power Delivery (USB-PD) Consumer application (with **PPS**) running on STM32G0XX devices, with X-NUCLEO-SNK1M1 shield plugged.|
 | [SNK1M1_Sink](./Projects/NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink)| NUCLEO-G474RE | X-NUCLEO-SNK1M1|Use of USB Power Delivery (USB-PD) Consumer application (with **PPS** and **USB MSC** cohabitation) running on STM32G4XX devices, with X-NUCLEO-SNK1M1 shield plugged.|
 | [SNK1M1_Sink_TypeC_Only](./Projects/NUCLEO-L412RB-P/Applications/USB_PD/SNK1M1_Sink_TypeC_Only)| NUCLEO-L412RB-P | X-NUCLEO-SNK1M1|Use of Type-C Consumer application (with **USB MSC** enumeration) running on STM32L4XX devices, with X-NUCLEO-SNK1M1 shield plugged.|
+| [DRP1M1_DRP](./Projects/NUCLEO-G071RB/Applications/USB_PD/DRP1M1_DRP)| NUCLEO-G071RB | X-NUCLEO-DRP1M1|Use of USB Power Delivery (USB-PD) DRP application running on STM32G0XX devices, with X-NUCLEO-DRP1M1 shield plugged.|
+| [DRP1M1_Sink_PPS](./Projects/NUCLEO-G071RB/Applications/USB_PD/DRP1M1_Sink_PPS)| NUCLEO-G071RB | X-NUCLEO-DRP1M1|Use of USB Power Delivery (USB-PD) Consumer application (with **PPS**) running on STM32G0XX devices, with X-NUCLEO-DRP1M1 shield plugged.|
+| [DRP1M1_DRP](./Projects/NUCLEO-G474RE/Applications/USB_PD/DRP1M1_DRP)| NUCLEO-G474RE | X-NUCLEO-DRP1M1|Use of USB Power Delivery (USB-PD) DRP application running on STM32G4XX devices, with X-NUCLEO-DRP1M1 shield plugged.|
 
 This Expansion Package is demonstrated on one hardware implementation, but can easily be ported to any STM32 including the UCPD periperal.
 
@@ -82,7 +91,70 @@ Here is the list of references to the user documents:
 # Update history
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section5" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section6" checked aria-hidden="true">
+<label for="collapse-section6" aria-hidden="true">v3.0.0/ 06-July-2021</label>
+<div>			
+
+## Main changes
+
+### Maintenance release
+Maintenance release and product update
+
+  Headline
+  ----------------------------------------------------------
+  Add support of X-NUCLEO-DRP1M1 (TCPP03-M20) for NUCLEO-G071RB and NUCLEO-G474RE boards
+  [Add DRP application based on X-NUCLEO-DRP1M1 for G0](Projects/NUCLEO-G071RB/Applications/USB_PD/DRP1M1_DRP/readme.txt)
+  [Add Sink PPS application based on X-NUCLEO-DRP1M1 for G0](Projects/NUCLEO-G071RB/Applications/USB_PD/DRP1M1_Sink_PPS/readme.txt)
+  [Add DRP application based on X-NUCLEO-DRP1M1 for G4](Projects/NUCLEO-G474RE/Applications/USB_PD/DRP1M1_DRP/readme.txt)
+  Update USBPD Core stack library version to V4.0.0 and update of USBPD Device drivers for G0 and G4
+  Update GUI_INTERFACE version to V2.0.0
+  Update TRACER_EMB version to V1.6.1
+
+## Contents
+
+<small>The components flagged by "[]{.icon-st-update}" have changed since the
+previous release. "[]{.icon-st-add}" are new.</small>
+
+Components
+
+  Name                                                        Version                                           License                                                                                                       Release note
+  ----------------------------------------------------------- ------------------------------------------------- ------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------
+  STM32G0xx HAL Drivers                                       V1.4.2 []{.icon-st-update}                         [BSD-3-Clause](http://www.opensource.org/licenses/BSD-3-Clause)                                                [release note URL](Drivers/STM32G0xx_HAL_Driver/Release_Notes.html)
+  STM32G0xx CMSIS                                             V1.4.1 []{.icon-st-update}                         [Apache-2.0](https://opensource.org/licenses/Apache-2.0)                                                       [release note URL](Drivers/CMSIS/Device/ST/STM32G0xx/Release_Notes.html)
+  TCPP03-M20 Component Driver                                 V1.2.1 []{.icon-st-add}                            [BSD-3-Clause](http://www.opensource.org/licenses/BSD-3-Clause)                                                [release note URL](Drivers/BSP/Components/tcpp0203/Release_Notes.html)
+  X-NUCLEO-DRP1M1 BSP                                         V1.1.0 []{.icon-st-add}                            [BSD-3-Clause](http://www.opensource.org/licenses/BSD-3-Clause)                                                [release note URL](Drivers/BSP/X-NUCLEO-DRP1M1/Release_Notes.html)
+  GUI_INTERFACE                                               V2.0.0 []{.icon-st-update}                         [SLA0044](https://www.st.com/sla0044)                                                                          [release note URL](Utilities/GUI_INTERFACE/Release_Notes.html)
+  TRACER_EMB                                                  V1.6.1 []{.icon-st-update}                         [SLA0044](https://www.st.com/sla0044)                                                                          [release note URL](Utilities/TRACER_EMB/Release_Notes.html)
+  STM32_USBPD_Library/CORE                                    V4.0.0 []{.icon-st-update}                         [SLA0044](https://www.st.com/sla0044)                                                                          [release note URL](Middlewares/ST/STM32_USBPD_Library/Core/Release_Notes.html)
+  STM32_USBPD_Library/DEVICES_G0                              v3.3.1 []{.icon-st-update}                         [SLA0044](https://www.st.com/sla0044)                                                                          [release note URL](Middlewares/ST/STM32_USBPD_Library/Devices/STM32G0XX\Release_Notes.html)
+  STM32_USBPD_Library/DEVICES_G4                              v5.1.0 []{.icon-st-update}                         [SLA0044](https://www.st.com/sla0044)                                                                          [release note URL](Middlewares/ST/STM32_USBPD_Library/Devices/STM32G4XX\Release_Notes.html)
+
+## Known limitations
+
+Outstanding bugs list
+
+## Development toolchains and compilers
+
+- [IAR Embedded Workbench for ARM] [EWARM V8.50.6 + STLink/V2]
+- [RealView Microcontroller Development Kit] [MDK-ARM V5.31 + ST-LINK/V2]
+- [STM32CubeIDE] [V1.7.0 + ST-LINK/V2](https://www.st.com/en/development-tools/stm32cubeide.html)
+
+## Supported devices and boards
+
+- NUCLEO-G071RB, NUCLEO-G474RE and NUCLEO-L412RB-P
+- X-NUCLEO-USBPDM1
+- X-NUCLEO-SNK1M1 
+- X-NUCLEO-DRP1M1 
+
+## Backward compatibility
+
+Not applicable
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section5" aria-hidden="true">
 <label for="collapse-section5" aria-hidden="true">v2.2.0/ 18-February-2021</label>
 <div>			
 

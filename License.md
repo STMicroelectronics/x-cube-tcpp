@@ -3,8 +3,11 @@
 | CMSIS                           | Apache License 2.0   | Copyright (c) 2009-2018 ARM Limited. All rights reserved. |
 | CMSIS Device                    | Apache License 2.0   | ARM Limited - STMicroelectronics |
 | STM32G0 HAL                     | BSD-3-Clause         | STMicroelectronics |
+| STM32G4 HAL                     | BSD-3-Clause         | STMicroelectronics |
+| STM32L4 HAL                     | BSD-3-Clause         | STMicroelectronics |
 | BSP STM32G0xx_Nucleo            | BSD-3-Clause         | STMicroelectronics |
 | BSP STM32G4xx_Nucleo            | BSD-3-Clause         | STMicroelectronics |
+| BSP STM32L4xx_Nucleo            | BSD-3-Clause         | STMicroelectronics |
 | BSP Components                  | BSD-3-Clause         | STMicroelectronics |
 | FreeRTOS kernel                 | MIT                  | Copyright (C) 2017 Amazon.com, Inc. or its affiliates |
 | STM32_USBPD_Library             | ST SLA0044           | STMicroelectronics |

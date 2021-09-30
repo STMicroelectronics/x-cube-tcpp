@@ -47,6 +47,12 @@ typedef enum
 GUI_StatusTypeDef     BSP_GUI_LoadDataFromFlash(void);
 
 /**
+  * @brief  Erase User settings in GUI saving area
+  * @retval GUI status state
+  */
+GUI_StatusTypeDef BSP_GUI_EraseDataInFlash(void);
+
+/**
   * @brief  Save User settings in GUI saving area
   * @retval GUI status state
   */

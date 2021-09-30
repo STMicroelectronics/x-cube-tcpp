@@ -1,21 +1,19 @@
 ---
-pagetitle: STM32 USB-C Power Delivery embedded Tracer
+pagetitle: STM32 USB-C Power Delivery Embedded Tracer
 lang: en
+header-includes: <link rel="icon" type="image/x-icon" href="_htmresc/favicon.png" />
 ---
 
 ::: {.row}
 ::: {.col-sm-12 .col-lg-4}
 
-::: {.card .fluid}
-::: {.sectione .dark}
+
 <center>
-# <small>Release Notes for</small> STM32 USB-C Power Delivery embedded Tracer
+# Release Notes for STM32 USB-C Power Delivery embedded Tracer
 Copyright &copy; 2018 STMicroelectronics\
-    
-[![ST logo](_htmresc/st_logo.png)](https://www.st.com){.logo}
+
+[![ST logo](_htmresc/st_logo_2020.png)](https://www.st.com){.logo}
 </center>
-:::
-:::
 
 # License
 
@@ -33,7 +31,77 @@ This driver is used for the embedded USB-PD tracer used to debug USB-PD applicat
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section8" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section10" checked aria-hidden="true">
+<label for="collapse-section10" aria-hidden="true">V1.6.1 / 01-Feb-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+## Contents
+
+  Headline
+  --------
+  Minor corrections in Tracer_Emb configuration file template
+
+  : Fixed bugs list
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE v1.4.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section9" aria-hidden="true">
+<label for="collapse-section9" aria-hidden="true">V1.6.0 / 24-Nov-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+## Contents
+
+  Headline
+  --------
+  Adapatations to support GPDMA (U5)
+  CodeSpell and MCUAStyle corrections
+  MISRA C2012 corrections
+
+  : Fixed bugs list
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE v1.4.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section8"  aria-hidden="true">
 <label for="collapse-section8" aria-hidden="true">V1.5.0 / 2-Jul.-2020</label>
 <div>
 

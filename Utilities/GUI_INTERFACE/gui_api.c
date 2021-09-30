@@ -40,17 +40,15 @@
 #else
 #include "usbpd_tcpci.h"
 #endif /* USBPD_TCPM_MODULE_ENABLED */
-#if defined(_RTOS)
-#include "cmsis_os.h"
-#else
-#if defined(USE_STM32_UTILITY_OS)
-#include "utilities_conf.h"
-#endif /*USE_STM32_UTILITY_OS */
-#endif /*_RTOS*/
+#include "gui_os_port.h"
 
 /* generic hal function valid for all stm32 */
 extern uint32_t HAL_GetTick(void);
 extern void HAL_NVIC_SystemReset(void);
+
+#if !defined(_LIB_ID)
+#define _LIB_ID LIB_ID
+#endif /* !_LIB_ID */
 
 /** @addtogroup STM32_USBPD_LIBRARY
   * @{
@@ -66,6 +64,7 @@ extern void HAL_NVIC_SystemReset(void);
 /** @defgroup USBPD_GUI_API_Private_Defines USBPD GUI API Private Defines
   * @{
   */
+#define GUI_DEFAULT_WAIT         0xFFFFFFFFU
 
 #if !defined(USBPD_FW_VERSION)
 #define USBPD_FW_VERSION          0xFFFFFFFFU
@@ -94,8 +93,11 @@ extern void HAL_NVIC_SystemReset(void);
 #else
 #define GUI_STACK_SIZE_ADDON_FOR_CMSIS              5
 #endif /* osCMSIS < 0x20000U */
-#define FREERTOS_GUI_PRIORITY                   osPriorityLow
-#define FREERTOS_GUI_STACK_SIZE                 (240 * GUI_STACK_SIZE_ADDON_FOR_CMSIS)
+#define OS_GUI_PRIORITY                   osPriorityLow
+#define OS_GUI_STACK_SIZE                 (240 * GUI_STACK_SIZE_ADDON_FOR_CMSIS)
+#elif defined(USBPD_THREADX)
+#define OS_GUI_PRIORITY                   1
+#define OS_GUI_STACK_SIZE                 2048
 #endif /*_RTOS*/
 
 /**
@@ -482,22 +484,14 @@ typedef struct
   */
 #define __GUI_SET_TAG_ID(_PORT_, _TAG_)  (((_PORT_) << GUI_PORT_BIT_POSITION) | (_TAG_))
 
-#if defined(_RTOS)
-#if (osCMSIS < 0x20000U)
+#if defined(_RTOS) || defined(USBPD_THREADX)
 #define GUI_START_TIMER(_PORT_,_TIMER_,_TIMEOUT_)   do{                                                             \
                                                         _TIMER_[_PORT_] = (_TIMEOUT_) |  GUI_TIMER_ENABLE_MSK;      \
-                                                        osMessagePut(GUIMsgBox,GUI_USER_EVENT_TIMER, 0);            \
+                                                        GUIOS_PUT_MESSAGE_QUEUE(GUIMsgBox,GUI_USER_EVENT_TIMER,0);  \
                                                       }while(0);
-#else
-#define GUI_START_TIMER(_PORT_,_TIMER_,_TIMEOUT_)   do{                                                             \
-                                                        uint32_t eventtim = GUI_USER_EVENT_TIMER;                   \
-                                                        _TIMER_[_PORT_] = (_TIMEOUT_) |  GUI_TIMER_ENABLE_MSK;      \
-                                                        (void)osMessageQueuePut(GUIMsgBox, &eventtim, 0U, 0U);      \
-                                                      }while(0);
-#endif /* osCMSIS < 0x20000U */
 #else
 #define GUI_START_TIMER(_PORT_, _TIMER_,_TIMEOUT_)  _TIMER_[_PORT_] = (_TIMEOUT_) |  GUI_TIMER_ENABLE_MSK;
-#endif /* _RTOS */
+#endif /* _RTOS || USBPD_THREADX */
 
 #define IS_GUI_TIMER_RUNNING(_PORT_, _TIMER_)       ((uint16_t)((_TIMER_)[(_PORT_)] & GUI_TIMER_READ_MSK) > 0)
 #define IS_GUI_TIMER_EXPIRED(_PORT_, _TIMER_)       (GUI_TIMER_ENABLE_MSK == (_TIMER_)[(_PORT_)])
@@ -572,19 +566,12 @@ USBPD_GUI_State GUI_State = GUI_STATE_INIT;
 /*!< Flag to indicate that user settings is from original FW (not saved into the FLASH) */
 uint8_t GUI_OriginalSettings;
 
-#if defined(_RTOS)
-osMessageQId  GUIMsgBox;
-#if (osCMSIS >= 0x20000U)
-osThreadAttr_t GUI_Thread_Atrr =
-{
-  .name       = "GUI",
-  .priority   = FREERTOS_GUI_PRIORITY, /*osPriorityLow,*/
-  .stack_size = FREERTOS_GUI_STACK_SIZE
-};
-#endif /* osCMSIS >= 0x20000U */
+#if defined(_RTOS) || defined(USBPD_THREADX)
+GUIOS_QUEUE_ID  GUIMsgBox;
+GUIOS_TASK_ID GUI_ThreadID;
 #else
 __IO uint32_t GUI_Flag = GUI_USER_EVENT_NONE;
-#endif /* _RTOS */
+#endif /* _RTOS || USBPD_THREADX */
 
 const uint8_t *(*pCB_HWBoardVersion)(void)  = NULL;
 const uint8_t *(*pCB_HWPDType)(void)        = NULL;
@@ -602,14 +589,11 @@ GUI_HandleTypeDef GUI_SaveInformation[USBPD_PORT_COUNT];
 /** @defgroup USBPD_GUI_API_Private_Functions GUI API Private Functions
   * @{
   */
-#ifdef _RTOS
-#if (osCMSIS < 0x20000U)
-static void      TaskGUI(void const *argument);
-#else
-static void      TaskGUI(void *argument);
-#endif /* osCMSIS < 0x20000U */
+#if defined(_RTOS) || defined(USBPD_THREADX)
+GUIDEF_TASK_FUNCTION(TaskGUI);
 static uint32_t  CheckGUITimers(void);
-#endif /* _RTOS */
+#endif /* _RTOS || USBPD_THREADX */
+
 static void      GUI_CALLBACK_RX(uint8_t Character, uint8_t Error);
 static void      Send_DpmInitCnf(uint8_t PortNum, uint8_t *string);
 static void      Request_MessageReq(uint8_t PortNum, uint8_t *instruction, uint8_t *pEncodedMsg);
@@ -693,30 +677,43 @@ USBPD_FunctionalState GUI_Init(const uint8_t *(*CB_HWBoardVersion)(void), const 
   /* Register 2 callbacks for notification in DPM */
   USBPD_DPM_SetNotification_GUI(GUI_FormatAndSendNotification, GUI_PostNotificationMessage, GUI_SaveInfo);
 
-#if defined(_RTOS)
-#if (osCMSIS < 0x20000U)
-  osMessageQDef(MsgBox, GUI_BOX_MESSAGES_MAX, uint32_t);
-  osThreadDef(GUI, TaskGUI, FREERTOS_GUI_PRIORITY, 0, FREERTOS_GUI_STACK_SIZE);
-  GUIMsgBox = osMessageCreate(osMessageQ(MsgBox), NULL);
-  if (NULL == osThreadCreate(osThread(GUI), &GUIMsgBox))
-#else
-  GUIMsgBox = osMessageQueueNew(GUI_BOX_MESSAGES_MAX, sizeof(uint32_t), NULL);
-  if (NULL == osThreadNew(TaskGUI, &GUIMsgBox, &GUI_Thread_Atrr))
-#endif /* osCMSIS < 0x20000U */
-  {
-    _status = USBPD_DISABLE;
-  }
-  /* Enable IRQ which has been disabled by FreeRTOS services */
-  __enable_irq();
-#else /* RTOS */
-  GUI_Start();
-#if defined(USE_STM32_UTILITY_OS)
-  UTIL_SEQ_RegTask(TASK_GUI, 0, GUI_Execute);
-  UTIL_SEQ_SetTask(TASK_GUI, 0);
-#endif /*USE_STM32_UTILITY_OS */
-#endif /* _RTOS */
-
+#if !defined(USBPD_THREADX)
+  _status = (USBPD_FunctionalState) GUI_InitOS(NULL);
+#endif /* !USBPD_THREADX */
   return _status;
+}
+
+uint32_t GUI_InitOS(void *MemoryPtr)
+{
+  static uint8_t _init = 0;
+  GUIOS_INIT();
+
+  /* This init check to keep the compatibility with the previous version of the GUI */
+  /* Only threadX required to separate the OS object init with the init code.       */
+  if (_init == 0)
+  {
+    _init = 1;
+#if defined(_RTOS) || defined(USBPD_THREADX)
+    GUIOS_CREATE_QUEUE(GUIMsgBox, "GUIBOX", GUI_BOX_MESSAGES_MAX, GUIOS_ELEMENT_SIZE);
+    GUIOS_CREATE_TASK(GUI_ThreadID, GUI, TaskGUI, OS_GUI_PRIORITY, OS_GUI_STACK_SIZE, &GUIMsgBox);
+#else /* RTOS */
+    GUI_Start();
+#if defined(USE_STM32_UTILITY_OS)
+    UTIL_SEQ_RegTask(TASK_GUI, 0, GUI_Execute);
+    UTIL_SEQ_SetTask(TASK_GUI, 0);
+#endif /*USE_STM32_UTILITY_OS */
+#endif /* _RTOS || USBPD_THREADX */
+  }
+
+#if defined(_RTOS) || defined(USBPD_THREADX)
+error:
+  return _status;
+#endif /* _RTOS || USBPD_THREADX */
+}
+
+void GUI_Reset(void)
+{
+  BSP_GUI_EraseDataInFlash();
 }
 
 void GUI_Start(void)
@@ -730,52 +727,32 @@ void GUI_Start(void)
   * @param  pEvent  GUI User event
   * @retval None
   */
-#ifdef _RTOS
-#if (osCMSIS < 0x20000U)
-static void TaskGUI(void const *pEvent)
-#else
-static void TaskGUI(void *pEvent)
-#endif /* osCMSIS < 0x20000U */
+#if defined(_RTOS) || defined(USBPD_THREADX)
+GUIDEF_TASK_FUNCTION(TaskGUI)
 #else
 void GUI_Execute(void)
-#endif /* _RTOS */
+#endif /* _RTOS || USBPD_THREADX */
 {
-#ifdef _RTOS
-  uint32_t _timing = osWaitForever;
-  osMessageQId  queue = *(osMessageQId *)pEvent;
-
+#if defined(_RTOS) || defined(USBPD_THREADX)
+  uint32_t _timing = GUI_DEFAULT_WAIT;
   GUI_Start();
   do
   {
-#if (osCMSIS < 0x20000U)
-    osEvent event = osMessageGet(queue, _timing);
-    switch (((GUI_USER_EVENT)event.value.v & 0xFU))
-#else
-    uint32_t event;
-    (void)osMessageQueueGet(queue, &event, NULL, _timing);
+    GUIOS_QUEUE_EVENT event=0;
+    GUIOS_GETMESSAGE_QUEUE(GUIMsgBox,_timing,event);
     switch ((GUI_USER_EVENT)(event & 0xFU))
-#endif /* osCMSIS < 0x20000U */
     {
       case GUI_USER_EVENT_GUI:
       {
-#if (osCMSIS < 0x20000U)
-        (void)GUI_RXProcess((uint32_t)event.value.v);
-#else
         (void)GUI_RXProcess((uint32_t)event);
-#endif /* osCMSIS < 0x20000U */
         /* Sent an event to check if measurement report has been requested */
-#if (osCMSIS < 0x20000U)
-        (void)osMessagePut(GUIMsgBox, GUI_USER_EVENT_TIMER, 0U);
-#else
-        uint32_t eventtim = (uint32_t)GUI_USER_EVENT_TIMER;
-        (void)osMessageQueuePut(GUIMsgBox, &eventtim, 0U, 0U);
-#endif /* osCMSIS < 0x20000U */
+        GUIOS_PUT_MESSAGE_QUEUE(GUIMsgBox, GUI_USER_EVENT_TIMER, 0U);
         break;
       }
       case GUI_USER_EVENT_TIMER:
       {
-#endif /* _RTOS */
-#ifndef _RTOS
+#endif /* _RTOS || USBPD_THREADX */
+#if !(defined(_RTOS) || defined(USBPD_THREADX))
         switch (GUI_Flag & 0xF)
         {
           case GUI_USER_EVENT_NONE:
@@ -788,7 +765,7 @@ void GUI_Execute(void)
             break;
         }
         GUI_Flag = GUI_USER_EVENT_NONE;
-#endif /* !_RTOS */
+#endif /* _RTOS || USBPD_THREADX */
         for (uint8_t _instance = 0; _instance < (uint8_t)USBPD_PORT_COUNT; _instance++)
         {
           /* -------------------------------------------------  */
@@ -821,7 +798,7 @@ void GUI_Execute(void)
             GUI_TimerMeasReport[_instance] = 0;
           }
         }
-#ifdef _RTOS
+#if defined(_RTOS) || defined(USBPD_THREADX)
         break;
       }
 
@@ -830,13 +807,13 @@ void GUI_Execute(void)
     }
     _timing = CheckGUITimers();
   } while (1 == 1);
-#endif /* !_RTOS */
+#endif /* _RTOS || USBPD_THREADX */
 }
 
-#ifdef _RTOS
+#if defined(_RTOS) || defined(USBPD_THREADX)
 static uint32_t CheckGUITimers(void)
 {
-  uint32_t _timing = osWaitForever;
+  uint32_t _timing = GUI_DEFAULT_WAIT;
   uint32_t _current_timing;
 
   /* Calculate the minimum timers to wake-up GUI task */
@@ -854,7 +831,7 @@ static uint32_t CheckGUITimers(void)
   }
   return _timing;
 }
-#endif /* !_RTOS */
+#endif /* RTOS || USBPD_THREADX */
 
 void GUI_TimerCounter(void)
 {
@@ -865,12 +842,12 @@ void GUI_TimerCounter(void)
     {
       GUI_TimerMeasReport[USBPD_PORT_0]--;
     }
-#if !defined(_RTOS)&&defined(USE_STM32_UTILITY_OS)
+#if !(defined(_RTOS) || defined(USBPD_THREADX)) && defined(USE_STM32_UTILITY_OS)
     else
     {
       UTIL_SEQ_SetTask(TASK_GUI, 0);
     }
-#endif /* !_RTOS && USE_STM32_UTILITY_OS */
+#endif /* !(_RTOS || USBPD_THREADX) && USE_STM32_UTILITY_OS) */
   }
 #if USBPD_PORT_COUNT==2
   if (1 == GUI_USER_Params[USBPD_PORT_1].u.d.MeasReportActivation)
@@ -879,12 +856,12 @@ void GUI_TimerCounter(void)
     {
       GUI_TimerMeasReport[USBPD_PORT_1]--;
     }
-#if !defined(_RTOS)&&defined(USE_STM32_UTILITY_OS)
+#if !(defined(_RTOS) || defined(USBPD_THREADX)) && defined(USE_STM32_UTILITY_OS)
     else
     {
       UTIL_SEQ_SetTask(TASK_GUI, 0);
     }
-#endif /* !_RTOS && USE_STM32_UTILITY_OS */
+#endif /* !(_RTOS || USBPD_THREADX) && USE_STM32_UTILITY_OS) */
   }
 #endif /* USBPD_PORT_COUNT == 2 */
 }
@@ -903,13 +880,8 @@ void GUI_CALLBACK_RX(uint8_t Character, uint8_t Error)
   __enable_irq();
   if (event == 1U)
   {
-#if defined(_RTOS)
-#if (osCMSIS < 0x20000U)
-    (void)osMessagePut(GUIMsgBox, GUI_USER_EVENT_GUI, 1);
-#else
-    uint32_t eventgui = (uint32_t)GUI_USER_EVENT_GUI;
-    (void)osMessageQueuePut(GUIMsgBox, &eventgui, 0U, 0U);
-#endif /* osCMSIS < 0x20000U */
+#if defined(_RTOS) || defined(USBPD_THREADX)
+    GUIOS_PUT_MESSAGE_QUEUE(GUIMsgBox, GUI_USER_EVENT_GUI, 0U);
 #else
     GUI_Flag = GUI_USER_EVENT_GUI;
 #if defined(USE_STM32_UTILITY_OS)
@@ -1634,12 +1606,8 @@ void GUI_PostNotificationMessage(uint8_t PortNum, uint16_t EventVal)
     uint32_t event = (uint32_t)GUI_USER_EVENT_GUI
                      | ((uint32_t)PortNum << GUI_PE_PORT_NUM_Pos)
                      | ((uint32_t)EventVal << GUI_PE_NOTIF_Pos);
-#if defined(_RTOS)
-#if (osCMSIS < 0x20000U)
-    (void)osMessagePut(GUIMsgBox, event, 0);
-#else
-    (void)osMessageQueuePut(GUIMsgBox, &event, 0U, 0U);
-#endif /* osCMSIS < 0x20000U */
+#if defined(_RTOS) || defined(USBPD_THREADX)
+    GUIOS_PUT_MESSAGE_QUEUE(GUIMsgBox, event, 0U);
 #else
     GUI_Flag = event;
 #if defined(USE_STM32_UTILITY_OS)

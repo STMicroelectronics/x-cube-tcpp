@@ -41,6 +41,28 @@ extern "C" {
 
 /* Exported define -----------------------------------------------------------*/
 
+/*
+  TO BE USED FOR SERIES USING SECTORS (LIKE F4...)
+  Following example is based on STM32F401xE
+*/
+
+///* Following definitions should be adapted to used Flash configuration :
+//   FLASH_SECTOR_ID : represents the ID of the sector used for storing USBPD settings (usually the last page)
+//   ADDR_FLASH_LAST_SECTOR : Flash address value of beginning of USBPD settings secteur
+//   ADDR_FLASH_PAGE_END : Flash address value of end of USBPD settings page
+//*/
+//#define FLASH_SECTOR_ID         FLASH_SECTOR_7 /* ID of the SECTOR to erase  */
+//#define ADDR_FLASH_SECTOR_7     0x08060000 /* Base @ of Sector 7, 128 Kbytes */
+//#define ADDR_FLASH_LAST_SECTOR  ADDR_FLASH_SECTOR_7  /* (FLASH_BANK1_END - FLASH_PAGE_SIZE + 1) : Base @ of Page 127, 2 Kbytes  */
+//#define ADDR_FLASH_PAGE_END     (ADDR_FLASH_SECTOR_7 + (128 * 1024) - 1)
+
+//#define GUI_FLASH_MAGIC_NUMBER         ADDR_FLASH_LAST_SECTOR
+
+/*
+TO BE USED FOR SERIES USING PAGES (LIKE F0/G0/G4/L5...)
+*/
+
+
 /* Following definitions should be adapted to used Flash configuration :
    INDEX_PAGE : represents the number of the page used for storing USBPD settings (usually the last page)
    ADDR_FLASH_LAST_PAGE : Flash address value of beginning of USBPD settings page

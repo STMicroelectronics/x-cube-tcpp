@@ -6,13 +6,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2021 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -154,6 +153,10 @@ void USBPDM1_AssertRp(uint8_t PortNum)
     LL_UCPD_SetccEnable(Ports[PortNum].husbpd, (Ports[PortNum].CCx == CC1) ? LL_UCPD_CCENABLE_CC1 : LL_UCPD_CCENABLE_CC2);
   }
   SET_BIT(SYSCFG->CFGR1, (Ports[PortNum].husbpd == UCPD1) ? SYSCFG_CFGR1_UCPD1_STROBE : SYSCFG_CFGR1_UCPD2_STROBE);
+
+#if defined(TCPP0203_SUPPORT)
+  BSP_USBPD_PWR_SetRole(PortNum, POWER_ROLE_SOURCE);
+#endif /* TCPP0203_SUPPORT */
 }
 
 void USBPDM1_DeAssertRp(uint8_t PortNum)
@@ -186,6 +189,10 @@ void USBPDM1_AssertRd(uint8_t PortNum)
   LL_UCPD_TypeCDetectionCC2Enable(Ports[PortNum].husbpd);
   LL_UCPD_TypeCDetectionCC1Enable(Ports[PortNum].husbpd);
 #endif
+
+#if defined(TCPP0203_SUPPORT)
+  BSP_USBPD_PWR_SetRole(PortNum, POWER_ROLE_SINK);
+#endif /* TCPP0203_SUPPORT */
 }
 
 void USBPDM1_DeAssertRd(uint8_t PortNum)
@@ -262,10 +269,8 @@ void HW_SignalAttachement(uint8_t PortNum, CCxPin_TypeDef cc)
   MODIFY_REG(Ports[PortNum].husbpd->IMR, INTERRUPT_MASK, INTERRUPT_MASK);
 #endif /* !USBPDCORE_LIB_NO_PD */
 
-#if !defined(USBPDCORE_LIB_NO_PD)||defined(USBPD_TYPE_STATE_MACHINE)
   /* Handle CC enable */
   Ports[PortNum].CCx = cc;
-#endif /* !USBPDCORE_LIB_NO_PD || USBPD_TYPE_STATE_MACHINE */
 
 #if !defined(USBPDCORE_LIB_NO_PD)
   /* Set CC pin for PD message */
@@ -273,7 +278,7 @@ void HW_SignalAttachement(uint8_t PortNum, CCxPin_TypeDef cc)
 
 
 #if defined(_VCONN_SUPPORT)
-  /* Initialize Vconn managment */
+  /* Initialize Vconn management */
   (void)BSP_USBPD_PWR_VCONNInit(PortNum, (Ports[PortNum].CCx == CC1) ? 1u : 2u);
 #endif /* _VCONN_SUPPORT */
 
@@ -319,16 +324,14 @@ void HW_SignalDetachment(uint8_t PortNum)
   if (USBPD_PORTPOWERROLE_SNK == Ports[PortNum].params->PE_PowerRole)
   {
 #if defined(_VCONN_SUPPORT)
-    /* DeInitialize Vconn managment */
-  (void)BSP_USBPD_PWR_VCONNDeInit(PortNum, (Ports[PortNum].CCx == CC1) ? 1u : 2u);
+    /* DeInitialize Vconn management */
+    (void)BSP_USBPD_PWR_VCONNDeInit(PortNum, (Ports[PortNum].CCx == CC1) ? 1u : 2u);
 #endif
     /* DeInitialise VBUS power */
-  (void)BSP_USBPD_PWR_VBUSDeInit(PortNum);
+    (void)BSP_USBPD_PWR_VBUSDeInit(PortNum);
   }
 #endif /* !USBPDCORE_LIB_NO_PD */
-#if !defined(USBPDCORE_LIB_NO_PD)||defined(USBPD_TYPE_STATE_MACHINE)
   Ports[PortNum].CCx = CCNONE;
-#endif /* !USBPDCORE_LIB_NO_PD || USBPD_TYPE_STATE_MACHINE */
 #if !defined(USBPDCORE_LIB_NO_PD)
   /* DeInit timer to detect the reception of goodCRC */
   USBPD_TIM_DeInit();
@@ -374,6 +377,4 @@ void USBPD_HW_IF_FastRoleSwapSignalling(uint8_t PortNum)
 {
   LL_UCPD_SignalFRSTX(Ports[PortNum].husbpd);
 }
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
 
