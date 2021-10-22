@@ -138,10 +138,125 @@
 <div class="col-sm-12 col-lg-8">
 <h1 id="update-history">Update history</h1>
 <div class="collapse">
-<input type="checkbox" id="collapse-section6" checked aria-hidden="true"> <label for="collapse-section6" aria-hidden="true">v3.0.0/ 06-July-2021</label>
+<input type="checkbox" id="collapse-section7" checked aria-hidden="true"> <label for="collapse-section7" aria-hidden="true">v3.1.0/ 22-October-2021</label>
 <div>
 <h2 id="main-changes">Main changes</h2>
 <h3 id="maintenance-release">Maintenance release</h3>
+<p>Maintenance release and product update</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Update X-NUCLEO-DRP1M1 BSP to support current sensing (measurement available in STM32CubeMonitor-UCPD)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Update X-NUCLEO-DRP1M1 related projects to support current sensing added feature</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Update X-NUCLEO-DRP1M1 related projects with example .ioc (CubeMX) files (not to be used for project generation)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Protect GUI and Tracer related includes/code sections, by corresponding compilation flags</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contents">Contents</h2>
+<p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
+<p>Components</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Version</th>
+<th style="text-align: left;">License</th>
+<th style="text-align: left;">Release note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">STM32G0xx HAL Drivers</td>
+<td style="text-align: left;">V1.4.2</td>
+<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers/STM32G0xx_HAL_Driver/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STM32G0xx CMSIS</td>
+<td style="text-align: left;">V1.4.1</td>
+<td style="text-align: left;"><a href="https://opensource.org/licenses/Apache-2.0">Apache-2.0</a></td>
+<td style="text-align: left;"><a href="Drivers/CMSIS/Device/ST/STM32G0xx/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TCPP03-M20 Component Driver</td>
+<td style="text-align: left;">V1.2.1</td>
+<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers/BSP/Components/tcpp0203/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">X-NUCLEO-DRP1M1 BSP</td>
+<td style="text-align: left;">V1.3.0 <span class="icon-st-update"></span></td>
+<td style="text-align: left;"><a href="http://www.opensource.org/licenses/BSD-3-Clause">BSD-3-Clause</a></td>
+<td style="text-align: left;"><a href="Drivers/BSP/X-NUCLEO-DRP1M1/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GUI_INTERFACE</td>
+<td style="text-align: left;">V2.0.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Utilities/GUI_INTERFACE/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRACER_EMB</td>
+<td style="text-align: left;">V1.6.1</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Utilities/TRACER_EMB/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STM32_USBPD_Library/CORE</td>
+<td style="text-align: left;">V4.0.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Core/Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">STM32_USBPD_Library/DEVICES_G0</td>
+<td style="text-align: left;">v3.3.1</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Devices/STM32G0XX\Release_Notes.html">release note URL</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">STM32_USBPD_Library/DEVICES_G4</td>
+<td style="text-align: left;">v5.1.0</td>
+<td style="text-align: left;"><a href="https://www.st.com/sla0044">SLA0044</a></td>
+<td style="text-align: left;"><a href="Middlewares/ST/STM32_USBPD_Library/Devices/STM32G4XX\Release_Notes.html">release note URL</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="known-limitations">Known limitations</h2>
+<p>Outstanding bugs list</p>
+<h2 id="development-toolchains-and-compilers">Development toolchains and compilers</h2>
+<ul>
+<li>[IAR Embedded Workbench for ARM] [EWARM V8.50.6 + STLink/V2]</li>
+<li>[RealView Microcontroller Development Kit] [MDK-ARM V5.31 + ST-LINK/V2]</li>
+<li>[STM32CubeIDE] <a href="https://www.st.com/en/development-tools/stm32cubeide.html">V1.7.0 + ST-LINK/V2</a></li>
+</ul>
+<h2 id="supported-devices-and-boards">Supported devices and boards</h2>
+<ul>
+<li>NUCLEO-G071RB, NUCLEO-G474RE and NUCLEO-L412RB-P</li>
+<li>X-NUCLEO-USBPDM1</li>
+<li>X-NUCLEO-SNK1M1</li>
+<li>X-NUCLEO-DRP1M1</li>
+</ul>
+<h2 id="backward-compatibility">Backward compatibility</h2>
+<p>Not applicable</p>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section6" aria-hidden="true"> <label for="collapse-section6" aria-hidden="true">v3.0.0/ 06-July-2021</label>
+<div>
+<h2 id="main-changes-1">Main changes</h2>
+<h3 id="maintenance-release-1">Maintenance release</h3>
 <p>Maintenance release and product update</p>
 <table>
 <thead>
@@ -173,7 +288,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="contents">Contents</h2>
+<h2 id="contents-1">Contents</h2>
 <p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
 <p>Components</p>
 <table>
@@ -242,30 +357,30 @@
 </tr>
 </tbody>
 </table>
-<h2 id="known-limitations">Known limitations</h2>
+<h2 id="known-limitations-1">Known limitations</h2>
 <p>Outstanding bugs list</p>
-<h2 id="development-toolchains-and-compilers">Development toolchains and compilers</h2>
+<h2 id="development-toolchains-and-compilers-1">Development toolchains and compilers</h2>
 <ul>
 <li>[IAR Embedded Workbench for ARM] [EWARM V8.50.6 + STLink/V2]</li>
 <li>[RealView Microcontroller Development Kit] [MDK-ARM V5.31 + ST-LINK/V2]</li>
 <li>[STM32CubeIDE] <a href="https://www.st.com/en/development-tools/stm32cubeide.html">V1.7.0 + ST-LINK/V2</a></li>
 </ul>
-<h2 id="supported-devices-and-boards">Supported devices and boards</h2>
+<h2 id="supported-devices-and-boards-1">Supported devices and boards</h2>
 <ul>
 <li>NUCLEO-G071RB, NUCLEO-G474RE and NUCLEO-L412RB-P</li>
 <li>X-NUCLEO-USBPDM1</li>
 <li>X-NUCLEO-SNK1M1</li>
 <li>X-NUCLEO-DRP1M1</li>
 </ul>
-<h2 id="backward-compatibility">Backward compatibility</h2>
+<h2 id="backward-compatibility-1">Backward compatibility</h2>
 <p>Not applicable</p>
 </div>
 </div>
 <div class="collapse">
 <input type="checkbox" id="collapse-section5" aria-hidden="true"> <label for="collapse-section5" aria-hidden="true">v2.2.0/ 18-February-2021</label>
 <div>
-<h2 id="main-changes-1">Main changes</h2>
-<h3 id="maintenance-release-1">Maintenance release</h3>
+<h2 id="main-changes-2">Main changes</h2>
+<h3 id="maintenance-release-2">Maintenance release</h3>
 <p>Maintenance release and product update</p>
 <table>
 <thead>
@@ -288,7 +403,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="contents-1">Contents</h2>
+<h2 id="contents-2">Contents</h2>
 <p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
 <p>Components</p>
 <table>
@@ -351,29 +466,29 @@
 </tr>
 </tbody>
 </table>
-<h2 id="known-limitations-1">Known limitations</h2>
+<h2 id="known-limitations-2">Known limitations</h2>
 <p>Outstanding bugs list</p>
-<h2 id="development-toolchains-and-compilers-1">Development toolchains and compilers</h2>
+<h2 id="development-toolchains-and-compilers-2">Development toolchains and compilers</h2>
 <ul>
 <li>[IAR Embedded Workbench for ARM] [EWARM V8.50.4 + STLink/V2]</li>
 <li>[RealView Microcontroller Development Kit] [MDK-ARM V5.25.2 + ST-LINK/V2]</li>
 <li>[STM32CubeIDE] <a href="https://www.st.com/en/development-tools/stm32cubeide.html">V1.6.0 + ST-LINK/V2</a></li>
 </ul>
-<h2 id="supported-devices-and-boards-1">Supported devices and boards</h2>
+<h2 id="supported-devices-and-boards-2">Supported devices and boards</h2>
 <ul>
 <li>NUCLEO-G071RB, NUCLEO-G474RE and NUCLEO-L412RB-P</li>
 <li>X-NUCLEO-USBPDM1</li>
 <li>X-NUCLEO-SNK1M1</li>
 </ul>
-<h2 id="backward-compatibility-1">Backward compatibility</h2>
+<h2 id="backward-compatibility-2">Backward compatibility</h2>
 <p>Not applicable</p>
 </div>
 </div>
 <div class="collapse">
 <input type="checkbox" id="collapse-section4" aria-hidden="true"> <label for="collapse-section4" aria-hidden="true">v2.1.0/ 18-December-2020</label>
 <div>
-<h2 id="main-changes-2">Main changes</h2>
-<h3 id="maintenance-release-2">Maintenance release</h3>
+<h2 id="main-changes-3">Main changes</h2>
+<h3 id="maintenance-release-3">Maintenance release</h3>
 <p>Maintenance release and product update</p>
 <table>
 <thead>
@@ -393,7 +508,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="contents-2">Contents</h2>
+<h2 id="contents-3">Contents</h2>
 <p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
 <p>Components</p>
 <table>
@@ -444,28 +559,28 @@
 </tr>
 </tbody>
 </table>
-<h2 id="known-limitations-2">Known limitations</h2>
+<h2 id="known-limitations-3">Known limitations</h2>
 <p>Outstanding bugs list</p>
-<h2 id="development-toolchains-and-compilers-2">Development toolchains and compilers</h2>
+<h2 id="development-toolchains-and-compilers-3">Development toolchains and compilers</h2>
 <ul>
 <li>[IAR Embedded Workbench for ARM] [EWARM V8.32.3 + STLink/V2]</li>
 <li>[RealView Microcontroller Development Kit] [MDK-ARM V5.25.2 + ST-LINK/V2]</li>
 <li>[STM32CubeIDE] <a href="https://www.st.com/en/development-tools/stm32cubeide.html">V1.5.0 + ST-LINK/V2</a></li>
 </ul>
-<h2 id="supported-devices-and-boards-2">Supported devices and boards</h2>
+<h2 id="supported-devices-and-boards-3">Supported devices and boards</h2>
 <ul>
 <li>NUCLEO-G071RB and NUCLEO-G474RE</li>
 <li>X-NUCLEO-USBPDM1</li>
 </ul>
-<h2 id="backward-compatibility-2">Backward compatibility</h2>
+<h2 id="backward-compatibility-3">Backward compatibility</h2>
 <p>Not applicable</p>
 </div>
 </div>
 <div class="collapse">
 <input type="checkbox" id="collapse-section3" aria-hidden="true"> <label for="collapse-section3" aria-hidden="true">v2.0.1 / 01-July-2020</label>
 <div>
-<h2 id="main-changes-3">Main changes</h2>
-<h3 id="maintenance-release-3">Maintenance release</h3>
+<h2 id="main-changes-4">Main changes</h2>
+<h3 id="maintenance-release-4">Maintenance release</h3>
 <p>Maintenance release and product update</p>
 <table>
 <thead>
@@ -479,7 +594,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="contents-3">Contents</h2>
+<h2 id="contents-4">Contents</h2>
 <p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
 <p>Components</p>
 <table>
@@ -506,43 +621,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="known-limitations-3">Known limitations</h2>
-<p>Outstanding bugs list</p>
-<h2 id="development-toolchains-and-compilers-3">Development toolchains and compilers</h2>
-<ul>
-<li>[IAR Embedded Workbench for ARM] [EWARM V8.32.3 + STLink/V2]</li>
-<li>[RealView Microcontroller Development Kit] [MDK-ARM V5.25.2 + ST-LINK/V2]</li>
-<li>[STM32CubeIDE] <a href="https://www.st.com/en/development-tools/stm32cubeide.html">V1.5.0 + ST-LINK/V2</a></li>
-</ul>
-<h2 id="supported-devices-and-boards-3">Supported devices and boards</h2>
-<ul>
-<li>NUCLEO-G071RB and NUCLEO-G474RE</li>
-<li>X-NUCLEO-USBPDM1</li>
-</ul>
-<h2 id="backward-compatibility-3">Backward compatibility</h2>
-<p>Not applicable</p>
-</div>
-</div>
-<div class="collapse">
-<input type="checkbox" id="collapse-section2" aria-hidden="true"> <label for="collapse-section2" aria-hidden="true">v2.0.0 / 15-June-2020</label>
-<div>
-<h2 id="main-changes-4">Main changes</h2>
-<h3 id="maintenance-release-4">Maintenance release</h3>
-<p>Maintenance release and product update</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Headline</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">G4 project added</td>
-</tr>
-</tbody>
-</table>
-<h2 id="contents-4">Contents</h2>
-<p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
 <h2 id="known-limitations-4">Known limitations</h2>
 <p>Outstanding bugs list</p>
 <h2 id="development-toolchains-and-compilers-4">Development toolchains and compilers</h2>
@@ -561,10 +639,47 @@
 </div>
 </div>
 <div class="collapse">
-<input type="checkbox" id="collapse-section1" aria-hidden="true"> <label for="collapse-section1" aria-hidden="true">v1.0.0/ 01-May-2020</label>
+<input type="checkbox" id="collapse-section2" aria-hidden="true"> <label for="collapse-section2" aria-hidden="true">v2.0.0 / 15-June-2020</label>
 <div>
 <h2 id="main-changes-5">Main changes</h2>
 <h3 id="maintenance-release-5">Maintenance release</h3>
+<p>Maintenance release and product update</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">G4 project added</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contents-5">Contents</h2>
+<p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
+<h2 id="known-limitations-5">Known limitations</h2>
+<p>Outstanding bugs list</p>
+<h2 id="development-toolchains-and-compilers-5">Development toolchains and compilers</h2>
+<ul>
+<li>[IAR Embedded Workbench for ARM] [EWARM V8.32.3 + STLink/V2]</li>
+<li>[RealView Microcontroller Development Kit] [MDK-ARM V5.25.2 + ST-LINK/V2]</li>
+<li>[STM32CubeIDE] <a href="https://www.st.com/en/development-tools/stm32cubeide.html">V1.5.0 + ST-LINK/V2</a></li>
+</ul>
+<h2 id="supported-devices-and-boards-5">Supported devices and boards</h2>
+<ul>
+<li>NUCLEO-G071RB and NUCLEO-G474RE</li>
+<li>X-NUCLEO-USBPDM1</li>
+</ul>
+<h2 id="backward-compatibility-5">Backward compatibility</h2>
+<p>Not applicable</p>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section1" aria-hidden="true"> <label for="collapse-section1" aria-hidden="true">v1.0.0/ 01-May-2020</label>
+<div>
+<h2 id="main-changes-6">Main changes</h2>
+<h3 id="maintenance-release-6">Maintenance release</h3>
 <p>Initial release</p>
 <table>
 <thead>
@@ -578,7 +693,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="contents-5">Contents</h2>
+<h2 id="contents-6">Contents</h2>
 <p><small>The components flagged by “<span class="icon-st-update"></span>” have changed since the previous release. “<span class="icon-st-add"></span>” are new.</small></p>
 <p>Components</p>
 <table>
@@ -659,20 +774,20 @@
 </tr>
 </tbody>
 </table>
-<h2 id="known-limitations-5">Known limitations</h2>
+<h2 id="known-limitations-6">Known limitations</h2>
 <p>Outstanding bugs list</p>
-<h2 id="development-toolchains-and-compilers-5">Development toolchains and compilers</h2>
+<h2 id="development-toolchains-and-compilers-6">Development toolchains and compilers</h2>
 <ul>
 <li>[IAR Embedded Workbench for ARM] [EWARM V8.32.3 + STLink/V2]</li>
 <li>[RealView Microcontroller Development Kit] [MDK-ARM V5.25.2 + ST-LINK/V2]</li>
 <li>[STM32CubeIDE] <a href="https://www.st.com/en/development-tools/stm32cubeide.html">V1.5.0 + ST-LINK/V2</a></li>
 </ul>
-<h2 id="supported-devices-and-boards-5">Supported devices and boards</h2>
+<h2 id="supported-devices-and-boards-6">Supported devices and boards</h2>
 <ul>
 <li>NUCLEO-G071RB and NUCLEO-G474RE</li>
 <li>X-NUCLEO-USBPDM1</li>
 </ul>
-<h2 id="backward-compatibility-5">Backward compatibility</h2>
+<h2 id="backward-compatibility-6">Backward compatibility</h2>
 <p>Not applicable</p>
 </div>
 </div>

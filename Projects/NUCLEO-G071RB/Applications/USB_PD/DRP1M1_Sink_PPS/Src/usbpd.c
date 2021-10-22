@@ -21,7 +21,9 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "usbpd.h"
+#if defined(_GUI_INTERFACE)
 #include "gui_api.h"
+#endif /* _GUI_INTERFACE */
 
 /* USER CODE BEGIN 0 */
 /* USER CODE END 0 */
@@ -53,8 +55,10 @@ void MX_USBPD_Init(void)
     while(1);
   }
 
+#if defined(_GUI_INTERFACE)
   /* Initialize GUI before retrieving PDO from RAM */
   GUI_Init(GetHWBoardVersionName, GetPDTypeName, HW_IF_PWR_GetVoltage, HW_IF_PWR_GetCurrent);
+#endif /* _GUI_INTERFACE */
 
   /* Initialise the DPM application */
   if (USBPD_OK != USBPD_DPM_UserInit())

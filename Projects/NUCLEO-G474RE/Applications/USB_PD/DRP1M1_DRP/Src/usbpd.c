@@ -21,7 +21,9 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "usbpd.h"
+#if defined(_GUI_INTERFACE)
 #include "gui_api.h"
+#endif /* _GUI_INTERFACE */
 
 /* USER CODE BEGIN 0 */
 /* USER CODE END 0 */
@@ -31,7 +33,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 #define BSP_BOARD_NAME  "NUCLEO-G474RE";
-#define BSP_BOARD_ID    "X-NUCLEO-SRC1M1";
+#define BSP_BOARD_ID    "X-NUCLEO-DRP1M1";
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -51,8 +53,10 @@ void MX_USBPD_Init(void)
     while(1);
   }
 
+#if defined(_GUI_INTERFACE)
   /* Initialize GUI before retrieving PDO from RAM */
   GUI_Init(BSP_GetBoardName, BSP_GetBoardID, HW_IF_PWR_GetVoltage, HW_IF_PWR_GetCurrent);
+#endif /* _GUI_INTERFACE */
 
   /* Initialise the DPM application */
   if (USBPD_OK != USBPD_DPM_UserInit())

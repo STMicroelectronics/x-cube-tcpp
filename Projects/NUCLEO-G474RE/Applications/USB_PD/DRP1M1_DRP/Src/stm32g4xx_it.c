@@ -24,7 +24,9 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "usbpd.h"
+#if defined(_TRACE)
 #include "tracer_emb.h"
+#endif /* _TRACE */
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "usbpd_def.h"
@@ -77,8 +79,7 @@ extern void TRACER_EMB_IRQHandlerUSART(void);
 /* USER CODE BEGIN EV */
 
 #if defined(TCPP0203_SUPPORT)
-extern I2C_HandleTypeDef    TCPP03_HANDLE_I2C;
-extern ADC_HandleTypeDef    husbpd_pwr_adcx;
+extern I2C_HandleTypeDef    TCPP0X_HANDLE_I2C;
 #endif /* TCPP0203_SUPPORT */
 
 /* USER CODE END EV */
@@ -253,13 +254,13 @@ void TRACER_EMB_USART_IRQHANDLER(void)
   */
 void I2C1_IRQHandler(void)
 {
-  if (TCPP03_HANDLE_I2C.Instance->ISR & (I2C_FLAG_BERR | I2C_FLAG_ARLO | I2C_FLAG_OVR))
+  if (TCPP0X_HANDLE_I2C.Instance->ISR & (I2C_FLAG_BERR | I2C_FLAG_ARLO | I2C_FLAG_OVR))
   {
-    HAL_I2C_ER_IRQHandler(&TCPP03_HANDLE_I2C);
+    HAL_I2C_ER_IRQHandler(&TCPP0X_HANDLE_I2C);
   }
   else
   {
-    HAL_I2C_EV_IRQHandler(&TCPP03_HANDLE_I2C);
+    HAL_I2C_EV_IRQHandler(&TCPP0X_HANDLE_I2C);
   }
 }
 
@@ -279,25 +280,6 @@ void TCPP0203_PORT0_FLG_EXTI_IRQHANDLER(void)
     /* Clear Flag */
     TCPP0203_PORT0_FLG_EXTI_CLEAR_FLAG();
   }
-}
-
-/**
-  * @brief  This function handles ADC interrupt request.
-  * @retval None
-  */
-void TCPP0203_PORT0_ADC_IRQHANDLER(void)
-{
-#if !defined(USBPDCORE_LIB_NO_PD)
-  HAL_ADC_IRQHandler(&husbpd_pwr_adcx);
-#endif
-}
-
-/**
-  * @brief  This function handles DMA interrupt request.
-  */
-void TCPP0203_PORT0_ADC_DMA_IRQHANDLER(void)
-{
-  HAL_DMA_IRQHandler(husbpd_pwr_adcx.DMA_Handle);
 }
 #endif /* TCPP0203_SUPPORT */
 

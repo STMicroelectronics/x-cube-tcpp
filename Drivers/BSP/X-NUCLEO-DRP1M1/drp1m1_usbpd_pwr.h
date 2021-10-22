@@ -95,6 +95,15 @@ typedef enum
 } USBPD_PWR_VBUSConnectionStatusTypeDef;
 
 /**
+  * @brief  ADC buffer identifiers
+  */
+typedef enum
+{
+  ADCBUF_VSENSE = 0,
+  ADCBUF_ISENSE
+} USBPD_PWR_ADCBufIDTypeDef;
+
+/**
   * @brief VBUS Detection Callback
   */
 typedef void USBPD_PWR_VBUSDetectCallbackFunc(uint32_t PortNum,

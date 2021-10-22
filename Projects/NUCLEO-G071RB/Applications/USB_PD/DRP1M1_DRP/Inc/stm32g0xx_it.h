@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics International N.V. 
+  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics International N.V.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -54,8 +54,12 @@ void HardFault_Handler(void);
 void SysTick_Handler(void);
 void UCPD1_2_IRQHandler(void);
 void DMA1_Channel2_3_IRQHandler(void);
-void DMA1_Ch4_7_DMAMUX1_OVR_IRQHandler(void);
-void USART3_4_LPUART1_IRQHandler(void);
+#if defined(_TRACE) || defined(_GUI_INTERFACE)
+#if TRACER_EMB_DMA_MODE == 1UL
+void TRACER_EMB_TX_DMA_IRQHANDLER(void);
+#endif /* TRACER_EMB_DMA_MODE == 1 */
+void TRACER_EMB_USART_IRQHANDLER(void);
+#endif /* _TRACE || _GUI_INTERFACE */
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */

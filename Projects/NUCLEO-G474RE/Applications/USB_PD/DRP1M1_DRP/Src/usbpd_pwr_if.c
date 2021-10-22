@@ -32,7 +32,9 @@
 #include "usbpd_trace.h"
 #endif /* _TRACE */
 #include "string.h"
+#if defined(_GUI_INTERFACE)
 #include "gui_api.h"
+#endif /* _GUI_INTERFACE */
 /* USER CODE BEGIN Include */
 #include "usbpd_devices_conf.h"
 #include "string.h"

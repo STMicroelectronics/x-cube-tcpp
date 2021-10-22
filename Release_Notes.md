@@ -91,7 +91,67 @@ Here is the list of references to the user documents:
 # Update history
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section6" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section7" checked aria-hidden="true">
+<label for="collapse-section7" aria-hidden="true">v3.1.0/ 22-October-2021</label>
+<div>			
+
+## Main changes
+
+### Maintenance release
+Maintenance release and product update
+
+  Headline
+  ----------------------------------------------------------
+  Update X-NUCLEO-DRP1M1 BSP to support current sensing (measurement available in STM32CubeMonitor-UCPD)
+  Update X-NUCLEO-DRP1M1 related projects to support current sensing added feature
+  Update X-NUCLEO-DRP1M1 related projects with example .ioc (CubeMX) files (not to be used for project generation)
+  Protect GUI and Tracer related includes/code sections, by corresponding compilation flags
+
+## Contents
+
+<small>The components flagged by "[]{.icon-st-update}" have changed since the
+previous release. "[]{.icon-st-add}" are new.</small>
+
+Components
+
+  Name                                                        Version                                           License                                                                                                       Release note
+  ----------------------------------------------------------- ------------------------------------------------- ------------------------------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------
+  STM32G0xx HAL Drivers                                       V1.4.2                                             [BSD-3-Clause](http://www.opensource.org/licenses/BSD-3-Clause)                                                [release note URL](Drivers/STM32G0xx_HAL_Driver/Release_Notes.html)
+  STM32G0xx CMSIS                                             V1.4.1                                             [Apache-2.0](https://opensource.org/licenses/Apache-2.0)                                                       [release note URL](Drivers/CMSIS/Device/ST/STM32G0xx/Release_Notes.html)
+  TCPP03-M20 Component Driver                                 V1.2.1                                             [BSD-3-Clause](http://www.opensource.org/licenses/BSD-3-Clause)                                                [release note URL](Drivers/BSP/Components/tcpp0203/Release_Notes.html)
+  X-NUCLEO-DRP1M1 BSP                                         V1.3.0 []{.icon-st-update}                         [BSD-3-Clause](http://www.opensource.org/licenses/BSD-3-Clause)                                                [release note URL](Drivers/BSP/X-NUCLEO-DRP1M1/Release_Notes.html)
+  GUI_INTERFACE                                               V2.0.0                                             [SLA0044](https://www.st.com/sla0044)                                                                          [release note URL](Utilities/GUI_INTERFACE/Release_Notes.html)
+  TRACER_EMB                                                  V1.6.1                                             [SLA0044](https://www.st.com/sla0044)                                                                          [release note URL](Utilities/TRACER_EMB/Release_Notes.html)
+  STM32_USBPD_Library/CORE                                    V4.0.0                                             [SLA0044](https://www.st.com/sla0044)                                                                          [release note URL](Middlewares/ST/STM32_USBPD_Library/Core/Release_Notes.html)
+  STM32_USBPD_Library/DEVICES_G0                              v3.3.1                                             [SLA0044](https://www.st.com/sla0044)                                                                          [release note URL](Middlewares/ST/STM32_USBPD_Library/Devices/STM32G0XX\Release_Notes.html)
+  STM32_USBPD_Library/DEVICES_G4                              v5.1.0                                             [SLA0044](https://www.st.com/sla0044)                                                                          [release note URL](Middlewares/ST/STM32_USBPD_Library/Devices/STM32G4XX\Release_Notes.html)
+
+## Known limitations
+
+Outstanding bugs list
+
+## Development toolchains and compilers
+
+- [IAR Embedded Workbench for ARM] [EWARM V8.50.6 + STLink/V2]
+- [RealView Microcontroller Development Kit] [MDK-ARM V5.31 + ST-LINK/V2]
+- [STM32CubeIDE] [V1.7.0 + ST-LINK/V2](https://www.st.com/en/development-tools/stm32cubeide.html)
+
+## Supported devices and boards
+
+- NUCLEO-G071RB, NUCLEO-G474RE and NUCLEO-L412RB-P
+- X-NUCLEO-USBPDM1
+- X-NUCLEO-SNK1M1 
+- X-NUCLEO-DRP1M1 
+
+## Backward compatibility
+
+Not applicable
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section6" aria-hidden="true">
 <label for="collapse-section6" aria-hidden="true">v3.0.0/ 06-July-2021</label>
 <div>			
 

@@ -39,7 +39,51 @@ The USB Type-C connector can supply the STM32 Nucleo development board thanks to
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section3" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section4" checked aria-hidden="true">
+<label for="collapse-section4" aria-hidden="true">V1.3.0 / 22-October-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+
+  Headline
+  --------
+  Update BSP to support current sensing (measurement available in STM32CubeMonitor-UCPD)
+
+  : Fixed bugs list
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.6
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.31
+- STM32CubeIDE toolchain V1.7.0
+
+## Supported Devices and boards
+
+  The X-NUCLEO-DRP1M1 is an expansion board for the NUCLEO-G071RB and NUCLEO-G474RE.
+
+## Backward compatibility
+
+  No compatibility break with previous version
+
+## Dependencies
+
+</div>
+:::
+
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section3" aria-hidden="true">
 <label for="collapse-section3" aria-hidden="true">V1.2.0 / 06-July-2021</label>
 <div>
 
