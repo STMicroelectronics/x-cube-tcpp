@@ -64,4 +64,3 @@ void                USBPD_VDM_UserReset(uint8_t PortNum);
 
 #endif /* __USBPD_VDM_USER_H_ */
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

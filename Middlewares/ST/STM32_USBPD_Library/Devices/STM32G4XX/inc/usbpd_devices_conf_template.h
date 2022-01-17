@@ -5,7 +5,7 @@
   * @brief   This file contains the device define.
   ******************************************************************************
   *
-  * Copyright (c) 2021 STMicroelectronics.
+  * Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -83,7 +83,7 @@ extern "C" {
 
 #define UCPDDMA_INSTANCE0_CHANNEL_TX   DMA1_Channel3
 
-/* defined used to configure  USBPD_HW_SetFRSSignalling */
+/* Defines used to configure  USBPD_HW_SetFRSSignalling */
 #define UCPDFRS_INSTANCE0_FRSCC1  do{                                                                  \
                                       LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOA);              \
                                       LL_GPIO_SetPinMode(GPIOA, LL_GPIO_PIN_2, LL_GPIO_MODE_ALTERNATE); \

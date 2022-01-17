@@ -37,7 +37,6 @@
 
 /* USER CODE BEGIN 2 */
 /* USER CODE END 2 */
-
 /* USBPD init function */
 void MX_USBPD_Init(void)
 {
@@ -74,6 +73,7 @@ void MX_USBPD_Init(void)
   /* USER CODE END EnableIRQ */
 
 }
+
 /**
   * @brief  This method returns the board name
   * @retval pointer to the board name string
@@ -102,4 +102,3 @@ __weak const uint8_t* BSP_GetBoardID(void)
 /**
   * @}
   */
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

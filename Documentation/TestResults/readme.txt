@@ -1,5 +1,5 @@
 /**
-  @page <Tests results>  <Certification tests results done on offical USB-PD tool>
+  @page <Tests results>  <Certification tests results done on official USB-PD tool>
 
   @verbatim
   ******************************************************************************
@@ -27,11 +27,6 @@ You will find different reports done on different configuration.
 
 @par Directory contents
 
- - Ellisys\x-cube-tcpp_v2.2.0_NUCLEO-G071RB-SNK1M1_Sink_USB Compliance Report.html
-   * Test report done on Ellisys tool with application 'NUCLEO-G071RB-SNK1M1_Sink'
-   * Application: Projects\NUCLEO-G071RB\Applications\USB_PD\SNK1M1_Sink
-   * VIF: STMicroelectronics_SNK1M1_Sink_STM32G071RB_VIF.xml 
-
  - Ellisys\x-cube-tcpp_v2.2.0_NUCLEO-G071RB-USBPDM1_Sink_LPM_USB Compliance Report.html
    * Test report done on Ellisys tool with application 'NUCLEO-G071RB-USBPDM1_Sink_LPM'
    * Application: Projects\NUCLEO-G071RB\Applications\USB_PD\USBPDM1_Sink_LPM
@@ -42,11 +37,36 @@ You will find different reports done on different configuration.
    * Application: Projects\NUCLEO-G071RB\Applications\USB_PD\USBPDM1_Sink_PPS
    * VIF: STMicroelectronics_USBPDM1_Sink_PPS_STM32G071RB_VIF.xml 
 
- - Ellisys\x-cube-tcpp_v3.0.0_NUCLEO-G071RB_DRP1M1_USB Compliance Report.html
+ - Ellisys\x-cube-tcpp_v3.2.0_NUCLEO-G071RB-SNK1M1_Sink_USB Compliance Report.html
+   * Test report done on Ellisys tool with application 'NUCLEO-G071RB-SNK1M1_Sink'
+   * Application: Projects\NUCLEO-G071RB\Applications\USB_PD\SNK1M1_Sink
+   * VIF: STMicroelectronics_SNK1M1_Sink_STM32G071RB_VIF.xml 
+
+ - Ellisys\x-cube-tcpp_v3.2.0_NUCLEO-G071RB-DRP1M1_DRP_USB Compliance Report.html
    * Test report done on Ellisys tool with application 'NUCLEO-G071RB-DRP1M1_DRP'
    * Application: Projects\NUCLEO-G071RB\Applications\USB_PD\DRP1M1_DRP
    * VIF: STMicroelectronics_DRP1M1_DRP_STM32G071RB_VIF.xml 
  
+ - Ellisys\x-cube-tcpp_v3.2.0_NUCLEO-G071RB-SRC1M1_Source_USB Compliance Report.html
+   * Test report done on Ellisys tool with application 'NUCLEO-G071RB-SRC1M1_Source'
+   * Application: Projects\NUCLEO-G071RB\Applications\USB_PD\SRC1M1_Source
+   * VIF: STMicroelectronics_SRC1M1_Source_STM32G071RB_VIF.xml 
+
+ - Ellisys\x-cube-tcpp_v3.2.0_NUCLEO-G474RE-SNK1M1_Sink_USB Compliance Report.html
+   * Test report done on Ellisys tool with application 'NUCLEO-G474RE-SNK1M1_Sink'
+   * Application: Projects\NUCLEO-G474RE\Applications\USB_PD\SNK1M1_Sink
+   * VIF: STMicroelectronics_SNK1M1_Sink_STM32G474RE_VIF.xml 
+
+ - Ellisys\x-cube-tcpp_v3.2.0_NUCLEO-G474RE-DRP1M1_DRP_USB Compliance Report.html
+   * Test report done on Ellisys tool with application 'NUCLEO-G474RE-DRP1M1_DRP'
+   * Application: Projects\NUCLEO-G474RE\Applications\USB_PD\DRP1M1_DRP
+   * VIF: STMicroelectronics_DRP1M1_DRP_STM32G474RE_VIF.xml 
+ 
+ - Ellisys\x-cube-tcpp_v3.2.0_NUCLEO-G474RE-SRC1M1_Source_USB Compliance Report.html
+   * Test report done on Ellisys tool with application 'NUCLEO-G474RE-SRC1M1_Source'
+   * Application: Projects\NUCLEO-G474RE\Applications\USB_PD\SRC1M1_Source
+   * VIF: STMicroelectronics_SRC1M1_Source_STM32G474RE_VIF.xml 
+
  - MQP\x-cube-tcpp_v3.0.0_NUCLEO-G071RB-SNK1M1_Sink_SNK1M1_Sink-xxxx.htm
    * Test report done on MQP tool with application 'NUCLEO-G071RB-SNK1M1_Sink'
    * Application: Projects\NUCLEO-G071RB\Applications\USB_PD\SNK1M1_Sink
@@ -62,7 +82,12 @@ You will find different reports done on different configuration.
    * Application: Projects\NUCLEO-G071RB\Applications\USB_PD\USBPDM1_Sink_PPS
    * VIF: STMicroelectronics_SNK1M1_Sink_PPS_STM32G071RB_VIF.xml 
 
- - MQP\x-cube-tcpp_v3.0.0_NUCLEO-G474RE_DRP1M1_xxxx.html
+ - MQP\x-cube-tcpp_v3.2.0_NUCLEO-G071RB_DRP1M1_xxxx.html
+   * Test report done on Ellisys tool with application 'NUCLEO-G071RB-DRP1M1_DRP'
+   * Application: Projects\NUCLEO-G071RB\Applications\USB_PD\DRP1M1_DRP
+   * VIF: STMicroelectronics_DRP1M1_DRP_STM32G071RB_VIF.xml 
+
+ - MQP\x-cube-tcpp_v3.2.0_NUCLEO-G474RE_DRP1M1_xxxx.html
    * Test report done on Ellisys tool with application 'NUCLEO-G474RE-DRP1M1_DRP'
    * Application: Projects\NUCLEO-G474RE\Applications\USB_PD\DRP1M1_DRP
    * VIF: STMicroelectronics_DRP1M1_DRP_STM32G474RE_VIF.xml 
@@ -73,15 +98,14 @@ You will find different reports done on different configuration.
     on Nucleo boards with X-NUCLEO-USBPDM1 (resp. X-NUCLEO-SNK1M1) plugged. 
 	Both additional boards are considered equivalent.
   - Applications whose name contains "DRP1M1" could only be executed on Nucleo boards with X-NUCLEO-DRP1M1 plugged. 
+  - Applications whose name contains "SRC1M1" could only be executed on Nucleo boards with X-NUCLEO-SRC1M1 plugged. 
 
   - Ellisys configuration:
   Generator used Ellisys USB Explorer 350 (EX350-62238)
   Analyzer used Ellisys USB Explorer 350 (EX350-62239)
-  Software version: Report generated with version 3.1.7851
+  Software version: 3.1.7975
 
- - MQP configuration : V6.32.00
+ - MQP configuration : V6.40.03
  
-@par How to use it?
-
  * <h3><center>&copy; COPYRIGHT STMicroelectronics</center></h3>
  */

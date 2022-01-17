@@ -9,18 +9,11 @@ header-includes: <link rel="icon" type="image/x-icon" href="_htmresc/favicon.png
 
 
 <center>
-# Release Notes for X-NUCLEO-USBPDM1
+# <small>Release Notes for</small> X-NUCLEO-USBPDM1 BSP Driver
 Copyright &copy; 2020 STMicroelectronics\
     
 [![ST logo](_htmresc/st_logo_2020.png)](https://www.st.com){.logo}
 </center>
-
-# License
-
-This software component is licensed by ST under BSD 3-Clause license, the "License"; 
-You may not use this component except in compliance with the License. You may obtain a copy of the License at:
-
-[http://www.opensource.org/licenses/BSD-3-Clause](http://www.opensource.org/licenses/BSD-3-Clause)
 
 # Purpose
 
@@ -42,7 +35,52 @@ Further information are available here:
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section2" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section3" checked aria-hidden="true">
+<label for="collapse-section3" aria-hidden="true">V1.2.0 / 21-Dec.-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+
+**Fixed bugs list**
+
+  Headline
+  --------
+    CodeSpell and MCUAstyle corrections
+    License update
+
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.6
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.31
+- STM32CubeIDE v1.7.0
+
+## Supported Devices and boards
+
+  The X-NUCLEO-USBPDM1 is an expansion board for the NUCLEO-G071RB and NUCLEO-G474RE.
+
+## Backward compatibility
+
+  No compatibility break with previous version
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section2" aria-hidden="true">
 <label for="collapse-section2" aria-hidden="true">V1.1.0 / 18-Dec.-2020</label>
 <div>
 
@@ -58,7 +96,7 @@ Further information are available here:
   Headline
   --------
     Update comment for BSP_USBPD_PWR_SetVBUSDisconnectionThreshold() function
-    change to avoid over comsumption link with DB pin management
+    change to avoid over consumption link with DB pin management
     Solve one warning in Keil (empty line at the end of a c file)
 
 

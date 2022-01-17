@@ -1,0 +1,10 @@
+[ProjectFiles]
+HeaderPath=..\..\..\..\..\..\Drivers\BSP\X-NUCLEO-SRC1M1;..\..\..\..\..\..\Drivers\BSP\STM32G4xx_Nucleo;..\..\..\..\..\..\Drivers\BSP\Components\tcpp0203
+[Others]
+Define=USE_STM32G4XX_NUCLEO;NUCLEO_MB1367;TCPP0203_SUPPORT
+HALModule=
+[Groups]
+Doc=../readme.txt;
+Drivers/BSP/X-NUCLEO-SRC1M1=../../../../../../Drivers/BSP/X-NUCLEO-SRC1M1/src1m1_usbpd_pwr.c;../../../../../../Drivers/BSP/X-NUCLEO-SRC1M1/src1m1_bus.c;
+Drivers/BSP/Components/tcpp0203=../../../../../../Drivers/BSP/Components/tcpp0203/tcpp0203.c;../../../../../../Drivers/BSP/Components/tcpp0203/tcpp0203_reg.c
+Drivers/BSP/STM32G4xx_Nucleo=../../../../../../Drivers/BSP/STM32G4xx_Nucleo/stm32g4xx_nucleo.c

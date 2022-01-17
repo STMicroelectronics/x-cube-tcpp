@@ -10,17 +10,10 @@ header-includes: <link rel="icon" type="image/x-icon" href="_htmresc/favicon.png
 
 <center>
 # Release Notes for STM32 USB-C Power Delivery embedded Tracer
-Copyright &copy; 2018 STMicroelectronics\
+Copyright &copy; 2018(-2021) STMicroelectronics\
 
 [![ST logo](_htmresc/st_logo_2020.png)](https://www.st.com){.logo}
 </center>
-
-# License
-
-This software component is licensed by ST under BSD 3-Clause license, the "License"; 
-You may not use this component except in compliance with the License. You may obtain a copy of the License at:
-
-[http://www.opensource.org/licenses/BSD-3-Clause](http://www.opensource.org/licenses/BSD-3-Clause)
 
 # Purpose
 
@@ -31,7 +24,76 @@ This driver is used for the embedded USB-PD tracer used to debug USB-PD applicat
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section10" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section12" checked aria-hidden="true">
+<label for="collapse-section12" aria-hidden="true">V1.7.1 / 01-Dec-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+## Contents
+
+  Headline
+  --------
+  [Licensing] Update the way to declare licenses in Cube and X-CUBE components
+  Trace not working on STM32L476 and L4 without DMAMUX
+
+  : Fixed bugs list
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.6
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.31
+- STM32CubeIDE v1.7.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section11" aria-hidden="true">
+<label for="collapse-section11" aria-hidden="true">V1.7.0 / 30-April-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+## Contents
+
+  Headline
+  --------
+  Update to manage the case where USART_CR3_RTSE is not handled by the LPUART IP
+
+  : Fixed bugs list
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- STM32CubeIDE v1.4.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section10" aria-hidden="true">
 <label for="collapse-section10" aria-hidden="true">V1.6.1 / 01-Feb-2021</label>
 <div>
 
@@ -365,6 +427,5 @@ Maintenance release
 <footer class="sticky">
 For complete documentation on STM32,visit: [[www.st.com/stm32](http://www.st.com)]
 
-This release note uses up to date web standards and, for this reason, should not be opened with Internet Explorer
-but preferably with popular browsers such as Google Chrome, Mozilla Firefox, Opera or Microsoft Edge.
+*This release note uses up to date web standards and, for this reason, should not be opened with Internet Explorer but preferably with popular browsers such as Google Chrome, Mozilla Firefox, Opera or Microsoft Edge.*
 </footer>

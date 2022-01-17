@@ -6,13 +6,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2019 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -107,9 +106,9 @@ typedef enum
 typedef struct __CRYP_HandleTypeDef
 #else
 typedef struct
-#endif
+#endif /* USE_HAL_CRYP_REGISTER_CALLBACKS */
 {
-  AES_TypeDef                       *Instance;            /*!< AES Register base address */
+  AES_TypeDef                       *Instance;        /*!< AES Register base address */
 
   CRYP_ConfigTypeDef                Init;             /*!< CRYP required parameters */
 
@@ -120,13 +119,13 @@ typedef struct
 
   uint32_t                          *pCrypOutBuffPtr; /*!< Pointer to CRYP processing (encryption, decryption,...) buffer */
 
-  __IO uint16_t                     CrypHeaderCount;   /*!< Counter of header data */
+  __IO uint16_t                     CrypHeaderCount;  /*!< Counter of header data in words */
 
-  __IO uint16_t                     CrypInCount;      /*!< Counter of input data */
+  __IO uint16_t                     CrypInCount;      /*!< Counter of input data in words */
 
-  __IO uint16_t                     CrypOutCount;     /*!< Counter of output data */
+  __IO uint16_t                     CrypOutCount;     /*!< Counter of output data in words */
 
-  uint16_t                          Size;             /*!< length of input data in words */
+  uint16_t                          Size;             /*!< Length of input data */
 
   uint32_t                          Phase;            /*!< CRYP peripheral phase */
 
@@ -644,5 +643,3 @@ uint32_t HAL_CRYP_GetError(CRYP_HandleTypeDef *hcryp);
 #endif
 
 #endif /* STM32G4xx_HAL_CRYP_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

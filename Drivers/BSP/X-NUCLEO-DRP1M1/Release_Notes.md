@@ -15,13 +15,6 @@ Copyright &copy; 2020 STMicroelectronics\
 [![ST logo](_htmresc/st_logo_2020.png)](https://www.st.com){.logo}
 </center>
 
-# License
-
-This software component is licensed by ST under BSD 3-Clause license, the "License"; 
-You may not use this component except in compliance with the License. You may obtain a copy of the License at:
-
-[http://www.opensource.org/licenses/BSD-3-Clause](http://www.opensource.org/licenses/BSD-3-Clause)
-
 # Purpose
 
 The X-NUCLEO-DRP1DM1 is an expansion board for the NUCLEO-G071RB and NUCLEO-G474RE development boards or any STM32 Nucleo development board equipped with a USB Type-C™ peripheral.
@@ -32,6 +25,9 @@ It provides a straightforward means for evaluating USB Type-C™ Power Delivery 
 The USB Type-C connector can supply the STM32 Nucleo development board thanks to a 3.3 V LDO.
 
 
+Further information are available here:
+
+[https://www.st.com/en/ecosystems/x-nucleo-drp1m1.html](https://www.st.com/en/ecosystems/x-nucleo-drp1m1.html)
 
 :::
 
@@ -39,7 +35,54 @@ The USB Type-C connector can supply the STM32 Nucleo development board thanks to
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section4" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section5" checked aria-hidden="true">
+<label for="collapse-section5" aria-hidden="true">V1.4.0 / 21-December-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+
+  Headline
+  --------
+  License update
+  CodeSpell & MCUAStyle corrections
+  In case of false OCP detection when in SRC mode, attempt to reopen Provider path without trigerring the Error Recovery mechanism at protocol level
+  Remove old references to USBPDM3
+  
+  : Fixed bugs list
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.6
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.31
+- STM32CubeIDE toolchain V1.7.0
+
+## Supported Devices and boards
+
+  The X-NUCLEO-DRP1M1 is an expansion board for the NUCLEO-G071RB and NUCLEO-G474RE.
+
+## Backward compatibility
+
+  No compatibility break with previous version
+
+## Dependencies
+
+</div>
+:::
+
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section4"  aria-hidden="true">
 <label for="collapse-section4" aria-hidden="true">V1.3.0 / 22-October-2021</label>
 <div>
 

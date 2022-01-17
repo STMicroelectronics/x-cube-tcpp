@@ -1,9 +1,8 @@
 [ProjectFiles]
 HeaderPath=..\..\..\..\..\..\Drivers\BSP\STM32G4xx_Nucleo
 [Others]
-Define=USE_NUCLEO_64;USBPDM1_VCC_FEATURE_ENABLED
+Define=
 HALModule=
 [Groups]
 Doc=../readme.txt;
-Application/User=../Src/usbpd_usb_if.c;
-Drivers/BSP/STM32G4xx_Nucleo=../../../../../../Drivers/BSP/STM32G4xx_Nucleo/stm32g4xx_nucleo.c;
+Application/User=../Src/usbpd_user_services.c

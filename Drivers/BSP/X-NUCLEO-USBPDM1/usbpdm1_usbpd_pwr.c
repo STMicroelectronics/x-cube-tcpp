@@ -9,13 +9,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2019 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -49,8 +48,8 @@
   */
 
 /** @defgroup USBPDM1_USBPD_PWR_Private_Constants Private Constants
-* @{
-*/
+  * @{
+  */
 /* USER CODE BEGIN POWER_Private_Constants */
 /* Definitions of ADC hardware constraints delays */
 /* Note: Only ADC IP HW delays are defined in ADC LL driver driver,           */
@@ -362,7 +361,7 @@ int32_t BSP_USBPD_PWR_VBUSGetCurrent(uint32_t Instance, int32_t *pCurrent)
 
 /**
   * @brief  Set the VBUS disconnection voltage threshold.
-  * @note   Callback funtion invoked when VBUS falls below programmed threshold.
+  * @note   Callback function invoked when VBUS falls below programmed threshold.
   * @note   By default VBUS disconnection threshold is set to 3.3V
   * @param  Instance Type-C port identifier
   *         This parameter can be take one of the following values:
@@ -421,11 +420,11 @@ int32_t BSP_USBPD_PWR_VCCSetState(uint32_t Instance, uint32_t State)
       LL_GPIO_ResetOutputPin(GPIOB, LL_GPIO_PIN_6);
 #else
 #error "missing value definition for your your board"
-#endif      
+#endif
     }
     else
     {
-#if defined(USE_STM32G4XX_NUCLEO)      
+#if defined(USE_STM32G4XX_NUCLEO)
       LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_10);
       LL_GPIO_SetOutputPin(GPIOB, LL_GPIO_PIN_1);
 #elif defined(USE_STM32G0XX_NUCLEO)
@@ -469,7 +468,7 @@ int32_t BSP_USBPD_PWR_VCCSetState(uint32_t Instance, uint32_t State)
   *           the setting of these parameters is bypassed without error
   *           reporting:
   *           it can be the expected behavior in case of recall of this
-  *           function to update only a few parameters (which update fullfills
+  *           function to update only a few parameters (which update fulfills
   *           the ADC state).
   *           Otherwise, it is up to the user to set the appropriate error
   *           reporting in user application.
@@ -517,7 +516,7 @@ static void PWR_Configure_ADC(void)
 
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 serie, setting of these features is conditioned to   */
+  /*       On this STM32 series, setting of these features is conditioned to   */
   /*       ADC state:                                                         */
   /*       All ADC instances of the ADC common group must be disabled.        */
   /* Note: In this example, all these checks are not necessary but are        */
@@ -537,7 +536,7 @@ static void PWR_Configure_ADC(void)
     /*       setting corresponding to default configuration from reset state. */
 
     /* Set ADC clock (conversion clock) common to several ADC instances */
-    /* Note: On this STM32 serie, ADC common clock asynchonous prescaler      */
+    /* Note: On this STM32 series, ADC common clock asynchronous prescaler      */
     /*       is applied to each ADC instance if ADC instance clock is         */
     /*       set to clock source asynchronous                                 */
     /*       (refer to function "LL_ADC_SetClock()" below).                   */
@@ -553,14 +552,14 @@ static void PWR_Configure_ADC(void)
 
     /*## Configuration of ADC hierarchical scope: multimode ####################*/
 
-    /* Note: Feature not available on this STM32 serie */
+    /* Note: Feature not available on this STM32 series */
   }
 
   /*## Configuration of ADC hierarchical scope: ADC instance #################*/
 
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 serie, setting of these features is conditioned to   */
+  /*       On this STM32 series, setting of these features is conditioned to   */
   /*       ADC state:                                                         */
   /*       ADC must be disabled.                                              */
   if (0u == LL_ADC_IsEnabled(VSENSE_ADC_INSTANCE))
@@ -573,7 +572,7 @@ static void PWR_Configure_ADC(void)
     VSENSE_ADC_SET_CLOCK();
 
     /* Set ADC channels sampling time */
-    /* Note: On this STM32 serie, sampling time is common to all channels     */
+    /* Note: On this STM32 series, sampling time is common to all channels     */
     /*       of the entire ADC instance.                                      */
     /*       Therefore, sampling time is configured here under ADC instance   */
     /*       scope (not under channel scope as on some other STM32 devices    */
@@ -597,7 +596,7 @@ static void PWR_Configure_ADC(void)
     }
 
     /* Set ADC channels sampling time */
-    /* Note: On this STM32 serie, sampling time is common to groups           */
+    /* Note: On this STM32 series, sampling time is common to groups           */
     /*       of severals channels within ADC instance.                        */
     /*       Therefore, groups of sampling sampling times are configured      */
     /*       here under ADC instance scope.                                   */
@@ -610,7 +609,7 @@ static void PWR_Configure_ADC(void)
 
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 serie, setting of these features is conditioned to   */
+  /*       On this STM32 series, setting of these features is conditioned to   */
   /*       ADC state:                                                         */
   /*       ADC must be disabled or enabled without conversion on going        */
   /*       on group regular.                                                  */
@@ -628,7 +627,7 @@ static void PWR_Configure_ADC(void)
     LL_ADC_REG_SetOverrun(VSENSE_ADC_INSTANCE, LL_ADC_REG_OVR_DATA_OVERWRITTEN);
 
     /* Set ADC group regular sequencer */
-    /* Note: On this STM32 serie, ADC group regular sequencer has             */
+    /* Note: On this STM32 series, ADC group regular sequencer has             */
     /*       two settings:                                                    */
     /*       - Sequencer configured to fully configurable:                    */
     /*         sequencer length and each rank                                 */
@@ -653,13 +652,13 @@ static void PWR_Configure_ADC(void)
 
   /*## Configuration of ADC hierarchical scope: ADC group injected ###########*/
 
-  /* Note: Feature not available on this STM32 serie */
+  /* Note: Feature not available on this STM32 series */
 
   /*## Configuration of ADC hierarchical scope: channels #####################*/
 
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 serie, setting of these features is conditioned to   */
+  /*       On this STM32 series, setting of these features is conditioned to   */
   /*       ADC state:                                                         */
   /*       ADC must be disabled or enabled without conversion on going        */
   /*       on either groups regular or injected.                              */
@@ -673,7 +672,7 @@ static void PWR_Configure_ADC(void)
 
   /*## Configuration of ADC transversal scope: analog watchdog ###############*/
 
-  /* Note: On this STM32 serie, there is only 1 analog watchdog available.    */
+  /* Note: On this STM32 series, there is only 1 analog watchdog available.    */
 
   /* Set ADC analog watchdog: channels to be monitored */
   LL_ADC_SetAnalogWDMonitChannels(VSENSE_ADC_INSTANCE, LL_ADC_AWD1, LL_ADC_AWD_ALL_CHANNELS_REG);
@@ -704,7 +703,7 @@ static void PWR_Configure_ADC(void)
   *           none: ADC conversion start-stop to be performed
   *                 after this function
   *         - ADC group injected
-  *           Feature not available                                  (feature not available on this STM32 serie)
+  *           Feature not available                                  (feature not available on this STM32 series)
   * @retval None
   */
 static void PWR_Activate_ADC(void)
@@ -719,7 +718,7 @@ static void PWR_Activate_ADC(void)
 
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 serie, setting of these features is conditioned to   */
+  /*       On this STM32 series, setting of these features is conditioned to   */
   /*       ADC state:                                                         */
   /*       ADC must be disabled.                                              */
   /* Note: In this example, all these checks are not necessary but are        */
@@ -749,8 +748,8 @@ static void PWR_Activate_ADC(void)
     }
 
     /* Disable ADC DMA transfer request during calibration */
-    /* Note: Specificity of this STM32 serie: Calibration factor is           */
-    /*       available in data register and also transfered by DMA.           */
+    /* Note: Specificity of this STM32 series: Calibration factor is           */
+    /*       available in data register and also transferred by DMA.           */
     /*       To not insert ADC calibration factor among ADC conversion data   */
     /*       in DMA destination address, DMA transfer must be disabled during */
     /*       calibration.                                                     */
@@ -830,7 +829,7 @@ static void PWR_Activate_ADC(void)
   /*       "LL_ADC_REG_StartConversion();"                                    */
 
   /*## Operation on ADC hierarchical scope: ADC group injected ###############*/
-  /* Note: Feature not available on this STM32 serie */
+  /* Note: Feature not available on this STM32 series */
 }
 
 /**
@@ -921,4 +920,3 @@ static void PWR_DB_OUTInit(uint32_t Instance)
   * @}
   */
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

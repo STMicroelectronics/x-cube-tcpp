@@ -6,12 +6,12 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2019 STMicroelectronics. All rights reserved.
+  * Copyright (c) 2021 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -38,7 +38,7 @@ extern "C" {
 #include "stm32g0xx_ll_gpio.h"
 #include "stm32g0xx_ll_exti.h"
 #include "stm32g0xx_ll_system.h"
-/* STM32G0 serie using BSP V1 framework, no conf template file, no error definitions, ... */
+/* STM32G0 series using BSP V1 framework, no conf template file, no error definitions, ... */
 #include "drp1m1_errno.h"
 #else
 #warning "Please select include files according to HW setup"
@@ -291,4 +291,3 @@ void BSP_USBPD_PWR_EventCallback(uint32_t PortNum);
 
 #endif /* DRP1M1_USBPD_PWR_H */
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

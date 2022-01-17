@@ -7,18 +7,17 @@
   *          This file contains:
   *           - Data structures and the address mapping for all peripherals
   *           - Peripheral's registers declarations and bits definition
-  *           - Macros to access peripheral’s registers hardware
+  *           - Macros to access peripheral's registers hardware
   *
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2019 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -45,11 +44,11 @@
 /**
   * @brief Configuration of the Cortex-M4 Processor and Core Peripherals
    */
-#define __CM4_REV                 0x0001  /*!< Cortex-M4 revision r0p1                       */
-#define __MPU_PRESENT             1       /*!< STM32G4XX provides an MPU                     */
-#define __NVIC_PRIO_BITS          4       /*!< STM32G4XX uses 4 Bits for the Priority Levels */
-#define __Vendor_SysTickConfig    0       /*!< Set to 1 if different SysTick Config is used  */
-#define __FPU_PRESENT             1       /*!< FPU present                                   */
+#define __CM4_REV                 0x0001U  /*!< Cortex-M4 revision r0p1                       */
+#define __MPU_PRESENT             1U       /*!< STM32G4XX provides an MPU                     */
+#define __NVIC_PRIO_BITS          4U       /*!< STM32G4XX uses 4 Bits for the Priority Levels */
+#define __Vendor_SysTickConfig    0U       /*!< Set to 1 if different SysTick Config is used  */
+#define __FPU_PRESENT             1U       /*!< FPU present                                   */
 
 /**
   * @}
@@ -125,7 +124,6 @@ typedef enum
   TIM8_CC_IRQn                = 46,     /*!< TIM8 Capture Compare Interrupt                                                     */
   ADC3_IRQn                   = 47,     /*!< ADC3 global  Interrupt                                                             */
   LPTIM1_IRQn                 = 49,     /*!< LP TIM1 Interrupt                                                                  */
-  TIM5_IRQn                   = 50,     /*!< TIM5 global Interrupt                                                              */
   SPI3_IRQn                   = 51,     /*!< SPI3 global Interrupt                                                              */
   UART4_IRQn                  = 52,     /*!< UART4 global Interrupt                                                             */
   UART5_IRQn                  = 53,     /*!< UART5 global Interrupt                                                             */
@@ -141,6 +139,10 @@ typedef enum
   COMP4_IRQn                  = 65,     /*!< COMP4                                                                              */
   CRS_IRQn                    = 75,     /*!< CRS global interrupt                                                               */
   SAI1_IRQn                   = 76,     /*!< Serial Audio Interface global interrupt                                            */
+  TIM20_BRK_IRQn              = 77,     /*!< TIM20 Break, Transition error and Index error Interrupt                            */
+  TIM20_UP_IRQn               = 78,     /*!< TIM20 Update interrupt                                                             */
+  TIM20_TRG_COM_IRQn          = 79,     /*!< TIM20 Trigger, Commutation, Direction change and Index Interrupt                   */
+  TIM20_CC_IRQn               = 80,     /*!< TIM20 Capture Compare interrupt                                                    */
   FPU_IRQn                    = 81,     /*!< FPU global interrupt                                                               */
   I2C4_EV_IRQn                = 82,     /*!< I2C4 Event interrupt                                                               */
   I2C4_ER_IRQn                = 83,     /*!< I2C4 Error interrupt                                                               */
@@ -152,6 +154,7 @@ typedef enum
   I2C3_EV_IRQn                = 92,     /*!< I2C3 Event Interrupt                                                               */
   I2C3_ER_IRQn                = 93,     /*!< I2C3 Error interrupt                                                               */
   DMAMUX_OVR_IRQn             = 94,     /*!< DMAMUX overrun global interrupt                                                    */
+  QUADSPI_IRQn                = 95,     /*!< QUADSPI interrupt                                                                  */
   DMA1_Channel8_IRQn          = 96,     /*!< DMA1 Channel 8 interrupt                                                           */
   DMA2_Channel6_IRQn          = 97,     /*!< DMA2 Channel 6 interrupt                                                           */
   DMA2_Channel7_IRQn          = 98,     /*!< DMA2 Channel 7 interrupt                                                           */
@@ -586,6 +589,26 @@ typedef struct
   __IO uint32_t CR5;      /*!< PWR power control register 5,        Address offset: 0x80 */
 } PWR_TypeDef;
 
+/**
+  * @brief QUAD Serial Peripheral Interface
+  */
+
+typedef struct
+{
+  __IO uint32_t CR;          /*!< QUADSPI Control register,                           Address offset: 0x00 */
+  __IO uint32_t DCR;         /*!< QUADSPI Device Configuration register,              Address offset: 0x04 */
+  __IO uint32_t SR;          /*!< QUADSPI Status register,                            Address offset: 0x08 */
+  __IO uint32_t FCR;         /*!< QUADSPI Flag Clear register,                        Address offset: 0x0C */
+  __IO uint32_t DLR;         /*!< QUADSPI Data Length register,                       Address offset: 0x10 */
+  __IO uint32_t CCR;         /*!< QUADSPI Communication Configuration register,       Address offset: 0x14 */
+  __IO uint32_t AR;          /*!< QUADSPI Address register,                           Address offset: 0x18 */
+  __IO uint32_t ABR;         /*!< QUADSPI Alternate Bytes register,                   Address offset: 0x1C */
+  __IO uint32_t DR;          /*!< QUADSPI Data register,                              Address offset: 0x20 */
+  __IO uint32_t PSMKR;       /*!< QUADSPI Polling Status Mask register,               Address offset: 0x24 */
+  __IO uint32_t PSMAR;       /*!< QUADSPI Polling Status Match register,              Address offset: 0x28 */
+  __IO uint32_t PIR;         /*!< QUADSPI Polling Interval register,                  Address offset: 0x2C */
+  __IO uint32_t LPTR;        /*!< QUADSPI Low Power Timeout register,                 Address offset: 0x30 */
+} QUADSPI_TypeDef;
 
 /**
   * @brief Reset and Clock Control
@@ -946,6 +969,10 @@ typedef struct
 } UCPD_TypeDef;
 
 
+/**
+  * @}
+  */
+
 /** @addtogroup Peripheral_memory_map
   * @{
   */
@@ -955,7 +982,9 @@ typedef struct
 #define SRAM2_BASE            (0x20014000UL) /*!< SRAM2(16 KB) base address */
 #define CCMSRAM_BASE          (0x10000000UL) /*!< CCMSRAM(32 KB) base address */
 #define PERIPH_BASE           (0x40000000UL) /*!< Peripheral base address */
+#define QSPI_BASE             (0x90000000UL) /*!< QUADSPI memories accessible over AHB base address */
 
+#define QSPI_R_BASE           (0xA0001000UL) /*!< QUADSPI control registers base address */
 #define SRAM1_BB_BASE         (0x22000000UL) /*!< SRAM1(80 KB) base address in the bit-band region */
 #define SRAM2_BB_BASE         (0x22280000UL) /*!< SRAM2(16 KB) base address in the bit-band region */
 #define CCMSRAM_BB_BASE       (0x22300000UL) /*!< CCMSRAM(32 KB) base address in the bit-band region */
@@ -979,7 +1008,6 @@ typedef struct
 #define TIM2_BASE             (APB1PERIPH_BASE + 0x0000UL)
 #define TIM3_BASE             (APB1PERIPH_BASE + 0x0400UL)
 #define TIM4_BASE             (APB1PERIPH_BASE + 0x0800UL)
-#define TIM5_BASE             (APB1PERIPH_BASE + 0x0C00UL)
 #define TIM6_BASE             (APB1PERIPH_BASE + 0x1000UL)
 #define TIM7_BASE             (APB1PERIPH_BASE + 0x1400UL)
 #define CRS_BASE              (APB1PERIPH_BASE + 0x2000UL)
@@ -1029,6 +1057,7 @@ typedef struct
 #define TIM15_BASE            (APB2PERIPH_BASE + 0x4000UL)
 #define TIM16_BASE            (APB2PERIPH_BASE + 0x4400UL)
 #define TIM17_BASE            (APB2PERIPH_BASE + 0x4800UL)
+#define TIM20_BASE            (APB2PERIPH_BASE + 0x5000UL)
 #define SAI1_BASE             (APB2PERIPH_BASE + 0x5400UL)
 #define SAI1_Block_A_BASE     (SAI1_BASE + 0x0004UL)
 #define SAI1_Block_B_BASE     (SAI1_BASE + 0x0024UL)
@@ -1121,7 +1150,6 @@ typedef struct
 #define TIM2                ((TIM_TypeDef *) TIM2_BASE)
 #define TIM3                ((TIM_TypeDef *) TIM3_BASE)
 #define TIM4                ((TIM_TypeDef *) TIM4_BASE)
-#define TIM5                ((TIM_TypeDef *) TIM5_BASE)
 #define TIM6                ((TIM_TypeDef *) TIM6_BASE)
 #define TIM7                ((TIM_TypeDef *) TIM7_BASE)
 #define CRS                 ((CRS_TypeDef *) CRS_BASE)
@@ -1169,6 +1197,7 @@ typedef struct
 #define TIM15               ((TIM_TypeDef *) TIM15_BASE)
 #define TIM16               ((TIM_TypeDef *) TIM16_BASE)
 #define TIM17               ((TIM_TypeDef *) TIM17_BASE)
+#define TIM20               ((TIM_TypeDef *) TIM20_BASE)
 #define SAI1                ((SAI_TypeDef *) SAI1_BASE)
 #define SAI1_Block_A        ((SAI_Block_TypeDef *)SAI1_Block_A_BASE)
 #define SAI1_Block_B        ((SAI_Block_TypeDef *)SAI1_Block_B_BASE)
@@ -1242,6 +1271,7 @@ typedef struct
 #define DMAMUX1_RequestGenStatus   ((DMAMUX_RequestGenStatus_TypeDef *) DMAMUX1_RequestGenStatus_BASE)
 
 
+#define QUADSPI             ((QUADSPI_TypeDef *) QSPI_R_BASE)
 
 #define DBGMCU              ((DBGMCU_TypeDef *) DBGMCU_BASE)
 
@@ -1252,6 +1282,15 @@ typedef struct
 /** @addtogroup Exported_constants
   * @{
   */
+
+  /** @addtogroup Hardware_Constant_Definition
+    * @{
+    */
+#define LSI_STARTUP_TIME 130U /*!< LSI Maximum startup time in us */
+
+  /**
+    * @}
+    */
 
 /** @addtogroup Peripheral_Registers_Bits_Definition
   * @{
@@ -2904,9 +2943,6 @@ typedef struct
 #define DBGMCU_APB1FZR1_DBG_TIM4_STOP_Pos      (2U)
 #define DBGMCU_APB1FZR1_DBG_TIM4_STOP_Msk      (0x1UL << DBGMCU_APB1FZR1_DBG_TIM4_STOP_Pos)/*!< 0x00000004 */
 #define DBGMCU_APB1FZR1_DBG_TIM4_STOP          DBGMCU_APB1FZR1_DBG_TIM4_STOP_Msk
-#define DBGMCU_APB1FZR1_DBG_TIM5_STOP_Pos      (3U)
-#define DBGMCU_APB1FZR1_DBG_TIM5_STOP_Msk      (0x1UL << DBGMCU_APB1FZR1_DBG_TIM5_STOP_Pos)/*!< 0x00000008 */
-#define DBGMCU_APB1FZR1_DBG_TIM5_STOP          DBGMCU_APB1FZR1_DBG_TIM5_STOP_Msk
 #define DBGMCU_APB1FZR1_DBG_TIM6_STOP_Pos      (4U)
 #define DBGMCU_APB1FZR1_DBG_TIM6_STOP_Msk      (0x1UL << DBGMCU_APB1FZR1_DBG_TIM6_STOP_Pos)/*!< 0x00000010 */
 #define DBGMCU_APB1FZR1_DBG_TIM6_STOP          DBGMCU_APB1FZR1_DBG_TIM6_STOP_Msk
@@ -2956,6 +2992,9 @@ typedef struct
 #define DBGMCU_APB2FZ_DBG_TIM17_STOP_Pos       (18U)
 #define DBGMCU_APB2FZ_DBG_TIM17_STOP_Msk       (0x1UL << DBGMCU_APB2FZ_DBG_TIM17_STOP_Pos)/*!< 0x00040000 */
 #define DBGMCU_APB2FZ_DBG_TIM17_STOP           DBGMCU_APB2FZ_DBG_TIM17_STOP_Msk
+#define DBGMCU_APB2FZ_DBG_TIM20_STOP_Pos       (20U)
+#define DBGMCU_APB2FZ_DBG_TIM20_STOP_Msk       (0x1UL << DBGMCU_APB2FZ_DBG_TIM20_STOP_Pos)/*!< 0x00100000 */
+#define DBGMCU_APB2FZ_DBG_TIM20_STOP           DBGMCU_APB2FZ_DBG_TIM20_STOP_Msk
 
 /******************************************************************************/
 /*                                                                            */
@@ -7492,6 +7531,203 @@ typedef struct
 #define PWR_CR5_R1MODE_Msk           (0x1U << PWR_CR5_R1MODE_Pos)              /*!< 0x00000100 */
 #define PWR_CR5_R1MODE               PWR_CR5_R1MODE_Msk                        /*!< selection for Main Regulator in Range1 */
 
+/******************************************************************************/
+/*                                                                            */
+/*                                    QUADSPI                                 */
+/*                                                                            */
+/******************************************************************************/
+/*****************  Bit definition for QUADSPI_CR register  *******************/
+#define QUADSPI_CR_EN_Pos              (0U)
+#define QUADSPI_CR_EN_Msk              (0x1UL << QUADSPI_CR_EN_Pos)            /*!< 0x00000001 */
+#define QUADSPI_CR_EN                  QUADSPI_CR_EN_Msk                       /*!< Enable */
+#define QUADSPI_CR_ABORT_Pos           (1U)
+#define QUADSPI_CR_ABORT_Msk           (0x1UL << QUADSPI_CR_ABORT_Pos)         /*!< 0x00000002 */
+#define QUADSPI_CR_ABORT               QUADSPI_CR_ABORT_Msk                    /*!< Abort request */
+#define QUADSPI_CR_DMAEN_Pos           (2U)
+#define QUADSPI_CR_DMAEN_Msk           (0x1UL << QUADSPI_CR_DMAEN_Pos)         /*!< 0x00000004 */
+#define QUADSPI_CR_DMAEN               QUADSPI_CR_DMAEN_Msk                    /*!< DMA Enable */
+#define QUADSPI_CR_TCEN_Pos            (3U)
+#define QUADSPI_CR_TCEN_Msk            (0x1UL << QUADSPI_CR_TCEN_Pos)          /*!< 0x00000008 */
+#define QUADSPI_CR_TCEN                QUADSPI_CR_TCEN_Msk                     /*!< Timeout Counter Enable */
+#define QUADSPI_CR_SSHIFT_Pos          (4U)
+#define QUADSPI_CR_SSHIFT_Msk          (0x1UL << QUADSPI_CR_SSHIFT_Pos)        /*!< 0x00000010 */
+#define QUADSPI_CR_SSHIFT              QUADSPI_CR_SSHIFT_Msk                   /*!< Sample Shift */
+#define QUADSPI_CR_DFM_Pos             (6U)
+#define QUADSPI_CR_DFM_Msk             (0x1UL << QUADSPI_CR_DFM_Pos)           /*!< 0x00000040 */
+#define QUADSPI_CR_DFM                 QUADSPI_CR_DFM_Msk                      /*!< Dual-flash mode */
+#define QUADSPI_CR_FSEL_Pos            (7U)
+#define QUADSPI_CR_FSEL_Msk            (0x1UL << QUADSPI_CR_FSEL_Pos)          /*!< 0x00000080 */
+#define QUADSPI_CR_FSEL                QUADSPI_CR_FSEL_Msk                     /*!< Flash memory selection */
+#define QUADSPI_CR_FTHRES_Pos          (8U)
+#define QUADSPI_CR_FTHRES_Msk          (0xFUL << QUADSPI_CR_FTHRES_Pos)        /*!< 0x00000F00 */
+#define QUADSPI_CR_FTHRES              QUADSPI_CR_FTHRES_Msk                   /*!< FTHRES[3:0] FIFO Level */
+#define QUADSPI_CR_TEIE_Pos            (16U)
+#define QUADSPI_CR_TEIE_Msk            (0x1UL << QUADSPI_CR_TEIE_Pos)          /*!< 0x00010000 */
+#define QUADSPI_CR_TEIE                QUADSPI_CR_TEIE_Msk                     /*!< Transfer Error Interrupt Enable */
+#define QUADSPI_CR_TCIE_Pos            (17U)
+#define QUADSPI_CR_TCIE_Msk            (0x1UL << QUADSPI_CR_TCIE_Pos)          /*!< 0x00020000 */
+#define QUADSPI_CR_TCIE                QUADSPI_CR_TCIE_Msk                     /*!< Transfer Complete Interrupt Enable */
+#define QUADSPI_CR_FTIE_Pos            (18U)
+#define QUADSPI_CR_FTIE_Msk            (0x1UL << QUADSPI_CR_FTIE_Pos)          /*!< 0x00040000 */
+#define QUADSPI_CR_FTIE                QUADSPI_CR_FTIE_Msk                     /*!< FIFO Threshold Interrupt Enable */
+#define QUADSPI_CR_SMIE_Pos            (19U)
+#define QUADSPI_CR_SMIE_Msk            (0x1UL << QUADSPI_CR_SMIE_Pos)          /*!< 0x00080000 */
+#define QUADSPI_CR_SMIE                QUADSPI_CR_SMIE_Msk                     /*!< Status Match Interrupt Enable */
+#define QUADSPI_CR_TOIE_Pos            (20U)
+#define QUADSPI_CR_TOIE_Msk            (0x1UL << QUADSPI_CR_TOIE_Pos)          /*!< 0x00100000 */
+#define QUADSPI_CR_TOIE                QUADSPI_CR_TOIE_Msk                     /*!< TimeOut Interrupt Enable */
+#define QUADSPI_CR_APMS_Pos            (22U)
+#define QUADSPI_CR_APMS_Msk            (0x1UL << QUADSPI_CR_APMS_Pos)          /*!< 0x00400000 */
+#define QUADSPI_CR_APMS                QUADSPI_CR_APMS_Msk                     /*!< Automatic Polling Mode Stop */
+#define QUADSPI_CR_PMM_Pos             (23U)
+#define QUADSPI_CR_PMM_Msk             (0x1UL << QUADSPI_CR_PMM_Pos)           /*!< 0x00800000 */
+#define QUADSPI_CR_PMM                 QUADSPI_CR_PMM_Msk                      /*!< Polling Match Mode */
+#define QUADSPI_CR_PRESCALER_Pos       (24U)
+#define QUADSPI_CR_PRESCALER_Msk       (0xFFUL << QUADSPI_CR_PRESCALER_Pos)    /*!< 0xFF000000 */
+#define QUADSPI_CR_PRESCALER           QUADSPI_CR_PRESCALER_Msk                /*!< PRESCALER[7:0] Clock prescaler */
+
+/*****************  Bit definition for QUADSPI_DCR register  ******************/
+#define QUADSPI_DCR_CKMODE_Pos         (0U)
+#define QUADSPI_DCR_CKMODE_Msk         (0x1UL << QUADSPI_DCR_CKMODE_Pos)       /*!< 0x00000001 */
+#define QUADSPI_DCR_CKMODE             QUADSPI_DCR_CKMODE_Msk                  /*!< Mode 0 / Mode 3 */
+#define QUADSPI_DCR_CSHT_Pos           (8U)
+#define QUADSPI_DCR_CSHT_Msk           (0x7UL << QUADSPI_DCR_CSHT_Pos)         /*!< 0x00000700 */
+#define QUADSPI_DCR_CSHT               QUADSPI_DCR_CSHT_Msk                    /*!< CSHT[2:0]: ChipSelect High Time */
+#define QUADSPI_DCR_CSHT_0             (0x1UL << QUADSPI_DCR_CSHT_Pos)         /*!< 0x00000100 */
+#define QUADSPI_DCR_CSHT_1             (0x2UL << QUADSPI_DCR_CSHT_Pos)         /*!< 0x00000200 */
+#define QUADSPI_DCR_CSHT_2             (0x4UL << QUADSPI_DCR_CSHT_Pos)         /*!< 0x00000400 */
+#define QUADSPI_DCR_FSIZE_Pos          (16U)
+#define QUADSPI_DCR_FSIZE_Msk          (0x1FUL << QUADSPI_DCR_FSIZE_Pos)       /*!< 0x001F0000 */
+#define QUADSPI_DCR_FSIZE              QUADSPI_DCR_FSIZE_Msk                   /*!< FSIZE[4:0]: Flash Size */
+
+/******************  Bit definition for QUADSPI_SR register  *******************/
+#define QUADSPI_SR_TEF_Pos             (0U)
+#define QUADSPI_SR_TEF_Msk             (0x1UL << QUADSPI_SR_TEF_Pos)           /*!< 0x00000001 */
+#define QUADSPI_SR_TEF                 QUADSPI_SR_TEF_Msk                      /*!< Transfer Error Flag */
+#define QUADSPI_SR_TCF_Pos             (1U)
+#define QUADSPI_SR_TCF_Msk             (0x1UL << QUADSPI_SR_TCF_Pos)           /*!< 0x00000002 */
+#define QUADSPI_SR_TCF                 QUADSPI_SR_TCF_Msk                      /*!< Transfer Complete Flag */
+#define QUADSPI_SR_FTF_Pos             (2U)
+#define QUADSPI_SR_FTF_Msk             (0x1UL << QUADSPI_SR_FTF_Pos)           /*!< 0x00000004 */
+#define QUADSPI_SR_FTF                 QUADSPI_SR_FTF_Msk                      /*!< FIFO Threshlod Flag */
+#define QUADSPI_SR_SMF_Pos             (3U)
+#define QUADSPI_SR_SMF_Msk             (0x1UL << QUADSPI_SR_SMF_Pos)           /*!< 0x00000008 */
+#define QUADSPI_SR_SMF                 QUADSPI_SR_SMF_Msk                      /*!< Status Match Flag */
+#define QUADSPI_SR_TOF_Pos             (4U)
+#define QUADSPI_SR_TOF_Msk             (0x1UL << QUADSPI_SR_TOF_Pos)           /*!< 0x00000010 */
+#define QUADSPI_SR_TOF                 QUADSPI_SR_TOF_Msk                      /*!< Timeout Flag */
+#define QUADSPI_SR_BUSY_Pos            (5U)
+#define QUADSPI_SR_BUSY_Msk            (0x1UL << QUADSPI_SR_BUSY_Pos)          /*!< 0x00000020 */
+#define QUADSPI_SR_BUSY                QUADSPI_SR_BUSY_Msk                     /*!< Busy */
+#define QUADSPI_SR_FLEVEL_Pos          (8U)
+#define QUADSPI_SR_FLEVEL_Msk          (0x1FUL << QUADSPI_SR_FLEVEL_Pos)       /*!< 0x00001F00 */
+#define QUADSPI_SR_FLEVEL              QUADSPI_SR_FLEVEL_Msk                   /*!< FIFO Threshlod Flag */
+
+/******************  Bit definition for QUADSPI_FCR register  ******************/
+#define QUADSPI_FCR_CTEF_Pos           (0U)
+#define QUADSPI_FCR_CTEF_Msk           (0x1UL << QUADSPI_FCR_CTEF_Pos)         /*!< 0x00000001 */
+#define QUADSPI_FCR_CTEF               QUADSPI_FCR_CTEF_Msk                    /*!< Clear Transfer Error Flag */
+#define QUADSPI_FCR_CTCF_Pos           (1U)
+#define QUADSPI_FCR_CTCF_Msk           (0x1UL << QUADSPI_FCR_CTCF_Pos)         /*!< 0x00000002 */
+#define QUADSPI_FCR_CTCF               QUADSPI_FCR_CTCF_Msk                    /*!< Clear Transfer Complete Flag */
+#define QUADSPI_FCR_CSMF_Pos           (3U)
+#define QUADSPI_FCR_CSMF_Msk           (0x1UL << QUADSPI_FCR_CSMF_Pos)         /*!< 0x00000008 */
+#define QUADSPI_FCR_CSMF               QUADSPI_FCR_CSMF_Msk                    /*!< Clear Status Match Flag */
+#define QUADSPI_FCR_CTOF_Pos           (4U)
+#define QUADSPI_FCR_CTOF_Msk           (0x1UL << QUADSPI_FCR_CTOF_Pos)         /*!< 0x00000010 */
+#define QUADSPI_FCR_CTOF               QUADSPI_FCR_CTOF_Msk                    /*!< Clear Timeout Flag */
+
+/******************  Bit definition for QUADSPI_DLR register  ******************/
+#define QUADSPI_DLR_DL_Pos             (0U)
+#define QUADSPI_DLR_DL_Msk             (0xFFFFFFFFUL << QUADSPI_DLR_DL_Pos)    /*!< 0xFFFFFFFF */
+#define QUADSPI_DLR_DL                 QUADSPI_DLR_DL_Msk                      /*!< DL[31:0]: Data Length */
+
+/******************  Bit definition for QUADSPI_CCR register  ******************/
+#define QUADSPI_CCR_INSTRUCTION_Pos    (0U)
+#define QUADSPI_CCR_INSTRUCTION_Msk    (0xFFUL << QUADSPI_CCR_INSTRUCTION_Pos) /*!< 0x000000FF */
+#define QUADSPI_CCR_INSTRUCTION        QUADSPI_CCR_INSTRUCTION_Msk             /*!< INSTRUCTION[7:0]: Instruction */
+#define QUADSPI_CCR_IMODE_Pos          (8U)
+#define QUADSPI_CCR_IMODE_Msk          (0x3UL << QUADSPI_CCR_IMODE_Pos)        /*!< 0x00000300 */
+#define QUADSPI_CCR_IMODE              QUADSPI_CCR_IMODE_Msk                   /*!< IMODE[1:0]: Instruction Mode */
+#define QUADSPI_CCR_IMODE_0            (0x1UL << QUADSPI_CCR_IMODE_Pos)        /*!< 0x00000100 */
+#define QUADSPI_CCR_IMODE_1            (0x2UL << QUADSPI_CCR_IMODE_Pos)        /*!< 0x00000200 */
+#define QUADSPI_CCR_ADMODE_Pos         (10U)
+#define QUADSPI_CCR_ADMODE_Msk         (0x3UL << QUADSPI_CCR_ADMODE_Pos)       /*!< 0x00000C00 */
+#define QUADSPI_CCR_ADMODE             QUADSPI_CCR_ADMODE_Msk                  /*!< ADMODE[1:0]: Address Mode */
+#define QUADSPI_CCR_ADMODE_0           (0x1UL << QUADSPI_CCR_ADMODE_Pos)       /*!< 0x00000400 */
+#define QUADSPI_CCR_ADMODE_1           (0x2UL << QUADSPI_CCR_ADMODE_Pos)       /*!< 0x00000800 */
+#define QUADSPI_CCR_ADSIZE_Pos         (12U)
+#define QUADSPI_CCR_ADSIZE_Msk         (0x3UL << QUADSPI_CCR_ADSIZE_Pos)       /*!< 0x00003000 */
+#define QUADSPI_CCR_ADSIZE             QUADSPI_CCR_ADSIZE_Msk                  /*!< ADSIZE[1:0]: Address Size */
+#define QUADSPI_CCR_ADSIZE_0           (0x1UL << QUADSPI_CCR_ADSIZE_Pos)       /*!< 0x00001000 */
+#define QUADSPI_CCR_ADSIZE_1           (0x2UL << QUADSPI_CCR_ADSIZE_Pos)       /*!< 0x00002000 */
+#define QUADSPI_CCR_ABMODE_Pos         (14U)
+#define QUADSPI_CCR_ABMODE_Msk         (0x3UL << QUADSPI_CCR_ABMODE_Pos)       /*!< 0x0000C000 */
+#define QUADSPI_CCR_ABMODE             QUADSPI_CCR_ABMODE_Msk                  /*!< ABMODE[1:0]: Alternate Bytes Mode */
+#define QUADSPI_CCR_ABMODE_0           (0x1UL << QUADSPI_CCR_ABMODE_Pos)       /*!< 0x00004000 */
+#define QUADSPI_CCR_ABMODE_1           (0x2UL << QUADSPI_CCR_ABMODE_Pos)       /*!< 0x00008000 */
+#define QUADSPI_CCR_ABSIZE_Pos         (16U)
+#define QUADSPI_CCR_ABSIZE_Msk         (0x3UL << QUADSPI_CCR_ABSIZE_Pos)       /*!< 0x00030000 */
+#define QUADSPI_CCR_ABSIZE             QUADSPI_CCR_ABSIZE_Msk                  /*!< ABSIZE[1:0]: Instruction Mode */
+#define QUADSPI_CCR_ABSIZE_0           (0x1UL << QUADSPI_CCR_ABSIZE_Pos)       /*!< 0x00010000 */
+#define QUADSPI_CCR_ABSIZE_1           (0x2UL << QUADSPI_CCR_ABSIZE_Pos)       /*!< 0x00020000 */
+#define QUADSPI_CCR_DCYC_Pos           (18U)
+#define QUADSPI_CCR_DCYC_Msk           (0x1FUL << QUADSPI_CCR_DCYC_Pos)        /*!< 0x007C0000 */
+#define QUADSPI_CCR_DCYC               QUADSPI_CCR_DCYC_Msk                    /*!< DCYC[4:0]: Dummy Cycles */
+#define QUADSPI_CCR_DMODE_Pos          (24U)
+#define QUADSPI_CCR_DMODE_Msk          (0x3UL << QUADSPI_CCR_DMODE_Pos)        /*!< 0x03000000 */
+#define QUADSPI_CCR_DMODE              QUADSPI_CCR_DMODE_Msk                   /*!< DMODE[1:0]: Data Mode */
+#define QUADSPI_CCR_DMODE_0            (0x1UL << QUADSPI_CCR_DMODE_Pos)        /*!< 0x01000000 */
+#define QUADSPI_CCR_DMODE_1            (0x2UL << QUADSPI_CCR_DMODE_Pos)        /*!< 0x02000000 */
+#define QUADSPI_CCR_FMODE_Pos          (26U)
+#define QUADSPI_CCR_FMODE_Msk          (0x3UL << QUADSPI_CCR_FMODE_Pos)        /*!< 0x0C000000 */
+#define QUADSPI_CCR_FMODE              QUADSPI_CCR_FMODE_Msk                   /*!< FMODE[1:0]: Functional Mode */
+#define QUADSPI_CCR_FMODE_0            (0x1UL << QUADSPI_CCR_FMODE_Pos)        /*!< 0x04000000 */
+#define QUADSPI_CCR_FMODE_1            (0x2UL << QUADSPI_CCR_FMODE_Pos)        /*!< 0x08000000 */
+#define QUADSPI_CCR_SIOO_Pos           (28U)
+#define QUADSPI_CCR_SIOO_Msk           (0x1UL << QUADSPI_CCR_SIOO_Pos)         /*!< 0x10000000 */
+#define QUADSPI_CCR_SIOO               QUADSPI_CCR_SIOO_Msk                    /*!< SIOO: Send Instruction Only Once Mode */
+#define QUADSPI_CCR_DHHC_Pos           (30U)
+#define QUADSPI_CCR_DHHC_Msk           (0x1UL << QUADSPI_CCR_DHHC_Pos)         /*!< 0x40000000 */
+#define QUADSPI_CCR_DHHC               QUADSPI_CCR_DHHC_Msk                    /*!< DHHC: DDR hold */
+#define QUADSPI_CCR_DDRM_Pos           (31U)
+#define QUADSPI_CCR_DDRM_Msk           (0x1UL << QUADSPI_CCR_DDRM_Pos)         /*!< 0x80000000 */
+#define QUADSPI_CCR_DDRM               QUADSPI_CCR_DDRM_Msk                    /*!< DDRM: Double Data Rate Mode */
+
+/******************  Bit definition for QUADSPI_AR register  *******************/
+#define QUADSPI_AR_ADDRESS_Pos         (0U)
+#define QUADSPI_AR_ADDRESS_Msk         (0xFFFFFFFFUL << QUADSPI_AR_ADDRESS_Pos)/*!< 0xFFFFFFFF */
+#define QUADSPI_AR_ADDRESS             QUADSPI_AR_ADDRESS_Msk                  /*!< ADDRESS[31:0]: Address */
+
+/******************  Bit definition for QUADSPI_ABR register  ******************/
+#define QUADSPI_ABR_ALTERNATE_Pos      (0U)
+#define QUADSPI_ABR_ALTERNATE_Msk      (0xFFFFFFFFUL << QUADSPI_ABR_ALTERNATE_Pos)/*!< 0xFFFFFFFF */
+#define QUADSPI_ABR_ALTERNATE          QUADSPI_ABR_ALTERNATE_Msk               /*!< ALTERNATE[31:0]: Alternate Bytes */
+
+/******************  Bit definition for QUADSPI_DR register  *******************/
+#define QUADSPI_DR_DATA_Pos            (0U)
+#define QUADSPI_DR_DATA_Msk            (0xFFFFFFFFUL << QUADSPI_DR_DATA_Pos)   /*!< 0xFFFFFFFF */
+#define QUADSPI_DR_DATA                QUADSPI_DR_DATA_Msk                     /*!< DATA[31:0]: Data */
+
+/******************  Bit definition for QUADSPI_PSMKR register  ****************/
+#define QUADSPI_PSMKR_MASK_Pos         (0U)
+#define QUADSPI_PSMKR_MASK_Msk         (0xFFFFFFFFUL << QUADSPI_PSMKR_MASK_Pos)/*!< 0xFFFFFFFF */
+#define QUADSPI_PSMKR_MASK             QUADSPI_PSMKR_MASK_Msk                  /*!< MASK[31:0]: Status Mask */
+
+/******************  Bit definition for QUADSPI_PSMAR register  ****************/
+#define QUADSPI_PSMAR_MATCH_Pos        (0U)
+#define QUADSPI_PSMAR_MATCH_Msk        (0xFFFFFFFFUL << QUADSPI_PSMAR_MATCH_Pos)/*!< 0xFFFFFFFF */
+#define QUADSPI_PSMAR_MATCH            QUADSPI_PSMAR_MATCH_Msk                 /*!< MATCH[31:0]: Status Match */
+
+/******************  Bit definition for QUADSPI_PIR register  *****************/
+#define QUADSPI_PIR_INTERVAL_Pos       (0U)
+#define QUADSPI_PIR_INTERVAL_Msk       (0xFFFFUL << QUADSPI_PIR_INTERVAL_Pos)  /*!< 0x0000FFFF */
+#define QUADSPI_PIR_INTERVAL           QUADSPI_PIR_INTERVAL_Msk                /*!< INTERVAL[15:0]: Polling Interval */
+
+/******************  Bit definition for QUADSPI_LPTR register  *****************/
+#define QUADSPI_LPTR_TIMEOUT_Pos       (0U)
+#define QUADSPI_LPTR_TIMEOUT_Msk       (0xFFFFUL << QUADSPI_LPTR_TIMEOUT_Pos)  /*!< 0x0000FFFF */
+#define QUADSPI_LPTR_TIMEOUT           QUADSPI_LPTR_TIMEOUT_Msk                /*!< TIMEOUT[15:0]: Timeout period */
 
 /******************************************************************************/
 /*                                                                            */
@@ -7880,9 +8116,6 @@ typedef struct
 #define RCC_APB1RSTR1_TIM4RST_Pos            (2U)
 #define RCC_APB1RSTR1_TIM4RST_Msk            (0x1UL << RCC_APB1RSTR1_TIM4RST_Pos)/*!< 0x00000004 */
 #define RCC_APB1RSTR1_TIM4RST                RCC_APB1RSTR1_TIM4RST_Msk
-#define RCC_APB1RSTR1_TIM5RST_Pos            (3U)
-#define RCC_APB1RSTR1_TIM5RST_Msk            (0x1UL << RCC_APB1RSTR1_TIM5RST_Pos)/*!< 0x00000008 */
-#define RCC_APB1RSTR1_TIM5RST                RCC_APB1RSTR1_TIM5RST_Msk
 #define RCC_APB1RSTR1_TIM6RST_Pos            (4U)
 #define RCC_APB1RSTR1_TIM6RST_Msk            (0x1UL << RCC_APB1RSTR1_TIM6RST_Pos)/*!< 0x00000010 */
 #define RCC_APB1RSTR1_TIM6RST                RCC_APB1RSTR1_TIM6RST_Msk
@@ -7971,6 +8204,9 @@ typedef struct
 #define RCC_APB2RSTR_TIM17RST_Pos            (18U)
 #define RCC_APB2RSTR_TIM17RST_Msk            (0x1UL << RCC_APB2RSTR_TIM17RST_Pos)/*!< 0x00040000 */
 #define RCC_APB2RSTR_TIM17RST                RCC_APB2RSTR_TIM17RST_Msk
+#define RCC_APB2RSTR_TIM20RST_Pos            (20U)
+#define RCC_APB2RSTR_TIM20RST_Msk            (0x1UL << RCC_APB2RSTR_TIM20RST_Pos)/*!< 0x00100000 */
+#define RCC_APB2RSTR_TIM20RST                RCC_APB2RSTR_TIM20RST_Msk
 #define RCC_APB2RSTR_SAI1RST_Pos             (21U)
 #define RCC_APB2RSTR_SAI1RST_Msk             (0x1UL << RCC_APB2RSTR_SAI1RST_Pos)/*!< 0x00200000 */
 #define RCC_APB2RSTR_SAI1RST                 RCC_APB2RSTR_SAI1RST_Msk
@@ -8051,9 +8287,6 @@ typedef struct
 #define RCC_APB1ENR1_TIM4EN_Pos              (2U)
 #define RCC_APB1ENR1_TIM4EN_Msk              (0x1UL << RCC_APB1ENR1_TIM4EN_Pos)/*!< 0x00000004 */
 #define RCC_APB1ENR1_TIM4EN                  RCC_APB1ENR1_TIM4EN_Msk
-#define RCC_APB1ENR1_TIM5EN_Pos              (3U)
-#define RCC_APB1ENR1_TIM5EN_Msk              (0x1UL << RCC_APB1ENR1_TIM5EN_Pos)/*!< 0x00000008 */
-#define RCC_APB1ENR1_TIM5EN                  RCC_APB1ENR1_TIM5EN_Msk
 #define RCC_APB1ENR1_TIM6EN_Pos              (4U)
 #define RCC_APB1ENR1_TIM6EN_Msk              (0x1UL << RCC_APB1ENR1_TIM6EN_Pos)/*!< 0x00000010 */
 #define RCC_APB1ENR1_TIM6EN                  RCC_APB1ENR1_TIM6EN_Msk
@@ -8148,6 +8381,9 @@ typedef struct
 #define RCC_APB2ENR_TIM17EN_Pos              (18U)
 #define RCC_APB2ENR_TIM17EN_Msk              (0x1UL << RCC_APB2ENR_TIM17EN_Pos)/*!< 0x00040000 */
 #define RCC_APB2ENR_TIM17EN                  RCC_APB2ENR_TIM17EN_Msk
+#define RCC_APB2ENR_TIM20EN_Pos              (20U)
+#define RCC_APB2ENR_TIM20EN_Msk              (0x1UL << RCC_APB2ENR_TIM20EN_Pos)/*!< 0x00100000 */
+#define RCC_APB2ENR_TIM20EN                  RCC_APB2ENR_TIM20EN_Msk
 #define RCC_APB2ENR_SAI1EN_Pos               (21U)
 #define RCC_APB2ENR_SAI1EN_Msk               (0x1UL << RCC_APB2ENR_SAI1EN_Pos)/*!< 0x00200000 */
 #define RCC_APB2ENR_SAI1EN                   RCC_APB2ENR_SAI1EN_Msk
@@ -8237,9 +8473,6 @@ typedef struct
 #define RCC_APB1SMENR1_TIM4SMEN_Pos          (2U)
 #define RCC_APB1SMENR1_TIM4SMEN_Msk          (0x1UL << RCC_APB1SMENR1_TIM4SMEN_Pos)/*!< 0x00000004 */
 #define RCC_APB1SMENR1_TIM4SMEN              RCC_APB1SMENR1_TIM4SMEN_Msk
-#define RCC_APB1SMENR1_TIM5SMEN_Pos          (3U)
-#define RCC_APB1SMENR1_TIM5SMEN_Msk          (0x1UL << RCC_APB1SMENR1_TIM5SMEN_Pos)/*!< 0x00000008 */
-#define RCC_APB1SMENR1_TIM5SMEN              RCC_APB1SMENR1_TIM5SMEN_Msk
 #define RCC_APB1SMENR1_TIM6SMEN_Pos          (4U)
 #define RCC_APB1SMENR1_TIM6SMEN_Msk          (0x1UL << RCC_APB1SMENR1_TIM6SMEN_Pos)/*!< 0x00000010 */
 #define RCC_APB1SMENR1_TIM6SMEN              RCC_APB1SMENR1_TIM6SMEN_Msk
@@ -8334,6 +8567,9 @@ typedef struct
 #define RCC_APB2SMENR_TIM17SMEN_Pos          (18U)
 #define RCC_APB2SMENR_TIM17SMEN_Msk          (0x1UL << RCC_APB2SMENR_TIM17SMEN_Pos)/*!< 0x00040000 */
 #define RCC_APB2SMENR_TIM17SMEN              RCC_APB2SMENR_TIM17SMEN_Msk
+#define RCC_APB2SMENR_TIM20SMEN_Pos          (20U)
+#define RCC_APB2SMENR_TIM20SMEN_Msk          (0x1UL << RCC_APB2SMENR_TIM20SMEN_Pos)/*!< 0x00100000 */
+#define RCC_APB2SMENR_TIM20SMEN              RCC_APB2SMENR_TIM20SMEN_Msk
 #define RCC_APB2SMENR_SAI1SMEN_Pos           (21U)
 #define RCC_APB2SMENR_SAI1SMEN_Msk           (0x1UL << RCC_APB2SMENR_SAI1SMEN_Pos)/*!< 0x00200000 */
 #define RCC_APB2SMENR_SAI1SMEN               RCC_APB2SMENR_SAI1SMEN_Msk
@@ -13131,6 +13367,8 @@ typedef struct
 /******************************** PCD Instances *******************************/
 #define IS_PCD_ALL_INSTANCE(INSTANCE) ((INSTANCE) == USB)
 
+/******************************* QSPI Instances *******************************/
+#define IS_QSPI_ALL_INSTANCE(INSTANCE)  ((INSTANCE) == QUADSPI)
 
 /******************************* RNG Instances ********************************/
 #define IS_RNG_ALL_INSTANCE(INSTANCE)  ((INSTANCE) == RNG)
@@ -13173,122 +13411,127 @@ typedef struct
                                          ((INSTANCE) == TIM2)   || \
                                          ((INSTANCE) == TIM3)   || \
                                          ((INSTANCE) == TIM4)   || \
-                                         ((INSTANCE) == TIM5)   || \
                                          ((INSTANCE) == TIM6)   || \
                                          ((INSTANCE) == TIM7)   || \
                                          ((INSTANCE) == TIM8)   || \
                                          ((INSTANCE) == TIM15)  || \
                                          ((INSTANCE) == TIM16)  || \
-                                         ((INSTANCE) == TIM17))
+                                         ((INSTANCE) == TIM17)  || \
+                                         ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : supporting 32 bits counter ****************/
 
-#define IS_TIM_32B_COUNTER_INSTANCE(INSTANCE) (((INSTANCE) == TIM2)   || \
-                                               ((INSTANCE) == TIM5))
+#define IS_TIM_32B_COUNTER_INSTANCE(INSTANCE) ((INSTANCE) == TIM2)
 
 /****************** TIM Instances : supporting the break function *************/
 #define IS_TIM_BREAK_INSTANCE(INSTANCE)    (((INSTANCE) == TIM1)    || \
                                             ((INSTANCE) == TIM8)    || \
                                             ((INSTANCE) == TIM15)   || \
                                             ((INSTANCE) == TIM16)   || \
-                                            ((INSTANCE) == TIM17))
+                                            ((INSTANCE) == TIM17)   || \
+                                            ((INSTANCE) == TIM20))
 
 /************** TIM Instances : supporting Break source selection *************/
 #define IS_TIM_BREAKSOURCE_INSTANCE(INSTANCE) (((INSTANCE) == TIM1)   || \
                                                ((INSTANCE) == TIM8)   || \
                                                ((INSTANCE) == TIM15)  || \
                                                ((INSTANCE) == TIM16)  || \
-                                               ((INSTANCE) == TIM17))
+                                               ((INSTANCE) == TIM17)  || \
+                                               ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : supporting 2 break inputs *****************/
 #define IS_TIM_BKIN2_INSTANCE(INSTANCE)    (((INSTANCE) == TIM1)    || \
-                                            ((INSTANCE) == TIM8))
+                                            ((INSTANCE) == TIM8)    || \
+                                            ((INSTANCE) == TIM20))
 
 /************* TIM Instances : at least 1 capture/compare channel *************/
 #define IS_TIM_CC1_INSTANCE(INSTANCE)   (((INSTANCE) == TIM1)   || \
                                          ((INSTANCE) == TIM2)   || \
                                          ((INSTANCE) == TIM3)   || \
                                          ((INSTANCE) == TIM4)   || \
-                                         ((INSTANCE) == TIM5)   || \
                                          ((INSTANCE) == TIM8)   || \
                                          ((INSTANCE) == TIM15)  || \
                                          ((INSTANCE) == TIM16)  || \
-                                         ((INSTANCE) == TIM17))
+                                         ((INSTANCE) == TIM17)  || \
+                                         ((INSTANCE) == TIM20))
 
 /************ TIM Instances : at least 2 capture/compare channels *************/
 #define IS_TIM_CC2_INSTANCE(INSTANCE)   (((INSTANCE) == TIM1)   || \
                                          ((INSTANCE) == TIM2)   || \
                                          ((INSTANCE) == TIM3)   || \
                                          ((INSTANCE) == TIM4)   || \
-                                         ((INSTANCE) == TIM5)   || \
                                          ((INSTANCE) == TIM8)   || \
-                                         ((INSTANCE) == TIM15))
+                                         ((INSTANCE) == TIM15)  || \
+                                         ((INSTANCE) == TIM20))
 
 /************ TIM Instances : at least 3 capture/compare channels *************/
 #define IS_TIM_CC3_INSTANCE(INSTANCE)   (((INSTANCE) == TIM1)   || \
                                          ((INSTANCE) == TIM2)   || \
                                          ((INSTANCE) == TIM3)   || \
                                          ((INSTANCE) == TIM4)   || \
-                                         ((INSTANCE) == TIM5)   || \
-                                         ((INSTANCE) == TIM8))
+                                         ((INSTANCE) == TIM8)   || \
+                                         ((INSTANCE) == TIM20))
 
 /************ TIM Instances : at least 4 capture/compare channels *************/
 #define IS_TIM_CC4_INSTANCE(INSTANCE)   (((INSTANCE) == TIM1)   || \
                                          ((INSTANCE) == TIM2)   || \
                                          ((INSTANCE) == TIM3)   || \
                                          ((INSTANCE) == TIM4)   || \
-                                         ((INSTANCE) == TIM5)   || \
-                                         ((INSTANCE) == TIM8))
+                                         ((INSTANCE) == TIM8)   || \
+                                         ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : at least 5 capture/compare channels *******/
 #define IS_TIM_CC5_INSTANCE(INSTANCE)   (((INSTANCE) == TIM1)   || \
-                                         ((INSTANCE) == TIM8))
+                                         ((INSTANCE) == TIM8)   || \
+                                         ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : at least 6 capture/compare channels *******/
 #define IS_TIM_CC6_INSTANCE(INSTANCE)   (((INSTANCE) == TIM1)   || \
-                                         ((INSTANCE) == TIM8))
+                                         ((INSTANCE) == TIM8)   || \
+                                         ((INSTANCE) == TIM20))
 
 /************ TIM Instances : DMA requests generation (TIMx_DIER.COMDE) *******/
 #define IS_TIM_CCDMA_INSTANCE(INSTANCE)    (((INSTANCE) == TIM1)   || \
                                             ((INSTANCE) == TIM8)   || \
                                             ((INSTANCE) == TIM15)  || \
                                             ((INSTANCE) == TIM16)  || \
-                                            ((INSTANCE) == TIM17))
+                                            ((INSTANCE) == TIM17)  || \
+                                            ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : DMA requests generation (TIMx_DIER.UDE) ***/
 #define IS_TIM_DMA_INSTANCE(INSTANCE)      (((INSTANCE) == TIM1)   || \
                                             ((INSTANCE) == TIM2)   || \
                                             ((INSTANCE) == TIM3)   || \
                                             ((INSTANCE) == TIM4)   || \
-                                            ((INSTANCE) == TIM5)   || \
                                             ((INSTANCE) == TIM6)   || \
                                             ((INSTANCE) == TIM7)   || \
                                             ((INSTANCE) == TIM8)   || \
                                             ((INSTANCE) == TIM15)  || \
                                             ((INSTANCE) == TIM16)  || \
-                                            ((INSTANCE) == TIM17))
+                                            ((INSTANCE) == TIM17)  || \
+                                            ((INSTANCE) == TIM20))
 
 /************ TIM Instances : DMA requests generation (TIMx_DIER.CCxDE) *******/
 #define IS_TIM_DMA_CC_INSTANCE(INSTANCE)   (((INSTANCE) == TIM1)   || \
                                             ((INSTANCE) == TIM2)   || \
                                             ((INSTANCE) == TIM3)   || \
                                             ((INSTANCE) == TIM4)   || \
-                                            ((INSTANCE) == TIM5)   || \
                                             ((INSTANCE) == TIM8)   || \
                                             ((INSTANCE) == TIM15)  || \
                                             ((INSTANCE) == TIM16)  || \
-                                            ((INSTANCE) == TIM17))
+                                            ((INSTANCE) == TIM17)  || \
+                                            ((INSTANCE) == TIM20))
 
 /******************** TIM Instances : DMA burst feature ***********************/
 #define IS_TIM_DMABURST_INSTANCE(INSTANCE) (((INSTANCE) == TIM1)   || \
                                             ((INSTANCE) == TIM2)   || \
                                             ((INSTANCE) == TIM3)   || \
                                             ((INSTANCE) == TIM4)   || \
-                                            ((INSTANCE) == TIM5)   || \
                                             ((INSTANCE) == TIM8)   || \
                                             ((INSTANCE) == TIM15)  || \
                                             ((INSTANCE) == TIM16)  || \
-                                            ((INSTANCE) == TIM17))
+                                            ((INSTANCE) == TIM17)  || \
+                                            ((INSTANCE) == TIM20))
 
 /******************* TIM Instances : output(s) available **********************/
 #define IS_TIM_CCX_INSTANCE(INSTANCE, CHANNEL) \
@@ -13318,12 +13561,6 @@ typedef struct
       ((CHANNEL) == TIM_CHANNEL_3) ||          \
       ((CHANNEL) == TIM_CHANNEL_4)))           \
      ||                                        \
-     (((INSTANCE) == TIM5) &&                  \
-     (((CHANNEL) == TIM_CHANNEL_1) ||          \
-      ((CHANNEL) == TIM_CHANNEL_2) ||          \
-      ((CHANNEL) == TIM_CHANNEL_3) ||          \
-      ((CHANNEL) == TIM_CHANNEL_4)))           \
-     ||                                        \
      (((INSTANCE) == TIM8) &&                  \
      (((CHANNEL) == TIM_CHANNEL_1) ||          \
       ((CHANNEL) == TIM_CHANNEL_2) ||          \
@@ -13340,7 +13577,15 @@ typedef struct
      (((CHANNEL) == TIM_CHANNEL_1)))           \
      ||                                        \
      (((INSTANCE) == TIM17) &&                 \
-      (((CHANNEL) == TIM_CHANNEL_1))))
+      (((CHANNEL) == TIM_CHANNEL_1)))          \
+     ||                                        \
+     (((INSTANCE) == TIM20) &&                 \
+     (((CHANNEL) == TIM_CHANNEL_1) ||          \
+      ((CHANNEL) == TIM_CHANNEL_2) ||          \
+      ((CHANNEL) == TIM_CHANNEL_3) ||          \
+      ((CHANNEL) == TIM_CHANNEL_4) ||          \
+      ((CHANNEL) == TIM_CHANNEL_5) ||          \
+      ((CHANNEL) == TIM_CHANNEL_6))))
 
 /****************** TIM Instances : supporting complementary output(s) ********/
 #define IS_TIM_CCXN_INSTANCE(INSTANCE, CHANNEL) \
@@ -13363,135 +13608,143 @@ typedef struct
      ((CHANNEL) == TIM_CHANNEL_1))              \
     ||                                          \
     (((INSTANCE) == TIM17) &&                   \
-     ((CHANNEL) == TIM_CHANNEL_1)))
+     ((CHANNEL) == TIM_CHANNEL_1))              \
+    ||                                          \
+    (((INSTANCE) == TIM20) &&                   \
+     (((CHANNEL) == TIM_CHANNEL_1) ||           \
+      ((CHANNEL) == TIM_CHANNEL_2) ||           \
+      ((CHANNEL) == TIM_CHANNEL_3) ||           \
+      ((CHANNEL) == TIM_CHANNEL_4))))
 
 /****************** TIM Instances : supporting clock division *****************/
 #define IS_TIM_CLOCK_DIVISION_INSTANCE(INSTANCE)   (((INSTANCE) == TIM1)    || \
                                                     ((INSTANCE) == TIM2)    || \
                                                     ((INSTANCE) == TIM3)    || \
                                                     ((INSTANCE) == TIM4)    || \
-                                                    ((INSTANCE) == TIM5)    || \
                                                     ((INSTANCE) == TIM8)    || \
                                                     ((INSTANCE) == TIM15)   || \
                                                     ((INSTANCE) == TIM16)   || \
-                                                    ((INSTANCE) == TIM17))
+                                                    ((INSTANCE) == TIM17)   || \
+                                                    ((INSTANCE) == TIM20))
 
 /****** TIM Instances : supporting external clock mode 1 for ETRF input *******/
 #define IS_TIM_CLOCKSOURCE_ETRMODE1_INSTANCE(INSTANCE) (((INSTANCE) == TIM1) || \
                                                         ((INSTANCE) == TIM2) || \
                                                         ((INSTANCE) == TIM3) || \
                                                         ((INSTANCE) == TIM4) || \
-                                                        ((INSTANCE) == TIM5) || \
-                                                        ((INSTANCE) == TIM8))
+                                                        ((INSTANCE) == TIM8) || \
+                                                        ((INSTANCE) == TIM20))
 
 /****** TIM Instances : supporting external clock mode 2 for ETRF input *******/
 #define IS_TIM_CLOCKSOURCE_ETRMODE2_INSTANCE(INSTANCE) (((INSTANCE) == TIM1) || \
                                                         ((INSTANCE) == TIM2) || \
                                                         ((INSTANCE) == TIM3) || \
                                                         ((INSTANCE) == TIM4) || \
-                                                        ((INSTANCE) == TIM5) || \
-                                                        ((INSTANCE) == TIM8))
+                                                        ((INSTANCE) == TIM8) || \
+                                                        ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : supporting external clock mode 1 for TIX inputs*/
 #define IS_TIM_CLOCKSOURCE_TIX_INSTANCE(INSTANCE)      (((INSTANCE) == TIM1) || \
                                                         ((INSTANCE) == TIM2) || \
                                                         ((INSTANCE) == TIM3) || \
                                                         ((INSTANCE) == TIM4) || \
-                                                        ((INSTANCE) == TIM5) || \
                                                         ((INSTANCE) == TIM8) || \
-                                                        ((INSTANCE) == TIM15))
+                                                        ((INSTANCE) == TIM15)|| \
+                                                        ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : supporting internal trigger inputs(ITRX) *******/
 #define IS_TIM_CLOCKSOURCE_ITRX_INSTANCE(INSTANCE)     (((INSTANCE) == TIM1) || \
                                                         ((INSTANCE) == TIM2) || \
                                                         ((INSTANCE) == TIM3) || \
                                                         ((INSTANCE) == TIM4) || \
-                                                        ((INSTANCE) == TIM5) || \
                                                         ((INSTANCE) == TIM8) || \
-                                                        ((INSTANCE) == TIM15))
+                                                        ((INSTANCE) == TIM15)|| \
+                                                        ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : supporting combined 3-phase PWM mode ******/
 #define IS_TIM_COMBINED3PHASEPWM_INSTANCE(INSTANCE) (((INSTANCE) == TIM1)   || \
-                                                     ((INSTANCE) == TIM8))
+                                                     ((INSTANCE) == TIM8)   || \
+                                                     ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : supporting commutation event generation ***/
 #define IS_TIM_COMMUTATION_EVENT_INSTANCE(INSTANCE) (((INSTANCE) == TIM1)   || \
                                                      ((INSTANCE) == TIM8)   || \
                                                      ((INSTANCE) == TIM15)  || \
                                                      ((INSTANCE) == TIM16)  || \
-                                                     ((INSTANCE) == TIM17))
+                                                     ((INSTANCE) == TIM17)  || \
+                                                     ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : supporting counting mode selection ********/
 #define IS_TIM_COUNTER_MODE_SELECT_INSTANCE(INSTANCE)  (((INSTANCE) == TIM1) || \
                                                         ((INSTANCE) == TIM2) || \
                                                         ((INSTANCE) == TIM3) || \
                                                         ((INSTANCE) == TIM4) || \
-                                                        ((INSTANCE) == TIM5) || \
-                                                        ((INSTANCE) == TIM8))
+                                                        ((INSTANCE) == TIM8) || \
+                                                        ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : supporting encoder interface **************/
 #define IS_TIM_ENCODER_INTERFACE_INSTANCE(INSTANCE)  (((INSTANCE) == TIM1)  || \
                                                       ((INSTANCE) == TIM2)  || \
                                                       ((INSTANCE) == TIM3)  || \
                                                       ((INSTANCE) == TIM4)  || \
-                                                      ((INSTANCE) == TIM5)  || \
-                                                      ((INSTANCE) == TIM8))
+                                                      ((INSTANCE) == TIM8)  || \
+                                                      ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : supporting Hall sensor interface **********/
 #define IS_TIM_HALL_SENSOR_INTERFACE_INSTANCE(INSTANCE) (((INSTANCE) == TIM1)   || \
                                                          ((INSTANCE) == TIM2)   || \
                                                          ((INSTANCE) == TIM3)   || \
                                                          ((INSTANCE) == TIM4)   || \
-                                                         ((INSTANCE) == TIM5)   || \
                                                          ((INSTANCE) == TIM8)   || \
-                                                         ((INSTANCE) == TIM15))
+                                                         ((INSTANCE) == TIM15)  || \
+                                                         ((INSTANCE) == TIM20))
 
 /**************** TIM Instances : external trigger input available ************/
 #define IS_TIM_ETR_INSTANCE(INSTANCE)      (((INSTANCE) == TIM1)  || \
                                             ((INSTANCE) == TIM2)  || \
                                             ((INSTANCE) == TIM3)  || \
                                             ((INSTANCE) == TIM4)  || \
-                                            ((INSTANCE) == TIM5)  || \
-                                            ((INSTANCE) == TIM8))
+                                            ((INSTANCE) == TIM8)  || \
+                                            ((INSTANCE) == TIM20))
 
 /************* TIM Instances : supporting ETR source selection ***************/
 #define IS_TIM_ETRSEL_INSTANCE(INSTANCE)    (((INSTANCE) == TIM1)  || \
                                              ((INSTANCE) == TIM2)  || \
                                              ((INSTANCE) == TIM3)  || \
                                              ((INSTANCE) == TIM4)  || \
-                                             ((INSTANCE) == TIM5)  || \
-                                             ((INSTANCE) == TIM8))
+                                             ((INSTANCE) == TIM8)  || \
+                                             ((INSTANCE) == TIM20))
 
 /****** TIM Instances : Master mode available (TIMx_CR2.MMS available )********/
 #define IS_TIM_MASTER_INSTANCE(INSTANCE)   (((INSTANCE) == TIM1)  || \
                                             ((INSTANCE) == TIM2)  || \
                                             ((INSTANCE) == TIM3)  || \
                                             ((INSTANCE) == TIM4)  || \
-                                            ((INSTANCE) == TIM5)  || \
                                             ((INSTANCE) == TIM6)  || \
                                             ((INSTANCE) == TIM7)  || \
                                             ((INSTANCE) == TIM8)  || \
-                                            ((INSTANCE) == TIM15))
+                                            ((INSTANCE) == TIM15) || \
+                                            ((INSTANCE) == TIM20))
 
 /*********** TIM Instances : Slave mode available (TIMx_SMCR available )*******/
 #define IS_TIM_SLAVE_INSTANCE(INSTANCE)    (((INSTANCE) == TIM1)  || \
                                             ((INSTANCE) == TIM2)  || \
                                             ((INSTANCE) == TIM3)  || \
                                             ((INSTANCE) == TIM4)  || \
-                                            ((INSTANCE) == TIM5)  || \
                                             ((INSTANCE) == TIM8)  || \
-                                            ((INSTANCE) == TIM15))
+                                            ((INSTANCE) == TIM15) || \
+                                            ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : supporting OCxREF clear *******************/
 #define IS_TIM_OCXREF_CLEAR_INSTANCE(INSTANCE)        (((INSTANCE) == TIM1)  || \
                                                        ((INSTANCE) == TIM2)  || \
                                                        ((INSTANCE) == TIM3)  || \
                                                        ((INSTANCE) == TIM4)  || \
-                                                       ((INSTANCE) == TIM5)  || \
                                                        ((INSTANCE) == TIM8)  || \
                                                        ((INSTANCE) == TIM15) || \
                                                        ((INSTANCE) == TIM16) || \
-                                                       ((INSTANCE) == TIM17))
+                                                       ((INSTANCE) == TIM17) || \
+                                                       ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : supporting bitfield OCCS in SMCR register *******************/
 #define IS_TIM_OCCS_INSTANCE(INSTANCE)                (((INSTANCE) == TIM1)  || \
@@ -13500,51 +13753,54 @@ typedef struct
                                                        ((INSTANCE) == TIM8)  || \
                                                        ((INSTANCE) == TIM15) || \
                                                        ((INSTANCE) == TIM16) || \
-                                                       ((INSTANCE) == TIM17))
+                                                       ((INSTANCE) == TIM17) || \
+                                                       ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : remapping capability **********************/
 #define IS_TIM_REMAP_INSTANCE(INSTANCE)    (((INSTANCE) == TIM1)  || \
                                             ((INSTANCE) == TIM2)  || \
                                             ((INSTANCE) == TIM3)  || \
                                             ((INSTANCE) == TIM4)  || \
-                                            ((INSTANCE) == TIM5)  || \
-                                            ((INSTANCE) == TIM8))
+                                            ((INSTANCE) == TIM8)  || \
+                                            ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : supporting repetition counter *************/
 #define IS_TIM_REPETITION_COUNTER_INSTANCE(INSTANCE)  (((INSTANCE) == TIM1)  || \
                                                        ((INSTANCE) == TIM8)  || \
                                                        ((INSTANCE) == TIM15) || \
                                                        ((INSTANCE) == TIM16) || \
-                                                       ((INSTANCE) == TIM17))
+                                                       ((INSTANCE) == TIM17) || \
+                                                       ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : supporting ADC triggering through TRGO2 ***/
 #define IS_TIM_TRGO2_INSTANCE(INSTANCE)    (((INSTANCE) == TIM1)    || \
-                                            ((INSTANCE) == TIM8))
+                                            ((INSTANCE) == TIM8)    || \
+                                            ((INSTANCE) == TIM20))
 
 /******************* TIM Instances : Timer input XOR function *****************/
 #define IS_TIM_XOR_INSTANCE(INSTANCE)      (((INSTANCE) == TIM1)   || \
                                             ((INSTANCE) == TIM2)   || \
                                             ((INSTANCE) == TIM3)   || \
                                             ((INSTANCE) == TIM4)   || \
-                                            ((INSTANCE) == TIM5)   || \
                                             ((INSTANCE) == TIM8)   || \
-                                            ((INSTANCE) == TIM15))
+                                            ((INSTANCE) == TIM15)  || \
+                                            ((INSTANCE) == TIM20))
 
 /******************* TIM Instances : Timer input selection ********************/
 #define IS_TIM_TISEL_INSTANCE(INSTANCE) (((INSTANCE) == TIM1)   || \
                                          ((INSTANCE) == TIM2)   || \
                                          ((INSTANCE) == TIM3)   || \
                                          ((INSTANCE) == TIM4)   || \
-                                         ((INSTANCE) == TIM5)   || \
                                          ((INSTANCE) == TIM8)   || \
                                          ((INSTANCE) == TIM15)  || \
                                          ((INSTANCE) == TIM16)  || \
-                                         ((INSTANCE) == TIM17))
+                                         ((INSTANCE) == TIM17)  || \
+                                         ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : Advanced timer instances *******************/
 #define IS_TIM_ADVANCED_INSTANCE(INSTANCE)       (((INSTANCE) == TIM1)   || \
-                                                  ((INSTANCE) == TIM8))
-
+                                                  ((INSTANCE) == TIM8)   || \
+                                                  ((INSTANCE) == TIM20))
 
 /****************** TIM Instances : supporting HSE/32 request instances *******************/
 #define IS_TIM_HSE32_INSTANCE(INSTANCE)         (((INSTANCE) == TIM16)   || \
@@ -13684,4 +13940,3 @@ typedef struct
   * @}
   */
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

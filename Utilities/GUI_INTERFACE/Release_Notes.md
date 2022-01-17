@@ -10,17 +10,10 @@ header-includes: <link rel="icon" type="image/x-icon" href="_htmresc/favicon.png
 
 <center>
 # Release Notes for STM32 USB-C Power Delivery Graphical User Interface (GUI_INTERFACE)
-Copyright &copy; 2018 STMicroelectronics\
+Copyright &copy; 2018(-2021) STMicroelectronics\
 
 [![ST logo](_htmresc/st_logo_2020.png)](https://www.st.com){.logo}
 </center>
-
-# License
-
-This software component is licensed by ST under BSD 3-Clause license, the "License";
-You may not use this component except in compliance with the License. You may obtain a copy of the License at:
-
-[http://www.opensource.org/licenses/BSD-3-Clause](http://www.opensource.org/licenses/BSD-3-Clause)
 
 # Purpose
 
@@ -36,7 +29,94 @@ The application can be found in ST website:
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section18" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section20" checked aria-hidden="true">
+<label for="collapse-section20" aria-hidden="true">V2.2.0 / 13-December-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+**Fixed bugs list**
+
+  Headline
+  --------
+  Correction of USBPD_WRITE macro wrong name.
+  Minor licensing fixes in GUI_INTERFACE component.
+  GUIOS_GETMESSAGE_QUEUE macro correction for CMSIS OS V2.
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.50
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.26
+- STM32CubeIDE v1.7.0
+
+## Supported Devices and boards
+
+  All STM32xx devices implementing a USBPD application able to communicate with CubeMonitor_UCPD
+
+## Backward compatibility
+
+  None
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section19" aria-hidden="true">
+<label for="collapse-section19" aria-hidden="true">V2.1.0 / 20-September-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+**Fixed bugs list**
+
+  Headline
+  --------
+  [Licensing] Update the way to declare licenses in Cube and X-CUBE components
+  Split Manufacturer data in 2 fields (battery and ref)
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.50
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.26
+- STM32CubeIDE v1.7.0
+
+## Supported Devices and boards
+
+  All STM32xx devices implementing a USBPD application able to communicate with CubeMonitor_UCPD
+
+## Backward compatibility
+
+  None
+
+## Dependencies
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section18" aria-hidden="true">
 <label for="collapse-section18" aria-hidden="true">V2.0.0 / 3-May-2021</label>
 <div>
 

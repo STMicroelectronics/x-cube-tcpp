@@ -24,25 +24,41 @@ Use of USB Power Delivery (USB-PD) Consumer application with PPS running on STM3
       Project configuration is based on USB Power Delivery Specification revision 3.0.
 
 This application provides an example for managing the Port 0 as a Consumer Only port.
-      PPS(Programmable Power Supply) is enabled, as well as the STM32CubeMonUCPD graphical user interface.
-      User can use the STM32CubeMonUCPD running on a computer to send control the STM32GXX to send some USB power
-      delivery messages through the integrated UCPD peripheral.
-
-      This application has been certified with USB-PD Test Conformance Tools (Ellisys, MQP, GRL and LeCroy) with TID : 5205.
+      This application has been certified with USB-PD Test Conformance Tools (Ellisys, MQP, GRL and LeCroy).
       Vendor Information File, used for Conformance testing and  describing Port capabilities and supported 
       options is provided in application directory in STMicroelectronics_SNK1M1_Sink_STM32G071RB_VIF.xml file.
 
-Goal is to identify a Type-C connection to power supply and to determine:
-      - if PD capable: LED1 from Shield turn-on + LED2 from NUCLEO board turn-on
-      - if no PD capable: LED1 from Shield turn-on + LED2 will blink to expose RP resistor. 
+      This application is based on the following wiki:
+      https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:STM32_Advance_USB-Power_Delivery_Sink
+      
+      STM32CubeMX is used to configure the project.
+      The following sink PDOs are configured in STM32CubeMX:
+            - 5V 1.5A
+            - 9V 3A
+            - 15V 2A
+            - 20V 1A
 
-When Type-C cable is plugged to NO PD port partner: LED1 on X-NUCLEO-SNK1M1 shield switches on which
-      means that VBUS is provided by the port partner.
-      The Rp resistor exposed by port partner will be indicated thanks to the blinking of 
-      LED4 on NUCLEO-G071RB board:
-      - 1 blink every 2sec: Default USB, allows up to 500mA
-      - 2 blinks every 2sec: 1.5A
-      - 3 blinks every 2sec: 3.0A
+      By default, the sink asks for the higest power matching PDO of the connected source. User can change 
+      this behaviour by changing the USED_PDO_SEL_METHOD define in usbpd_user_services.c.
+      For example, if your source supports 5V/2A, 9V/2A, 15V/2A and 20V/2A, the sink will ask for the 15V profile,
+      as it is the highest power profile the sink and the source can support.
+
+      ╔══════════╦═════════════════════╦══════════════════╦═══════════════════════╗
+      ║ Sink PDO ║ Source capabilities ║ Sink drawing pwr ║ Supported by source ? ║
+      ╠══════════╬═════════════════════╬══════════════════╬═══════════════════════╣
+      ║ 5V 1.5A  ║    5V  2A  (10W)    ║      7.5W        ║         YES           ║
+      ║ 9V   3A  ║    9V  2A  (18W)    ║        9W        ║          NO           ║
+      ║ 15V  2A  ║    15V 2A  (30W)    ║       30W        ║         YES           ║ <------- Choosen profile
+      ║ 20V  3A  ║    20V 2A  (40W)    ║       60W        ║          NO           ║          (highest supported power)
+      ╚══════════╩═════════════════════╩══════════════════╩═══════════════════════╝
+
+      You can change the PDO selection method with the USED_PDO_SEL_METHOD define. Availables methods are:
+            - Max power
+            - Min power
+            - Max voltage
+            - Min voltage
+            - Max current
+            - Min current
 
 For debug purpose, TRACER_EMB and GUI_INTERFACE utilities are enabled in this application. 
       STM32CubeMonUCPD can be used to display USB-PD traces and to interact with the port partner.
@@ -59,33 +75,40 @@ For debug purpose, TRACER_EMB and GUI_INTERFACE utilities are enabled in this ap
 
 @par Directory contents
 
-  - SNK1M1_Sink/Binary/G0_SNK1M1_Sink.bin       Application binary file
-  - SNK1M1_Sink/Src/app_freertos.c              FreeRTOS application file
-  - SNK1M1_Sink/Src/main.c                      Main program
-  - SNK1M1_Sink/Src/stm32g0xx_hal_msp.c         STM32G0XX HAL MSP functions
-  - SNK1M1_Sink/Src/stm32g0xx_it.c              Interrupt handlers
-  - SNK1M1_Sink/Src/system_stm32g0xx.c          STM32G0XX system clock configuration file
-  - SNK1M1_Sink/Src/usbpd.c                     Main USBPD file for initialization
-  - SNK1M1_Sink/Src/usbpd_dpm_core.c            DPM CORE layer implementation
-  - SNK1M1_Sink/Src/usbpd_dpm_user.c            DPM USER layer implementation
-  - SNK1M1_Sink/Src/usbpd_pwr_if.c              General power interface configuration
-  - SNK1M1_Sink/Src/usbpd_pwr_user.c            User power implementation
-  - SNK1M1_Sink/Src/usbpd_vdm_user.c            User VDM implementation
-  - SNK1M1_Sink/Inc/FreeRTOSConfig.h            FreeRTOS module configuration file
-  - SNK1M1_Sink/Inc/main.h                      Main program header file
-  - SNK1M1_Sink/Inc/stm32_assert.h              Assert header file
-  - SNK1M1_Sink/Inc/stm32g0xx_hal_conf.h        HAL configuration file
-  - SNK1M1_Sink/Inc/stm32g0xx_it.h              Interrupt handlers header file
-  - SNK1M1_Sink/Inc/tracer_emb_conf.h           Debug trace UART settings
-  - SNK1M1_Sink/Inc/usbpd.h                     USBPD application includes
-  - SNK1M1_Sink/Inc/usbpd_devices_conf.h        Device settings (Timers, DMA...)
-  - SNK1M1_Sink/Inc/usbpd_dpm_conf.h            USB-C Power Delivery application Configuration file
-  - SNK1M1_Sink/Inc/usbpd_dpm_user.h            DPM Layer header file
-  - SNK1M1_Sink/Inc/usbpd_gui_memmap.h          Memory mapping for GUI interface
-  - SNK1M1_Sink/Inc/usbpd_pdo_defs.h            PDO definition central header file
-  - SNK1M1_Sink/Inc/usbpd_pwr_if.h              Defines for PDOs
-  - SNK1M1_Sink/Inc/usbpd_pwr_user.h            User power header file
-  - SNK1M1_Sink/Inc/usbpd_vdm_user.h            User VDM header file
+      SNK1M1_Sink
+      ├──── Binary
+      |     └──── G0_SNK1M1_Sink.bin          Application binary file
+      ├──── Src
+      |     └──── app_freertos.c              Code for freertos applications file 
+      |     └──── main.c                      Main program
+      |     └──── stm32g0xx_hal_msp.c         HAL MSP Initialization file
+      |     └──── stm32g0xx_it.c              Interrupt handlers
+      |     └──── system_stm32g0xx.c          STM32G0xx system clock configuration file
+      |     └──── usbpd.c                     Device defines for GUI
+      |     └──── usbpd_dpm_core.c            DPM core file
+      |     └──── usbpd_dpm_user.c            DPM layer implementation
+      |     └──── usbpd_pwr_if.c              General power interface configuration
+      |     └──── usbpd_user_services.c       PDO handling services implementation
+      |     └──── usbpd_vdm_user.c            Vendo Defined Message management implementation
+      └──── Inc
+            └──── FreeRTOSConfig.h            FreeRTOS module configuration file
+            └──── main.h                      Main program header file
+            └──── stm32_assert.h              Assert header file
+            └──── stm32g0xx_hal_conf.h        HAL configuration file
+            └──── stm32g0xx_it.h              Interrupt handlers header file
+            └──── tracer_emb_conf.h           Debug trace UART settings
+            └──── usbpd.h                     USBPD application includes
+            └──── usbpd_devices_conf.h        Device settings (Timers, DMA...)
+            └──── usbpd_dpm_conf.h            USB-C Power Delivery application Configuration file
+            └──── usbpd_dpm_core.c            DPM core header file
+            └──── usbpd_dpm_user.h            DPM Layer header file
+            └──── usbpd_gui_memmap.h          GUI flash memory mapping
+            └──── usbpd_os_port.h             Core OS portability macros header file
+            └──── usbpd_pdo_defs.h            PDO definition central header file
+            └──── usbpd_pwr_if.h              Defines for PDOs
+            └──── usbpd_pwr_user.h            Default power management service header file
+            └──── usbpd_user_services.c       PDO handling services header file
+            └──── usbpd_vdm_user.h            Vendo Defined Message management header file
 
 @par Hardware and Software environment
 

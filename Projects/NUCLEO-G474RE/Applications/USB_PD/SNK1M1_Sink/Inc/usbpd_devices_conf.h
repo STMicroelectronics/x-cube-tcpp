@@ -124,4 +124,4 @@
 #endif
 
 #endif /* USBPD_DEVICE_CONF_H */
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+

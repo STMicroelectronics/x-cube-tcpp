@@ -54,8 +54,10 @@ void USBPD_CAD_Task(void *argument);
 #else
 #define DPM_STACK_SIZE_ADDON_FOR_CMSIS              4
 #endif /* osCMSIS < 0x20000U */
+
 #define FREERTOS_PE_PRIORITY                    osPriorityAboveNormal
-#define FREERTOS_PE_STACK_SIZE                  (200 * DPM_STACK_SIZE_ADDON_FOR_CMSIS)
+#define FREERTOS_PE_STACK_SIZE                  (350 * DPM_STACK_SIZE_ADDON_FOR_CMSIS)
+
 #define FREERTOS_CAD_PRIORITY                   osPriorityRealtime
 #define FREERTOS_CAD_STACK_SIZE                 (300 * DPM_STACK_SIZE_ADDON_FOR_CMSIS)
 
@@ -450,7 +452,6 @@ void USBPD_DPM_CADCallback(uint8_t PortNum, USBPD_CAD_EVENT State, CCxPin_TypeDe
       DPM_Params[PortNum].VconnStatus = USBPD_FALSE;
       DPM_CORE_DEBUG_TRACE(PortNum, "Note: VconnStatus=FALSE");
 #endif /* _VCONN_SUPPORT */
-      USBPD_DPM_Notification(PortNum, USBPD_NOTIFY_USBSTACK_STOP);
       break;
     }
     default :
@@ -490,7 +491,4 @@ static void DPM_ManageAttachedState(uint8_t PortNum, USBPD_CAD_EVENT State, CCxP
       while (1);
     }
   }
-  USBPD_DPM_Notification(PortNum, USBPD_NOTIFY_USBSTACK_START);
 }
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -10,7 +10,7 @@ header-includes: <link rel="icon" type="image/x-icon" href="_htmresc/favicon.png
 
 <center>
 # Release Notes for STM32 USB-C Power Delivery Core Stack Library
-Copyright &copy; 2018 STMicroelectronics\
+Copyright &copy; 2017(-2021) STMicroelectronics\
 
 [![ST logo](_htmresc/st_logo_2020.png)](https://www.st.com){.logo}
 </center>
@@ -41,7 +41,106 @@ Here is the list of references to user documents:
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section29" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section31" checked aria-hidden="true">
+<label for="collapse-section31" aria-hidden="true">V4.1.0 / 15-Dec-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+**Fixed bugs list**
+
+  Headline
+  --------
+  [OS] Fix THREADX thread ID struct handling
+  [OS] Fix define for CMSIS OS v2
+  [PE] Update FRS AMS to manage power requirement
+  [PE] Clear RX event before FRS ACCEPT
+  [OS] update to kill PE if does not stop executing itself
+  [OS] replace OS Free RTOS API with cmsis OS API
+  [SNK] After a soft reset we shall wait for source capa
+  Fix typo error, add legacy define for USPBPD_WRITE32
+  [DEF] Add defines for STATUS message
+  [PE] SOP' message needs to be sent only if sender is VCONN owner
+  [PE] Add the support of the USB4 (message USB_ENTER and DATA_RESET)
+  [PE] Revision message must be answered 
+  [PE] Status message has 6 bytes whereas 7 are mandatory
+  [PRL] Update to handle retry and crc timer for more than 2 ports
+  [PRL] MessageId is not well incremented after retry
+  [PRL] In PD3 GoodCRC is always sent with PD revision 1
+  [CORE] Update the stack to manage 3 ports in parallel
+  MCUAstyle, Codespell
+  [CORE] Solve CubeIDE compilation warning in OS_CREATE_TASK macro use.
+  [Licensing] Update the way to declare licenses in Cube and X-CUBE components
+  {PE] SNK AMS HardReset : the USB stack shutdown must be done after VBUS has reached VSAFE_0V
+  [PRL] PHY state BUSY is no taken into account
+  [UCSI] Add new ID for UCSI trace
+  [THREADX] remove pool allocation inside the stack and Add a pool pointer on the InitOS function
+  
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.6
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.31
+- STM32CubeIDE V1.7.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+NA
+
+## Dependencies
+
+NA
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section30" aria-hidden="true">
+<label for="collapse-section30" aria-hidden="true">V4.0.1 / 22-Jun-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+
+## Contents
+**Fixed bugs list**
+
+  Headline
+  --------
+  Update Release Note 
+
+## Known limitations
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.6
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.31
+- STM32CubeIDE V1.7.0
+
+## Supported Devices and boards
+
+## Backward compatibility
+
+NA
+
+## Dependencies
+
+NA
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section29" aria-hidden="true">
 <label for="collapse-section29" aria-hidden="true">V4.0.0 / 6-May-2021</label>
 <div>
 
@@ -55,30 +154,30 @@ Here is the list of references to user documents:
 
   Headline
   --------
-  Ticket 105958 - Messages should be discarded when device was about to send HardReset
-  Ticket 105732 - messages must be discarded when VBUS is out of range (like during HR)
+  Messages should be discarded when device was about to send HardReset
+  Messages must be discarded when VBUS is out of range (like during HR)
   NO_PD mode only, a type C state machine shall runs therefore the CAD task must be created
   Add the data role reset during hard reset AMS
   Astyle update
   OS update around the thread creation
   OS Add the support of the ThreadX RTOS
-  Ticket 103308 - Stack state machine issue seen in PHY.E2/E3
+  Stack state machine issue seen in PHY.E2/E3
   Codespell update 
   OS PE task management improvement to replace create/terminate by suspend/resume
   OS Add file usbpd_os_port.h to manage the OS portability
   Update in Task definition and creation macros for CMSIS RTOS V2
   OS improvement of the os porting layer
   [CAD] VconnCCIs shall be set for a snk attachment
-  Ticket 101501 - When an Hard Reset receive too quickly after a message the hardreset is not done"
+  When an Hard Reset receive too quickly after a message the hardreset is not done"
   MISRAC2012 update 
 
 ## Known limitations
 
 ## Development Toolchains and Compilers
 
-- IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
-- STM32CubeIDE V1.4.0
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.6
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.31
+- STM32CubeIDE V1.7.0
 
 ## Supported Devices and boards
 
@@ -95,7 +194,7 @@ NA
 
 ::: {.collapse}
 <input type="checkbox" id="collapse-section28" aria-hidden="true">
-<label for="collapse-section28" aria-hidden="true">V3.3.1 / 17-Feb.-2021</label>
+<label for="collapse-section28" aria-hidden="true">V3.3.1 / 17-Feb-2021</label>
 <div>
 
 ## Main Changes
@@ -108,7 +207,7 @@ NA
 
   Headline
   --------
-  Ticket 101532 - Update timer in Low Power Mode not correctly set
+  Update timer in Low Power Mode not correctly set
 
 
 
@@ -117,7 +216,7 @@ NA
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.27
 - STM32CubeIDE V1.4.0
 
 ## Supported Devices and boards
@@ -147,34 +246,34 @@ NA
 
   Headline
   --------
-  Ticket 90290 - Enable VCONN support in MIN_SRC library
+  Enable VCONN support in MIN_SRC library
   [PE] Update to avoid PE lock when called PE_Wakeup inside a critical section
-  Ticket 90333 - add a MIN_DRP configuration in the stack libraries
+  Add a MIN_DRP configuration in the stack libraries
   [CAD] Hard fault issue detected with CortexM33 (L5)
   [LPM] replace the LPM call by tiny_lpm function
-  [PE] Ticket 91038 - new sop' msge shouldn't be sent after src_cap till DUT is not in explicit
-  [PE] Ticket 90995 - PE_SNK state machine state change abnormally
+  [PE] new sop' msge shouldn't be sent after src_cap till DUT is not in explicit
+  [PE] PE_SNK state machine state change abnormally
   Add mechanisme to guarantee the goodcrc timing
-  Ticket 75762 - Implement BIST Shared Capacity Test Mode message
-  Ticket 87301 - The RP resistor shall be reset to the default value during the HardReset AMS
-  [PE] Ticket 92315 - Hard fault in the usbpd stack library if USBPD_PE_GetDataInfo not implemented in the application
-  [PE] Ticket 93543 - Role alignment during HardReset
-  [PE] Ticket 93949 - TxOK/NG shouldn't be checked in PD2
+  Implement BIST Shared Capacity Test Mode message
+  The RP resistor shall be reset to the default value during the HardReset AMS
+  [PE] Hard fault in the usbpd stack library if USBPD_PE_GetDataInfo not implemented in the application
+  [PE] Role alignment during HardReset
+  [PE] TxOK/NG shouldn't be checked in PD2
   [DOC] Update to add timeout information inside the MSC 
-  Ticket 94216 - conflict when PE perform HardReset and CAD a detach
+  conflict when PE perform HardReset and CAD a detach
   Rework InitCore function 
   MISRA corrections
   Codespell and MCUAStyle corrections
   [DRD] update around the identical data role for SRC and SNK
   [SRC] add a notification USBPD_NOTIFY_STATE_SRC_READY
-  [PE] Ticket 95410 - PE_powerrole after power swap
+  [PE] PE_powerrole after power swap
   [CORE] Update to be aligned with latest USB-PD spec (remove the 2nd UFP VDO)
   [PE] Add defines for conditions on PE_Request_Control
   [PE] AMC and AMA deprecated in PD3.0. AMA only used in PD2.0.
-  [PE] Ticket 96025 - Soft_reset should be sent prior to HardReset in case of non response of src_cap post PR_swap
-  Ticket 96061 - Tests TD4.3.x failed on Lecroy with NO_PD Sink version
-  Ticket 96089 - Add a system of hook function to request an action of USB stack
-  Ticket 96219 Avoid double definition with LE16 & LE32 macros used in usbh.def
+  [PE] Soft_reset should be sent prior to HardReset in case of non response of src_cap post PR_swap
+  Tests TD4.3.x failed on Lecroy with NO_PD Sink version
+  Add a system of hook function to request an action of USB stack
+  Avoid double definition with LE16 & LE32 macros used in usbh.def
   
   
   : Fixed bugs list
@@ -185,7 +284,7 @@ NA
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.27
 - STM32CubeIDE V1.4.0
 
 ## Supported Devices and boards
@@ -215,7 +314,7 @@ Dependencies with TRACER_EMB V1.4.0 or latest
 
   Headline
   --------
-  Ticket 94216 - conflict when PE perform HardReset and CAD a detach
+  Conflict when PE perform HardReset and CAD a detach
   
   : Fixed bugs list
 
@@ -225,7 +324,7 @@ Dependencies with TRACER_EMB V1.4.0 or latest
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.27
 - STM32CubeIDE V1.2.0
 
 ## Supported Devices and boards
@@ -255,26 +354,26 @@ Dependencies with TRACER_EMB V1.4.0
 
   Headline
   --------
-  Ticket 89559 - SOPSupported not well reset after detach
-  Ticket 88095 - DR_swap management issue
-  Ticket 82098 - LeCroy new merge test : fail on PRSWAP because tester expecting Hard Reset
+  SOPSupported not well reset after detach
+  DR_swap management issue
+  LeCroy new merge test : fail on PRSWAP because tester expecting Hard Reset
   Keep USBPD_CAD_Process API for all the configuration
-  Ticket 86359 - PE_datatrole is not aligned to PE_powerRole in DPM_UserCableDetection
-  Ticket 87230 - SOFT_RESET sent to SOP1 is not well manage
-  Ticket 88065 - cable_reset management to be improved
-  Ticket 86356 - Correct misspelled words
-  Ticket 84586 - Provide external API in CAD to allow application to know which RP present in Sink
-  Ticket 87313 - Should not answer GoodCRC to SOP1 soft reset
-  Ticket 86769 - TxOK / TxNG should not be toggled while in PD2 second part to reset the PD capabilities in case of HARDRESET
-  Ticket 85670 - Expose RX buffer size to the devices module (to avoid buffer overflow)
+  PE_datatrole is not aligned to PE_powerRole in DPM_UserCableDetection
+  SOFT_RESET sent to SOP1 is not well manage
+  cable_reset management to be improved
+  Correct misspelled words
+  Provide external API in CAD to allow application to know which RP present in Sink
+  Should not answer GoodCRC to SOP1 soft reset
+  TxOK / TxNG should not be toggled while in PD2 second part to reset the PD capabilities in case of HARDRESET
+  Expose RX buffer size to the devices module (to avoid buffer overflow)
   Reduce size of USBPD_SettingsTypeDef in case of NO_PD configuration
   Remove notification USBPD_NOTIF_PROTOCOL_ERROR when stack has received a NAK message to VDM identity request
   Move before resetting VCONN status to be able to correctly switch off VCONN during detach
-  Ticket 73501 - Add UFP and VPD VDOs for VDM discovery identity
+  Add UFP and VPD VDOs for VDM discovery identity
   Add ErrorRecovery API and remove CAD detection API
   Improve the AMS management to discard any PD send if a message is already present inside the fifo
-  Ticket 85232 - Message discarded wrongly while in PD2
-  Ticket 85110 - TEST.PD.VDM.SRC.01 fail on LeCroy
+  Message discarded wrongly while in PD2
+  TEST.PD.VDM.SRC.01 fail on LeCroy
   Add new API USBPD_PHY_FastRoleSwapReception
   Set FRS as a PD3 feature
   Integration of the FRS on SRC and SNK state machine
@@ -288,7 +387,7 @@ Dependencies with TRACER_EMB V1.4.0
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.27
 - STM32CubeIDE V1.2.0
 
 ## Supported Devices and boards
@@ -306,7 +405,7 @@ Dependencies with TRACER_EMB V1.4.0
 
 ::: {.collapse}
 <input type="checkbox" id="collapse-section25" aria-hidden="true">
-<label for="collapse-section25" aria-hidden="true">V3.1.0 / 14-Apr.-2020</label>
+<label for="collapse-section25" aria-hidden="true">V3.1.0 / 14-Apr-2020</label>
 <div>
 
 ## Main Changes
@@ -319,9 +418,9 @@ Dependencies with TRACER_EMB V1.4.0
   Headline
   --------
   BIST no more enabled in TCPM
-  Ticket 84461 - Indicate when trace is lost
-  Ticket 84336 - Bad answer to UVDM msge.
-  Ticket 84582 - Hard reset not detected by PE during power negotiation
+  Indicate when trace is lost
+  Bad answer to UVDM msge.
+  Hard reset not detected by PE during power negotiation
   Update to avoid issue to send a control message
   Add a check on Resistor in case of VBUS lost (manage HardReset Sequence)
   Update to use a new ID for TCPM trace
@@ -334,7 +433,7 @@ Dependencies with TRACER_EMB V1.4.0
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.27
 - STM32CubeIDE V1.2.0
 
 ## Supported Devices and boards
@@ -352,7 +451,7 @@ Dependencies with TRACER_EMB V1.4.0
 
 ::: {.collapse}
 <input type="checkbox" id="collapse-section24" aria-hidden="true">
-<label for="collapse-section24" aria-hidden="true">V3.0.0 / 26-Mar.-2020</label>
+<label for="collapse-section24" aria-hidden="true">V3.0.0 / 26-Mar-2020</label>
 <div>
 
 ## Main Changes
@@ -364,14 +463,14 @@ Dependencies with TRACER_EMB V1.4.0
 
   Headline
   --------
-  [CORE] Ticket 83457 - Explicit_Contract information not properly sent to UCPD Monitor on DETACH
-  [CORE] Ticket 81963 - Add inside PRL a mechanism to avoid RX buffer overwrite in case of multiple RX
+  [CORE] Explicit_Contract information not properly sent to UCPD Monitor on DETACH
+  [CORE] Add inside PRL a mechanism to avoid RX buffer overwrite in case of multiple RX
   [PE] Discard shall be done only if there is incoming message
   [TCPM] Update for TCPM compilation
   [PRL] update for TCPC mode
-  [PRL] Ticket 81964 - Add an optional mechansime to manage the tx discard and tx abort by UCPD IP
+  [PRL] Add an optional mechansime to manage the tx discard and tx abort by UCPD IP
   [PE] Lecroy TEST.PD.VDM.SNK.7 Unrecognized VID in Unstructured VDM
-  [PE] Ticket 81972 - TD PD.SRC3.E27 and TD PD.SRC3.E28 - Testing Downstream Port
+  [PE] TD PD.SRC3.E27 and TD PD.SRC3.E28 - Testing Downstream Port
   [PE] Reset the spec revision + data role in case of HardReset
   [PE] MQP regression on TD.PD.VNDI3.E10
   [PE-PRL] Add critical section on the cluster management
@@ -382,7 +481,7 @@ Dependencies with TRACER_EMB V1.4.0
   [PRL] Code optimizations
   [PRL] remove the disable RX to avoid overwrite of rx buffer
   [CORE][TCPM] Reset Supported SOPs to SOP when disconnect
-  Merge of modifications done in usbpd_dpm_core.c files in CubeMx generated projects for Ticket 78939 
+  Merge of modifications done in usbpd_dpm_core.c files in CubeMx generated projects 
   
   : Fixed bugs list
 
@@ -392,13 +491,12 @@ Dependencies with TRACER_EMB V1.4.0
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.27
 - STM32CubeIDE V1.2.0
 
 ## Supported Devices and boards
 
 ## Backward compatibility
-Implementation of CR Ticket 81963 and Ticket 81964 leads to some interface changes between USBPD Core and USBPD Device driver modules.
 In order to use this version of USBPD Core module, please ensure version of USBPD Device driver module mentions compatibility with this v3.0.0 USBPD Core.
 (Example for STM32G4xx => use g4_v4.0.0 or higher version of USBPD Device
          for STM32L5xx => use l5_v2.0.0 or higher version of USBPD Device
@@ -411,7 +509,7 @@ In order to use this version of USBPD Core module, please ensure version of USBP
 
 ::: {.collapse}
 <input type="checkbox" id="collapse-section23" aria-hidden="true">
-<label for="collapse-section23" aria-hidden="true">V2.10.0 / 19-Feb.-2020</label>
+<label for="collapse-section23" aria-hidden="true">V2.10.0 / 19-Feb-2020</label>
 <div>
 
 ## Main Changes
@@ -427,19 +525,19 @@ In order to use this version of USBPD Core module, please ensure version of USBP
   [CORE] Add dedicated SNK state machine to handler VPD identification PRL update to manage SOP*
   [CORE] Add PD message In in TCPM mode
   [CORE] Add switch USE_STM32_UTILITY_OS to integrate SEQUENCER utility
-  [CORE] Ticket 80146 - Update done to integrate NO PD stack
+  [CORE] Update done to integrate NO PD stack
   [CORE][PE] Do not send SOFT_RESET if NOT_SUPPORTED answered to GET_BATTERY messages
   [CORE][PRL] Extended message GET_BATTERY_CAPA should not be seen as BIST message
   [CORE][TCPM] Manage TX complete alert before RX alert
   [NRTOS] Integration of the utilities SEQ and TIMER_SERVER to handle the non RTOS mode
-  [PE] Ticket 80976 - Get Source and sink capability extended message should be sent in DRP
+  [PE] Get Source and sink capability extended message should be sent in DRP
   [PRL] patch TD.PD.VNDI.E4 SOP* Handling
   [TCPC] remove specific management of SOP1, SOP2 and let PE manage
-  Ticket 80146 - Update done to integrate NO PD stack
-  Ticket 77617 - Handle incoming message in discard case
+  Update done to integrate NO PD stack
+  Handle incoming message in discard case
   AMS not correctly set for GET_SNK_CAPA_EXT message
-  Ticket 76564 - Trace impacts timing during unchunk test
-  Ticket 75842 - Core library file generates warnings with ARM Compiler V6
+  Trace impacts timing during unchunk test
+  Core library file generates warnings with ARM Compiler V6
   
   : Fixed bugs list
 
@@ -448,7 +546,7 @@ In order to use this version of USBPD Core module, please ensure version of USBP
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.27
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -474,9 +572,9 @@ In order to use this version of USBPD Core module, please ensure version of USBP
 
   Headline
   --------
-  Ticket 75842 - Core library file generates warnings with ARM Compiler V6
-  Ticket 73477 - Product_type_PSD needs to be added
-  [CORE][PE] Ticket 73064 - SNK_extended_cap must be answered while SNK or DRP
+  Core library file generates warnings with ARM Compiler V6
+  Product_type_PSD needs to be added
+  [CORE][PE] SNK_extended_cap must be answered while SNK or DRP
   [CORE][PE] Increase PE_TSRCRECOVERHARDRESET_MAX timing to be less restrictive during hard reset
   [CORE]Increase Stack size for TRACE task (issue with Nucleo_L5)
   Enabled the switch USBPDCORE_ERROR_RECOVERY for the libraries configuration
@@ -492,7 +590,7 @@ In order to use this version of USBPD Core module, please ensure version of USBP
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.27
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -522,11 +620,11 @@ In order to use this version of USBPD Core module, please ensure version of USBP
   [USBPD][CORE] CMSIS OS V2 adaptations
   [USBPD][CORE] Code optimization + notification moved before the swapongoing reset to avoid wrong VBUS detach level
   [USBPD][CORE][PE] GRL issue SNK3.E7 - Do not send request in SinkTXOK is not set
-  [USBPD][CORE] Ticket 71177 - Remove dependency with max number of ports defined in the library (USBPD_MAXPORT_COUNT)
+  [USBPD][CORE] Remove dependency with max number of ports defined in the library (USBPD_MAXPORT_COUNT)
   [USBPD][CORE] Manage correctly errors during core stack initialization
   [USBPD][CORE] Remove notification inside function PE_StateMachine_SRC_NegocCapa: avoid duplicate information because it is application decision
   [USBPD][CORE] Few updates to integrate the TCPC G0
-  [USBPD][CORE] Ticket 66284 - [CubeMx-UBSPD] Update generated code to make it compatible with CMSIS-RTOS v2.
+  [USBPD][CORE] [CubeMx-UBSPD] Update generated code to make it compatible with CMSIS-RTOS v2.
   [USBPD][CORE][PE] Fix an issue with Elissys test 4.9.4
   [USBPD][CORE] Add specific tag for tracing TCPM
   [USBPD][CORE][TCPM] remove Wait for VBUS in TCPM file
@@ -539,7 +637,7 @@ In order to use this version of USBPD Core module, please ensure version of USBP
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.26
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.26
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -570,9 +668,9 @@ In order to use this version of USBPD Core module, please ensure version of USBP
   [USBPD][DOC] MSC and documentation update
   [USBPD][CORE] Few updates for TCPM
   [USBPD][CORE] Correction for allowing 2 ports in Non RTOS configuration
-  [USBPD][CORE] Ticket 66284 - [CubeMx-UBSPD] Update generated code to make it compatible with CMSIS-RTOS v2.
+  [USBPD][CORE] [CubeMx-UBSPD] Update generated code to make it compatible with CMSIS-RTOS v2.
   [USBPD][CORE] Update define name in usbpd_dpm_core.c
-  [UCPD][PE] Ticket 66766 - add a flag to support or not Battery feature in the stack
+  [UCPD][PE] add a flag to support or not Battery feature in the stack
   [USBPD][CORE][PE] calculate correct timing for request in Sink
   [USBPD][CORE] Improve the disconnection timing to avoid issue with Ellisys (4.8.3) - put PE lower prio than CAD and increase mailbox of CAD
   [USBPD][CORE] Change core version
@@ -598,7 +696,7 @@ In order to use this version of USBPD Core module, please ensure version of USBP
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -626,17 +724,17 @@ In order to use this version of USBPD Core module, please ensure version of USBP
   --------
   [LOWPOWER] improve dpm core + add deinit interface to usbpd trace
   [LOWPOWER] add interface to update the PE timer according lowpower time
-  [PE] Ticket 61818 - [PE] SOP'/SOP'' should be enabled on PRL only if SOP'/SOP" communication is started (not linked to VCONN source) - Bis
-  [PE] Ticket 56574 - rework of cable reset management is needed (vconn must be impacted)
-  [PE] Ticket 56724 - Cable information (using SOP prime) only works once
-  [PE] Ticket 61416 - [PE] Soft reset should be used when extended message received after tSenderResponse
-  [PE] Ticket 56545 - Alert data could be overwritten before the PE sent
-  [PE] Ticket 57480 - Alert reception can generate an hardfault
+  [PE] SOP'/SOP'' should be enabled on PRL only if SOP'/SOP" communication is started (not linked to VCONN source) - Bis
+  [PE] rework of cable reset management is needed (vconn must be impacted)
+  [PE] Cable information (using SOP prime) only works once
+  [PE] Soft reset should be used when extended message received after tSenderResponse
+  [PE] Alert data could be overwritten before the PE sent
+  [PE] Alert reception can generate an hardfault
   [PE] Enable RX after sending a cable reset
-  Ticket 61249 -  Communicate in PD2 with cable if no respond to PD3
-  Ticket 60693 - USBPD_HR_STATUS_FAILED needs to be kept
-  Ticket 60694 - SINK needs to be able to issue a Hard reset
-  [DEF]Ticket 58358 - Missing PPS Power Limited Bit
+  Communicate in PD2 with cable if no respond to PD3
+  USBPD_HR_STATUS_FAILED needs to be kept
+  SINK needs to be able to issue a Hard reset
+  [DEF] Missing PPS Power Limited Bit
   [PE] AMS should be started only if message has been sent to port partner
   [PE] PE state machine in should be called immediately during PPS negotiation to enter correctly in ready_wait state
   [PE] Fix few MISRA warnings
@@ -662,7 +760,7 @@ In order to use this version of USBPD Core module, please ensure version of USBP
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -695,7 +793,7 @@ In order to use this version of USBPD Core module, please ensure version of USBP
 
   Headline
   --------
-  [Ticket 64396]forbidden word detected in usbpdfu_responder.c (files removed from delivery)
+  Forbidden word detected in usbpdfu_responder.c (files removed from delivery)
 
   : Fixed bugs list
 
@@ -704,7 +802,7 @@ In order to use this version of USBPD Core module, please ensure version of USBP
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -739,7 +837,7 @@ In order to use this version of USBPD Core module, please ensure version of USBP
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -776,7 +874,7 @@ In order to use this version of USBPD Core module, please ensure version of USBP
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -807,14 +905,13 @@ Maintenance release
   [USBPD] renaming inside USBPD_SettingsTypeDef
   [USBPD][CORE][DEF] Wrong value for SVDM ATTENTION message
   [USBPD][CORE][PE] Remove return FAIL if no AMA is supported
-  [USBPD][CORE][PE] Ticket 55858 - Need notification when ALERT message has been sent by PE
-  [USBPD][CORE][PE] Ticket 56156 - ALERT message shouldn't be considered as AMS message
-  [USBPD][CORE][PE] Ticket 55899 - [USBPD][PE] Collision avoidance once an Explicit Contract is in place - Third
+  [USBPD][CORE][PE] Need notification when ALERT message has been sent by PE
+  [USBPD][CORE][PE] ALERT message shouldn't be considered as AMS message
   [USBPD][CORE][PRL] Add debug switch _PRL_DEBUG_DISABLE_BIST_TRACE (not enabled) to disable BIST message in the traces
   [USBPD][CORE][PE] Minor updates due to compilation issue when __DEBUG_LEVEL is set to 2
   [USBPD][CORE][PE] Disable RX during SNK hard reset sequence
-  [USBPD][CORE][PE] Ticket 55984 - SRC3.E25 fail: issue in chunking tests
-  [USBPD][CORE][PE] Ticket 55899 - [USBPD][PE] Collision avoidance once an Explicit Contract is in place
+  [USBPD][CORE][PE] SRC3.E25 fail: issue in chunking tests
+  [USBPD][CORE][PE] Collision avoidance once an Explicit Contract is in place
   [USBPD][CORE][DEF] TD.PD.SNK3.E15 Status Fields Check - add power status field in SCB structure
   [USBPD][G0] update to allow the treatment of an incoming message when waiting for sinkTxNG timeout
   [USBPD][G0] increase tsendertimer to 29ms and update the HardReset state change to use notimeout
@@ -826,7 +923,7 @@ Maintenance release
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -879,8 +976,8 @@ Maintenance release
   [CORE] Merge back modifications done for G0 FW v0.9.0 delivery (Stack size updates for PE + CAD, Release_Notes.html)
   [CORE] Move GUI init in GUI_interface module
   [CORE] remove Disable RX during hard reset sequence (fix pb with hard reset on FUSB307 when RX is disabled)
-  [CORE] Ticket 53897 - Need to have 'MAX' function as the 'MIN' already present
-  [CORE] Ticket 54744 - MQP TD.PD.SRC.E12 Test Failed
+  [CORE] Need to have 'MAX' function as the 'MIN' already present
+  [CORE] MQP TD.PD.SRC.E12 Test Failed
   [CORE] Update done for MISRAC2012
   [CORE][DEF] TD.PD.SNK3.E15 Status Fields Check - add power status field in SCB structure
   [CORE][DEF] Wrong value for SVDM ATTENTION message
@@ -890,14 +987,12 @@ Maintenance release
   [CORE][PE] Disable RX during SNK hard reset sequence
   [CORE][PE] Remove return FAIL if no AMA is supported
   [CORE][PE] Send not supported when VDM enabled in the stack but not in the VIF (DISCO)
-  [CORE][PE] Ticket 55858 - Need notification when ALERT message has been sent by PE
-  [CORE][PE] Ticket 55899 - [USBPD][PE] Collision avoidance once an Explicit Contract is in place - bis
-  [CORE][PE] Ticket 55899 - [USBPD][PE] Collision avoidance once an Explicit Contract is in place - Third
-  [CORE][PE] Ticket 55899 - [USBPD][PE] Collision avoidance once an Explicit Contract is in place
-  [CORE][PE] Ticket 55984 - SRC3.E25 fail: issue in chunking tests
-  [CORE][PE] Ticket 56156 - ALERT message shouldn't be considered as AMS message
+  [CORE][PE] Need notification when ALERT message has been sent by PE
+  [CORE][PE] Collision avoidance once an Explicit Contract is in place
+  [CORE][PE] SRC3.E25 fail: issue in chunking tests
+  [CORE][PE] ALERT message shouldn't be considered as AMS message
   [CORE][PE] Update for memory optimizations
-  [CORE][PRL] : Restore default value for PRL_RETRY_TIMER_VALUE in case of Keil or SW4STM32
+  [CORE][PRL] Restore default value for PRL_RETRY_TIMER_VALUE in case of Keil or SW4STM32
   [CORE][PRL] remove 2nd call of USBPD_PHY_IsResistor_SinkTxOk
   [CORE][PRL] Remove interface 'USBPD_PHY_ChannelIdleAfterBusy between PHY & PRL'
   [DPM] Remove semaphore to send message to DPM mailbox
@@ -932,8 +1027,8 @@ Maintenance release
   [PE] Put again PE_TSNKWAITCAP to 500 as regressions!!!
   [PE] Reset AMS in SRC_READY state
   [PE] Reset PE_HardResetCounter when SRC capa has been received
-  [PE] Ticket 36201 - Few modifications to be done in PE stack after review
-  [PE] Ticket 52638 - Issue in mode off when product presents default Rp
+  [PE] Few modifications to be done in PE stack after review
+  [PE] Issue in mode off when product presents default Rp
   [PPS] Fix issues on Ellisys (SCR3.E28, E30, E31...)
   [PPS] Fix issues on Ellisys (SNK.E13, E14)
   [PPS]Reduce value of PE_TPPSTIMEOUT to 14s
@@ -972,8 +1067,8 @@ Maintenance release
   PRL alignment with GO
   remove inside PE dpm dependence + lib regeneration
   remove patch to disable RX incompatible with hard reset management
-  Ticket 34122 - [DPM] VBUS should be kept enabled when NonPD capable with Rd is present
-  Ticket 35350 - Add error recory management inside USBPD stack
+  [DPM] VBUS should be kept enabled when NonPD capable with Rd is present
+  Add error recory management inside USBPD stack
   Update PDO typedefs and constants for reflecting Rev3.0 specs (addition of Unchunk support in PDO Source Fixed, and FRS required current in PDO Sink Fixed).
   update USBPD_PE_Request_CtrlMessage to handle more CTRL message
   Vconn Swap and PD3 integration (Core)
@@ -986,7 +1081,7 @@ Maintenance release
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -1018,7 +1113,7 @@ Maintenance release
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -1054,7 +1149,7 @@ Maintenance release
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -1091,7 +1186,7 @@ Maintenance release
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -1127,7 +1222,7 @@ Maintenance release
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -1166,7 +1261,7 @@ Maintenance release
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -1202,7 +1297,7 @@ Maintenance release
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -1238,7 +1333,7 @@ Maintenance release
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -1274,7 +1369,7 @@ Maintenance release
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -1311,7 +1406,7 @@ Maintenance release
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -1350,7 +1445,7 @@ Maintenance release
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -1397,7 +1492,7 @@ Maintenance release
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -1435,7 +1530,7 @@ Maintenance release
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -1472,7 +1567,7 @@ Maintenance release
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards
@@ -1513,7 +1608,7 @@ Maintenance release
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.25
 - System Workbench STM32 (SW4STM32) toolchain V2.7.2
 
 ## Supported Devices and boards

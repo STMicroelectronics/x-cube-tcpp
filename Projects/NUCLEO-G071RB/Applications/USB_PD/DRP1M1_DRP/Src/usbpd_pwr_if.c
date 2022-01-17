@@ -243,7 +243,7 @@ USBPD_StatusTypeDef USBPD_PWR_IF_Init(void)
   _status |= PWR_IF_CheckUpdateSNKPower(USBPD_PORT_0);
 
 
-  /* Add consistency check on PDO definition 
+  /* Add consistency check on PDO definition
      Could help to detect unexpected flash settings content */
   _PWR_CheckPDOContent(USBPD_PORT_0);
 #if USBPD_PORT_COUNT == 2
@@ -881,7 +881,7 @@ void _PWR_CheckPDOContent(uint8_t PortNum)
   uint8_t error_in_content = 0U;
 
   /* Add consistency check on PDO definition for Ports 0 and 1 */
-  
+
 #if defined(_SRC)||defined(_DRP)
   /* SRC PDO
      - Nb of SRC PDO should be < USBPD_MAX_NB_PDO

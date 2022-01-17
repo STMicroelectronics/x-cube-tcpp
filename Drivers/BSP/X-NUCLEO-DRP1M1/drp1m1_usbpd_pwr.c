@@ -9,13 +9,14 @@
   *            - VCONN control
   *            - VBUS presence detection
   ******************************************************************************
+  * @attention
   *
-  * Copyright (c) 2019 STMicroelectronics. All rights reserved.
+  * Copyright (c) 2021 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -109,7 +110,7 @@ typedef struct
 /* Minimum time between 2 detected faults allowing to consider that
    fault could be due to a false detection (could be recovered).
    => if 2 faults occurred in less than that duration, no recovery will be executed */
-#define USBPD_PWR_FAULT_MIN_TIME_RECOVERY             (500U)             /* 500 ms */
+#define USBPD_PWR_FAULT_MIN_TIME_RECOVERY             (1000U)             /* 1s */
 
 /**
   * @}
@@ -150,12 +151,12 @@ static int32_t  PWR_TCPP0203_ConvertADCDataToCurrent(uint32_t ADCData, uint32_t 
 /** @defgroup DRP1M1_USBPD_PWR_Private_Variables Private Variables
   * @{
   */
-uint16_t usbpd_pwr_adcx_buff[VISENSE_ADC_BUFFER_SIZE]; /* Global ADC buffer to be filled bu DMA */
+uint16_t usbpd_pwr_adcx_buff[VISENSE_ADC_BUFFER_SIZE]; /* Global ADC buffer to be filled by DMA */
 
 static USBPD_PWR_PortConfig_t USBPD_PWR_Port_Configs[USBPD_PWR_INSTANCES_NBR] =
 {
   {
-    USBPD_PWR_HW_CONFIG_TYPE_TCPP03,             /* Port 0 : TCPP03 Type                             */
+    USBPD_PWR_HW_CONFIG_TYPE_TCPP03,             /* Port 0 : TCPP Type                               */
     TCPP0203_I2C_ADDRESS_X68,                    /* TCPP03 on shield (Address 0x34)                  */
   },
 };
@@ -235,7 +236,7 @@ int32_t BSP_USBPD_PWR_Init(uint32_t PortNum)
 
       if (ret == BSP_ERROR_NONE)
       {
-        /* Set Initilisation flag */
+        /* Set Initialisation flag */
         USBPD_PWR_Port_Status[PortNum].IsInitialized = 1U;
       }
     }
@@ -1433,7 +1434,7 @@ void BSP_USBPD_PWR_EventCallback(uint32_t PortNum)
 
 /**
   * @brief  Configure TCPP0203 used GPIO.
-  * @Note   GPIO used for TCPP0203 operation includes VBUS measurement, ENABLE pin driving
+  * @note   GPIO used for TCPP0203 operation includes VBUS measurement, ENABLE pin driving
   * @param  PortNum   Port number
   * @retval None
   */
@@ -1483,7 +1484,7 @@ static void PWR_TCPP0203_GPIOConfigInit(uint32_t PortNum)
 static void PWR_TCPP0203_Configure_ADC(void)
 {
 #if (USE_TIMEOUT == 1)
-   uint32_t Timeout ; /* Variable used for Timeout management */
+  uint32_t Timeout ; /* Variable used for Timeout management */
 #endif /* USE_TIMEOUT */
 
   /* Init with LL driver */
@@ -1567,7 +1568,7 @@ static void PWR_TCPP0203_Configure_ADC(void)
 #elif defined(USE_STM32G0XX_NUCLEO)
   LL_ADC_REG_SetSequencerScanDirection(VISENSE_ADC_INSTANCE, LL_ADC_REG_SEQ_SCAN_DIR_FORWARD);
   LL_ADC_SetTriggerFrequencyMode(VISENSE_ADC_INSTANCE, LL_ADC_CLOCK_FREQ_MODE_HIGH);
-  LL_ADC_REG_SetSequencerChAdd(VISENSE_ADC_INSTANCE, VSENSE_ADC_CHANNEL|ISENSE_ADC_CHANNEL);
+  LL_ADC_REG_SetSequencerChAdd(VISENSE_ADC_INSTANCE, VSENSE_ADC_CHANNEL | ISENSE_ADC_CHANNEL);
 #endif /* USE_STM32G4XX_NUCLEO */
   LL_ADC_SetOverSamplingScope(VISENSE_ADC_INSTANCE, LL_ADC_OVS_DISABLE);
 #if defined(USE_STM32G4XX_NUCLEO)
@@ -1577,7 +1578,7 @@ static void PWR_TCPP0203_Configure_ADC(void)
 #elif defined(USE_STM32G0XX_NUCLEO)
   /* Poll for ADC channel configuration ready */
 #if (USE_TIMEOUT == 1)
-   Timeout = ADC_CHANNEL_CONF_RDY_TIMEOUT_MS;
+  Timeout = ADC_CHANNEL_CONF_RDY_TIMEOUT_MS;
 #endif /* USE_TIMEOUT */
   while (LL_ADC_IsActiveFlag_CCRDY(VISENSE_ADC_INSTANCE) == 0U)
   {
@@ -1585,16 +1586,17 @@ static void PWR_TCPP0203_Configure_ADC(void)
     /* Check Systick counter flag to decrement the time-out value */
     if (LL_SYSTICK_IsActiveCounterFlag())
     {
-      if(Timeout-- == 0U)
+      if (Timeout-- == 0U)
       {
         Error_Handler();
-  }
+      }
     }
 #endif /* USE_TIMEOUT */
   }
-   /* Clear flag ADC channel configuration ready */
+  /* Clear flag ADC channel configuration ready */
   LL_ADC_ClearFlag_CCRDY(VISENSE_ADC_INSTANCE);
-  LL_ADC_SetSamplingTimeCommonChannels(VISENSE_ADC_INSTANCE, LL_ADC_SAMPLINGTIME_COMMON_1, LL_ADC_SAMPLINGTIME_160CYCLES_5);
+  LL_ADC_SetSamplingTimeCommonChannels(VISENSE_ADC_INSTANCE, LL_ADC_SAMPLINGTIME_COMMON_1,
+                                       LL_ADC_SAMPLINGTIME_160CYCLES_5);
   LL_ADC_DisableIT_EOC(VISENSE_ADC_INSTANCE);
   LL_ADC_DisableIT_EOS(VISENSE_ADC_INSTANCE);
 #endif /* USE_STM32G4XX_NUCLEO */
@@ -1607,17 +1609,17 @@ static void PWR_TCPP0203_Configure_ADC(void)
   LL_ADC_EnableInternalRegulator(VISENSE_ADC_INSTANCE);
 
   /* Delay for ADC internal voltage regulator stabilization. */
-    /* Compute number of CPU cycles to wait for, from delay in us.            */
-    /* Note: Variable divided by 2 to compensate partially                    */
-    /*       CPU processing cycles (depends on compilation optimization).     */
-    /* Note: If system core clock frequency is below 200kHz, wait time        */
-    /*       is only a few CPU processing cycles.                             */
+  /* Compute number of CPU cycles to wait for, from delay in us.            */
+  /* Note: Variable divided by 2 to compensate partially                    */
+  /*       CPU processing cycles (depends on compilation optimization).     */
+  /* Note: If system core clock frequency is below 200kHz, wait time        */
+  /*       is only a few CPU processing cycles.                             */
   uint32_t wait_loop_index;
   wait_loop_index = ((LL_ADC_DELAY_INTERNAL_REGUL_STAB_US * (SystemCoreClock / (100000u * 2U))) / 10U);
-  while(wait_loop_index != 0U)
-    {
-      wait_loop_index--;
-    }
+  while (wait_loop_index != 0U)
+  {
+    wait_loop_index--;
+  }
 
   /** Configure Regular Channels
   */
@@ -1630,7 +1632,7 @@ static void PWR_TCPP0203_Configure_ADC(void)
   LL_ADC_SetChannelSamplingTime(VISENSE_ADC_INSTANCE, ISENSE_ADC_CHANNEL, LL_ADC_SAMPLINGTIME_247CYCLES_5);
   LL_ADC_SetChannelSingleDiff(VISENSE_ADC_INSTANCE, ISENSE_ADC_CHANNEL, LL_ADC_SINGLE_ENDED);
 #elif defined(USE_STM32G0XX_NUCLEO)
-   LL_ADC_SetChannelSamplingTime(VISENSE_ADC_INSTANCE, VSENSE_ADC_CHANNEL, LL_ADC_SAMPLINGTIME_COMMON_1);
+  LL_ADC_SetChannelSamplingTime(VISENSE_ADC_INSTANCE, VSENSE_ADC_CHANNEL, LL_ADC_SAMPLINGTIME_COMMON_1);
 #endif /* USE_STM32G4XX_NUCLEO */
 }
 
@@ -1645,7 +1647,7 @@ static void PWR_TCPP0203_Configure_ADC(void)
   *           none: ADC conversion start-stop to be performed
   *                 after this function
   *         - ADC group injected
-  *           Feature not available          (feature not available on this STM32 serie)
+  *           Feature not available          (feature not available on this STM32 series)
   * @retval None
   */
 static void PWR_TCPP0203_Activate_ADC(void)
@@ -1660,7 +1662,7 @@ static void PWR_TCPP0203_Activate_ADC(void)
 
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 serie, setting of these features is conditioned to   */
+  /*       On this STM32 series, setting of these features is conditioned to   */
   /*       ADC state:                                                         */
   /*       ADC must be disabled.                                              */
   /* Note: In this example, all these checks are not necessary but are        */
@@ -1690,8 +1692,8 @@ static void PWR_TCPP0203_Activate_ADC(void)
     }
 
     /* Disable ADC DMA transfer request during calibration */
-    /* Note: Specificity of this STM32 serie: Calibration factor is           */
-    /*       available in data register and also transfered by DMA.           */
+    /* Note: Specificity of this STM32 series: Calibration factor is           */
+    /*       available in data register and also transferred by DMA.           */
     /*       To not insert ADC calibration factor among ADC conversion data   */
     /*       in DMA destination address, DMA transfer must be disabled during */
     /*       calibration.                                                     */
@@ -1771,13 +1773,13 @@ static void PWR_TCPP0203_Activate_ADC(void)
   /*       "LL_ADC_REG_StartConversion();"                                    */
 
   /*## Operation on ADC hierarchical scope: ADC group injected ###############*/
-  /* Note: Feature not available on this STM32 serie */
+  /* Note: Feature not available on this STM32 series */
 }
 
 
 /**
   * @brief  Configure TCPP0203 low level interrupt.
-  * @Note   Corresponds to EXTI mapped onto FLGn pin of TCPP0203
+  * @note   Corresponds to EXTI mapped onto FLGn pin of TCPP0203
   * @param  PortNum   Port number
   * @retval None
   */
@@ -1810,6 +1812,7 @@ static void PWR_TCPP0203_ITConfigInit(uint32_t PortNum)
 /**
   * @brief  I2C BUS registration for TCPP0203 communication
   * @param  PortNum   Port number
+  * @param  Address   I2C Address
   * @retval BSP status
   */
 static int32_t PWR_TCPP0203_BUSConfigInit(uint32_t PortNum, uint16_t Address)
@@ -1969,20 +1972,30 @@ static void PWR_TCPP0203_EventCallback(uint32_t PortNum)
             if ((tickfault > USBPD_PWR_Port_Status[PortNum].LastFaultTick)
                 && ((tickfault - USBPD_PWR_Port_Status[PortNum].LastFaultTick) > USBPD_PWR_FAULT_MIN_TIME_RECOVERY))
             {
-              USBPD_PWR_Port_Status[PortNum].LastFaultTick = tickfault;
-
               /* Send Recovery word to TCPP0203 :
                  GDC and GDP open (TCPP0203_GD_PROVIDER_SWITCH_OPEN is 0) */
               BSP_USBPD_PWR_TRACE(PortNum, "-- Send Recovery Word --");
               recoveryword = TCPP0203_GD_CONSUMER_SWITCH_OPEN | TCPP0203_POWER_MODE_NORMAL;
               (void)TCPP0203_WriteCtrlRegister(&USBPD_PWR_PortCompObj[PortNum], &recoveryword);
 
-              if (USBPD_PWR_Port_Status[PortNum].VBUSDetectCallback != NULL)
+              /* In case PWR Role is SRC, try to restore VBUS as soon as possible */
+              if (USBPD_PWR_Port_Status[PortNum].PwrRole == POWER_ROLE_SOURCE)
               {
-                /* Notify Error thanks to callback */
-                USBPD_PWR_Port_Status[PortNum].VBUSDetectCallback(PortNum, VBUS_NOT_CONNECTED);
+                (void)TCPP0203_SetPowerMode(&USBPD_PWR_PortCompObj[PortNum], TCPP0203_POWER_MODE_NORMAL);
+                (void)TCPP0203_SetGateDriverProvider(&USBPD_PWR_PortCompObj[PortNum],
+                                                     TCPP0203_GD_PROVIDER_SWITCH_CLOSED);
+                BSP_USBPD_PWR_TRACE(PortNum, "-- GDP/GDC setting : SRC (Restored) --");
+              }
+              else
+              {
+                if (USBPD_PWR_Port_Status[PortNum].VBUSDetectCallback != NULL)
+                {
+                  /* Notify Error thanks to callback */
+                  USBPD_PWR_Port_Status[PortNum].VBUSDetectCallback(PortNum, VBUS_NOT_CONNECTED);
+                }
               }
             }
+            USBPD_PWR_Port_Status[PortNum].LastFaultTick = tickfault;
           }
           if ((flg_reg & TCPP0203_FLAG_OVP_VBUS_SET) == TCPP0203_FLAG_OVP_VBUS_SET)
           {
@@ -2076,6 +2089,4 @@ static int32_t PWR_TCPP0203_ConvertADCDataToCurrent(uint32_t ADCData, uint32_t G
 /**
   * @}
   */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
 

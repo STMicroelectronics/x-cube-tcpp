@@ -34,7 +34,54 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section12" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section13" checked aria-hidden="true">
+<label for="collapse-section13" aria-hidden="true">v3.4.0 / 13-December-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+  Headline
+  ----------------------------------------------------------
+  Increase delay between CC lines enabling and CC states check
+  Update FRS event reception processing (protected under _FRS flag)
+  FRS updates (Trace, comments)
+  Optimize two tone merge test on LeCroy (TD.PD.PHY.ALL.05)
+  Copyright Year correction + CodeSpell corrections.
+
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.6
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.31
+- STM32CubeIDE v1.7.0
+
+## Supported Devices and boards
+
+  All STM32G0xx devices embedding USBPD IP
+
+## Backward compatibility
+
+  No compatibility break with previous version
+
+## Dependencies
+
+ This software release is compatible with USB-C Power Delivery Core Stack Library v4.0.0 or higher
+
+</div>
+:::
+
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section12" aria-hidden="true">
 <label for="collapse-section12" aria-hidden="true">v3.3.1 / 21-Jun-2021</label>
 <div>
 
@@ -88,7 +135,7 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 
   Headline
   ----------------------------------------------------------
-  [USBPD][DEVICES][TCPP03] : Enable TCPP03 support in G0 serie
+  [USBPD][DEVICES][TCPP03] : Enable TCPP03 support in G0 series
 
 
 ## Known Limitations
@@ -334,7 +381,7 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
 
   Headline
   ----------------------------------------------------------
-  Editorial correction (renaming toogle by toggle)
+  Editorial correction (renaming toggle by toggle)
   Wrong parameter for errorrecovery
 
   
@@ -369,7 +416,7 @@ and Connector Specification, Revision 2.0 (August 2019). It has passed successfu
   Headline
   ----------------------------------------------------------
   Update for cubemx integration
-  Remove BSP reference, now managed trough the header file usbpd_devices_conf.h
+  Remove BSP reference, now managed through the header file usbpd_devices_conf.h
   Remove reference to disco board
   Update for error recovery management
 

@@ -1,21 +1,18 @@
 ---
 pagetitle: Release Notes for STM32G0xx_Nucleo Board drivers
 lang: en
+header-includes: <link rel="icon" type="image/x-icon" href="_htmresc/favicon.png" />
 ---
 
 ::: {.row}
 ::: {.col-sm-12 .col-lg-4}
 
-::: {.card .fluid}
-::: {.sectione .dark}
 <center>
-# <small>Release Notes for</small> <mark>STM32G0xx_Nucleo Board drivers</mark>
+# Release Notes for <mark>STM32G0xx_Nucleo Board drivers</mark>
 Copyright &copy; 2018 STMicroelectronics\
     
-[![ST logo](_htmresc/st_logo.png)](https://www.st.com){.logo}
+[![ST logo](_htmresc/st_logo_2020.png)](https://www.st.com){.logo}
 </center>
-:::
-:::
 
 # License
 
@@ -33,9 +30,39 @@ This driver provides a set of functions to manage:
 
 ::: {.col-sm-12 .col-lg-8}
 # Update History
+::: {.collapse}
+<input type="checkbox" id="collapse-section3" checked aria-hidden="true">
+<label for="collapse-section3" aria-hidden="true">V1.1.1 / 15-October-2020</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+## Contents
+
+**Fixed bug list**
+
+  Headline
+  --------
+  [GitHub] Add a License.md file at the root of each BSP Board driver
+
+## Supported Devices and Boards
+- STM32G081xx, STM32G071xx and STM32G070xx devices
+- **STM32G0C1xx, STM32G0B1xx and STM32G0B0xx devices**
+- **NUCLEO-G0B1RE(MB1360-G0B1RE)**
+- NUCLEO-G070RB(MB1360)
+- NUCLEO-G071RB(MB1360)
+
+## Backward compatibility
+
+This release is compatible with previous version
+
+</div>
+:::
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section2" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section2" aria-hidden="true">
 <label for="collapse-section2" aria-hidden="true">V1.1.0 / 05-April-2019</label>
 <div>
 
@@ -43,35 +70,25 @@ This driver provides a set of functions to manage:
 
 ### Maintenance release
 
-Maintenance release of STM32G0xx_Nucleo board drivers for STM32Cube G0 FW package
+**Additional features**
 
   Headline
   --------
-  Add GUI support for NUCLEO-G071RB (TCPP validation)
-
-  : Addionnal features
+  Add GUI support for NUCLEO-G071RB
 
 ## Contents
 
 STM32g0xx_Nucleo BSP peripheral Firmware drivers
-
-## Development Toolchains and Compilers
-- IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2 + ST-Link
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25 + ST-Link
-- System Workbench for STM32 (SW4STM32) toolchain V2.7.2 + ST-Link
 
 ## Supported Devices and Boards
 - STM32G081xx, STM32G071xx and STM32G070xx devices
 - NUCLEO-G070RB(MB1360)
 - NUCLEO-G071RB(MB1360)
 
-## Known limitations
-
 ## Backward compatibility
 
 This release is compatible with previous version
 
-## Other compatibilities
 </div>
 :::
 
@@ -88,21 +105,11 @@ This release is compatible with previous version
 
 First release of STM32G0xx_Nucleo board drivers for STM32Cube G0 FW package
 
-## Development Toolchains and Compilers
-- IAR Embedded Workbench for ARM (EWARM) toolchain V8.20.2 + ST-Link
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.25 + ST-Link
-- System Workbench for STM32 (SW4STM32) toolchain V2.7.2 + ST-Link
-
 ## Supported Devices and Boards
 - STM32G081xx, STM32G071xx and STM32G070xx devices
 - NUCLEO-G070RB(MB1360)
 - NUCLEO-G071RB(MB1360)
 
-## Known limitations
-
-## Backward compatibility
-
-## Other compatibilities
 </div>
 :::
 

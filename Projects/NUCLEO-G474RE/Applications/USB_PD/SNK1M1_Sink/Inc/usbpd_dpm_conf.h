@@ -81,7 +81,7 @@ USBPD_SettingsTypeDef       DPM_Settings[USBPD_PORT_COUNT] =
     {
       .PE_UnchunkSupport                = USBPD_FALSE,  /* support Unchunked mode (valid only spec revision 3.0)   */
       .PE_FastRoleSwapSupport           = USBPD_FALSE,   /* support fast role swap only spec revision 3.0            */
-      .Is_GetPPSStatus_Supported        = USBPD_TRUE,  /*!< PPS message NOT supported by PE stack */
+      .Is_GetPPSStatus_Supported        = USBPD_FALSE,  /*!< PPS message NOT supported by PE stack */
       .Is_SrcCapaExt_Supported          = USBPD_FALSE,  /*!< Source_Capabilities_Extended message supported or not by DPM */
       .Is_Alert_Supported               = USBPD_FALSE,   /*!< Alert message supported or not by DPM */
       .Is_GetStatus_Supported           = USBPD_FALSE,   /*!< Status message supported or not by DPM (Is_Alert_Supported should be enabled) */
@@ -112,8 +112,8 @@ USBPD_USER_SettingsTypeDef       DPM_USER_Settings[USBPD_PORT_COUNT] =
   {
     .PE_DataSwap = USBPD_FALSE,                  /* support data swap                                       */
     .PE_VconnSwap = USBPD_FALSE,                 /* support VCONN swap                                  */
-    .PE_DR_Swap_To_DFP = USBPD_TRUE,                  /*  Support of DR Swap to DFP                                  */
-    .PE_DR_Swap_To_UFP = USBPD_TRUE,                  /*  Support of DR Swap to UFP                                  */
+    .PE_DR_Swap_To_DFP = USBPD_FALSE,                  /*  Support of DR Swap to DFP                                  */
+    .PE_DR_Swap_To_UFP = USBPD_FALSE,                  /*  Support of DR Swap to UFP                                  */
 #if defined(USBPD_REV30_SUPPORT)
 #if _MANU_INFO
     .DPM_ManuInfoPort =                      /*!< Manufacturer information used for the port            */
@@ -130,6 +130,7 @@ USBPD_USER_SettingsTypeDef       DPM_USER_Settings[USBPD_PORT_COUNT] =
 #endif /* !__USBPD_DPM_CORE_C */
 
 /* USER CODE BEGIN Variable */
+/* Section where Variable can be added */
 
 /* USER CODE END Variable */
 
@@ -150,5 +151,3 @@ USBPD_USER_SettingsTypeDef       DPM_USER_Settings[USBPD_PORT_COUNT] =
 #endif
 
 #endif /* __USBPD_DPM_CONF_H_ */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

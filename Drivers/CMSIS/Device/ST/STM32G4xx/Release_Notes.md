@@ -17,12 +17,6 @@ Copyright &copy; 2019 STMicroelectronics\
 :::
 :::
 
-# License
-
-This software component is licensed by ST under Apache 2.0 license, the "License"; You may not use this component except in compliance with the License. You may obtain a copy of the License at:
-
-[https://opensource.org/licenses/Apache-2.0](https://opensource.org/licenses/Apache-2.0)
-
 # Purpose
 
 This driver provides the CMSIS device for the stm32g4xx products. This covers following series :
@@ -47,9 +41,110 @@ Various template file are provided to easily build an application. They can be a
 
 ::: {.col-sm-12 .col-lg-8}
 # Update History
+
 ::: {.collapse}
-<input type="checkbox" id="collapse-section4" checked aria-hidden="true">
-<label for="collapse-section4" aria-hidden="true">V1.2.0 / 26-June-2020</label>
+<input type="checkbox" id="collapse-section1_2_2" checked aria-hidden="true">
+<label for="collapse-section1_2_2" aria-hidden="true">V1.2.2 / 10-November-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+  - General updates to fix known defects and enhancements implementation.
+
+## Contents
+
+  : Additional features
+\
+
+  Headline
+  --------
+  - General updates to fix known defects and enhancements implementation.
+  - All source files: update disclaimer to add reference to the new license agreement.
+  - Add LSI maximum startup time datasheet value: LSI_STARTUP_TIME.
+  - Add reset enable bits definitions for slave timers other than timer A.
+  - Fix Doxygen grouping issues.
+  - Add new atomic register access macros in stm32g4xx.h file.
+  - Remove extra TIM5 references in the stm32g471xx.h CMSIS file and add support to the TIM20.
+
+
+  : Fixed bugs list
+\
+
+
+## Known Limitations
+
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.4 + ST-Link
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.31 + ST-Link
+- CubeIDE toolchain V1.6.0
+
+## Supported Devices and boards
+
+- STM32G431xx, STM32G441xx devices
+- STM32G471xx devices
+- STM32G473xx, STM32G483xx devices
+- STM32G474xx, STM32G484xx devices
+- STM32G491xx, STM32G4A1xx devices
+
+Note: in the section above, main changes are highlighted in **bold** since previous release.
+
+
+</div>
+:::
+::: {.collapse}
+<input type="checkbox" id="collapse-section1_2_1" aria-hidden="true">
+<label for="collapse-section1_2_1" aria-hidden="true">V1.2.1 / 11-January-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+  - General updates to fix known defects and enhancements implementation
+
+## Contents
+
+  : Additional features
+\
+
+  Headline
+  --------
+  - General updates to fix known defects and enhancements implementation.
+  - Protect Vector table modification following SRAM or FLASH preprocessor directive by a generic preprocessor directive: USER_VECT_TAB_ADDRESS. 
+
+  : Fixed bugs list
+\
+
+
+## Known Limitations
+
+
+## Development Toolchains and Compilers
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain **V8.50.4** + ST-Link
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain **V5.31** + ST-Link
+- CubeIDE toolchain **V1.6.0**
+
+## Supported Devices and boards
+
+- STM32G431xx, STM32G441xx devices
+- STM32G471xx devices
+- STM32G473xx, STM32G483xx devices
+- STM32G474xx, STM32G484xx devices
+- STM32G491xx, STM32G4A1xx devices
+
+Note: in the section above, main changes are highlighted in **bold** since previous release.
+
+
+</div>
+:::
+::: {.collapse}
+<input type="checkbox" id="collapse-section1_2_0" aria-hidden="true">
+<label for="collapse-section1_2_0" aria-hidden="true">V1.2.0 / 26-June-2020</label>
 <div>
 
 ## Main Changes
@@ -70,8 +165,6 @@ Various template file are provided to easily build an application. They can be a
   - Rename **"TIM7_DAC_IRQHandler"** to **"TIM7_IRQHandler"** in MDK-ARM startup file for STM32G431xx/441xx/bk1cb devices
   - Remove HRTIM_BMTRGR useless constant definitions
   - Remove ADC_CFGR2_LFTRIG useless constant definitions
-  - Update HSE default value in system_stm32g4xx.c: 24MHz instead of 8MHz
-  - Add License.md and Readme.md files required for GitHub publication
 
   : Fixed bugs list
 \
@@ -83,8 +176,8 @@ Various template file are provided to easily build an application. They can be a
 ## Development Toolchains and Compilers
 
 - IAR Embedded Workbench for ARM (EWARM) toolchain **V8.40.1**
-- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.29
-- STM32CubeIDE toolchain V1.4.0
+- RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27.1
+- STM32CubeIDE toolchain V1.3.0
 
 ## Supported Devices and boards
 
@@ -100,8 +193,8 @@ Note: in the section above, main changes are highlighted in **bold** since previ
 </div>
 :::
 ::: {.collapse}
-<input type="checkbox" id="collapse-section3" checked aria-hidden="true">
-<label for="collapse-section3" aria-hidden="true">V1.1.1 / 14-February-2020</label>
+<input type="checkbox" id="collapse-section1_1_1" aria-hidden="true">
+<label for="collapse-section1_1_1" aria-hidden="true">V1.1.1 / 14-February-2020</label>
 <div>
 
 ## Main Changes
@@ -121,7 +214,7 @@ General updates to fix known defects and enhancements implementation
 
   Headline
   --------
-  Update STM32G473/483 startup files to support FDCAN2/3 instances
+  Update STM32G473/483 startup files to support FDCAN2/3 intances
   Remove IS_TIM_SYNCHRO_INSTANCE macro from device header files
 
   : Fixed bugs list
@@ -151,8 +244,8 @@ Note: in the section above, main changes are highlighted in **bold** since previ
 :::
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section2" checked aria-hidden="true">
-<label for="collapse-section2" aria-hidden="true">V1.1.0 / 28-June-2019</label>
+<input type="checkbox" id="collapse-section1_1_0" aria-hidden="true">
+<label for="collapse-section1_1_0" aria-hidden="true">V1.1.0 / 28-June-2019</label>
 <div>
 
 ## Main Changes
@@ -206,8 +299,8 @@ Note: in the section above, main changes are highlighted in **bold** since previ
 :::
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section1" aria-hidden="true">
-<label for="collapse-section4" aria-hidden="true">V1.0.0 / 12-April-2019</label>
+<input type="checkbox" id="collapse-section1_0_0" aria-hidden="true">
+<label for="collapse-section1_0_0" aria-hidden="true">V1.0.0 / 12-April-2019</label>
 <div>
 
 ## Main Changes

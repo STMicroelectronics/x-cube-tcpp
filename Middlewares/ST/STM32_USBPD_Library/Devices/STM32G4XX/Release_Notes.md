@@ -33,7 +33,53 @@ and Connector Specification, Revision 2.0 (August, 2019).
 # Update History
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section11" checked aria-hidden="true">
+<input type="checkbox" id="collapse-section12" checked aria-hidden="true">
+<label for="collapse-section12" aria-hidden="true">v5.2.0 / 13-December-2021</label>
+<div>
+
+## Main Changes
+
+### Maintenance release
+
+## Contents
+**Fixed bugs list**
+
+  Headline
+  ----------------------------------------------------------
+  Update FRS event reception processing (protected under _FRS flag)
+  Optimize two tone merge test on LeCroy (TD.PD.PHY.ALL.05)
+  Copyright Year correction + CodeSpell corrections.
+
+## Known Limitations
+
+  Outstanding bugs list : None
+
+  Requirements not met or planned in a forthcoming release : None
+
+## Development Toolchains and Compilers
+
+
+- IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.6
+- Keil Microcontroller Development Kit (MDK-ARM) toolchain V5.31
+- STM32CubeIDE V1.7.0 
+
+## Supported Devices and boards
+
+  All STM32G4xx devices embedding USBPD IP
+
+## Backward compatibility
+
+  No compatibility break with previous version
+
+## Dependencies
+
+ This software release is compatible with USB-C Power Delivery Core Stack Library v4.0.0 or higher
+
+</div>
+:::
+
+::: {.collapse}
+<input type="checkbox" id="collapse-section11" aria-hidden="true">
 <label for="collapse-section11" aria-hidden="true">v5.1.0 / 06-Jul-2021</label>
 <div>
 
@@ -225,10 +271,10 @@ and Connector Specification, Revision 2.0 (August, 2019).
   Headline
   ----------------------------------------------------------
   Add inside PRL a mechanism to avoid RX buffer overwrite in case of multiple RX
-  Add an optionnal mechansime to manage the tx discard and tx abort by UCPD IP. Interface modifications with USBPD/Core library.
+  Add an optional mechansime to manage the tx discard and tx abort by UCPD IP. Interface modifications with USBPD/Core library.
   Correction of CC line not updated in SRC_NO_PD configuration (Ellisys failed TD.PD.C.E1 DFP Attach/Detach Detection)
   Update done to integrate NO PD stack
-  Code alignement between all STM32 series USBPD Device modules (NO PD implementation and error recovery)
+  Code alignment between all STM32 series USBPD Device modules (NO PD implementation and error recovery)
 
 ## Known Limitations
 
@@ -249,7 +295,7 @@ and Connector Specification, Revision 2.0 (August, 2019).
 ## Backward compatibility
 
   Implementation of CR Ticket 81963 and Ticket 81964 leads to some interface changes between USBPD Core and USBPD Device driver modules.
-  In order to use thise version of USBPD Device driver module, please ensure version of USBPD Core module is v3.0.0 or higher.
+  In order to use this version of USBPD Device driver module, please ensure version of USBPD Core module is v3.0.0 or higher.
 
 ## Dependencies
 
@@ -319,7 +365,7 @@ and Connector Specification, Revision 2.0 (August, 2019).
   Fix bug to initialize the default Rp
   Ellisys 4.9.4 Source Vconn Swap (Testing Ufp) failed
   CAD power role overwritten in configuration _SRC & _SNK
-  Alignement with G0 (NO PD implementation and error recovery)
+  Alignment with G0 (NO PD implementation and error recovery)
   Issue with CC2 (PB4) default mode with G4
 
 
@@ -494,7 +540,7 @@ and Connector Specification, Revision 2.0 (August, 2019).
 
   Headline
   ----------------------------------------------------------
-  Editorial correction (renaming toogle by toggle)
+  Editorial correction (renaming toggle by toggle)
 
 ## Known Limitations
 
@@ -536,7 +582,7 @@ and Connector Specification, Revision 2.0 (August, 2019).
   ----------------------------------------------------------
   First official version for STM32G4xx device (source code available)
   Ready for cubemx integration
-  Remove BSP reference, now managed trough the header file usbpd_devices_conf.h
+  Remove BSP reference, now managed through the header file usbpd_devices_conf.h
   Update for errorrecovery management
 
 ## Known Limitations
