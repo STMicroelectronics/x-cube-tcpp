@@ -6,13 +6,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2017 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -21,7 +20,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #ifndef _RTOS
-#error "low power managment only compatible with the RTOS mode"
+#error "low power management only compatible with the RTOS mode"
 #endif
 
 #include "usbpd_core.h"
@@ -70,7 +69,7 @@ void USBPD_LOWPOWER_Init(void)
 }
 
 /**
-  * @brief  RTOS HOOK funtion used to handle the tickless feature
+  * @brief  RTOS HOOK function used to handle the tickless feature
   * @retval None
   */
 void USBPD_LOWPOWER_vApplicationSleep(TickType_t TickType)
@@ -109,7 +108,7 @@ void LPM_ConfigureExternalTime(void)
 }
 
 /**
-  * @brief  Programm the sleep time
+  * @brief  Program the sleep time
   * @retval None
   */
 void LPM_Program_SleepTime(uint32_t *Tick)
@@ -139,7 +138,7 @@ void TRACER_EMB_LowPowerInit(void)
 
 void TRACER_EMB_LowPowerSendData(void)
 {
-  /* Disable LPM mode according when transfering data */
+  /* Disable LPM mode according when transferring data */
   UTIL_LPM_SetStopMode(LPM_TRACE,UTIL_LPM_DISABLE); 
   UTIL_LPM_SetOffMode(LPM_TRACE,UTIL_LPM_DISABLE);
 }
@@ -150,4 +149,3 @@ void TRACER_EMB_LowPowerSendDataComplete(void)
   UTIL_LPM_SetStopMode(LPM_TRACE,UTIL_LPM_ENABLE); 
   UTIL_LPM_SetOffMode(LPM_TRACE,UTIL_LPM_ENABLE); 
 }
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

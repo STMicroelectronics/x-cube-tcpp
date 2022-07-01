@@ -28,7 +28,10 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 /* Replace the header file names with the ones of the target platform */
-#if defined(USE_STM32G4XX_NUCLEO)
+#if defined(USE_STM32F4XX_NUCLEO)
+#include "stm32f4xx.h"
+#include "src1m1_errno.h"
+#elif defined(USE_STM32G4XX_NUCLEO)
 #include "stm32g4xx_nucleo.h"
 #include "stm32g4xx_ll_adc.h"
 #include "stm32g4xx_ll_dma.h"
@@ -50,7 +53,7 @@ extern "C" {
 #include "src1m1_errno.h"
 #else
 #warning "Please select include files according to HW setup"
-#endif /* USE_STM32G4XX_NUCLEO */
+#endif /* USE_STM32F4XX_NUCLEO */
 
 /** @addtogroup SRC1M1
   * @{
@@ -67,9 +70,9 @@ extern "C" {
 /* I2C BUS definitions */
 #define BUS_I2C_INSTANCE                 I2C1
 
-#ifndef BUS_I2C_FREQUENCY
+#if !defined(BUS_I2C_FREQUENCY)
 #define BUS_I2C_FREQUENCY                400000U /* Frequency of I2Cn = 400 kHz*/
-#endif
+#endif /* !BUS_I2C_FREQUENCY */
 
 #define BUS_I2C_CLK_ENABLE()             __HAL_RCC_I2C1_CLK_ENABLE()
 #define BUS_I2C_CLK_DISABLE()            __HAL_RCC_I2C1_CLK_DISABLE()
@@ -78,25 +81,30 @@ extern "C" {
 
 #define BUS_I2C_SCL_GPIO_PIN             GPIO_PIN_8
 #define BUS_I2C_SCL_GPIO_PORT            GPIOB
-#if defined(USE_STM32G4XX_NUCLEO)
+#if defined(USE_STM32F4XX_NUCLEO)
+#define BUS_I2C_SCL_GPIO_AF              GPIO_AF4_I2C1
+#elif defined(USE_STM32G4XX_NUCLEO)
 #define BUS_I2C_SCL_GPIO_AF              GPIO_AF4_I2C1
 #elif defined(USE_STM32G0XX_NUCLEO)
 #define BUS_I2C_SCL_GPIO_AF              GPIO_AF6_I2C1
-#endif /* USE_STM32G4XX_NUCLEO */
+#endif /* USE_STM32F4XX_NUCLEO */
 #define BUS_I2C_SCL_GPIO_CLK_ENABLE()    __HAL_RCC_GPIOB_CLK_ENABLE()
 #define BUS_I2C_SCL_GPIO_CLK_DISABLE()   __HAL_RCC_GPIOB_CLK_DISABLE()
 #define BUS_I2C_SDA_GPIO_PIN             GPIO_PIN_9
 #define BUS_I2C_SDA_GPIO_PORT            GPIOB
-#if defined(USE_STM32G4XX_NUCLEO)
+#if defined(USE_STM32F4XX_NUCLEO)
+#define BUS_I2C_SDA_GPIO_AF              GPIO_AF4_I2C1
+#elif defined(USE_STM32G4XX_NUCLEO)
 #define BUS_I2C_SDA_GPIO_AF              GPIO_AF4_I2C1
 #elif defined(USE_STM32G0XX_NUCLEO)
 #define BUS_I2C_SDA_GPIO_AF              GPIO_AF6_I2C1
-#endif /* USE_STM32G4XX_NUCLEO */
+#endif /* USE_STM32F4XX_NUCLEO */
 #define BUS_I2C_SDA_GPIO_CLK_ENABLE()    __HAL_RCC_GPIOB_CLK_ENABLE()
 #define BUS_I2C_SDA_GPIO_CLK_DISABLE()   __HAL_RCC_GPIOB_CLK_DISABLE()
 
 #define BUS_I2C_POLL_TIMEOUT             0x1000U
 
+#if !defined(USBPD_CONFIG_MX)
 #define VISENSE_DMA_INSTANCE            DMA1 /* Common for VSENSE and ISENSE */
 #define VISENSE_DMA_CHANNEL             LL_DMA_CHANNEL_1
 #define VISENSE_DMA_REQ                 LL_DMAMUX_REQ_ADC1 /* Select ADC as DMA transfer request */
@@ -121,9 +129,11 @@ extern "C" {
 #elif defined(USE_STM32G0XX_NUCLEO)
 #define ISENSE_ADC_CHANNEL              LL_ADC_CHANNEL_15
 #endif /* USE_STM32G4XX_NUCLEO */
+#endif /* !USE_STM32F4XX_NUCLEO */
 
 #define VISENSE_ADC_BUFFER_SIZE         2u /* Number of ADC channels used */
 
+#if !defined(USBPD_CONFIG_MX)
 /**
   * @brief TCPP0203_FLGn pin
   * To be defined for each Port, protected by a TCPP0203 component
@@ -230,12 +240,17 @@ extern "C" {
 #define TCPP0203_PORT0_VBUSCONS_GPIO_PORT           GPIOA
 #define TCPP0203_PORT0_VBUSCONS_GPIO_PIN            LL_GPIO_PIN_4
 #define TCPP0203_PORT0_VBUSCONS_GPIO_MODE           LL_GPIO_MODE_ANALOG
+#endif /* !USBPD_CONFIG_MX */
 
-#define SRC1M1_VSENSE_RA                           200
-#define SRC1M1_VSENSE_RB                           40
+#define SRC1M1_VSENSE_RA                            200u /* VBUS voltage divider RA in milliohm */
+#define SRC1M1_VSENSE_RB                            40u  /* VBUS voltage divider RB in milliohm */
 
-#define DRP1M1_ISENSE_GA                           42  /* in V/V */
-#define DRP1M1_ISENSE_RS                           7   /* in milliohm */
+#define SRC1M1_ISENSE_GA                            42u  /* Current measure gain In V/V */
+#define SRC1M1_ISENSE_RS                            7u   /* Current measure shunt resistor in milliohm */
+
+#define BSP_USBPD_PWR_DONT_WAIT_VBUSOFF_DISCHARGE   0u /* Set to 1 to not wait for vbus discharge in VBUSOff function */
+
+
 /**
   * @}
   */

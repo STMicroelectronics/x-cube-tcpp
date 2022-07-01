@@ -1,16 +1,24 @@
-| Component                       | License              | Copyright |
-|:---------                       |:-------              |:----------|
-| CMSIS                           | Apache License 2.0   | Copyright (c) 2009-2018 ARM Limited. All rights reserved. |
-| CMSIS Device                    | Apache License 2.0   | ARM Limited - STMicroelectronics |
-| STM32G0 HAL                     | BSD-3-Clause         | STMicroelectronics |
-| STM32G4 HAL                     | BSD-3-Clause         | STMicroelectronics |
-| STM32L4 HAL                     | BSD-3-Clause         | STMicroelectronics |
-| BSP STM32G0xx_Nucleo            | BSD-3-Clause         | STMicroelectronics |
-| BSP STM32G4xx_Nucleo            | BSD-3-Clause         | STMicroelectronics |
-| BSP STM32L4xx_Nucleo            | BSD-3-Clause         | STMicroelectronics |
-| BSP Components                  | BSD-3-Clause         | STMicroelectronics |
-| FreeRTOS kernel                 | MIT                  | Copyright (C) 2017 Amazon.com, Inc. or its affiliates |
-| STM32_USBPD_Library             | ST SLA0044           | STMicroelectronics |
-| STM32_USB_Device_Library        | ST SLA0044           | STMicroelectronics |
-| STM32 Projects                  | ST SLA0044 (BSD-3-Clause for basic Examples) | STMicroelectronics |
-| STM32 Utilities                 | BSD-3-Clause         | STMicroelectronics |
+| Component                   | Copyright                          | License         |
+|:---------                   |:----------                         |:-------         |
+| Cortex-M CMSIS              | ARM Limited                        | Apache-2.0      |
+| STM32G0xx CMSIS             | ARM Limited - STMicroelectronics   | Apache-2.0      |
+| STM32G4xx CMSIS             | ARM Limited - STMicroelectronics   | Apache-2.0      |
+| STM32F4xx CMSIS             | ARM Limited - STMicroelectronics   | Apache-2.0      |
+| STM32L4xx CMSIS             | ARM Limited - STMicroelectronics   | Apache-2.0      |
+| STM32G0xx_HAL_Driver        | STMicroelectronics                 | BSD-3-Clause    |
+| STM32G4xx_HAL_Driver        | STMicroelectronics                 | BSD-3-Clause    |
+| STM32F4xx_HAL_Driver        | STMicroelectronics                 | BSD-3-Clause    |
+| STM32L4xx_HAL_Driver        | STMicroelectronics                 | BSD-3-Clause    |
+| BSP STM32G0xx NUCLEO        | STMicroelectronics                 | BSD-3-Clause    |
+| BSP STM32G4xx NUCLEO        | STMicroelectronics                 | BSD-3-Clause    |
+| BSP STM32F4xx NUCLEO        | STMicroelectronics                 | BSD-3-Clause    |
+| BSP STM32L4xx NUCLEO        | STMicroelectronics                 | BSD-3-Clause    |
+| BSP X-NUCLEO-DRP1M1         | STMicroelectronics                 | BSD-3-Clause    |
+| BSP X-NUCLEO-SRC1M1         | STMicroelectronics                 | BSD-3-Clause    |
+| BSP X-NUCLEO-USBPDM1        | STMicroelectronics                 | BSD-3-Clause    |
+| BSP Components              | STMicroelectronics                 | BSD-3-Clause    |
+| FreeRTOS                    | Amazon.com, Inc. or its affiliates | MIT             |
+| STM32_USBPD_Library Core    | STMicroelectronics                 | SLA0044         |
+| STM32_USBPD_Library Device  | STMicroelectronics                 | SLA0044         |
+| Applications projects       | STMicroelectronics                 | SLA0044         |
+| Utilities                   | STMicroelectronics                 | BSD 3-Clause    |

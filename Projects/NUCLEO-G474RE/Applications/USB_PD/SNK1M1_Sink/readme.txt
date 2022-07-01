@@ -7,13 +7,14 @@
   * @author  MCD Application Team
   * @brief   Description of the USB-C Power Delivery SNK1M1_Sink application.
   ******************************************************************************
+  * @attention
   *
-  * Copyright (c) 2021 STMicroelectronics. All rights reserved.
+  * Copyright (c) 2021 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   @endverbatim
@@ -38,7 +39,7 @@ This application provides an example for managing the Port 0 as a Consumer Only 
             - 15V 2A
             - 20V 1A
 
-      By default, the sink asks for the higest power matching PDO of the connected source. User can change 
+      By default, the sink asks for the highest power matching PDO of the connected source. User can change 
       this behaviour by changing the USED_PDO_SEL_METHOD define in usbpd_user_services.c.
       For example, if your source supports 5V/2A, 9V/2A, 15V/2A and 20V/2A, the sink will ask for the 15V profile,
       as it is the highest power profile the sink and the source can support.
@@ -48,7 +49,7 @@ This application provides an example for managing the Port 0 as a Consumer Only 
       ╠══════════╬═════════════════════╬══════════════════╬═══════════════════════╣
       ║ 5V 1.5A  ║    5V  2A  (10W)    ║      7.5W        ║         YES           ║
       ║ 9V   3A  ║    9V  2A  (18W)    ║        9W        ║          NO           ║
-      ║ 15V  2A  ║    15V 2A  (30W)    ║       30W        ║         YES           ║ <------- Choosen profile
+      ║ 15V  2A  ║    15V 2A  (30W)    ║       30W        ║         YES           ║ <------- Chosen profile
       ║ 20V  3A  ║    20V 2A  (40W)    ║       60W        ║          NO           ║          (highest supported power)
       ╚══════════╩═════════════════════╩══════════════════╩═══════════════════════╝
 

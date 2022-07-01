@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2018(-2021) STMicroelectronics.
+  * Copyright (c) 2021 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -355,11 +355,7 @@ typedef enum
 typedef enum
 {
   GUI_INIT_HWBOARDVERSION                    = 0x00, /*<! ASCII stream to indicate STM32 version like STM32F032xB */
-  GUI_INIT_HWPDTYPE                          = 0x01, /*<! ASCII stream to indicate PD type used by the devices like:
-                                                          - AFE solution (MB1257B)
-                                                          - 1602 solution (MB1303 rev A)
-                                                          - TCPM solution (TCPC FUSB305)
-                                                          - () */
+  GUI_INIT_HWPDTYPE                          = 0x01, /*<! ASCII stream to indicate HW PD type used by the device */
   GUI_INIT_NBPORTMAX                         = 0x02, /*<! Indicate maximum number of ports which can be configured
                                                           in the device (value 1, 2 , 3) */
   GUI_INIT_FWVERSION                         = 0x03, /*<! 4 bytes for FW version + 4 bytes for Stack version */
@@ -695,18 +691,20 @@ uint32_t GUI_InitOS(void *MemoryPtr)
 #if defined(_RTOS) || defined(USBPD_THREADX)
     GUIOS_CREATE_QUEUE(GUIMsgBox, "GUIBOX", GUI_BOX_MESSAGES_MAX, GUIOS_ELEMENT_SIZE);
     GUIOS_CREATE_TASK(GUI_ThreadID, GUI, TaskGUI, OS_GUI_PRIORITY, OS_GUI_STACK_SIZE, &GUIMsgBox);
-#else /* RTOS */
+#else
     GUI_Start();
 #if defined(USE_STM32_UTILITY_OS)
     UTIL_SEQ_RegTask(TASK_GUI, 0, GUI_Execute);
     UTIL_SEQ_SetTask(TASK_GUI, 0);
-#endif /*USE_STM32_UTILITY_OS */
+#endif /* USE_STM32_UTILITY_OS */
 #endif /* _RTOS || USBPD_THREADX */
   }
 
 #if defined(_RTOS) || defined(USBPD_THREADX)
 error:
-  return _status;
+  return (_status);
+#else
+  return (USBPD_ENABLE);
 #endif /* _RTOS || USBPD_THREADX */
 }
 
@@ -737,8 +735,8 @@ void GUI_Execute(void)
   GUI_Start();
   do
   {
-    GUIOS_QUEUE_EVENT event=0;
-    GUIOS_GETMESSAGE_QUEUE(GUIMsgBox,_timing,event);
+    GUIOS_QUEUE_EVENT event = 0;
+    GUIOS_GETMESSAGE_QUEUE(GUIMsgBox, _timing, event);
     switch ((GUI_USER_EVENT)(event & 0xFU))
     {
       case GUI_USER_EVENT_GUI:
@@ -1228,7 +1226,7 @@ USBPD_GUI_State GUI_SendNotification(uint8_t PortNum, uint8_t **pMsgToSend, uint
     {
       /* Is Connected*/
       (void)TLV_add(&send_tlv, (uint8_t)GUI_IND_ISCONNECTED, 1,
-                    (uint8_t[]){ DPM_Params[PortNum].PE_Power });
+                    (uint8_t[]) { DPM_Params[PortNum].PE_Power });
       if (USBPD_TRUE == DPM_Params[PortNum].PE_IsConnected)
       {
         uint8_t rp_value;
@@ -1283,8 +1281,7 @@ USBPD_GUI_State GUI_SendNotification(uint8_t PortNum, uint8_t **pMsgToSend, uint
           case USBPD_NOTIFY_GETSNKCAP_ACCEPTED :
             /* NumberOfRcvSNKPDO */
             (void)TLV_add(&send_tlv, (uint8_t)GUI_IND_NUMBEROFRCVSNKPDO, 1,
-                          (uint8_t[]) { GUI_SaveInformation[PortNum].NumberOfRcvSNKPDO
-            });
+                          (uint8_t[]) { GUI_SaveInformation[PortNum].NumberOfRcvSNKPDO });
             /* ListOfRcvSNKPDO*/
             (void)TLV_add(&send_tlv, (uint8_t)GUI_IND_LISTOFRCVSNKPDO,
                           (uint16_t)(GUI_SaveInformation[PortNum].NumberOfRcvSNKPDO * 4U),
@@ -2468,7 +2465,7 @@ static void Send_DpmConfigSetCnf(uint8_t PortNum, uint8_t *instruction, uint8_t 
 #if !defined(USBPDCORE_LIB_NO_PD)
         /* SOP & SOP1 & SOP2 */
         /* SOP1_Debug & SOP2_Debug not implemented */
-        DPM_Settings[PortNum].PE_SupportedSOP = value[0];
+        DPM_Settings[PortNum].PE_SupportedSOP = (USBPD_SupportedSOP_TypeDef)value[0];
 #endif /* !USBPDCORE_LIB_NO_PD */
         break;
 #if defined(USBPD_REV30_SUPPORT)
@@ -2715,7 +2712,7 @@ static void Send_DpmConfigGetCnf(uint8_t PortNum, uint8_t *instruction, uint8_t 
   /* This is a state machine. */
   do
   {
-    /* If there is no parameters, we go through each case of the state machine in one pass. (conditionnal breaks) */
+    /* If there is no parameters, we go through each case of the state machine in one pass. (conditional breaks) */
     if (0U == length)
     {
       param = (uint8_t)GUI_PARAM_ALL;

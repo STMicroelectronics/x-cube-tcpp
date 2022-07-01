@@ -8,13 +8,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2020 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -47,7 +46,7 @@ extern "C" {
 #include "stm32g0xx_ll_adc.h"
 #include "stm32g0xx_ll_dma.h"
 #include "stm32g0xx_nucleo.h"
-/* STM32G0 serie using BSP V1 framework, no conf template file, no error definitions, ... */
+/* STM32G0 series using BSP V1 framework, no conf template file, no error definitions, ... */
 #include "src1m1_errno.h"
 #else
 #warning "Please select include files according to HW setup"
@@ -68,9 +67,9 @@ extern "C" {
 /* I2C BUS definitions */
 #define BUS_I2C_INSTANCE                 I2C1
 
-#ifndef BUS_I2C_FREQUENCY
+#if !defined(BUS_I2C_FREQUENCY)
 #define BUS_I2C_FREQUENCY                400000U /* Frequency of I2Cn = 400 kHz*/
-#endif
+#endif /* !BUS_I2C_FREQUENCY */
 
 #define BUS_I2C_CLK_ENABLE()             __HAL_RCC_I2C1_CLK_ENABLE()
 #define BUS_I2C_CLK_DISABLE()            __HAL_RCC_I2C1_CLK_DISABLE()
@@ -232,11 +231,15 @@ extern "C" {
 #define TCPP0203_PORT0_VBUSCONS_GPIO_PIN            LL_GPIO_PIN_4
 #define TCPP0203_PORT0_VBUSCONS_GPIO_MODE           LL_GPIO_MODE_ANALOG
 
-#define SRC1M1_VSENSE_RA                           200
-#define SRC1M1_VSENSE_RB                           40
+#define SRC1M1_VSENSE_RA                            200u /* VBUS voltage divider RA in milliohm */
+#define SRC1M1_VSENSE_RB                            40u  /* VBUS voltage divider RB in milliohm */
 
-#define DRP1M1_ISENSE_GA                           42  /* in V/V */
-#define DRP1M1_ISENSE_RS                           7   /* in milliohm */
+#define SRC1M1_ISENSE_GA                            42u  /* Current measure gain In V/V */
+#define SRC1M1_ISENSE_RS                            7u   /* Current measure shunt resistor in milliohm */
+
+#define BSP_USBPD_PWR_DONT_WAIT_VBUSOFF_DISCHARGE   0u /* Set to 1 to not wait for vbus discharge in VBUSOff function */
+
+
 /**
   * @}
   */
@@ -255,4 +258,3 @@ extern "C" {
 
 #endif /* SRC1M1_CONF_H__*/
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

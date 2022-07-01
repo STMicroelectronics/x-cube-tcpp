@@ -46,6 +46,11 @@ You will find different reports done on different configuration.
    * Test report done on Ellisys tool with application 'NUCLEO-G071RB-DRP1M1_DRP'
    * Application: Projects\NUCLEO-G071RB\Applications\USB_PD\DRP1M1_DRP
    * VIF: STMicroelectronics_DRP1M1_DRP_STM32G071RB_VIF.xml 
+
+ - Ellisys\x-cube-tcpp_v3.2.0_NUCLEO-F446RE_SRC1M1_Source_TypeC_Only_USB Compliance Report.html
+   * Test report done on Ellisys tool with application 'SRC1M1_Source_TypeC_Only'
+   * Application: Projects\NUCLEO-F446RE\Applications\USB_PD\SRC1M1_Source_TypeC_Only
+   * VIF: STMicroelectronics_SRC1M1_Source_STM32F446RE_VIF.xml 
  
  - Ellisys\x-cube-tcpp_v3.2.0_NUCLEO-G071RB-SRC1M1_Source_USB Compliance Report.html
    * Test report done on Ellisys tool with application 'NUCLEO-G071RB-SRC1M1_Source'

@@ -25,7 +25,7 @@
 #include "src1m1_usbpd_pwr.h"
 #include "src1m1_bus.h"
 
-#if  defined(_TRACE)
+#if defined(_TRACE)
 #include "usbpd_core.h"
 #include "usbpd_trace.h"
 #include "string.h"
@@ -87,7 +87,7 @@ typedef struct
   */
 
 /* Maximum digital value of the ADC output (12 Bits resolution)
-   To converting ADC measurement to an absolute voltage value:
+   To convert ADC measurement to an absolute voltage value:
    VCHANNELx = ADCx_DATA x (VDD/ADC_FULL_SCALE)
   */
 #define ADC_FULL_SCALE       (0x0FFFU)
@@ -97,7 +97,9 @@ typedef struct
 /* immediately after ADC calibration, ADC clock setting slow                */
 /* (LL_ADC_CLOCK_ASYNC_DIV32). Use a higher delay if ratio                  */
 /* (CPU clock / ADC clock) is above 32.                                     */
+#if !defined(USBPD_CONFIG_MX)
 #define ADC_DELAY_CALIB_ENABLE_CPU_CYCLES  (LL_ADC_DELAY_CALIB_ENABLE_ADC_CYCLES * 32U)
+#endif /* !USBPD_CONFIG_MX */
 
 #define VDDA_APPLI            (3300U)
 
@@ -129,10 +131,12 @@ typedef struct
 /** @defgroup SRC1M1_USBPD_PWR_Private_Functions Private Functions
   * @{
   */
+#if !defined(USBPD_CONFIG_MX)
 static void     PWR_TCPP0203_Configure_ADC(void);
 static void     PWR_TCPP0203_Activate_ADC(void);
 static void     PWR_TCPP0203_GPIOConfigInit(uint32_t PortNum);
 static void     PWR_TCPP0203_ITConfigInit(uint32_t PortNum);
+#endif /* !USBPD_CONFIG_MX */
 static int32_t  PWR_TCPP0203_BUSConfigInit(uint32_t PortNum, uint16_t Address);
 static int32_t  PWR_TCPP0203_ConfigDeInit(uint32_t PortNum);
 static void     PWR_TCPP0203_EventCallback(uint32_t PortNum);
@@ -208,7 +212,7 @@ int32_t BSP_USBPD_PWR_Init(uint32_t PortNum)
 
           /* Reset last detected fault Tick */
           USBPD_PWR_Port_Status[PortNum].LastFaultTick = 0;
-
+#if !defined(USBPD_CONFIG_MX)
           /* Initialize required GPIOs */
           PWR_TCPP0203_GPIOConfigInit(PortNum);
 
@@ -217,7 +221,7 @@ int32_t BSP_USBPD_PWR_Init(uint32_t PortNum)
 
           /* Enable component */
           TCPP0203_PORT0_ENABLE_GPIO_SET();
-
+#endif /* !USBPD_CONFIG_MX */
           /* Initialize required BUS for communication */
           ret = PWR_TCPP0203_BUSConfigInit(PortNum, USBPD_PWR_Port_Configs[PortNum].Address);
           break;
@@ -515,12 +519,13 @@ int32_t BSP_USBPD_PWR_VBUSInit(uint32_t PortNum)
       case USBPD_PWR_HW_CONFIG_TYPE_TCPP02:
         /* Switch to Normal mode */
         ret = BSP_USBPD_PWR_SetPowerMode(PortNum, USBPD_PWR_MODE_NORMAL);
-
+#if !defined(USBPD_CONFIG_MX)
         PWR_TCPP0203_Configure_ADC();
         PWR_TCPP0203_Activate_ADC();
 
         /*  Start Conversion */
         LL_ADC_REG_StartConversion(VISENSE_ADC_INSTANCE);
+#endif /* !USBPD_CONFIG_MX */
         break;
 
       case USBPD_PWR_HW_CONFIG_TYPE_DEFAULT:
@@ -624,7 +629,9 @@ int32_t BSP_USBPD_PWR_VBUSOn(uint32_t PortNum)
 int32_t BSP_USBPD_PWR_VBUSOff(uint32_t PortNum)
 {
   int32_t ret = BSP_ERROR_NONE;
+#if (BSP_USBPD_PWR_DONT_WAIT_VBUSOFF_DISCHARGE == 0)
   uint32_t vbus;
+#endif /* BSP_USBPD_PWR_DONT_WAIT_VBUSOFF_DISCHARGE == 0 */
 
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
@@ -640,6 +647,7 @@ int32_t BSP_USBPD_PWR_VBUSOff(uint32_t PortNum)
     {
       ret = BSP_ERROR_COMPONENT_FAILURE;
     }
+#if (BSP_USBPD_PWR_DONT_WAIT_VBUSOFF_DISCHARGE == 0)
     else
     {
 #if defined(USE_ST_POWER_ADAPTER)
@@ -676,6 +684,7 @@ int32_t BSP_USBPD_PWR_VBUSOff(uint32_t PortNum)
         HAL_Delay(30);
       }
     }
+#endif /* BSP_USBPD_PWR_DONT_WAIT_VBUSOFF_DISCHARGE == 0 */
   }
   return ret;
 }
@@ -963,7 +972,7 @@ int32_t BSP_USBPD_PWR_VBUSGetCurrent(uint32_t PortNum, int32_t *pCurrent)
     int32_t current;
     uint16_t adc_value;
     adc_value = (uint16_t) usbpd_pwr_adcx_buff[ADCBUF_ISENSE];
-    current = PWR_TCPP0203_ConvertADCDataToCurrent(adc_value, DRP1M1_ISENSE_GA, DRP1M1_ISENSE_RS);
+    current = PWR_TCPP0203_ConvertADCDataToCurrent(adc_value, SRC1M1_ISENSE_GA, SRC1M1_ISENSE_RS);
 
     *pCurrent = current;
   }
@@ -1379,7 +1388,7 @@ void BSP_USBPD_PWR_EventCallback(uint32_t PortNum)
   * @{
   */
 
-
+#if !defined(USBPD_CONFIG_MX)
 /**
   * @brief  Configure TCPP0203 used GPIO.
   * @note   GPIO used for TCPP0203 operation includes VBUS measurement, ENABLE pin driving
@@ -1471,7 +1480,7 @@ static void PWR_TCPP0203_Configure_ADC(void)
 #if defined(USE_STM32G4XX_NUCLEO)
   LL_DMA_SetPeriphRequest(VISENSE_DMA_INSTANCE, VISENSE_DMA_CHANNEL, VISENSE_DMA_REQ);
 #elif defined(USE_STM32G0XX_NUCLEO)
-  LL_DMAMUX_SetRequestID(DMAMUX1, LL_DMAMUX_CHANNEL_0, VISENSE_DMA_REQ);
+  LL_DMAMUX_SetRequestID(DMAMUX1, VISENSE_DMAMUX_CHANNEL, VISENSE_DMA_REQ);
 #endif /* USE_STM32G4XX_NUCLEO */
 
   /* Set DMA transfer addresses of source and destination */
@@ -1484,7 +1493,7 @@ static void PWR_TCPP0203_Configure_ADC(void)
   /* Set DMA transfer size */
   LL_DMA_SetDataLength(VISENSE_DMA_INSTANCE, VISENSE_DMA_CHANNEL, VISENSE_ADC_BUFFER_SIZE);
 
-  /*## Activation of DMA #####################################################*/
+  /* Activation of DMA ---------------------------------------------------------*/
   /* Enable the DMA transfer */
   LL_DMA_EnableChannel(VISENSE_DMA_INSTANCE, VISENSE_DMA_CHANNEL);
 
@@ -1601,11 +1610,11 @@ static void PWR_TCPP0203_Activate_ADC(void)
   uint32_t Timeout = 0U; /* Variable used for timeout management */
 #endif /* USE_TIMEOUT */
 
-  /*## Operation on ADC hierarchical scope: ADC instance #####################*/
+  /* Operation on ADC hierarchical scope: ADC instance -----------------------*/
 
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 series, setting of these features is conditioned to   */
+  /*       On this STM32 series, setting of these features is conditioned to  */
   /*       ADC state:                                                         */
   /*       ADC must be disabled.                                              */
   /* Note: In this example, all these checks are not necessary but are        */
@@ -1618,7 +1627,7 @@ static void PWR_TCPP0203_Activate_ADC(void)
   {
 #if defined(STM32G474xx)
     LL_ADC_DisableDeepPowerDown(VISENSE_ADC_INSTANCE);
-#endif
+#endif /* STM32G474xx */
     /* Enable ADC internal voltage regulator */
     LL_ADC_EnableInternalRegulator(VISENSE_ADC_INSTANCE);
 
@@ -1709,13 +1718,13 @@ static void PWR_TCPP0203_Activate_ADC(void)
     /*       ADC activation, using function "LL_ADC_ClearFlag_ADRDY()".       */
   }
 
-  /*## Operation on ADC hierarchical scope: ADC group regular ################*/
+  /* Operation on ADC hierarchical scope: ADC group regular ------------------*/
   /* Note: No operation on ADC group regular performed here.                  */
   /*       ADC group regular conversions to be performed after this function  */
   /*       using function:                                                    */
   /*       "LL_ADC_REG_StartConversion();"                                    */
 
-  /*## Operation on ADC hierarchical scope: ADC group injected ###############*/
+  /* Operation on ADC hierarchical scope: ADC group injected -----------------*/
   /* Note: Feature not available on this STM32 series */
 }
 
@@ -1751,6 +1760,7 @@ static void PWR_TCPP0203_ITConfigInit(uint32_t PortNum)
     NVIC_EnableIRQ(TCPP0203_PORT0_FLG_EXTI_IRQN);
   }
 }
+#endif /* !USBPD_CONFIG_MX */
 
 /**
   * @brief  I2C BUS registration for TCPP0203 communication
@@ -1986,9 +1996,16 @@ static uint32_t PWR_TCPP0203_ConvertADCDataToVoltage(uint32_t ADCData, uint32_t 
   uint32_t voltage;
   uint32_t vadc;
 
-  vadc = (ADCData * VDD_VALUE) / ADC_FULL_SCALE;
-
-  voltage = vadc * (Ra + Rb) / Rb;
+  /* Avoid dividing by zero */
+  if (Rb == 0u)
+  {
+    voltage = 0u;
+  }
+  else
+  {
+    vadc = (ADCData * VDD_VALUE) / ADC_FULL_SCALE;
+    voltage = vadc * (Ra + Rb) / Rb;
+  }
 
   return voltage;
 }
@@ -2006,9 +2023,16 @@ static int32_t PWR_TCPP0203_ConvertADCDataToCurrent(uint32_t ADCData, uint32_t G
   int32_t current;
   uint32_t vadc;
 
-  vadc = (ADCData * VDD_VALUE) / ADC_FULL_SCALE;
-
-  current = (int32_t)((vadc * 1000) / (Ga * Rs));
+  /* Avoid dividing by zero */
+  if ((Ga == 0u) || (Rs == 0u))
+  {
+    current = 0u;
+  }
+  else
+  {
+    vadc = (ADCData * VDD_VALUE) / ADC_FULL_SCALE;
+    current = (int32_t)((vadc * 1000u) / (Ga * Rs));
+  }
 
   return current;
 }

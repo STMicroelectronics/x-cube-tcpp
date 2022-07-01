@@ -7,13 +7,14 @@
   * @author  MCD Application Team
   * @brief   Description of the USB-C Power Delivery USBPDM1_Sink_LPM application.
   ******************************************************************************
+  * @attention
   *
-  * Copyright (c) 2018 STMicroelectronics. All rights reserved.
+  * Copyright (c) 2018 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   @endverbatim
@@ -24,7 +25,7 @@ Use of USB Power Delivery (USB-PD) Consumer application with LPM running on STM3
      Project configuration is based on USB Power Delivery Specification revision 3.0.
 
 This application provides an example for managing the Port 0 as a Consumer Only port with LPM.
-     LPM(Low power managment) is enabled, and for consumption improvement the STM32CubeMonUCPD graphical user interface is not enabled.
+     LPM(Low power management) is enabled, and for consumption improvement the STM32CubeMonUCPD graphical user interface is not enabled.
      The user can measure the consumption by connecting the application STM32 power monitor on the nucleo PIN IDD of the connector JP3.
 
      An application to create a simple application from STM32CubeMX is available at this link :

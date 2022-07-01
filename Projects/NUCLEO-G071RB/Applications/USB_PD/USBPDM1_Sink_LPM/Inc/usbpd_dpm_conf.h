@@ -7,12 +7,12 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2018 STMicroelectronics. All rights reserved.
+  * Copyright (c) 2018 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -73,12 +73,12 @@ USBPD_SettingsTypeDef       DPM_Settings[USBPD_PORT_COUNT] =
     .CAD_AccesorySupport = USBPD_FALSE,         /* CAD accessory support                                   */
     .PE_PD3_Support.d =                           /*!< PD3 SUPPORT FEATURE                                              */
     {
-      .PE_UnchunkSupport                = USBPD_FALSE,  /* support Unchunked mode (valid only spec revision 3.0)   */
-      .PE_FastRoleSwapSupport           = USBPD_FALSE,   /* support fast role swap only spec revsion 3.0            */
-      .Is_GetPPSStatus_Supported        = USBPD_TRUE,  /*!< PPS message NOT supported by PE stack */
+      .PE_UnchunkSupport                = USBPD_FALSE,  /*!< Support Unchunked mode (valid only spec revision 3.0) */
+      .PE_FastRoleSwapSupport           = USBPD_FALSE,  /*!< Support fast role swap only spec revision 3.0 */
+      .Is_GetPPSStatus_Supported        = USBPD_TRUE,   /*!< PPS message NOT supported by PE stack */
       .Is_SrcCapaExt_Supported          = USBPD_FALSE,  /*!< Source_Capabilities_Extended message supported or not by DPM */
-      .Is_Alert_Supported               = USBPD_FALSE,   /*!< Alert message supported or not by DPM */
-      .Is_GetStatus_Supported           = USBPD_FALSE,   /*!< Status message supported or not by DPM (Is_Alert_Supported should be enabled) */
+      .Is_Alert_Supported               = USBPD_FALSE,  /*!< Alert message supported or not by DPM */
+      .Is_GetStatus_Supported           = USBPD_FALSE,  /*!< Status message supported or not by DPM (Is_Alert_Supported should be enabled) */
       .Is_GetManufacturerInfo_Supported = USBPD_FALSE,  /*!< Manufacturer_Info message supported or not by DPM */
       .Is_GetCountryCodes_Supported     = USBPD_FALSE,  /*!< Country_Codes message supported or not by DPM */
       .Is_GetCountryInfo_Supported      = USBPD_FALSE,  /*!< Country_Info message supported or not by DPM */
@@ -163,7 +163,7 @@ USBPD_USER_SettingsTypeDef DPM_USER_Settings[USBPD_PORT_COUNT] =
 #if defined(_GUI_INTERFACE)
     .PWR_AccessoryDetection     = USBPD_FALSE,  /*!< It enables or disables powered accessory detection */
     .PWR_AccessoryTransition    = USBPD_FALSE,  /*!< It enables or disables transition from Powered.accessory to Try.SNK */
-    .PWR_UnconstrainedPower     = USBPD_CORE_PDO_NOT_EXT_POWERED, /*!< UUT has an external power source available that is sufficient to adequately power the system while charging external devices or the UUT’s primary function is to charge external devices. */
+    .PWR_UnconstrainedPower     = USBPD_CORE_PDO_NOT_EXT_POWERED, /*!< UUT has an external power source available that is sufficient to adequately power the system while charging external devices or the UUT's primary function is to charge external devices. */
     .PWR_RpResistorValue        = vRd_3_0A,     /*!< RP resitor value based on @ref CAD_SNK_Source_Current_Adv_Typedef */
     .USB_Support                = USBPD_CORE_PDO_USBCOMM_NOT_CAPABLE, /*!< USB_Comms_Capable, is the UUT capable of enumerating as a USB host or device? */
     .USB_Device                 = USBPD_FALSE,  /*!< Type_C_Can_Act_As_Device, Indicates whether the UUT can communicate with USB 2.0 or USB 3.1 as a device or as the Upstream Facing Port of a hub. */
@@ -195,4 +195,3 @@ USBPD_USER_SettingsTypeDef DPM_USER_Settings[USBPD_PORT_COUNT] =
 
 #endif /* __USBPD_DPM_CONF_H_ */
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

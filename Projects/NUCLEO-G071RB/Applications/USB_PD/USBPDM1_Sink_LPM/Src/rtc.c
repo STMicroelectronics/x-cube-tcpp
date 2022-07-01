@@ -6,13 +6,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2020 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -101,7 +100,7 @@ void HAL_RTC_MspInit(RTC_HandleTypeDef* rtcHandle)
         /* Enable access to the backup domain */
     LL_PWR_EnableBkUpAccess();
     
-    /*These bits can be written only one time (except in case of failure detection on LSE). These bits must be writen before
+    /*These bits can be written only one time (except in case of failure detection on LSE). These bits must be written before
     LSECSSON is enabled. The VSWRST bit can be used to reset them.*/
     
     if (__HAL_PWR_GET_FLAG(PWR_FLAG_SB) == RESET)
@@ -159,4 +158,3 @@ void HAL_RTC_MspDeInit(RTC_HandleTypeDef* rtcHandle)
 
 /* USER CODE END 1 */
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

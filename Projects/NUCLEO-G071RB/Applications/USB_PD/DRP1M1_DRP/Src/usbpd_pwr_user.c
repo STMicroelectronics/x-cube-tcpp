@@ -7,13 +7,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2020 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -400,7 +399,7 @@ __weak PWR_StatusTypeDef BSP_PWR_VCONNOff(uint32_t PortId,
 /**
   * @brief  Set the VBUS disconnection voltage threshold.
   * @note   Obsolete interface, new interface should be called.
-  * @note   Callback funtion registered through BSP_PWR_RegisterVBUSDetectCallback
+  * @note   Callback function registered through BSP_PWR_RegisterVBUSDetectCallback
   *         function call is invoked when VBUS falls below programmed threshold.
   * @note   By default VBUS disconnection threshold is set to 3.3V
   * @param  PortId Type-C port identifier
@@ -424,7 +423,7 @@ void BSP_PWR_SetVBUSDisconnectionThreshold(uint32_t PortId,
   * @note   Obsolete interface, new interface should be called.
   * @note   Callback function invoked when VBUS rises above 4V (VBUS present) or
   *         when VBUS falls below programmed threshold (VBUS absent).
-  * @note   Callback funtion is un-registered when callback function pointer
+  * @note   Callback function is un-registered when callback function pointer
   *         argument is NULL.
   * @param  PortId Type-C port identifier
   *         This parameter can be take one of the following values:
@@ -1019,7 +1018,7 @@ __weak int32_t BSP_USBPD_PWR_VCONNIsOn(uint32_t Instance,
 
 /**
   * @brief  Set the VBUS disconnection voltage threshold.
-  * @note   Callback funtion registered through BSP_USBPD_PWR_RegisterVBUSDetectCallback
+  * @note   Callback function registered through BSP_USBPD_PWR_RegisterVBUSDetectCallback
   *         function call is invoked when VBUS falls below programmed threshold.
   * @note   By default VBUS disconnection threshold is set to 3.3V
   * @param  Instance Type-C port identifier
@@ -1053,7 +1052,7 @@ __weak int32_t BSP_USBPD_PWR_SetVBUSDisconnectionThreshold(uint32_t Instance,
   * @brief  Register USB Type-C Current callback function.
   * @note   Callback function invoked when VBUS rises above 4V (VBUS present) or
   *         when VBUS falls below programmed threshold (VBUS absent).
-  * @note   Callback funtion is un-registered when callback function pointer
+  * @note   Callback function is un-registered when callback function pointer
   *         argument is NULL.
   * @param  Instance Type-C port identifier
   *         This parameter can be take one of the following values:
@@ -1165,6 +1164,4 @@ __weak int32_t BSP_USBPD_PWR_VCCSetState(uint32_t Instance, uint32_t State)
 /**
   * @}
   */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
 

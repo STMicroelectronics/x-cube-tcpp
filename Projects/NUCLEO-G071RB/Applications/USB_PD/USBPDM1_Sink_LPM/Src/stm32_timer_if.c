@@ -1,18 +1,17 @@
  /*******************************************************************************
  * File Name          : stm32_timer_if.c
  * Description        : This file provides the ll driver for  the time server
- ******************************************************************************
- * @attention
- *
- * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
- * All rights reserved.</center></h2>
- *
- * This software component is licensed by ST under BSD 3-Clause license,
- * the "License"; You may not use this file except in compliance with the
- * License. You may obtain a copy of the License at:
- *                        opensource.org/licenses/BSD-3-Clause
- *
- ******************************************************************************
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2019 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
  */
 
 /* Includes ------------------------------------------------------------------*/
@@ -158,7 +157,7 @@ UTIL_TIMER_Status_t RTC_DeInit( void )
 
 /*!
  * @brief Set the timer
- * @note The timer is set at now (read in this funtion) + timeout
+ * @note The timer is set at now (read in this function) + timeout
  * @param timeout Duration of the Timer ticks
  */
 UTIL_TIMER_Status_t RTC_StartTimer( uint32_t timeout )
@@ -432,5 +431,4 @@ static uint32_t RTC_GetCalendarValue( RTC_DateTypeDef* RTC_DateStruct, RTC_TimeT
   return( calendarValue );
 }
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
 
