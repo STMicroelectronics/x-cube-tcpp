@@ -297,8 +297,10 @@ void USBPD_DPM_GetDataInfo(uint8_t PortNum, USBPD_CORE_DataInfoType_TypeDef Data
     // break;
 //  case USBPD_CORE_EXTENDED_CAPA:              /*!< Source Extended capability message content          */
     // break;
-//  case USBPD_CORE_DATATYPE_REQ_VOLTAGE:       /*!< Get voltage value requested for BIST tests, expect 5V*/
-    // break;
+    case USBPD_CORE_DATATYPE_REQ_VOLTAGE:       /*!< Get voltage value requested for BIST tests, expect 5V*/
+      *Size = 4;
+      (void)memcpy((uint8_t*)Ptr, (uint8_t *)&DPM_Ports[PortNum].DPM_RequestedVoltage, *Size);
+      break;
 //  case USBPD_CORE_INFO_STATUS:                /*!< Information status message content                  */
     // break;
 //  case USBPD_CORE_MANUFACTURER_INFO:          /*!< Retrieve of Manufacturer info message content       */
@@ -326,7 +328,7 @@ void USBPD_DPM_SetDataInfo(uint8_t PortNum, USBPD_CORE_DataInfoType_TypeDef Data
 {
 /* USER CODE BEGIN USBPD_DPM_SetDataInfo */
   uint32_t index;
-  
+
   /* Check type of information targeted by request */
   switch(DataId)
   {
@@ -398,13 +400,13 @@ void USBPD_DPM_SNK_EvaluateCapabilities(uint8_t PortNum, uint32_t *PtrRequestDat
 
   /* Select the first PDO to get a 5V aligned with sink PDO */
   pdo.d32 = pdhandle->DPM_ListOfRcvSRCPDO[0];
-  
+
   /* Read the sink PDO */
   USBPD_PWR_IF_GetPortPDOs(PortNum, USBPD_CORE_DATATYPE_SNK_PDO, (uint8_t*)snkpdolist, &size);
-  
+
   /* Initialise sinkdpo with the first PDO*/
   snk_fixed_pdo.d32 = snkpdolist[0];
-  
+
   if(USBPD_CORE_PDO_TYPE_FIXED == pdo.GenericPDO.PowerObject)
   {
     /* Prepare the requested pdo */
@@ -421,9 +423,9 @@ void USBPD_DPM_SNK_EvaluateCapabilities(uint8_t PortNum, uint32_t *PtrRequestDat
       rdo.FixedVariableRDO.MaxOperatingCurrent10mAunits = snk_fixed_pdo.SNKFixedPDO.OperationalCurrentIn10mAunits;
       rdo.FixedVariableRDO.CapabilityMismatch = 0;
     }
-    
+
     rdo.FixedVariableRDO.USBCommunicationsCapable = snk_fixed_pdo.SNKFixedPDO.USBCommunicationsCapable;
-    
+
 #if defined(USBPD_REV30_SUPPORT) && defined(_UNCHUNKED_SUPPORT)
     if (USBPD_SPECIFICATION_REV2 < DPM_Params[PortNum].PE_SpecRevision)
     {
@@ -435,8 +437,8 @@ void USBPD_DPM_SNK_EvaluateCapabilities(uint8_t PortNum, uint32_t *PtrRequestDat
         DPM_Params[PortNum].PE_UnchunkSupport   = USBPD_TRUE;
       }
     }
-#endif /* USBPD_REV30_SUPPORT && _UNCHUNKED_SUPPORT */      
-    
+#endif /* USBPD_REV30_SUPPORT && _UNCHUNKED_SUPPORT */
+
     *PtrPowerObjectType = USBPD_CORE_PDO_TYPE_FIXED;
     *PtrRequestData = rdo.d32;
     pdhandle->DPM_RequestDOMsg = rdo.d32;
@@ -444,7 +446,7 @@ void USBPD_DPM_SNK_EvaluateCapabilities(uint8_t PortNum, uint32_t *PtrRequestDat
   }
   else {
     /* This case shall never occurs because any source must present a first PDO with 5V */
-  }  
+  }
 /* USER CODE END USBPD_DPM_SNK_EvaluateCapabilities */
 }
 
