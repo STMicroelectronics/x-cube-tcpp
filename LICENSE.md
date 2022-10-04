@@ -21,4 +21,4 @@
 | STM32_USBPD_Library Core    | STMicroelectronics                 | SLA0044         |
 | STM32_USBPD_Library Device  | STMicroelectronics                 | SLA0044         |
 | Applications projects       | STMicroelectronics                 | SLA0044         |
-| Utilities                   | STMicroelectronics                 | BSD 3-Clause    |
+| Utilities                   | STMicroelectronics                 | BSD-3-Clause    |

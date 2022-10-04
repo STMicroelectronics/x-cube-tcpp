@@ -240,6 +240,13 @@ USBPD_StatusTypeDef USBPD_PWR_IF_Init(void)
 
   PWR_Port_PDO_Storage[USBPD_PORT_0].SinkPDO.ListOfPDO = (uint32_t *)PORT0_PDO_ListSNK;
   PWR_Port_PDO_Storage[USBPD_PORT_0].SinkPDO.NumberOfPDO = &USBPD_NbPDO[0];
+
+  DPM_USER_Settings[USBPD_PORT_0].DPM_SNKRequestedPower.MaxOperatingCurrentInmAunits = USBPD_CORE_PDO_SNK_FIXED_MAX_CURRENT;
+  DPM_USER_Settings[USBPD_PORT_0].DPM_SNKRequestedPower.OperatingVoltageInmVunits    = USBPD_BOARD_REQUESTED_VOLTAGE_MV;
+  DPM_USER_Settings[USBPD_PORT_0].DPM_SNKRequestedPower.MaxOperatingVoltageInmVunits = USBPD_BOARD_MAX_VOLTAGE_MV;
+  DPM_USER_Settings[USBPD_PORT_0].DPM_SNKRequestedPower.MinOperatingVoltageInmVunits = USBPD_BOARD_MIN_VOLTAGE_MV;
+  DPM_USER_Settings[USBPD_PORT_0].DPM_SNKRequestedPower.OperatingPowerInmWunits      = (USBPD_CORE_PDO_SNK_FIXED_MAX_CURRENT * USBPD_BOARD_REQUESTED_VOLTAGE_MV) / 1000U;
+  DPM_USER_Settings[USBPD_PORT_0].DPM_SNKRequestedPower.MaxOperatingPowerInmWunits   = (USBPD_CORE_PDO_SNK_FIXED_MAX_CURRENT * USBPD_BOARD_MAX_VOLTAGE_MV) / 1000U;
   _status |= PWR_IF_CheckUpdateSNKPower(USBPD_PORT_0);
 
 
