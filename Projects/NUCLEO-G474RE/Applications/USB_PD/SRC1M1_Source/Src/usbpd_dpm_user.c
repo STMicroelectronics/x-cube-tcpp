@@ -498,41 +498,109 @@ void USBPD_DPM_SetDataInfo(uint8_t PortNum, USBPD_CORE_DataInfoType_TypeDef Data
 USBPD_StatusTypeDef USBPD_DPM_EvaluateRequest(uint8_t PortNum, USBPD_CORE_PDO_Type_TypeDef *PtrPowerObject)
 {
 /* USER CODE BEGIN USBPD_DPM_EvaluateRequest */
-  USBPD_StatusTypeDef _retr = USBPD_REJECT;
-  USBPD_PDO_TypeDef pdo;
   USBPD_SNKRDO_TypeDef rdo;
+  USBPD_PDO_TypeDef pdo;
+  uint32_t pdomaxcurrent = 0U;
+  uint32_t rdomaxcurrent = 0U, rdoopcurrent = 0U, rdoobjposition = 0U;
+  uint32_t rdovoltage;
+  USBPD_HandleTypeDef *pdhandle = &DPM_Ports[PortNum];
 
-  /* read the request value received */
-  rdo.d32 = DPM_Ports[PortNum].DPM_RcvRequestDOMsg;
+  rdo.d32 = pdhandle->DPM_RcvRequestDOMsg;
+  rdoobjposition  = rdo.GenericRDO.ObjectPosition;
+#if defined(USBPD_REV30_SUPPORT) && defined(_UNCHUNKED_SUPPORT)
+  /* Set unchuncked bit if supported by ports */
+  DPM_Params[PortNum].PE_UnchunkSupport   = USBPD_FALSE;
+  if ((USBPD_TRUE == rdo.GenericRDO.UnchunkedExtendedMessage)
+   && (USBPD_TRUE == DPM_Settings[PortNum].PE_PD3_Support.d.PE_UnchunkSupport))
+  {
+    DPM_Params[PortNum].PE_UnchunkSupport   = USBPD_TRUE;
+  }
+#endif /* USBPD_REV30_SUPPORT && _UNCHUNKED_SUPPORT */
+  pdhandle->DPM_RDOPosition = 0U;
+
+  /* Check if RDP can be met within the supported PDOs by the Source port */
+  /* USBPD_DPM_EvaluateRequest: Evaluate Sink Request\r */
+  /* USBPD_DPM_EvaluateRequest: Check if RDP can be met within the supported PDOs by the Source port\r */
 
   /* Search PDO in Port Source PDO list, that corresponds to Position provided in Request RDO */
-  if (USBPD_PWR_IF_SearchRequestedPDO(PortNum,  rdo.GenericRDO.ObjectPosition, &pdo.d32) == USBPD_OK)
+  if (USBPD_PWR_IF_SearchRequestedPDO(PortNum, rdoobjposition, &pdo.d32) != USBPD_OK)
   {
+    /* Invalid PDO index */
+    /* USBPD_DPM_EvaluateRequest: Invalid PDOs index */
+    return USBPD_REJECT;
+  }
 
-    /* Evaluate the request */
-    if(pdo.GenericPDO.PowerObject == USBPD_CORE_PDO_TYPE_FIXED)
+  switch(pdo.GenericPDO.PowerObject)
+  {
+    case USBPD_CORE_PDO_TYPE_FIXED:
+  {
+      pdomaxcurrent = pdo.SRCFixedPDO.MaxCurrentIn10mAunits;
+      rdomaxcurrent = rdo.FixedVariableRDO.MaxOperatingCurrent10mAunits;
+      rdoopcurrent  = rdo.FixedVariableRDO.OperatingCurrentIn10mAunits;
+      DPM_Ports[PortNum].DPM_RequestedCurrent = rdoopcurrent * 10U;
+      rdovoltage    = pdo.SRCFixedPDO.VoltageIn50mVunits * 50U;
+
+      if(rdoopcurrent > pdomaxcurrent)
     {
-      if((rdo.FixedVariableRDO.OperatingCurrentIn10mAunits > pdo.SRCFixedPDO.MaxCurrentIn10mAunits)
-         || (rdo.FixedVariableRDO.MaxOperatingCurrent10mAunits > pdo.SRCFixedPDO.MaxCurrentIn10mAunits))
+        /* Sink requests too much operating current */
+        /* USBPD_DPM_EvaluateRequest: Sink requests too much operating current*/
+        return USBPD_REJECT;
+      }
+
+      if(rdomaxcurrent > pdomaxcurrent)
       {
         /* Sink requests too much maximum operating current */
         /* USBPD_DPM_EvaluateRequest: Sink requests too much maximum operating current */
-        _retr =  USBPD_REJECT;
-      }
-      else
-      {
-        /* Save the power object */
-        *PtrPowerObject = pdo.GenericPDO.PowerObject;
-        /* Set RDO position and requested voltage in DPM port structure */
-        DPM_Ports[PortNum].DPM_RequestedVoltage = pdo.SRCFixedPDO.VoltageIn50mVunits * 50;
-        DPM_Ports[PortNum].DPM_RDOPositionPrevious = DPM_Ports[PortNum].DPM_RDOPosition;
-        DPM_Ports[PortNum].DPM_RDOPosition = rdo.GenericRDO.ObjectPosition;
-         _retr = USBPD_ACCEPT;
+        return USBPD_REJECT;
       }
     }
+    break;
+#if _PPS
+    case USBPD_CORE_PDO_TYPE_APDO:
+    {
+      uint32_t pdominvoltage, pdomaxvoltage;
+      pdomaxcurrent                           = pdo.SRCSNKAPDO.MaxCurrentIn50mAunits;
+      rdoopcurrent                            = rdo.ProgRDO.OperatingCurrentIn50mAunits;
+      DPM_Ports[PortNum].DPM_RequestedCurrent = rdoopcurrent * 50U;
+      if(rdoopcurrent > pdomaxcurrent)
+      {
+        /* Sink requests too much operating current */
+        return USBPD_REJECT;
+      }
+      pdominvoltage = pdo.SRCSNKAPDO.MinVoltageIn100mV * 100U;
+      pdomaxvoltage = pdo.SRCSNKAPDO.MaxVoltageIn100mV * 100U;
+      rdovoltage    = rdo.ProgRDO.OutputVoltageIn20mV * 20U;
+
+      if ((rdovoltage < pdominvoltage) || (rdovoltage > pdomaxvoltage))
+      {
+        /* Sink requests too much maximum operating current */
+        return USBPD_REJECT;
+      }
+    }
+    break;
+#endif /* _PPS */
+    case USBPD_CORE_PDO_TYPE_BATTERY:
+    case USBPD_CORE_PDO_TYPE_VARIABLE:
+    default:
+    {
+      return USBPD_REJECT;
+  }
   }
 
-  return _retr;
+  /* Set RDO position and requested voltage in DPM port structure */
+  DPM_Ports[PortNum].DPM_RequestedVoltage = rdovoltage;
+  pdhandle->DPM_RDOPositionPrevious = pdhandle->DPM_RDOPosition;
+  pdhandle->DPM_RDOPosition = rdoobjposition;
+
+  /* Save the power object */
+  *PtrPowerObject = pdo.GenericPDO.PowerObject;
+
+  /* Accept the requested power */
+  /* USBPD_DPM_EvaluateRequest: Sink requested %d mV %d mA for operating current from %d to %d mA\r",
+               pdo.SRCFixedPDO.VoltageIn50mVunits * 50, pdo.SRCFixedPDO.MaxCurrentIn10mAunits * 10,
+               rdo.FixedVariableRDO.MaxOperatingCurrent10mAunits * 10, rdo.FixedVariableRDO.OperatingCurrentIn10mAunits * 10 */
+  /* USBPD_DPM_EvaluateRequest: Source accepts the requested power */
+  return USBPD_ACCEPT;
 /* USER CODE END USBPD_DPM_EvaluateRequest */
 }
 
