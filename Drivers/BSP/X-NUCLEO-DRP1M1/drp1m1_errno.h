@@ -38,5 +38,9 @@ extern "C" {
 #define BSP_ERROR_MSP_FAILURE                 -10
 #define BSP_ERROR_FEATURE_NOT_SUPPORTED       -11
 
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* DRP1M1_ERRNO_H */
 

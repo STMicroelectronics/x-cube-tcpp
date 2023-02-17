@@ -63,7 +63,9 @@
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN PFP */
-
+#if defined(TCPP0203_SUPPORT)
+void TCPP0203_PORT0_FLG_EXTI_IRQHANDLER(void);
+#endif /* TCPP0203_SUPPORT */
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/

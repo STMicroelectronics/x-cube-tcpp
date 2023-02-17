@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Readme</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="./../../../../_htmresc/mini-st_2020.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div class="row">
+<div class="col-sm-12 col-lg-8">
+<h2 id="snk1m1_sink-application-description"><b>SNK1M1_Sink Application Description</b></h2>
+<p>This application provides an example for managing the Port 0 as a Consumer Only port.</p>
+<p>STM32CubeMonUCPD graphical user interface is enabled.</p>
+<p>User can use the STM32CubeMonUCPD running on a computer to control the STM32G0XX to send some USB power delivery messages through the integrated UCPD peripheral.</p>
+<p>This application has been certified with USB-PD Test Conformance Tools (Ellisys, MQP, GRL and LeCroy).</p>
+<p>Vendor Information File, used for Conformance testing and describing Port capabilities and supported options is provided in application directory in STMicroelectronics_SNK1M1_Sink_STM32G071RB_VIF.xml file.</p>
+<p>This application is based on the following wiki: <a href="https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:STM32_Advance_USB-Power_Delivery_Sink">STM32_Advance_USB-Power_Delivery_Sink</a></p>
+<p>STM32CubeMX is used to configure the project. The following sink PDOs are configured in STM32CubeMX:</p>
+<ul>
+<li>5V 1.5A</li>
+<li>9V 3A</li>
+<li>15V 2A</li>
+<li>20V 1A</li>
+</ul>
+<p>By default, the sink asks for the highest power matching PDO of the connected source. User can change this behaviour by changing the USER_SERV_PDO_Sel_Method variable in usbpd_user_services.c. For example, if your source supports 5V/2A, 9V/2A, 15V/2A and 20V/2A, the sink will ask for the 15V profile, as it is the highest power profile the sink and the source can support.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Sink PDO</th>
+<th>Source capabilities</th>
+<th>Sink drawing pwr</th>
+<th>Supported by source ?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>5V 1.5A</td>
+<td>5V 2A (10W)</td>
+<td>7.5W</td>
+<td>YES</td>
+</tr>
+<tr class="even">
+<td>9V 3A</td>
+<td>9V 2A (18W)</td>
+<td>9W</td>
+<td>NO</td>
+</tr>
+<tr class="odd">
+<td>15V 2A</td>
+<td>15V 2A (30W)</td>
+<td>30W</td>
+<td>YES &lt;——- Chosen profile (highest supported power)</td>
+</tr>
+<tr class="even">
+<td>20V 3A</td>
+<td>20V 2A (40W)</td>
+<td>60W</td>
+<td>NO</td>
+</tr>
+</tbody>
+</table>
+<p>You can change the PDO selection method with the USER_SERV_PDO_Sel_Method variable. Availables methods are:</p>
+<ul>
+<li>Max power</li>
+<li>Min power</li>
+<li>Max voltage</li>
+<li>Min voltage</li>
+<li>Max current</li>
+<li>Min current</li>
+</ul>
+<p>For debug purpose, TRACER_EMB and GUI_INTERFACE utilities are enabled in this application.</p>
+<h4 id="expected-success-behavior"><b>Expected success behavior</b></h4>
+<p>Connect STM32CubeMonUCPD on the VCP associated to our board (only available if USB cable is connected) The STM32CubeMonUCPD will be used to trace all the messages exchange between the ports partner.</p>
+<h4 id="error-behaviors"><b>Error behaviors</b></h4>
+<p>Errors are detected and the corresponding message is displayed on the STM32CubeMonUCPD.</p>
+<h4 id="assumptions-if-any"><b>Assumptions if any</b></h4>
+<p>User is familiar with USB-PD 3.1 “Universal Serial BUS Power Delivery” Specification.</p>
+<h4 id="known-limitations"><b>Known limitations</b></h4>
+<p>None.</p>
+<h3 id="keywords"><b>Keywords</b></h3>
+<p>Connectivity, UART/USART, USB_PD_Lib, UCPD, Type C, USBPD</p>
+<h3 id="hardware-and-software-environment"><b>Hardware and Software environment</b></h3>
+<ul>
+<li>This application runs on STM32G0XX devices</li>
+<li><p>This application has been tested with STMicroelectronics NUCLEO-G071RB board with X-NUCLEO-SNK1M1 shield and can be easily tailored to any other supported device and development board.</p></li>
+<li>X-NUCLEO-SNK1M1 Set-up
+<ul>
+<li>JP3/JP4 jumper setting : [RESET] and [LDO_OUT] jumpers OFF</li>
+<li>Solders bridges J1 and J2 connected in position 1/2</li>
+</ul></li>
+</ul>
+<h3 id="how-to-use-it"><b>How to use it ?</b></h3>
+<p>In order to make the program work, you must do the following :</p>
+<ul>
+<li>Open your preferred toolchain</li>
+<li>Rebuild all files and load your image into target memory</li>
+<li>Run the application</li>
+</ul>
+</body>
+</html>

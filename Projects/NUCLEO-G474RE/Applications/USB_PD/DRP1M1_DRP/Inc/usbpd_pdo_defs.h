@@ -88,7 +88,7 @@ typedef struct
 #define USBPD_BOARD_MAX_VOLTAGE_MV             5000
 
 /* Max current */
-#define USBPD_CORE_PDO_SRC_FIXED_MAX_CURRENT 1.5
+#define USBPD_CORE_PDO_SRC_FIXED_MAX_CURRENT 1500
 #define USBPD_CORE_PDO_SNK_FIXED_MAX_CURRENT 1500
 
 /* Exported constants --------------------------------------------------------*/
@@ -123,7 +123,7 @@ uint8_t USBPD_NbPDO[4] = {(PORT0_NB_SINKPDO + PORT0_NB_SINKAPDO),
 uint32_t PORT0_PDO_ListSRC[USBPD_MAX_NB_PDO] =
 {
   /* PDO 1 */
-        ( ((PWR_A_10MA(USBPD_CORE_PDO_SRC_FIXED_MAX_CURRENT)) << USBPD_PDO_SRC_FIXED_MAX_CURRENT_Pos) |
+        ( ((PWR_A_10MA(USBPD_CORE_PDO_SRC_FIXED_MAX_CURRENT / 1000.0)) << USBPD_PDO_SRC_FIXED_MAX_CURRENT_Pos) |
           ((PWR_V_50MV(5)) << USBPD_PDO_SRC_FIXED_VOLTAGE_Pos)                                        |
           USBPD_PDO_SRC_FIXED_PEAKCURRENT_EQUAL                                                       |
           USBPD_PDO_SRC_FIXED_UNCHUNK_NOT_SUPPORTED                                                   |
@@ -153,7 +153,7 @@ uint32_t PORT0_PDO_ListSNK[USBPD_MAX_NB_PDO] =
 {
   /* PDO 1 */
         ( ((PWR_A_10MA(USBPD_CORE_PDO_SNK_FIXED_MAX_CURRENT / 1000.0)) << USBPD_PDO_SNK_FIXED_OP_CURRENT_Pos) |
-          ((PWR_V_50MV(USBPD_BOARD_REQUESTED_VOLTAGE_MV/1000.0)) << USBPD_PDO_SNK_FIXED_VOLTAGE_Pos) |
+          ((PWR_V_50MV(USBPD_BOARD_REQUESTED_VOLTAGE_MV / 1000.0)) << USBPD_PDO_SNK_FIXED_VOLTAGE_Pos) |
 #if defined(USBPD_REV30_SUPPORT)
            USBPD_PDO_SNK_FIXED_FRS_NOT_SUPPORTED                                                     |
 #endif /*USBPD_REV30_SUPPORT*/

@@ -66,6 +66,9 @@
 #if defined(_TRACE) || defined(_GUI_INTERFACE)
 extern void TRACER_EMB_IRQHandlerUSART(void);
 #endif
+#if defined(TCPP0203_SUPPORT)
+void TCPP0203_PORT0_FLG_EXTI_IRQHANDLER(void);
+#endif /* TCPP0203_SUPPORT */
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/

@@ -241,7 +241,7 @@ __weak HAL_StatusTypeDef MX_I2C_Init(void)
       return BSP_ERROR_MSP_FAILURE;
     }
   }
-#endif
+#endif /* USE_HAL_I2C_REGISTER_CALLBACKS == 0 */
 
   if (HAL_I2C_Init(&TCPP0X_HANDLE_I2C) != HAL_OK)
   {
@@ -552,7 +552,7 @@ static void I2C_MspInit(I2C_HandleTypeDef *hi2c)
   /* Prevent unused argument(s) compilation warning */
   UNUSED(hi2c);
 
-  /*##-1- Configure the I2C clock source. The clock is derived from the SYSCLK #*/
+  /* -1- Configure the I2C clock source. The clock is derived from the SYSCLK */
   RCC_PeriphCLKInitTypeDef  RCC_PeriphCLKInitStruct;
   RCC_PeriphCLKInitStruct.PeriphClockSelection = RCC_PERIPHCLK_I2C1;
   RCC_PeriphCLKInitStruct.I2c1ClockSelection = RCC_I2C1CLKSOURCE_SYSCLK;
@@ -599,7 +599,7 @@ static void I2C_MspDeInit(I2C_HandleTypeDef *hi2c)
 
   /* Configure I2C SCL, SDA as alternate function */
   gpio_init_structure.Pin = BUS_I2C_SCL_GPIO_PIN;
-  HAL_GPIO_DeInit(BUS_I2C_SDA_GPIO_PORT, gpio_init_structure.Pin );
+  HAL_GPIO_DeInit(BUS_I2C_SDA_GPIO_PORT, gpio_init_structure.Pin);
   gpio_init_structure.Pin = BUS_I2C_SDA_GPIO_PIN;
   HAL_GPIO_DeInit(BUS_I2C_SDA_GPIO_PORT, gpio_init_structure.Pin);
 
@@ -624,9 +624,9 @@ static uint32_t I2C_GetTiming(uint32_t clock_src_freq, uint32_t i2c_freq)
   uint32_t speed;
   uint32_t itiming;
 
-  if((clock_src_freq != 0U) && (i2c_freq != 0U))
+  if ((clock_src_freq != 0U) && (i2c_freq != 0U))
   {
-    for ( speed = 0 ; speed <=  (uint32_t)I2C_SPEED_FAST_PLUS ; speed++)
+    for (speed = 0 ; speed <= (uint32_t)I2C_SPEED_FAST_PLUS ; speed++)
     {
       if ((i2c_freq >= i2c_charac[speed].freq_min) &&
           (i2c_freq <= i2c_charac[speed].freq_max))
@@ -636,11 +636,11 @@ static uint32_t I2C_GetTiming(uint32_t clock_src_freq, uint32_t i2c_freq)
 
         if (itiming < I2C_VALID_PRESC_NBR)
         {
-          ret = ((valid_timing[itiming].presc  & 0x0FU) << 28) |
-            ((valid_timing[itiming].tscldel & 0x0FU) << 20) |
-              ((valid_timing[itiming].tsdadel & 0x0FU) << 16) |
-                ((valid_timing[itiming].sclh & 0xFFU) << 8) |
-                  ((valid_timing[itiming].scll & 0xFFU) << 0);
+          ret = ((valid_timing[itiming].presc  & 0x0FU) << 28)  |
+                ((valid_timing[itiming].tscldel & 0x0FU) << 20) |
+                ((valid_timing[itiming].tsdadel & 0x0FU) << 16) |
+                ((valid_timing[itiming].sclh & 0xFFU) << 8)     |
+                ((valid_timing[itiming].scll & 0xFFU) << 0);
         }
         break;
       }
@@ -663,17 +663,21 @@ static void Compute_PRESC_SCLDEL_SDADEL(uint32_t clock_src_freq, uint32_t i2c_sp
   uint32_t ti2cclk;
   int32_t  tsdadel_min;
   int32_t  tscldel_min;
-  uint32_t presc, iscl, isda;
+  uint32_t presc;
+  uint32_t iscl;
+  uint32_t isda;
 
-  ti2cclk   = (SEC2NSEC + (clock_src_freq / 2U))/ clock_src_freq;
+  ti2cclk   = (SEC2NSEC + (clock_src_freq / 2U)) / clock_src_freq;
 
   /* tDNF = DNF x tI2CCLK
      tPRESC = (PRESC+1) x tI2CCLK
      SDADEL >= {tf +tHD;DAT(min) - tAF(min) - tDNF - [3 x tI2CCLK]} / {tPRESC}
      SDADEL <= {tVD;DAT(max) - tr - tAF(max) - tDNF- [4 x tI2CCLK]} / {tPRESC} */
 
-  tsdadel_min = (int32_t)i2c_charac[i2c_speed].tfall + (int32_t)i2c_charac[i2c_speed].hddat_min -
-    (int32_t)I2C_ANALOG_FILTER_DELAY_MIN - (int32_t)(((int32_t)i2c_charac[i2c_speed].dnf + 3) * (int32_t)ti2cclk);
+  tsdadel_min = (int32_t)i2c_charac[i2c_speed].tfall     +
+                (int32_t)i2c_charac[i2c_speed].hddat_min -
+                (int32_t)I2C_ANALOG_FILTER_DELAY_MIN     -
+                (int32_t)(((int32_t)i2c_charac[i2c_speed].dnf + 3) * (int32_t)ti2cclk);
 
   /* {[tr+ tSU;DAT(min)] / [tPRESC]} - 1 <= SCLDEL */
   tscldel_min = (int32_t)i2c_charac[i2c_speed].trise + (int32_t)i2c_charac[i2c_speed].sudat_min;
@@ -699,7 +703,7 @@ static void Compute_PRESC_SCLDEL_SDADEL(uint32_t clock_src_freq, uint32_t i2c_sp
 
           if (tsdadel >= (uint32_t)tsdadel_min)
           {
-            if(presc != prev_presc)
+            if (presc != prev_presc)
             {
               valid_timing[valid_timing_nbr].presc = presc;
               valid_timing[valid_timing_nbr].tscldel = iscl;
@@ -707,7 +711,7 @@ static void Compute_PRESC_SCLDEL_SDADEL(uint32_t clock_src_freq, uint32_t i2c_sp
               prev_presc = presc;
               valid_timing_nbr ++;
 
-              if(valid_timing_nbr >= I2C_VALID_PRESC_NBR)
+              if (valid_timing_nbr >= I2C_VALID_PRESC_NBR)
               {
                 return;
               }
@@ -725,18 +729,20 @@ static void Compute_PRESC_SCLDEL_SDADEL(uint32_t clock_src_freq, uint32_t i2c_sp
   * @param  i2c_speed  I2C frequency (index).
   * @retval > 0  config index, no valid config
   */
-static uint32_t Compute_SCLL_SCLH (uint32_t clock_src_freq, uint32_t I2C_speed)
+static uint32_t Compute_SCLL_SCLH(uint32_t clock_src_freq, uint32_t I2C_speed)
 {
   uint32_t ret = I2C_VALID_PRESC_NBR;
   uint32_t ti2cclk;
   uint32_t ti2cspeed;
   uint32_t prev_clk_error;
   uint32_t dnf_delay;
-  uint32_t clk_min, clk_max;
-  uint32_t l, h;
+  uint32_t clk_min;
+  uint32_t clk_max;
+  uint32_t scll_tmp;
+  uint32_t sclh_tmp;
 
-  ti2cclk   = (SEC2NSEC + (clock_src_freq / 2U))/ clock_src_freq;
-  ti2cspeed   = (SEC2NSEC + (i2c_charac[I2C_speed].freq / 2U))/ i2c_charac[I2C_speed].freq;
+  ti2cclk   = (SEC2NSEC + (clock_src_freq / 2U)) / clock_src_freq;
+  ti2cspeed   = (SEC2NSEC + (i2c_charac[I2C_speed].freq / 2U)) / i2c_charac[I2C_speed].freq;
 
   /* tDNF = DNF x tI2CCLK */
   dnf_delay = i2c_charac[I2C_speed].dnf * ti2cclk;
@@ -751,23 +757,24 @@ static uint32_t Compute_SCLL_SCLH (uint32_t clock_src_freq, uint32_t I2C_speed)
     /* tPRESC = (PRESC+1) x tI2CCLK*/
     uint32_t tpresc = (valid_timing[count].presc + 1U) * ti2cclk;
 
-    for (l = 0; l < I2C_SCLL_MAX; l++)
+    for (scll_tmp = 0; scll_tmp < I2C_SCLL_MAX; scll_tmp++)
     {
       /* tLOW(min) <= tAF(min) + tDNF + 2 x tI2CCLK + [(SCLL+1) x tPRESC ] */
-      uint32_t tscl_l = I2C_ANALOG_FILTER_DELAY_MIN + dnf_delay + (2U * ti2cclk) + ((l + 1U) * tpresc);
+      uint32_t tscl_l = I2C_ANALOG_FILTER_DELAY_MIN + dnf_delay + (2U * ti2cclk) + ((scll_tmp + 1U) * tpresc);
 
 
       /* The I2CCLK period tI2CCLK must respect the following conditions:
          tI2CCLK < (tLOW - tfilters) / 4 and tI2CCLK < tHIGH */
-      if ((tscl_l < i2c_charac[I2C_speed].l_min) || (ti2cclk >= ((tscl_l - I2C_ANALOG_FILTER_DELAY_MIN - dnf_delay) / 4U)))
+      if ((tscl_l < i2c_charac[I2C_speed].l_min) ||
+          (ti2cclk >= ((tscl_l - I2C_ANALOG_FILTER_DELAY_MIN - dnf_delay) / 4U)))
       {
         continue;
       }
 
-      for (h = 0; h < I2C_SCLH_MAX; h++)
+      for (sclh_tmp = 0; sclh_tmp < I2C_SCLH_MAX; sclh_tmp++)
       {
         /* tHIGH(min) <= tAF(min) + tDNF + 2 x tI2CCLK + [(SCLH+1) x tPRESC] */
-        uint32_t tscl_h = I2C_ANALOG_FILTER_DELAY_MIN + dnf_delay + (2U * ti2cclk) + ((h + 1U) * tpresc);
+        uint32_t tscl_h = I2C_ANALOG_FILTER_DELAY_MIN + dnf_delay + (2U * ti2cclk) + ((sclh_tmp + 1U) * tpresc);
 
         /* tSCL = tf + tLOW + tr + tHIGH */
         uint32_t tscl = tscl_l + tscl_h + i2c_charac[I2C_speed].trise + i2c_charac[I2C_speed].tfall;
@@ -785,8 +792,8 @@ static uint32_t Compute_SCLL_SCLH (uint32_t clock_src_freq, uint32_t I2C_speed)
           if ((uint32_t)clk_error < prev_clk_error)
           {
             prev_clk_error = (uint32_t)clk_error;
-            valid_timing[count].scll = l;
-            valid_timing[count].sclh = h;
+            valid_timing[count].scll = scll_tmp;
+            valid_timing[count].sclh = sclh_tmp;
             ret = count;
           }
         }

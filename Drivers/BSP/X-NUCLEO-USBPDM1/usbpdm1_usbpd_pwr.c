@@ -83,42 +83,54 @@
 #define VSENSE_ADC_INSTANCE               ADC1
 #else
 #error "missing value definition for your your board"
-#endif
+#endif /* USE_STM32G4XX_NUCLEO || USE_STM32G0XX_NUCLEO */
 
 #if defined(USE_STM32G4XX_NUCLEO)
-#define VSENSE_ADC_SET_CHANNEL() {                                                                                                \
-                                       LL_ADC_REG_SetSequencerRanks(ADC1, LL_ADC_REG_RANK_1, LL_ADC_CHANNEL_15);                  \
-                                       LL_ADC_SetChannelSamplingTime(ADC1, LL_ADC_CHANNEL_15, LL_ADC_SAMPLINGTIME_247CYCLES_5);   \
-                                       LL_ADC_SetChannelSingleDiff(ADC1, LL_ADC_CHANNEL_15, LL_ADC_SINGLE_ENDED);                 \
-                                  }
+#define VSENSE_ADC_SET_CHANNEL()                                                              \
+  do                                                                                          \
+  {                                                                                           \
+    LL_ADC_REG_SetSequencerRanks(ADC1, LL_ADC_REG_RANK_1, LL_ADC_CHANNEL_15);                 \
+    LL_ADC_SetChannelSamplingTime(ADC1, LL_ADC_CHANNEL_15, LL_ADC_SAMPLINGTIME_247CYCLES_5);  \
+    LL_ADC_SetChannelSingleDiff(ADC1, LL_ADC_CHANNEL_15, LL_ADC_SINGLE_ENDED);                \
+  } while(0);
 
-#define VSENSE_ADC_SET_CLOCK()          {                                                                              \
-                                           LL_ADC_CommonInitTypeDef ADC_CommonInitStruct = {0};                        \
-                                           ADC_CommonInitStruct.CommonClock = LL_ADC_CLOCK_SYNC_PCLK_DIV4;                 \
-                                           ADC_CommonInitStruct.Multimode = LL_ADC_MULTI_INDEPENDENT;                  \
-                                           LL_ADC_CommonInit(__LL_ADC_COMMON_INSTANCE(ADC1), &ADC_CommonInitStruct);   \
-                                        }
+#define VSENSE_ADC_SET_CLOCK()                                                  \
+  do                                                                            \
+  {                                                                             \
+    LL_ADC_CommonInitTypeDef ADC_CommonInitStruct = {0};                        \
+    ADC_CommonInitStruct.CommonClock = LL_ADC_CLOCK_SYNC_PCLK_DIV4;             \
+    ADC_CommonInitStruct.Multimode = LL_ADC_MULTI_INDEPENDENT;                  \
+    LL_ADC_CommonInit(__LL_ADC_COMMON_INSTANCE(ADC1), &ADC_CommonInitStruct);   \
+  } while(0);
 
-#define VSENSE_ADC_SET_SAMPLING_TIME()  {                                                                                           \
-                                           LL_ADC_SetChannelSamplingTime(ADC1, LL_ADC_CHANNEL_15, LL_ADC_SAMPLINGTIME_247CYCLES_5);  \
-                                         }
+#define VSENSE_ADC_SET_SAMPLING_TIME()                                                        \
+  do                                                                                          \
+  {                                                                                           \
+    LL_ADC_SetChannelSamplingTime(ADC1, LL_ADC_CHANNEL_15, LL_ADC_SAMPLINGTIME_247CYCLES_5);  \
+  } while(0);
 #elif defined(USE_STM32G0XX_NUCLEO)
-#define VSENSE_ADC_SET_CHANNEL()       {                                                                                            \
-                                         LL_ADC_REG_SetSequencerChannels(VSENSE_ADC_INSTANCE, LL_ADC_CHANNEL_9);                  \
-                                       }
+#define VSENSE_ADC_SET_CHANNEL()                                                              \
+  do                                                                                          \
+  {                                                                                           \
+    LL_ADC_REG_SetSequencerChannels(VSENSE_ADC_INSTANCE, LL_ADC_CHANNEL_9);                   \
+  } while(0);
 
 
-#define VSENSE_ADC_SET_CLOCK()         {                                                                              \
-                                         LL_ADC_SetClock(VSENSE_ADC_INSTANCE, LL_ADC_CLOCK_SYNC_PCLK_DIV4);          \
-                                       }
+#define VSENSE_ADC_SET_CLOCK()                                                   \
+  do                                                                             \
+  {                                                                              \
+    LL_ADC_SetClock(VSENSE_ADC_INSTANCE, LL_ADC_CLOCK_SYNC_PCLK_DIV4);           \
+  } while(0);
 
-#define VSENSE_ADC_SET_SAMPLING_TIME()  {                                                                                                                   \
-                                            LL_ADC_SetChannelSamplingTime(VSENSE_ADC_INSTANCE, LL_ADC_CHANNEL_9, LL_ADC_SAMPLINGTIME_COMMON_1);           \
-                                            LL_ADC_SetChannelSamplingTime(VSENSE_ADC_INSTANCE, LL_ADC_CHANNEL_VREFINT, LL_ADC_SAMPLINGTIME_COMMON_2);       \
-                                        }
+#define VSENSE_ADC_SET_SAMPLING_TIME()                                                                            \
+  do                                                                                                              \
+  {                                                                                                               \
+    LL_ADC_SetChannelSamplingTime(VSENSE_ADC_INSTANCE, LL_ADC_CHANNEL_9, LL_ADC_SAMPLINGTIME_COMMON_1);           \
+    LL_ADC_SetChannelSamplingTime(VSENSE_ADC_INSTANCE, LL_ADC_CHANNEL_VREFINT, LL_ADC_SAMPLINGTIME_COMMON_2);     \
+  } while(0);
 #else
 #error "missing value definition for your your board"
-#endif
+#endif /* USE_STM32G4XX_NUCLEO */
 
 /* USER CODE END POWER_Private_Constants */
 /**
@@ -289,7 +301,7 @@ int32_t BSP_USBPD_PWR_VBUSDeInit(uint32_t Instance)
     LL_AHB2_GRP1_DisableClock(LL_AHB2_GRP1_PERIPH_ADC12);
 #else
 #error "missing value definition for your your board"
-#endif
+#endif /* USE_STM32G0XX_NUCLEO */
 
   }
   return ret;
@@ -319,7 +331,9 @@ int32_t BSP_USBPD_PWR_VBUSGetVoltage(uint32_t Instance, uint32_t *pVoltage)
   else
   {
     uint32_t val;
-    val = __LL_ADC_CALC_DATA_TO_VOLTAGE(VDDA_APPLI, LL_ADC_REG_ReadConversionData12(ADC1), LL_ADC_RESOLUTION_12B); /* mV */
+    val = __LL_ADC_CALC_DATA_TO_VOLTAGE(VDDA_APPLI,
+                                        LL_ADC_REG_ReadConversionData12(ADC1),
+                                        LL_ADC_RESOLUTION_12B); /* mV */
     /* X-NUCLEO-USBPDM board is used */
     /* Value is multiplied by 5.97 (Divider R6/R7 (40.2K/200K) for VSENSE) */
     val *= 597;
@@ -420,7 +434,7 @@ int32_t BSP_USBPD_PWR_VCCSetState(uint32_t Instance, uint32_t State)
       LL_GPIO_ResetOutputPin(GPIOB, LL_GPIO_PIN_6);
 #else
 #error "missing value definition for your your board"
-#endif
+#endif /* USE_STM32G4XX_NUCLEO */
     }
     else
     {
@@ -432,7 +446,7 @@ int32_t BSP_USBPD_PWR_VCCSetState(uint32_t Instance, uint32_t State)
       LL_GPIO_SetOutputPin(GPIOB, LL_GPIO_PIN_6);
 #else
 #error "missing value definition for your your board"
-#endif
+#endif /* USE_STM32G4XX_NUCLEO */
     }
   }
   return ret;
@@ -480,7 +494,7 @@ int32_t BSP_USBPD_PWR_VCCSetState(uint32_t Instance, uint32_t State)
   */
 static void PWR_Configure_ADC(void)
 {
-  /*## Configuration of GPIO used by ADC channels ############################*/
+  /* Configuration of GPIO used by ADC channels ----------------------------------*/
   uint32_t wait_loop_index;
 
   /* Enable GPIO Clock */
@@ -490,7 +504,7 @@ static void PWR_Configure_ADC(void)
   LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOB);
 #else
 #error "missing value definition for your your board"
-#endif
+#endif /* USE_STM32G4XX_NUCLEO */
 
   /* Configure GPIO in analog mode to be used as ADC input */
 #if defined(USE_STM32G4XX_NUCLEO)
@@ -499,11 +513,11 @@ static void PWR_Configure_ADC(void)
   LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_1, LL_GPIO_MODE_ANALOG);
 #else
 #error "missing value definition for your your board"
-#endif
+#endif /* USE_STM32G4XX_NUCLEO */
 
-  /*## Configuration of ADC ##################################################*/
+  /* Configuration of ADC --------------------------------------------------------*/
 
-  /*## Configuration of ADC hierarchical scope: common to several ADC ########*/
+  /* Configuration of ADC hierarchical scope: common to several ADC --------------*/
 
   /* Enable ADC clock (core clock) */
 #if defined(USE_STM32G4XX_NUCLEO)
@@ -512,11 +526,11 @@ static void PWR_Configure_ADC(void)
   LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_ADC);
 #else
 #error "missing value definition for your your board"
-#endif
+#endif /* USE_STM32G4XX_NUCLEO */
 
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 series, setting of these features is conditioned to   */
+  /*       On this STM32 series, setting of these features is conditioned to  */
   /*       ADC state:                                                         */
   /*       All ADC instances of the ADC common group must be disabled.        */
   /* Note: In this example, all these checks are not necessary but are        */
@@ -529,14 +543,14 @@ static void PWR_Configure_ADC(void)
   if (__LL_ADC_IS_ENABLED_ALL_COMMON_INSTANCE(ADC12_COMMON) == 0)
 #else
   if (__LL_ADC_IS_ENABLED_ALL_COMMON_INSTANCE() == 0)
-#endif /*STM32G474xx */
+#endif /* USE_STM32G4XX_NUCLEO */
   {
     /* Note: Call of the functions below are commented because they are       */
     /*       useless in this example:                                         */
     /*       setting corresponding to default configuration from reset state. */
 
     /* Set ADC clock (conversion clock) common to several ADC instances */
-    /* Note: On this STM32 series, ADC common clock asynchronous prescaler      */
+    /* Note: On this STM32 series, ADC common clock asynchronous prescaler    */
     /*       is applied to each ADC instance if ADC instance clock is         */
     /*       set to clock source asynchronous                                 */
     /*       (refer to function "LL_ADC_SetClock()" below).                   */
@@ -544,22 +558,24 @@ static void PWR_Configure_ADC(void)
     /* Set ADC measurement path to internal channels */
     LL_ADC_SetCommonPathInternalCh(__LL_ADC_COMMON_INSTANCE(VSENSE_ADC_INSTANCE), LL_ADC_PATH_INTERNAL_VREFINT);
 
-    /*## Configuration of ADC sampling time ####################*/
+    /* Configuration of ADC sampling time ------------------------------------*/
 #if defined(USE_STM32G0XX_NUCLEO)
-    LL_ADC_SetSamplingTimeCommonChannels(VSENSE_ADC_INSTANCE, LL_ADC_SAMPLINGTIME_COMMON_1, LL_ADC_SAMPLINGTIME_160CYCLES_5);
-    LL_ADC_SetSamplingTimeCommonChannels(VSENSE_ADC_INSTANCE, LL_ADC_SAMPLINGTIME_COMMON_2, LL_ADC_SAMPLINGTIME_160CYCLES_5);
-#endif
+    LL_ADC_SetSamplingTimeCommonChannels(VSENSE_ADC_INSTANCE, LL_ADC_SAMPLINGTIME_COMMON_1,
+                                         LL_ADC_SAMPLINGTIME_160CYCLES_5);
+    LL_ADC_SetSamplingTimeCommonChannels(VSENSE_ADC_INSTANCE, LL_ADC_SAMPLINGTIME_COMMON_2,
+                                         LL_ADC_SAMPLINGTIME_160CYCLES_5);
+#endif /* USE_STM32G0XX_NUCLEO */
 
-    /*## Configuration of ADC hierarchical scope: multimode ####################*/
+    /* Configuration of ADC hierarchical scope: multimode --------------------*/
 
     /* Note: Feature not available on this STM32 series */
   }
 
-  /*## Configuration of ADC hierarchical scope: ADC instance #################*/
+  /* Configuration of ADC hierarchical scope: ADC instance -------------------*/
 
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 series, setting of these features is conditioned to   */
+  /*       On this STM32 series, setting of these features is conditioned to  */
   /*       ADC state:                                                         */
   /*       ADC must be disabled.                                              */
   if (0u == LL_ADC_IsEnabled(VSENSE_ADC_INSTANCE))
@@ -572,7 +588,7 @@ static void PWR_Configure_ADC(void)
     VSENSE_ADC_SET_CLOCK();
 
     /* Set ADC channels sampling time */
-    /* Note: On this STM32 series, sampling time is common to all channels     */
+    /* Note: On this STM32 series, sampling time is common to all channels    */
     /*       of the entire ADC instance.                                      */
     /*       Therefore, sampling time is configured here under ADC instance   */
     /*       scope (not under channel scope as on some other STM32 devices    */
@@ -596,7 +612,7 @@ static void PWR_Configure_ADC(void)
     }
 
     /* Set ADC channels sampling time */
-    /* Note: On this STM32 series, sampling time is common to groups           */
+    /* Note: On this STM32 series, sampling time is common to groups          */
     /*       of severals channels within ADC instance.                        */
     /*       Therefore, groups of sampling sampling times are configured      */
     /*       here under ADC instance scope.                                   */
@@ -605,11 +621,11 @@ static void PWR_Configure_ADC(void)
     VSENSE_ADC_SET_SAMPLING_TIME();
   }
 
-  /*## Configuration of ADC hierarchical scope: ADC group regular ############*/
+  /* Configuration of ADC hierarchical scope: ADC group regular --------------*/
 
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 series, setting of these features is conditioned to   */
+  /*       On this STM32 series, setting of these features is conditioned to  */
   /*       ADC state:                                                         */
   /*       ADC must be disabled or enabled without conversion on going        */
   /*       on group regular.                                                  */
@@ -627,7 +643,7 @@ static void PWR_Configure_ADC(void)
     LL_ADC_REG_SetOverrun(VSENSE_ADC_INSTANCE, LL_ADC_REG_OVR_DATA_OVERWRITTEN);
 
     /* Set ADC group regular sequencer */
-    /* Note: On this STM32 series, ADC group regular sequencer has             */
+    /* Note: On this STM32 series, ADC group regular sequencer has            */
     /*       two settings:                                                    */
     /*       - Sequencer configured to fully configurable:                    */
     /*         sequencer length and each rank                                 */
@@ -643,22 +659,22 @@ static void PWR_Configure_ADC(void)
 #if !defined(USE_STM32G4XX_NUCLEO)
     /* Clear flag ADC channel configuration ready */
     LL_ADC_ClearFlag_CCRDY(VSENSE_ADC_INSTANCE);
-#endif /* STM32G474xx */
+#endif /* USE_STM32G4XX_NUCLEO */
 
     /* Set ADC group regular sequence: channel on rank corresponding to       */
     /* channel number.                                                        */
     VSENSE_ADC_SET_CHANNEL();
   }
 
-  /*## Configuration of ADC hierarchical scope: ADC group injected ###########*/
+  /* Configuration of ADC hierarchical scope: ADC group injected -------------*/
 
-  /* Note: Feature not available on this STM32 series */
+  /* Note: Feature not available on this STM32 series                         */
 
-  /*## Configuration of ADC hierarchical scope: channels #####################*/
+  /* Configuration of ADC hierarchical scope: channels -----------------------*/
 
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 series, setting of these features is conditioned to   */
+  /*       On this STM32 series, setting of these features is conditioned to  */
   /*       ADC state:                                                         */
   /*       ADC must be disabled or enabled without conversion on going        */
   /*       on either groups regular or injected.                              */
@@ -670,9 +686,9 @@ static void PWR_Configure_ADC(void)
     VSENSE_ADC_SET_SAMPLING_TIME();
   }
 
-  /*## Configuration of ADC transversal scope: analog watchdog ###############*/
+  /* Configuration of ADC transversal scope: analog watchdog -----------------*/
 
-  /* Note: On this STM32 series, there is only 1 analog watchdog available.    */
+  /* Note: On this STM32 series, there is only 1 analog watchdog available.   */
 
   /* Set ADC analog watchdog: channels to be monitored */
   LL_ADC_SetAnalogWDMonitChannels(VSENSE_ADC_INSTANCE, LL_ADC_AWD1, LL_ADC_AWD_ALL_CHANNELS_REG);
@@ -680,7 +696,7 @@ static void PWR_Configure_ADC(void)
   /* Set ADC analog watchdog: thresholds */
   LL_ADC_ConfigAnalogWDThresholds(VSENSE_ADC_INSTANCE, LL_ADC_AWD1, 700, 600);
 
-  /*## Configuration of ADC transversal scope: oversampling ##################*/
+  /* Configuration of ADC transversal scope: oversampling --------------------*/
 
   /* Set ADC oversampling scope */
   LL_ADC_SetOverSamplingScope(VSENSE_ADC_INSTANCE, LL_ADC_OVS_GRP_REGULAR_CONTINUED);
@@ -688,7 +704,7 @@ static void PWR_Configure_ADC(void)
   /* Set ADC oversampling parameters */
   LL_ADC_ConfigOverSamplingRatioShift(VSENSE_ADC_INSTANCE, LL_ADC_OVS_RATIO_16, LL_ADC_OVS_SHIFT_RIGHT_4);
 
-  /*## Configuration of ADC interruptions ####################################*/
+  /* Configuration of ADC interruptions --------------------------------------*/
   /* Enable ADC analog watchdog 1 interruption */
 }
 
@@ -712,13 +728,13 @@ static void PWR_Activate_ADC(void)
   __IO uint32_t backup_setting_adc_dma_transfer;
 #if (USE_TIMEOUT == 1)
   uint32_t Timeout = 0; /* Variable used for timeout management */
-#endif /* USE_TIMEOUT */
+#endif /* USE_TIMEOUT == 1 */
 
-  /*## Operation on ADC hierarchical scope: ADC instance #####################*/
+  /* Operation on ADC hierarchical scope: ADC instance -----------------------*/
 
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 series, setting of these features is conditioned to   */
+  /*       On this STM32 series, setting of these features is conditioned to  */
   /*       ADC state:                                                         */
   /*       ADC must be disabled.                                              */
   /* Note: In this example, all these checks are not necessary but are        */
@@ -731,7 +747,7 @@ static void PWR_Activate_ADC(void)
   {
 #if defined(STM32G474xx)
     LL_ADC_DisableDeepPowerDown(VSENSE_ADC_INSTANCE);
-#endif
+#endif /* STM32G474xx */
     /* Enable ADC internal voltage regulator */
     LL_ADC_EnableInternalRegulator(VSENSE_ADC_INSTANCE);
 
@@ -748,8 +764,8 @@ static void PWR_Activate_ADC(void)
     }
 
     /* Disable ADC DMA transfer request during calibration */
-    /* Note: Specificity of this STM32 series: Calibration factor is           */
-    /*       available in data register and also transferred by DMA.           */
+    /* Note: Specificity of this STM32 series: Calibration factor is          */
+    /*       available in data register and also transferred by DMA.          */
     /*       To not insert ADC calibration factor among ADC conversion data   */
     /*       in DMA destination address, DMA transfer must be disabled during */
     /*       calibration.                                                     */
@@ -764,7 +780,7 @@ static void PWR_Activate_ADC(void)
     /* Poll for ADC effectively calibrated */
 #if (USE_TIMEOUT == 1)
     Timeout = ADC_CALIBRATION_TIMEOUT_MS;
-#endif /* USE_TIMEOUT */
+#endif /* USE_TIMEOUT == 1 */
 
     while (0u != LL_ADC_IsCalibrationOnGoing(VSENSE_ADC_INSTANCE))
     {
@@ -778,7 +794,7 @@ static void PWR_Activate_ADC(void)
           LED_Blinking(LED_BLINK_ERROR);
         }
       }
-#endif /* USE_TIMEOUT */
+#endif /* USE_TIMEOUT == 1 */
     }
 
     /* Restore ADC DMA transfer request after calibration */
@@ -799,7 +815,7 @@ static void PWR_Activate_ADC(void)
     /* Poll for ADC ready to convert */
 #if (USE_TIMEOUT == 1)
     Timeout = ADC_ENABLE_TIMEOUT_MS;
-#endif /* USE_TIMEOUT */
+#endif /* USE_TIMEOUT == 1 */
 
     while (0u == LL_ADC_IsActiveFlag_ADRDY(VSENSE_ADC_INSTANCE))
     {
@@ -813,7 +829,7 @@ static void PWR_Activate_ADC(void)
           LED_Blinking(LED_BLINK_ERROR);
         }
       }
-#endif /* USE_TIMEOUT */
+#endif /* USE_TIMEOUT == 1 */
     }
 
     /* Note: ADC flag ADRDY is not cleared here to be able to check ADC       */
@@ -822,13 +838,13 @@ static void PWR_Activate_ADC(void)
     /*       ADC activation, using function "LL_ADC_ClearFlag_ADRDY()".       */
   }
 
-  /*## Operation on ADC hierarchical scope: ADC group regular ################*/
+  /* Operation on ADC hierarchical scope: ADC group regular ------------------*/
   /* Note: No operation on ADC group regular performed here.                  */
   /*       ADC group regular conversions to be performed after this function  */
   /*       using function:                                                    */
   /*       "LL_ADC_REG_StartConversion();"                                    */
 
-  /*## Operation on ADC hierarchical scope: ADC group injected ###############*/
+  /* Operation on ADC hierarchical scope: ADC group injected -----------------*/
   /* Note: Feature not available on this STM32 series */
 }
 
@@ -852,7 +868,7 @@ static void PWR_VCCInit(uint32_t Instance)
   LL_GPIO_SetOutputPin(GPIOC, LL_GPIO_PIN_10);
 #else
 #error "missing value definition for your your board"
-#endif
+#endif /* USE_STM32G4XX_NUCLEO */
 }
 
 /**
@@ -870,7 +886,7 @@ static void PWR_VCCDeInit(uint32_t Instance)
   LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOC);
 #else
 #error "missing value definition for your your board"
-#endif
+#endif /* USE_STM32G4XX_NUCLEO */
 }
 
 
@@ -894,7 +910,7 @@ static void PWR_DB_OUTInit(uint32_t Instance)
   LL_GPIO_SetOutputPin(GPIOB, LL_GPIO_PIN_6);
 #else
 #error "missing value definition for your your board"
-#endif
+#endif /* USE_STM32G4XX_NUCLEO */
 }
 
 

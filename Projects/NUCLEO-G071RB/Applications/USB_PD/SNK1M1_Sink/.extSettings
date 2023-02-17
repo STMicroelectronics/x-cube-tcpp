@@ -4,6 +4,6 @@ HeaderPath=..\..\..\..\..\..\Drivers\BSP\STM32G0xx_Nucleo
 Define=
 HALModule=
 [Groups]
-Doc=../readme.txt;
+Doc=../README.md;
 Application/User=../Src/usbpd_user_services.c
 Drivers/BSP/STM32G0xx_Nucleo=../../../../../../Drivers/BSP/STM32G0xx_Nucleo/stm32g0xx_nucleo.c;

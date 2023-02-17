@@ -28,11 +28,13 @@
 </center>
 <h1 id="purpose">Purpose</h1>
 <p><strong>X-CUBE-TCPP</strong> is an STMicroelectronics original initiative. It uses for USB Type-C and Power Delivery software expansion for STM32Cube (<a href="https://www.st.com/resource/en/user_manual/dm00432311-development-guidelines-for-stm32cube-expansion-packages-stmicroelectronics.pdf">UM2285</a>).</p>
-<p><strong>X-CUBE-TCPP</strong> is a USB-IF certified Expansion Package (<strong>USB Type-C Rev 1.2 and Power Delivery 3.0 with 100 W PPS support</strong>) and consists of libraries, drivers, sources, APIs and application examples running on STM32 Series GP microcontrollers embedding Type-C and power delivery management (thanks to the embedded UCPD PHY integrated in STM32G4, STM32G0, STM32L5 or STM32U5).</p>
+<p><strong>X-CUBE-TCPP</strong> is a USB-IF certified Expansion Package (<strong>USB Type-C Rev 2.0 and Power Delivery 3.1</strong>) and consists of libraries, drivers, sources, APIs and application examples running on STM32 Series GP microcontrollers embedding Type-C and power delivery management (thanks to the embedded UCPD PHY integrated in STM32G4, STM32G0, STM32L5 and STM32U5).</p>
 <p>For the other STM32 GP MCU without embedded UCPD PHY (like STM32L4, STM32F0…), this package demonstrates how to comply with Type-C specification.</p>
-<p>All the applications available in this package need to have either the <a href="https://www.st.com/en/protection-devices/tcpp01-m12.html">TCPP01-M12</a> <a href="https://www.st.com/en/protection-devices/tcpp02-m18.html">TCPP02-M18</a> or the <a href="https://www.st.com/en/protection-devices/tcpp03-m20.html">TCPP03-M20</a> integrated.</p>
-<p>The TCPP01-M12 (Type-C port protection) is a single chip solution for USB Type-C port protection that facilitates the migration from USB legacy connectors type-A or type-B to USB Type-C connectors. The TCPP02-M18 (Type-C port protection) is a single chip solution for USB Type-C port protection in the context of Source applications. The TCPP03-M20 (Type-C port protection) is a single chip solution for USB Type-C port protection in the context of Dual Role Power applications.</p>
-<p>STMicroelectronics package has been certified by USB-IF through the reference <a href="https://cms.usb.org/usb/cms/device/40004">TID 3036</a> and <a href="https://cms.usb.org/usb_device/certificate/42552">TID 5205</a>.</p>
+<p>All the applications available in this package need to have either the <a href="https://www.st.com/en/protection-devices/tcpp01-m12.html">TCPP01-M12</a>, the <a href="https://www.st.com/en/protection-devices/tcpp02-m18.html">TCPP02-M18</a> or the <a href="https://www.st.com/en/protection-devices/tcpp03-m20.html">TCPP03-M20</a> integrated.</p>
+<p>The <a href="https://www.st.com/en/protection-devices/tcpp01-m12.html">TCPP01-M12</a> (Type-C port protection) is a single chip solution for USB Type-C port protection that facilitates the migration from USB legacy connectors type-A or type-B to USB Type-C connectors.</p>
+<p>The <a href="https://www.st.com/en/protection-devices/tcpp02-m18.html">TCPP02-M18</a> (Type-C port protection) is a single chip solution for USB Type-C port protection in the context of Source applications.</p>
+<p>The <a href="https://www.st.com/en/protection-devices/tcpp03-m20.html">TCPP03-M20</a> (Type-C port protection) is a single chip solution for USB Type-C port protection in the context of Dual Role Power applications.</p>
+<p><strong>STMicroelectronics package has been certified by USB-IF through the reference <a href="https://cms.usb.org/usb/cms/device/42552">TID 5205</a>, <a href="https://cms.usb.org/usb/cms/device/43767">TID 6408</a>, <a href="https://cms.usb.org/usb/cms/device/40004">TID 3036</a>, <a href="https://cms.usb.org/usb/cms/device/45433">TID 7884</a> and <a href="https://cms.usb.org/usb/cms/device/45710">TID 8088</a>.</strong></p>
 <p>Check the ST web page : <a href="https://www.st.com/content/st_com/en/stm32-usb-c.html">USB Type-C and Power Delivery</a> for more details.</p>
 <p>The figure below shows the overall architecture:</p>
 <p><img src="../_htmresc/archi_stack_G0.JPG" /></p>
@@ -41,8 +43,9 @@
 <ul>
 <li><a href="https://www.st.com/resource/en/application_note/dm00536349-usb-typec-power-delivery-using-stm32xx-series-mcus-and-stm32xxx-series-mpus-stmicroelectronics.pdf">AN5225</a>: USB Type-C™ Power Delivery using STM32xx Series MCUs and STM32xxx Series MPUs</li>
 <li><a href="https://www.st.com/resource/en/user_manual/dm00598101-managing-usb-power-delivery-systems-with-stm32-microcontrollers-stmicroelectronics.pdf">UM2552</a>: Managing USB power delivery stack with STM32 microcontrollers</li>
-<li><a href="https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:STM32_Advance_USB-Power_Delivery_Sink">Wiki USB-PD Sink</a>: Wiki to create a simple sink application from STM32CubeMX</li>
-<li><a href="https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:STM32_Advance_USB-Power_Delivery_Source">Wiki USB-PD Source</a>: Wiki to create a simple source application from STM32CubeMX.</li>
+<li><a href="https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_USB-Power_Delivery_Sink">Wiki USB-PD Sink</a>: Wiki to create a simple sink application from STM32CubeMX</li>
+<li><a href="https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_USB-Power_Delivery_Source">Wiki USB-PD Source</a>: Wiki to create a simple source application from STM32CubeMX.</li>
+<li><a href="https://wiki.st.com/stm32mcu/wiki/STM32StepByStep:Getting_started_with_USB_Type-C_only_Source">Wiki Type-C only Source</a>: Wiki to create a simple source application from STM32CubeMX.</li>
 <li><a href="https://www.st.com/resource/en/application_note/dm00663511-how-to-build-a-simple-usbpd-sink-application-with-stm32cubemx-stmicroelectronics.pdf">AN5418</a>: An application to create a simple application from STM32CubeMX</li>
 <li><a href="https://www.youtube.com/watch?v=-vsJhNIaHxE&amp;feature=youtu.be">AN5418-Video</a>: An application to create a simple application from STM32CubeMX</li>
 </ul>
@@ -50,11 +53,32 @@
 <div class="col-sm-12 col-lg-8">
 <h2 id="update-history"><strong>Update History</strong></h2>
 <div class="collapse">
-<input type="checkbox" id="collapse-section2" checked aria-hidden="true"> <label for="collapse-section2" aria-hidden="true"><strong>v3.3.1/ 7-June-2022</strong></label>
+<input type="checkbox" id="collapse-section5" checked aria-hidden="true"> <label for="collapse-section5" aria-hidden="true"><strong>v4.0.0/ 27-Jan-2023</strong></label>
 <div>
 <h2 id="main-changes">Main changes</h2>
 <h3 id="maintenance-release">Maintenance release</h3>
-<p>Fix BMC-PHY-TX-EYE test on MQP tester.</p>
+<p>Maintenance release and product update</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Update existing components to their latest versions</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rename obsolete “X-NUCLEO-USBPDM1” related applications to recommended compatible board “X-NUCLEO-SNK1M1”</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Remove deprecated applications</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Update STM32CubeMX applications</td>
+</tr>
+</tbody>
+</table>
 <h2 id="contents">Contents</h2>
 <h3 id="projects"><strong>Projects</strong></h3>
 <h2 id="applications">Applications</h2>
@@ -75,76 +99,64 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="./Projects/NUCLEO-G071RB/Applications/USB_PD/USBPDM1_Sink_PPS">USBPDM1_Sink_PPS</a></td>
-<td>NUCLEO-G071RB</td>
-<td>X-NUCLEO-USBPDM1</td>
-<td>Use of USB Power Delivery (USB-PD) Consumer application (with PPS) running on STM32G0XX devices, with X-NUCLEO-USBPDM1 shield plugged.</td>
-</tr>
-<tr class="even">
-<td><a href="./Projects/NUCLEO-G071RB/Applications/USB_PD/USBPDM1_Sink_LPM">USBPDM1_Sink_LPM</a></td>
-<td>NUCLEO-G071RB</td>
-<td>X-NUCLEO-USBPDM1</td>
-<td>Use of USB Power Delivery (USB-PD) Consumer application (with Low Power Mode) running on STM32G0XX devices, with X-NUCLEO-USBPDM1 shield plugged.</td>
-</tr>
-<tr class="odd">
-<td><a href="./Projects/NUCLEO-G474RE/Applications/USB_PD/USBPDM1_Sink"><strong>USBPDM1_Sink</strong></a></td>
-<td><strong>NUCLEO-G474RE</strong></td>
-<td><strong>X-NUCLEO-USBPDM1</strong></td>
-<td><strong>Use of USB Power Delivery (USB-PD) Consumer application running on STM32G4XX devices, with X-NUCLEO-USBPDM1 shield plugged.</strong></td>
-</tr>
-<tr class="even">
-<td><a href="./Projects/NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink"><strong>SNK1M1_Sink</strong></a></td>
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink"><strong>SNK1M1_Sink</strong></a></td>
 <td><strong>NUCLEO-G071RB</strong></td>
 <td><strong>X-NUCLEO-SNK1M1</strong></td>
-<td><strong>Use of USB Power Delivery (USB-PD) Consumer application (with PPS) running on STM32G0XX devices, with X-NUCLEO-SNK1M1 shield plugged.</strong></td>
-</tr>
-<tr class="odd">
-<td><a href="./Projects/NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink"><strong>SNK1M1_Sink</strong></a></td>
-<td><strong>NUCLEO-G474RE</strong></td>
-<td><strong>X-NUCLEO-SNK1M1</strong></td>
-<td><strong>Use of USB Power Delivery (USB-PD) Consumer application (with PPS and USB MSC cohabitation) running on STM32G4XX devices, with X-NUCLEO-SNK1M1 shield plugged.</strong></td>
+<td><strong>Use of USB Power Delivery (USB-PD) Consumer application running on STM32G0XX devices, with X-NUCLEO-SNK1M1 shield plugged.</strong></td>
 </tr>
 <tr class="even">
-<td><a href="./Projects/NUCLEO-L412RB-P/Applications/USB_PD/SNK1M1_Sink_TypeC_Only">SNK1M1_Sink_TypeC_Only</a></td>
-<td>NUCLEO-L412RB-P</td>
-<td>X-NUCLEO-SNK1M1</td>
-<td>Use of Type-C Consumer application (with USB MSC enumeration) running on STM32L4XX devices, with X-NUCLEO-SNK1M1 shield plugged.</td>
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink_PPS"><strong>SNK1M1_Sink_PPS</strong></a></td>
+<td><strong>NUCLEO-G071RB</strong></td>
+<td><strong>X-NUCLEO-SNK1M1</strong></td>
+<td><strong>Use of USB Power Delivery (USB-PD) Consumer application (with </strong>PPS<strong>) running on STM32G0XX devices, with X-NUCLEO-SNK1M1 shield plugged.</strong></td>
 </tr>
 <tr class="odd">
-<td><a href="./Projects/NUCLEO-F446RE/Applications/USB_PD/SRC1M1_Source_TypeC_Only">SRC1M1_Source_TypeC_Only</a></td>
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink_LPM"><strong>SNK1M1_Sink_LPM</strong></a></td>
+<td><strong>NUCLEO-G071RB</strong></td>
+<td><strong>X-NUCLEO-SNK1M1</strong></td>
+<td><strong>Use of USB Power Delivery (USB-PD) Consumer application (with </strong>Low Power Mode<strong>) running on STM32G0XX devices, with X-NUCLEO-SNK1M1 shield plugged.</strong></td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink"><strong>SNK1M1_Sink</strong></a></td>
+<td><strong>NUCLEO-G474RE</strong></td>
+<td><strong>X-NUCLEO-SNK1M1</strong></td>
+<td><strong>Use of USB Power Delivery (USB-PD) Consumer application (with </strong>PPS** and <strong>USB MSC</strong> cohabitation) running on STM32G4XX devices, with X-NUCLEO-SNK1M1 shield plugged.**</td>
+</tr>
+<tr class="odd">
+<td><a href="./NUCLEO-L412RB-P/Applications/USB_PD/SNK1M1_Sink_TypeC_Only">SNK1M1_Sink_TypeC_Only</a></td>
+<td>NUCLEO-L412RB-P</td>
+<td>X-NUCLEO-SNK1M1</td>
+<td>Use of Type-C Consumer application (with <strong>USB MSC</strong> enumeration) running on STM32L4XX devices, with X-NUCLEO-SNK1M1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-F446RE/Applications/USB_PD/SRC1M1_Source_TypeC_Only">SRC1M1_Source_TypeC_Only</a></td>
 <td>NUCLEO-F446RE</td>
 <td>X-NUCLEO-SRC1M1</td>
 <td>Use of Type-C Source application running on STM32F4XX devices, with X-NUCLEO-SRC1M1 shield plugged.</td>
 </tr>
-<tr class="even">
-<td><a href="./Projects/NUCLEO-G071RB/Applications/USB_PD/DRP1M1_DRP">DRP1M1_DRP</a></td>
+<tr class="odd">
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/DRP1M1_DRP">DRP1M1_DRP</a></td>
 <td>NUCLEO-G071RB</td>
 <td>X-NUCLEO-DRP1M1</td>
 <td>Use of USB Power Delivery (USB-PD) DRP application running on STM32G0XX devices, with X-NUCLEO-DRP1M1 shield plugged.</td>
 </tr>
-<tr class="odd">
-<td><a href="./Projects/NUCLEO-G071RB/Applications/USB_PD/DRP1M1_Sink_PPS">DRP1M1_Sink_PPS</a></td>
-<td>NUCLEO-G071RB</td>
-<td>X-NUCLEO-DRP1M1</td>
-<td>Use of USB Power Delivery (USB-PD) Consumer application (with PPS) running on STM32G0XX devices, with X-NUCLEO-DRP1M1 shield plugged.</td>
-</tr>
 <tr class="even">
-<td><a href="./Projects/NUCLEO-G474RE/Applications/USB_PD/DRP1M1_DRP">DRP1M1_DRP</a></td>
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/DRP1M1_DRP">DRP1M1_DRP</a></td>
 <td>NUCLEO-G474RE</td>
 <td>X-NUCLEO-DRP1M1</td>
 <td>Use of USB Power Delivery (USB-PD) DRP application running on STM32G4XX devices, with X-NUCLEO-DRP1M1 shield plugged.</td>
 </tr>
 <tr class="odd">
-<td><a href="./Projects/NUCLEO-G071RB/Applications/USB_PD/SRC1M1_Source">SRC1M1_Source</a></td>
-<td>NUCLEO-G071RB</td>
-<td>X-NUCLEO-SRC1M1</td>
-<td>Use of USB Power Delivery (USB-PD) Source application running on STM32G0XX devices, with X-NUCLEO-SRC1M1 shield plugged.</td>
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SRC1M1_Source"><strong>SRC1M1_Source</strong></a></td>
+<td><strong>NUCLEO-G071RB</strong></td>
+<td><strong>X-NUCLEO-SRC1M1</strong></td>
+<td><strong>Use of USB Power Delivery (USB-PD) Source application running on STM32G0XX devices, with X-NUCLEO-SRC1M1 shield plugged.</strong></td>
 </tr>
 <tr class="even">
-<td><a href="./Projects/NUCLEO-G474RE/Applications/USB_PD/SRC1M1_Source">SRC1M1_Source</a></td>
-<td>NUCLEO-G474RE</td>
-<td>X-NUCLEO-DRP1M1</td>
-<td>Use of USB Power Delivery (USB-PD) Source application running on STM32G4XX devices, with X-NUCLEO-SRC1M1 shield plugged.</td>
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/SRC1M1_Source"><strong>SRC1M1_Source</strong></a></td>
+<td><strong>NUCLEO-G474RE</strong></td>
+<td><strong>X-NUCLEO-DRP1M1</strong></td>
+<td><strong>Use of USB Power Delivery (USB-PD) Source application running on STM32G4XX devices, with X-NUCLEO-SRC1M1 shield plugged.</strong></td>
 </tr>
 </tbody>
 </table>
@@ -158,8 +170,7 @@
 <h2 id="supported-devices-and-boards">Supported Devices and boards</h2>
 <ul>
 <li><a href="https://www.st.com/en/evaluation-tools/nucleo-g071rb.html">NUCLEO-G071RB</a>, <a href="https://www.st.com/en/evaluation-tools/nucleo-g474re.html">NUCLEO-G474RE</a>, <a href="https://www.st.com/en/evaluation-tools/nucleo-f446re.html">NUCLEO-F446RE</a> and <a href="https://www.st.com/en/evaluation-tools/nucleo-l412rb-p.html">NUCLEO-L412RB-P</a></li>
-<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-power-drive-hw/x-nucleo-usbpdm1.html">X-NUCLEO-USBPDM1</a></li>
-<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-power-drive-hw/x-nucleo-snk1m1.html">X-NUCLEO-SNK1M1</a></li>
+<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-power-drive-hw/x-nucleo-snk1m1.html">X-NUCLEO-SNK1M1</a> (Recommended replacement product of the X-NUCLEO-USBPDM1)</li>
 <li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-connect-hw/x-nucleo-src1m1.html">X-NUCLEO-SRC1M1</a></li>
 <li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-connect-hw/x-nucleo-drp1m1.html">X-NUCLEO-DRP1M1</a></li>
 </ul>
@@ -181,12 +192,23 @@
 </div>
 </div>
 <div class="collapse">
-<input type="checkbox" id="collapse-section1" aria-hidden="true"> <label for="collapse-section1" aria-hidden="true"><strong>v3.3.0/ 10-May-2022</strong></label>
+<input type="checkbox" id="collapse-section4" aria-hidden="true"> <label for="collapse-section4" aria-hidden="true"><strong>v3.3.3/ 6-Dec-2022</strong></label>
 <div>
 <h2 id="main-changes-1">Main changes</h2>
 <h3 id="maintenance-release-1">Maintenance release</h3>
-<p>Addition of project highlighting use of TCPP02-M18 protection for Type-C Source applications</p>
-<p>Addition of this Release Note</p>
+<p>Maintenance release and product update</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Fix APDO handling issue in SNK applications</td>
+</tr>
+</tbody>
+</table>
 <h2 id="contents-1">Contents</h2>
 <h3 id="projects-1"><strong>Projects</strong></h3>
 <h2 id="applications-1">Applications</h2>
@@ -207,76 +229,76 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="./Projects/NUCLEO-G071RB/Applications/USB_PD/USBPDM1_Sink_PPS">USBPDM1_Sink_PPS</a></td>
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink_PPS">USBPDM1_Sink_PPS</a></td>
 <td>NUCLEO-G071RB</td>
 <td>X-NUCLEO-USBPDM1</td>
 <td>Use of USB Power Delivery (USB-PD) Consumer application (with PPS) running on STM32G0XX devices, with X-NUCLEO-USBPDM1 shield plugged.</td>
 </tr>
 <tr class="even">
-<td><a href="./Projects/NUCLEO-G071RB/Applications/USB_PD/USBPDM1_Sink_LPM">USBPDM1_Sink_LPM</a></td>
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink_LPM">USBPDM1_Sink_LPM</a></td>
 <td>NUCLEO-G071RB</td>
 <td>X-NUCLEO-USBPDM1</td>
 <td>Use of USB Power Delivery (USB-PD) Consumer application (with Low Power Mode) running on STM32G0XX devices, with X-NUCLEO-USBPDM1 shield plugged.</td>
 </tr>
 <tr class="odd">
-<td><a href="./Projects/NUCLEO-G474RE/Applications/USB_PD/USBPDM1_Sink">USBPDM1_Sink</a></td>
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink">USBPDM1_Sink</a></td>
 <td>NUCLEO-G474RE</td>
 <td>X-NUCLEO-USBPDM1</td>
 <td>Use of USB Power Delivery (USB-PD) Consumer application running on STM32G4XX devices, with X-NUCLEO-USBPDM1 shield plugged.</td>
 </tr>
 <tr class="even">
-<td><a href="./Projects/NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink">SNK1M1_Sink</a></td>
-<td>NUCLEO-G071RB</td>
-<td>X-NUCLEO-SNK1M1</td>
-<td>Use of USB Power Delivery (USB-PD) Consumer application (with PPS) running on STM32G0XX devices, with X-NUCLEO-SNK1M1 shield plugged.</td>
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink"><strong>SNK1M1_Sink</strong></a></td>
+<td><strong>NUCLEO-G071RB</strong></td>
+<td><strong>X-NUCLEO-SNK1M1</strong></td>
+<td><strong>Use of USB Power Delivery (USB-PD) Consumer application (with PPS) running on STM32G0XX devices, with X-NUCLEO-SNK1M1 shield plugged.</strong></td>
 </tr>
 <tr class="odd">
-<td><a href="./Projects/NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink">SNK1M1_Sink</a></td>
-<td>NUCLEO-G474RE</td>
-<td>X-NUCLEO-SNK1M1</td>
-<td>Use of USB Power Delivery (USB-PD) Consumer application (with PPS and USB MSC cohabitation) running on STM32G4XX devices, with X-NUCLEO-SNK1M1 shield plugged.</td>
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink"><strong>SNK1M1_Sink</strong></a></td>
+<td><strong>NUCLEO-G474RE</strong></td>
+<td><strong>X-NUCLEO-SNK1M1</strong></td>
+<td><strong>Use of USB Power Delivery (USB-PD) Consumer application (with PPS and USB MSC cohabitation) running on STM32G4XX devices, with X-NUCLEO-SNK1M1 shield plugged.</strong></td>
 </tr>
 <tr class="even">
-<td><a href="./Projects/NUCLEO-L412RB-P/Applications/USB_PD/SNK1M1_Sink_TypeC_Only">SNK1M1_Sink_TypeC_Only</a></td>
+<td><a href="./NUCLEO-L412RB-P/Applications/USB_PD/SNK1M1_Sink_TypeC_Only">SNK1M1_Sink_TypeC_Only</a></td>
 <td>NUCLEO-L412RB-P</td>
 <td>X-NUCLEO-SNK1M1</td>
 <td>Use of Type-C Consumer application (with USB MSC enumeration) running on STM32L4XX devices, with X-NUCLEO-SNK1M1 shield plugged.</td>
 </tr>
 <tr class="odd">
-<td><a href="./Projects/NUCLEO-F446RE/Applications/USB_PD/SRC1M1_Source_TypeC_Only"><strong>SRC1M1_Source_TypeC_Only</strong></a></td>
-<td><strong>NUCLEO-F446RE</strong></td>
-<td><strong>X-NUCLEO-SRC1M1</strong></td>
-<td><strong>Use of Type-C Source application running on STM32F4XX devices, with X-NUCLEO-SRC1M1 shield plugged.</strong></td>
+<td><a href="./NUCLEO-F446RE/Applications/USB_PD/SRC1M1_Source_TypeC_Only">SRC1M1_Source_TypeC_Only</a></td>
+<td>NUCLEO-F446RE</td>
+<td>X-NUCLEO-SRC1M1</td>
+<td>Use of Type-C Source application running on STM32F4XX devices, with X-NUCLEO-SRC1M1 shield plugged.</td>
 </tr>
 <tr class="even">
-<td><a href="./Projects/NUCLEO-G071RB/Applications/USB_PD/DRP1M1_DRP">DRP1M1_DRP</a></td>
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/DRP1M1_DRP">DRP1M1_DRP</a></td>
 <td>NUCLEO-G071RB</td>
 <td>X-NUCLEO-DRP1M1</td>
 <td>Use of USB Power Delivery (USB-PD) DRP application running on STM32G0XX devices, with X-NUCLEO-DRP1M1 shield plugged.</td>
 </tr>
 <tr class="odd">
-<td><a href="./Projects/NUCLEO-G071RB/Applications/USB_PD/DRP1M1_Sink_PPS">DRP1M1_Sink_PPS</a></td>
+<td>DRP1M1_Sink_PPS</td>
 <td>NUCLEO-G071RB</td>
 <td>X-NUCLEO-DRP1M1</td>
 <td>Use of USB Power Delivery (USB-PD) Consumer application (with PPS) running on STM32G0XX devices, with X-NUCLEO-DRP1M1 shield plugged.</td>
 </tr>
 <tr class="even">
-<td><a href="./Projects/NUCLEO-G474RE/Applications/USB_PD/DRP1M1_DRP">DRP1M1_DRP</a></td>
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/DRP1M1_DRP">DRP1M1_DRP</a></td>
 <td>NUCLEO-G474RE</td>
 <td>X-NUCLEO-DRP1M1</td>
 <td>Use of USB Power Delivery (USB-PD) DRP application running on STM32G4XX devices, with X-NUCLEO-DRP1M1 shield plugged.</td>
 </tr>
 <tr class="odd">
-<td><a href="./Projects/NUCLEO-G071RB/Applications/USB_PD/SRC1M1_Source">SRC1M1_Source</a></td>
-<td>NUCLEO-G071RB</td>
-<td>X-NUCLEO-SRC1M1</td>
-<td>Use of USB Power Delivery (USB-PD) Source application running on STM32G0XX devices, with X-NUCLEO-SRC1M1 shield plugged.</td>
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SRC1M1_Source"><strong>SRC1M1_Source</strong></a></td>
+<td><strong>NUCLEO-G071RB</strong></td>
+<td><strong>X-NUCLEO-SRC1M1</strong></td>
+<td><strong>Use of USB Power Delivery (USB-PD) Source application running on STM32G0XX devices, with X-NUCLEO-SRC1M1 shield plugged.</strong></td>
 </tr>
 <tr class="even">
-<td><a href="./Projects/NUCLEO-G474RE/Applications/USB_PD/SRC1M1_Source">SRC1M1_Source</a></td>
-<td>NUCLEO-G474RE</td>
-<td>X-NUCLEO-DRP1M1</td>
-<td>Use of USB Power Delivery (USB-PD) Source application running on STM32G4XX devices, with X-NUCLEO-SRC1M1 shield plugged.</td>
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/SRC1M1_Source"><strong>SRC1M1_Source</strong></a></td>
+<td><strong>NUCLEO-G474RE</strong></td>
+<td><strong>X-NUCLEO-DRP1M1</strong></td>
+<td><strong>Use of USB Power Delivery (USB-PD) Source application running on STM32G4XX devices, with X-NUCLEO-SRC1M1 shield plugged.</strong></td>
 </tr>
 </tbody>
 </table>
@@ -307,6 +329,412 @@
 <li>None</li>
 </ul>
 <h2 id="backward-compatibility-1">Backward Compatibility</h2>
+<ul>
+<li>Not applicable</li>
+</ul>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section3" aria-hidden="true"> <label for="collapse-section3" aria-hidden="true"><strong>v3.3.2/ 4-Oct-2022</strong></label>
+<div>
+<h2 id="main-changes-2">Main changes</h2>
+<h3 id="maintenance-release-2">Maintenance release</h3>
+<p>Maintenance release and product update</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Fix <a href="https://github.com/STMicroelectronics/x-cube-tcpp/issues/7">GitHub issue</a> : init fail when GUI is disabled</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contents-2">Contents</h2>
+<h3 id="projects-2"><strong>Projects</strong></h3>
+<h2 id="applications-2">Applications</h2>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 16%" />
+<col style="width: 30%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Applications</th>
+<th>Board</th>
+<th>Shield</th>
+<th>Short Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink_PPS">USBPDM1_Sink_PPS</a></td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-USBPDM1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application (with PPS) running on STM32G0XX devices, with X-NUCLEO-USBPDM1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink_LPM">USBPDM1_Sink_LPM</a></td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-USBPDM1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application (with Low Power Mode) running on STM32G0XX devices, with X-NUCLEO-USBPDM1 shield plugged.</td>
+</tr>
+<tr class="odd">
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink">USBPDM1_Sink</a></td>
+<td>NUCLEO-G474RE</td>
+<td>X-NUCLEO-USBPDM1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application running on STM32G4XX devices, with X-NUCLEO-USBPDM1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink">SNK1M1_Sink</a></td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-SNK1M1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application (with PPS) running on STM32G0XX devices, with X-NUCLEO-SNK1M1 shield plugged.</td>
+</tr>
+<tr class="odd">
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink">SNK1M1_Sink</a></td>
+<td>NUCLEO-G474RE</td>
+<td>X-NUCLEO-SNK1M1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application (with PPS and USB MSC cohabitation) running on STM32G4XX devices, with X-NUCLEO-SNK1M1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-L412RB-P/Applications/USB_PD/SNK1M1_Sink_TypeC_Only">SNK1M1_Sink_TypeC_Only</a></td>
+<td>NUCLEO-L412RB-P</td>
+<td>X-NUCLEO-SNK1M1</td>
+<td>Use of Type-C Consumer application (with USB MSC enumeration) running on STM32L4XX devices, with X-NUCLEO-SNK1M1 shield plugged.</td>
+</tr>
+<tr class="odd">
+<td><a href="./NUCLEO-F446RE/Applications/USB_PD/SRC1M1_Source_TypeC_Only">SRC1M1_Source_TypeC_Only</a></td>
+<td>NUCLEO-F446RE</td>
+<td>X-NUCLEO-SRC1M1</td>
+<td>Use of Type-C Source application running on STM32F4XX devices, with X-NUCLEO-SRC1M1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/DRP1M1_DRP"><strong>DRP1M1_DRP</strong></a></td>
+<td><strong>NUCLEO-G071RB</strong></td>
+<td><strong>X-NUCLEO-DRP1M1</strong></td>
+<td><strong>Use of USB Power Delivery (USB-PD) DRP application running on STM32G0XX devices, with X-NUCLEO-DRP1M1 shield plugged.</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>DRP1M1_Sink_PPS</strong></td>
+<td><strong>NUCLEO-G071RB</strong></td>
+<td><strong>X-NUCLEO-DRP1M1</strong></td>
+<td><strong>Use of USB Power Delivery (USB-PD) Consumer application (with PPS) running on STM32G0XX devices, with X-NUCLEO-DRP1M1 shield plugged.</strong></td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/DRP1M1_DRP"><strong>DRP1M1_DRP</strong></a></td>
+<td><strong>NUCLEO-G474RE</strong></td>
+<td><strong>X-NUCLEO-DRP1M1</strong></td>
+<td><strong>Use of USB Power Delivery (USB-PD) DRP application running on STM32G4XX devices, with X-NUCLEO-DRP1M1 shield plugged.</strong></td>
+</tr>
+<tr class="odd">
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SRC1M1_Source">SRC1M1_Source</a></td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-SRC1M1</td>
+<td>Use of USB Power Delivery (USB-PD) Source application running on STM32G0XX devices, with X-NUCLEO-SRC1M1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/SRC1M1_Source">SRC1M1_Source</a></td>
+<td>NUCLEO-G474RE</td>
+<td>X-NUCLEO-DRP1M1</td>
+<td>Use of USB Power Delivery (USB-PD) Source application running on STM32G4XX devices, with X-NUCLEO-SRC1M1 shield plugged.</td>
+</tr>
+</tbody>
+</table>
+<p>Note: in the tables above, project categories <strong>highlighted</strong> have changed since previous release.</p>
+<h2 id="development-toolchains-and-compilers-2">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.6 + ST-Link</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.32 + ST-Link</li>
+<li>STM32CubeIDE <a href="https://www.st.com/en/development-tools/stm32cubeide.html">V1.9.0</a> + ST-Link</li>
+</ul>
+<h2 id="supported-devices-and-boards-2">Supported Devices and boards</h2>
+<ul>
+<li><a href="https://www.st.com/en/evaluation-tools/nucleo-g071rb.html">NUCLEO-G071RB</a>, <a href="https://www.st.com/en/evaluation-tools/nucleo-g474re.html">NUCLEO-G474RE</a>, <a href="https://www.st.com/en/evaluation-tools/nucleo-f446re.html">NUCLEO-F446RE</a> and <a href="https://www.st.com/en/evaluation-tools/nucleo-l412rb-p.html">NUCLEO-L412RB-P</a></li>
+<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-power-drive-hw/x-nucleo-usbpdm1.html">X-NUCLEO-USBPDM1</a></li>
+<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-power-drive-hw/x-nucleo-snk1m1.html">X-NUCLEO-SNK1M1</a></li>
+<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-connect-hw/x-nucleo-src1m1.html">X-NUCLEO-SRC1M1</a></li>
+<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-connect-hw/x-nucleo-drp1m1.html">X-NUCLEO-DRP1M1</a></li>
+</ul>
+<h2 id="dependencies-2">Dependencies</h2>
+<ul>
+<li>STM32CubeMX V6.5.0
+<ul>
+<li>Projects are generated using STM32CubeMX version V6.5.0.</li>
+</ul></li>
+</ul>
+<h2 id="known-limitations-2">Known Limitations</h2>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="backward-compatibility-2">Backward Compatibility</h2>
+<ul>
+<li>Not applicable</li>
+</ul>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section2" aria-hidden="true"> <label for="collapse-section2" aria-hidden="true"><strong>v3.3.1/ 7-June-2022</strong></label>
+<div>
+<h2 id="main-changes-3">Main changes</h2>
+<h3 id="maintenance-release-3">Maintenance release</h3>
+<p>Fix BMC-PHY-TX-EYE test on MQP tester.</p>
+<h2 id="contents-3">Contents</h2>
+<h3 id="projects-3"><strong>Projects</strong></h3>
+<h2 id="applications-3">Applications</h2>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 16%" />
+<col style="width: 30%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Applications</th>
+<th>Board</th>
+<th>Shield</th>
+<th>Short Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink_PPS">USBPDM1_Sink_PPS</a></td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-USBPDM1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application (with PPS) running on STM32G0XX devices, with X-NUCLEO-USBPDM1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink_LPM">USBPDM1_Sink_LPM</a></td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-USBPDM1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application (with Low Power Mode) running on STM32G0XX devices, with X-NUCLEO-USBPDM1 shield plugged.</td>
+</tr>
+<tr class="odd">
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink"><strong>USBPDM1_Sink</strong></a></td>
+<td><strong>NUCLEO-G474RE</strong></td>
+<td><strong>X-NUCLEO-USBPDM1</strong></td>
+<td><strong>Use of USB Power Delivery (USB-PD) Consumer application running on STM32G4XX devices, with X-NUCLEO-USBPDM1 shield plugged.</strong></td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink"><strong>SNK1M1_Sink</strong></a></td>
+<td><strong>NUCLEO-G071RB</strong></td>
+<td><strong>X-NUCLEO-SNK1M1</strong></td>
+<td><strong>Use of USB Power Delivery (USB-PD) Consumer application (with PPS) running on STM32G0XX devices, with X-NUCLEO-SNK1M1 shield plugged.</strong></td>
+</tr>
+<tr class="odd">
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink"><strong>SNK1M1_Sink</strong></a></td>
+<td><strong>NUCLEO-G474RE</strong></td>
+<td><strong>X-NUCLEO-SNK1M1</strong></td>
+<td><strong>Use of USB Power Delivery (USB-PD) Consumer application (with PPS and USB MSC cohabitation) running on STM32G4XX devices, with X-NUCLEO-SNK1M1 shield plugged.</strong></td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-L412RB-P/Applications/USB_PD/SNK1M1_Sink_TypeC_Only">SNK1M1_Sink_TypeC_Only</a></td>
+<td>NUCLEO-L412RB-P</td>
+<td>X-NUCLEO-SNK1M1</td>
+<td>Use of Type-C Consumer application (with USB MSC enumeration) running on STM32L4XX devices, with X-NUCLEO-SNK1M1 shield plugged.</td>
+</tr>
+<tr class="odd">
+<td><a href="./NUCLEO-F446RE/Applications/USB_PD/SRC1M1_Source_TypeC_Only">SRC1M1_Source_TypeC_Only</a></td>
+<td>NUCLEO-F446RE</td>
+<td>X-NUCLEO-SRC1M1</td>
+<td>Use of Type-C Source application running on STM32F4XX devices, with X-NUCLEO-SRC1M1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/DRP1M1_DRP">DRP1M1_DRP</a></td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-DRP1M1</td>
+<td>Use of USB Power Delivery (USB-PD) DRP application running on STM32G0XX devices, with X-NUCLEO-DRP1M1 shield plugged.</td>
+</tr>
+<tr class="odd">
+<td>DRP1M1_Sink_PPS</td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-DRP1M1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application (with PPS) running on STM32G0XX devices, with X-NUCLEO-DRP1M1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/DRP1M1_DRP">DRP1M1_DRP</a></td>
+<td>NUCLEO-G474RE</td>
+<td>X-NUCLEO-DRP1M1</td>
+<td>Use of USB Power Delivery (USB-PD) DRP application running on STM32G4XX devices, with X-NUCLEO-DRP1M1 shield plugged.</td>
+</tr>
+<tr class="odd">
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SRC1M1_Source">SRC1M1_Source</a></td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-SRC1M1</td>
+<td>Use of USB Power Delivery (USB-PD) Source application running on STM32G0XX devices, with X-NUCLEO-SRC1M1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/SRC1M1_Source">SRC1M1_Source</a></td>
+<td>NUCLEO-G474RE</td>
+<td>X-NUCLEO-DRP1M1</td>
+<td>Use of USB Power Delivery (USB-PD) Source application running on STM32G4XX devices, with X-NUCLEO-SRC1M1 shield plugged.</td>
+</tr>
+</tbody>
+</table>
+<p>Note: in the tables above, project categories <strong>highlighted</strong> have changed since previous release.</p>
+<h2 id="development-toolchains-and-compilers-3">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.6 + ST-Link</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.32 + ST-Link</li>
+<li>STM32CubeIDE <a href="https://www.st.com/en/development-tools/stm32cubeide.html">V1.9.0</a> + ST-Link</li>
+</ul>
+<h2 id="supported-devices-and-boards-3">Supported Devices and boards</h2>
+<ul>
+<li><a href="https://www.st.com/en/evaluation-tools/nucleo-g071rb.html">NUCLEO-G071RB</a>, <a href="https://www.st.com/en/evaluation-tools/nucleo-g474re.html">NUCLEO-G474RE</a>, <a href="https://www.st.com/en/evaluation-tools/nucleo-f446re.html">NUCLEO-F446RE</a> and <a href="https://www.st.com/en/evaluation-tools/nucleo-l412rb-p.html">NUCLEO-L412RB-P</a></li>
+<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-power-drive-hw/x-nucleo-usbpdm1.html">X-NUCLEO-USBPDM1</a></li>
+<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-power-drive-hw/x-nucleo-snk1m1.html">X-NUCLEO-SNK1M1</a></li>
+<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-connect-hw/x-nucleo-src1m1.html">X-NUCLEO-SRC1M1</a></li>
+<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-connect-hw/x-nucleo-drp1m1.html">X-NUCLEO-DRP1M1</a></li>
+</ul>
+<h2 id="dependencies-3">Dependencies</h2>
+<ul>
+<li>STM32CubeMX V6.5.0
+<ul>
+<li>Projects are generated using STM32CubeMX version V6.5.0.</li>
+</ul></li>
+</ul>
+<h2 id="known-limitations-3">Known Limitations</h2>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="backward-compatibility-3">Backward Compatibility</h2>
+<ul>
+<li>Not applicable</li>
+</ul>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section1" aria-hidden="true"> <label for="collapse-section1" aria-hidden="true"><strong>v3.3.0/ 10-May-2022</strong></label>
+<div>
+<h2 id="main-changes-4">Main changes</h2>
+<h3 id="maintenance-release-4">Maintenance release</h3>
+<p>Addition of project highlighting use of TCPP02-M18 protection for Type-C Source applications</p>
+<p>Addition of this Release Note</p>
+<h2 id="contents-4">Contents</h2>
+<h3 id="projects-4"><strong>Projects</strong></h3>
+<h2 id="applications-4">Applications</h2>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 16%" />
+<col style="width: 30%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Applications</th>
+<th>Board</th>
+<th>Shield</th>
+<th>Short Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink_PPS">USBPDM1_Sink_PPS</a></td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-USBPDM1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application (with PPS) running on STM32G0XX devices, with X-NUCLEO-USBPDM1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink_LPM">USBPDM1_Sink_LPM</a></td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-USBPDM1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application (with Low Power Mode) running on STM32G0XX devices, with X-NUCLEO-USBPDM1 shield plugged.</td>
+</tr>
+<tr class="odd">
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink">USBPDM1_Sink</a></td>
+<td>NUCLEO-G474RE</td>
+<td>X-NUCLEO-USBPDM1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application running on STM32G4XX devices, with X-NUCLEO-USBPDM1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink">SNK1M1_Sink</a></td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-SNK1M1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application (with PPS) running on STM32G0XX devices, with X-NUCLEO-SNK1M1 shield plugged.</td>
+</tr>
+<tr class="odd">
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink">SNK1M1_Sink</a></td>
+<td>NUCLEO-G474RE</td>
+<td>X-NUCLEO-SNK1M1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application (with PPS and USB MSC cohabitation) running on STM32G4XX devices, with X-NUCLEO-SNK1M1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-L412RB-P/Applications/USB_PD/SNK1M1_Sink_TypeC_Only">SNK1M1_Sink_TypeC_Only</a></td>
+<td>NUCLEO-L412RB-P</td>
+<td>X-NUCLEO-SNK1M1</td>
+<td>Use of Type-C Consumer application (with USB MSC enumeration) running on STM32L4XX devices, with X-NUCLEO-SNK1M1 shield plugged.</td>
+</tr>
+<tr class="odd">
+<td><a href="./NUCLEO-F446RE/Applications/USB_PD/SRC1M1_Source_TypeC_Only"><strong>SRC1M1_Source_TypeC_Only</strong></a></td>
+<td><strong>NUCLEO-F446RE</strong></td>
+<td><strong>X-NUCLEO-SRC1M1</strong></td>
+<td><strong>Use of Type-C Source application running on STM32F4XX devices, with X-NUCLEO-SRC1M1 shield plugged.</strong></td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/DRP1M1_DRP">DRP1M1_DRP</a></td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-DRP1M1</td>
+<td>Use of USB Power Delivery (USB-PD) DRP application running on STM32G0XX devices, with X-NUCLEO-DRP1M1 shield plugged.</td>
+</tr>
+<tr class="odd">
+<td>DRP1M1_Sink_PPS</td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-DRP1M1</td>
+<td>Use of USB Power Delivery (USB-PD) Consumer application (with PPS) running on STM32G0XX devices, with X-NUCLEO-DRP1M1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/DRP1M1_DRP">DRP1M1_DRP</a></td>
+<td>NUCLEO-G474RE</td>
+<td>X-NUCLEO-DRP1M1</td>
+<td>Use of USB Power Delivery (USB-PD) DRP application running on STM32G4XX devices, with X-NUCLEO-DRP1M1 shield plugged.</td>
+</tr>
+<tr class="odd">
+<td><a href="./NUCLEO-G071RB/Applications/USB_PD/SRC1M1_Source">SRC1M1_Source</a></td>
+<td>NUCLEO-G071RB</td>
+<td>X-NUCLEO-SRC1M1</td>
+<td>Use of USB Power Delivery (USB-PD) Source application running on STM32G0XX devices, with X-NUCLEO-SRC1M1 shield plugged.</td>
+</tr>
+<tr class="even">
+<td><a href="./NUCLEO-G474RE/Applications/USB_PD/SRC1M1_Source">SRC1M1_Source</a></td>
+<td>NUCLEO-G474RE</td>
+<td>X-NUCLEO-DRP1M1</td>
+<td>Use of USB Power Delivery (USB-PD) Source application running on STM32G4XX devices, with X-NUCLEO-SRC1M1 shield plugged.</td>
+</tr>
+</tbody>
+</table>
+<p>Note: in the tables above, project categories <strong>highlighted</strong> have changed since previous release.</p>
+<h2 id="development-toolchains-and-compilers-4">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.6 + ST-Link</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.32 + ST-Link</li>
+<li>STM32CubeIDE <a href="https://www.st.com/en/development-tools/stm32cubeide.html">V1.9.0</a> + ST-Link</li>
+</ul>
+<h2 id="supported-devices-and-boards-4">Supported Devices and boards</h2>
+<ul>
+<li><a href="https://www.st.com/en/evaluation-tools/nucleo-g071rb.html">NUCLEO-G071RB</a>, <a href="https://www.st.com/en/evaluation-tools/nucleo-g474re.html">NUCLEO-G474RE</a>, <a href="https://www.st.com/en/evaluation-tools/nucleo-f446re.html">NUCLEO-F446RE</a> and <a href="https://www.st.com/en/evaluation-tools/nucleo-l412rb-p.html">NUCLEO-L412RB-P</a></li>
+<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-power-drive-hw/x-nucleo-usbpdm1.html">X-NUCLEO-USBPDM1</a></li>
+<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-power-drive-hw/x-nucleo-snk1m1.html">X-NUCLEO-SNK1M1</a></li>
+<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-connect-hw/x-nucleo-src1m1.html">X-NUCLEO-SRC1M1</a></li>
+<li><a href="https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-connect-hw/x-nucleo-drp1m1.html">X-NUCLEO-DRP1M1</a></li>
+</ul>
+<h2 id="dependencies-4">Dependencies</h2>
+<ul>
+<li>STM32CubeMX V6.5.0
+<ul>
+<li>Projects are generated using STM32CubeMX version V6.5.0.</li>
+</ul></li>
+</ul>
+<h2 id="known-limitations-4">Known Limitations</h2>
+<ul>
+<li>None</li>
+</ul>
+<h2 id="backward-compatibility-4">Backward Compatibility</h2>
 <ul>
 <li>Not applicable</li>
 </ul>

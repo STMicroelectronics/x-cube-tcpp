@@ -198,7 +198,6 @@ typedef void USBPD_PWR_VBUSDetectCallbackFunc(uint32_t PortNum,
   */
 /* Common functions */
 int32_t BSP_USBPD_PWR_Init(uint32_t PortNum);
-
 int32_t BSP_USBPD_PWR_Deinit(uint32_t PortNum);
 
 int32_t BSP_USBPD_PWR_SetRole(uint32_t PortNum, USBPD_PWR_PowerRoleTypeDef Role);
@@ -206,68 +205,44 @@ int32_t BSP_USBPD_PWR_SetPowerMode(uint32_t PortNum, USBPD_PWR_PowerModeTypeDef 
 int32_t BSP_USBPD_PWR_GetPowerMode(uint32_t PortNum, USBPD_PWR_PowerModeTypeDef *PwrMode);
 
 int32_t BSP_USBPD_PWR_VBUSInit(uint32_t PortNum);
-
 int32_t BSP_USBPD_PWR_VBUSDeInit(uint32_t PortNum);
 
 int32_t BSP_USBPD_PWR_VBUSOn(uint32_t PortNum);
-
 int32_t BSP_USBPD_PWR_VBUSOff(uint32_t PortNum);
-
 int32_t BSP_USBPD_PWR_VBUSIsOn(uint32_t PortNum, uint8_t *pState);
 
-int32_t BSP_USBPD_PWR_VBUSSetVoltage_Fixed(uint32_t PortNum,
-                                           uint32_t VbusTargetInmv,
-                                           uint32_t OperatingCurrent,
+int32_t BSP_USBPD_PWR_VBUSSetVoltage_Fixed(uint32_t PortNum, uint32_t VbusTargetInmv, uint32_t OperatingCurrent,
                                            uint32_t MaxOperatingCurrent);
-
-int32_t BSP_USBPD_PWR_VBUSSetVoltage_Variable(uint32_t PortNum,
-                                              uint32_t VbusTargetMaxInmv,
-                                              uint32_t VbusTargetMinInmv,
-                                              uint32_t OperatingCurrent,
+int32_t BSP_USBPD_PWR_VBUSSetVoltage_Variable(uint32_t PortNum, uint32_t VbusTargetMaxInmv,
+                                              uint32_t VbusTargetMinInmv, uint32_t OperatingCurrent,
                                               uint32_t MaxOperatingCurrent);
-
-int32_t BSP_USBPD_PWR_VBUSSetVoltage_Battery(uint32_t PortNum,
-                                             uint32_t VbusTargetMin,
-                                             uint32_t VbusTargetMax,
-                                             uint32_t OperatingPower,
-                                             uint32_t MaxOperatingPower);
-
-int32_t BSP_USBPD_PWR_VBUSSetVoltage_APDO(uint32_t PortNum,
-                                          uint32_t VbusTargetInmv,
-                                          uint32_t OperatingCurrent,
+int32_t BSP_USBPD_PWR_VBUSSetVoltage_Battery(uint32_t PortNum, uint32_t VbusTargetMin, uint32_t VbusTargetMax,
+                                             uint32_t OperatingPower, uint32_t MaxOperatingPower);
+int32_t BSP_USBPD_PWR_VBUSSetVoltage_APDO(uint32_t PortNum, uint32_t VbusTargetInmv, uint32_t OperatingCurrent,
                                           int32_t Delta);
 
-int32_t BSP_USBPD_PWR_SetVBUSDisconnectionThreshold(uint32_t PortNum,
-                                                    uint32_t VoltageThreshold);
+int32_t BSP_USBPD_PWR_SetVBUSDisconnectionThreshold(uint32_t PortNum, uint32_t VoltageThreshold);
 
 int32_t BSP_USBPD_PWR_RegisterVBUSDetectCallback(uint32_t PortNum,
                                                  USBPD_PWR_VBUSDetectCallbackFunc *pfnVBUSDetectCallback);
 
 int32_t BSP_USBPD_PWR_VBUSGetVoltage(uint32_t PortNum, uint32_t *pVoltage);
-
 int32_t BSP_USBPD_PWR_VBUSGetCurrent(uint32_t PortNum, int32_t *pCurrent);
 
 int32_t BSP_USBPD_PWR_VBUSDischargeOn(uint32_t PortNum);
-
 int32_t BSP_USBPD_PWR_VBUSDischargeOff(uint32_t PortNum);
 
-int32_t BSP_USBPD_PWR_VCONNInit(uint32_t PortNum,
-                                uint32_t CCPinId);
-int32_t BSP_USBPD_PWR_VCONNDeInit(uint32_t PortNum,
-                                  uint32_t CCPinId);
-int32_t BSP_USBPD_PWR_VCONNOn(uint32_t PortNum,
-                              uint32_t CCPinId);
-int32_t BSP_USBPD_PWR_VCONNOff(uint32_t PortNum,
-                               uint32_t CCPinId);
+int32_t BSP_USBPD_PWR_VCONNInit(uint32_t PortNum, uint32_t CCPinId);
+int32_t BSP_USBPD_PWR_VCONNDeInit(uint32_t PortNum, uint32_t CCPinId);
 
-int32_t BSP_USBPD_PWR_VCONNIsOn(uint32_t PortNum,
-                                uint32_t CCPinId, uint8_t *pState);
+int32_t BSP_USBPD_PWR_VCONNOn(uint32_t PortNum, uint32_t CCPinId);
+int32_t BSP_USBPD_PWR_VCONNOff(uint32_t PortNum, uint32_t CCPinId);
+int32_t BSP_USBPD_PWR_VCONNIsOn(uint32_t PortNum, uint32_t CCPinId, uint8_t *pState);
 
 int32_t BSP_USBPD_PWR_VCONNDischargeOn(uint32_t PortNum);
-
 int32_t BSP_USBPD_PWR_VCONNDischargeOff(uint32_t PortNum);
 
-void BSP_USBPD_PWR_EventCallback(uint32_t PortNum);
+void    BSP_USBPD_PWR_EventCallback(uint32_t PortNum);
 
 /**
   * @}

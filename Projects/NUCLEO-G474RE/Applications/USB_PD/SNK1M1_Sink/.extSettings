@@ -4,5 +4,5 @@ HeaderPath=..\..\..\..\..\..\Drivers\BSP\STM32G4xx_Nucleo
 Define=
 HALModule=
 [Groups]
-Doc=../readme.txt;
+Doc=../README.md;
 Application/User=../Src/usbpd_user_services.c

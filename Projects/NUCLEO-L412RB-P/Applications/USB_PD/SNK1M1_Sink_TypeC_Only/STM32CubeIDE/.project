@@ -37,9 +37,9 @@
 			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/SNK1M1_Sink_TypeC_Only.ioc</locationURI>
 		</link>
 		<link>
-			<name>Doc/readme.txt</name>
+			<name>Doc/README.md</name>
 			<type>1</type>
-			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/readme.txt</locationURI>
+			<locationURI>$%7BPARENT-1-PROJECT_LOC%7D/README.md</locationURI>
 		</link>
 		<link>
 			<name>Application/User/freertos.c</name>

@@ -528,38 +528,54 @@ void USBPD_DPM_GetDataInfo(uint8_t PortNum, USBPD_CORE_DataInfoType_TypeDef Data
     Case Port SINK PDO Data information :
     Call PWR_IF PDO reading request.
     */
-  case USBPD_CORE_DATATYPE_SRC_PDO :
-  case USBPD_CORE_DATATYPE_SNK_PDO :
-    USBPD_PWR_IF_GetPortPDOs(PortNum, DataId, Ptr, Size);
-    *Size *= 4;
-    break;
+    case USBPD_CORE_DATATYPE_SRC_PDO :
+    case USBPD_CORE_DATATYPE_SNK_PDO :
+      USBPD_PWR_IF_GetPortPDOs(PortNum, DataId, Ptr, Size);
+      *Size *= 4;
+      break;
 
-    /* Case Requested voltage value Data information */
-  case USBPD_CORE_DATATYPE_REQ_VOLTAGE :
-    *Size = 4;
-    (void)memcpy((uint8_t*)Ptr, (uint8_t *)&DPM_Ports[PortNum].DPM_RequestedVoltage, *Size);
-    break;
-
-  case USBPD_CORE_PPS_STATUS :
-    {
-      /* Get current drawn by sink */
-      USBPD_PPSSDB_TypeDef pps_status = {0};
-
+      /* Case Requested voltage value Data information */
+    case USBPD_CORE_DATATYPE_REQ_VOLTAGE :
       *Size = 4;
-      (void)memcpy((uint8_t*)Ptr, (uint8_t *)&pps_status.d32, *Size);
-    }
-    break;
+      (void)memcpy((uint8_t*)Ptr, (uint8_t *)&DPM_Ports[PortNum].DPM_RequestedVoltage, *Size);
+      break;
+
+    case USBPD_CORE_PPS_STATUS :
+      {
+        /* Get current drawn by sink */
+        USBPD_PPSSDB_TypeDef pps_status = {0};
+
+        *Size = 4;
+        (void)memcpy((uint8_t*)Ptr, (uint8_t *)&pps_status.d32, *Size);
+      }
+      break;
 #if defined(USBPDCORE_SNK_CAPA_EXT)
-  case USBPD_CORE_SNK_EXTENDED_CAPA :
-    {
-      *Size = sizeof(USBPD_SKEDB_TypeDef);
-      memcpy((uint8_t*)Ptr, (uint8_t *)&DPM_USER_Settings[PortNum].DPM_SNKExtendedCapa, *Size);
-     }
-     break;
+    case USBPD_CORE_SNK_EXTENDED_CAPA :
+      {
+        *Size = sizeof(USBPD_SKEDB_TypeDef);
+        memcpy((uint8_t*)Ptr, (uint8_t *)&DPM_USER_Settings[PortNum].DPM_SNKExtendedCapa, *Size);
+       }
+       break;
 #endif /* USBPDCORE_SNK_CAPA_EXT */
-  default :
-    *Size = 0;
-    break;
+
+    case USBPD_CORE_REVISION:
+      {
+        *Size = sizeof(USBPD_RevisionDO_TypeDef);
+        USBPD_RevisionDO_TypeDef rev =
+        {
+          /* Hardcoded values as example, user may want to use a global USBPD_RevisionDO_TypeDef variable */
+          .b.Revision_major = 3,                  /*!< Major revision */
+          .b.Revision_minor = 1,                  /*!< Minor revision */
+          .b.Version_major  = 1,                  /*!< Major version  */
+          .b.Version_minor  = 7,                  /*!< Minor version  */
+        };
+        memcpy((uint8_t *)Ptr, &rev, *Size);
+      }
+      break;
+
+    default :
+      *Size = 0;
+      break;
   }
 /* USER CODE END USBPD_DPM_GetDataInfo */
 }
@@ -580,85 +596,85 @@ void USBPD_DPM_SetDataInfo(uint8_t PortNum, USBPD_CORE_DataInfoType_TypeDef Data
   /* Check type of information targeted by request */
   switch (DataId)
   {
-  /* Case Received Request PDO Data information :
-   */
-  case USBPD_CORE_DATATYPE_RDO_POSITION :
-    if (Size == 4)
-    {
-      uint8_t* temp;
-      temp = (uint8_t*)&DPM_Ports[PortNum].DPM_RDOPosition;
-      (void)memcpy(temp, Ptr, Size);
-      DPM_Ports[PortNum].DPM_RDOPositionPrevious = *Ptr;
-      temp = (uint8_t*)&DPM_Ports[PortNum].DPM_RDOPositionPrevious;
-      (void)memcpy(temp, Ptr, Size);
-    }
-    break;
-
-    /* Case Received Source PDO values Data information :
-    */
-  case USBPD_CORE_DATATYPE_RCV_SRC_PDO :
-    if (Size <= (USBPD_MAX_NB_PDO * 4))
-    {
-      uint8_t* rdo;
-      DPM_Ports[PortNum].DPM_NumberOfRcvSRCPDO = (Size / 4);
-      /* Copy PDO data in DPM Handle field */
-      for (index = 0; index < (Size / 4); index++)
-      {
-        rdo = (uint8_t*)&DPM_Ports[PortNum].DPM_ListOfRcvSRCPDO[index];
-        (void)memcpy(rdo, (Ptr + (index * 4u)), (4u * sizeof(uint8_t)));
-      }
-    }
-    break;
-
-    /* Case Received Sink PDO values Data information :
-    */
-  case USBPD_CORE_DATATYPE_RCV_SNK_PDO :
-    if (Size <= (USBPD_MAX_NB_PDO * 4))
-    {
-      uint8_t* rdo;
-      DPM_Ports[PortNum].DPM_NumberOfRcvSNKPDO = (Size / 4);
-      /* Copy PDO data in DPM Handle field */
-      for (index = 0; index < (Size / 4); index++)
-      {
-        rdo = (uint8_t*)&DPM_Ports[PortNum].DPM_ListOfRcvSNKPDO[index];
-        (void)memcpy(rdo, (Ptr + (index * 4u)), (4u * sizeof(uint8_t)));
-      }
-    }
-    break;
-
     /* Case Received Request PDO Data information :
-    */
-  case USBPD_CORE_DATATYPE_RCV_REQ_PDO :
-    if (Size == 4)
-    {
-      uint8_t* rdo;
-      rdo = (uint8_t*)&DPM_Ports[PortNum].DPM_RcvRequestDOMsg;
-      (void)memcpy(rdo, Ptr, Size);
-    }
-    break;
+     */
+    case USBPD_CORE_DATATYPE_RDO_POSITION :
+      if (Size == 4)
+      {
+        uint8_t* temp;
+        temp = (uint8_t*)&DPM_Ports[PortNum].DPM_RDOPosition;
+        (void)memcpy(temp, Ptr, Size);
+        DPM_Ports[PortNum].DPM_RDOPositionPrevious = *Ptr;
+        temp = (uint8_t*)&DPM_Ports[PortNum].DPM_RDOPositionPrevious;
+        (void)memcpy(temp, Ptr, Size);
+      }
+      break;
 
-  case USBPD_CORE_PPS_STATUS :
-    {
-      uint8_t*  ext_capa;
-      ext_capa = (uint8_t*)&DPM_Ports[PortNum].DPM_RcvPPSStatus;
-      memcpy(ext_capa, Ptr, Size);
-    }
-    break;
+      /* Case Received Source PDO values Data information :
+      */
+    case USBPD_CORE_DATATYPE_RCV_SRC_PDO :
+      if (Size <= (USBPD_MAX_NB_PDO * 4))
+      {
+        uint8_t* rdo;
+        DPM_Ports[PortNum].DPM_NumberOfRcvSRCPDO = (Size / 4);
+        /* Copy PDO data in DPM Handle field */
+        for (index = 0; index < (Size / 4); index++)
+        {
+          rdo = (uint8_t*)&DPM_Ports[PortNum].DPM_ListOfRcvSRCPDO[index];
+          (void)memcpy(rdo, (Ptr + (index * 4u)), (4u * sizeof(uint8_t)));
+        }
+      }
+      break;
+
+      /* Case Received Sink PDO values Data information :
+      */
+    case USBPD_CORE_DATATYPE_RCV_SNK_PDO :
+      if (Size <= (USBPD_MAX_NB_PDO * 4))
+      {
+        uint8_t* rdo;
+        DPM_Ports[PortNum].DPM_NumberOfRcvSNKPDO = (Size / 4);
+        /* Copy PDO data in DPM Handle field */
+        for (index = 0; index < (Size / 4); index++)
+        {
+          rdo = (uint8_t*)&DPM_Ports[PortNum].DPM_ListOfRcvSNKPDO[index];
+          (void)memcpy(rdo, (Ptr + (index * 4u)), (4u * sizeof(uint8_t)));
+        }
+      }
+      break;
+
+      /* Case Received Request PDO Data information :
+      */
+    case USBPD_CORE_DATATYPE_RCV_REQ_PDO :
+      if (Size == 4)
+      {
+        uint8_t* rdo;
+        rdo = (uint8_t*)&DPM_Ports[PortNum].DPM_RcvRequestDOMsg;
+        (void)memcpy(rdo, Ptr, Size);
+      }
+      break;
+
+    case USBPD_CORE_PPS_STATUS :
+      {
+        uint8_t*  ext_capa;
+        ext_capa = (uint8_t*)&DPM_Ports[PortNum].DPM_RcvPPSStatus;
+        memcpy(ext_capa, Ptr, Size);
+      }
+      break;
 #if defined(USBPDCORE_SNK_CAPA_EXT)
-  case USBPD_CORE_SNK_EXTENDED_CAPA :
-    {
-      uint8_t*  _snk_ext_capa;
-      _snk_ext_capa = (uint8_t*)&DPM_Ports[PortNum].DPM_RcvSNKExtendedCapa;
-      memcpy(_snk_ext_capa, Ptr, Size);
-    }
-    break;
+    case USBPD_CORE_SNK_EXTENDED_CAPA :
+      {
+        uint8_t*  _snk_ext_capa;
+        _snk_ext_capa = (uint8_t*)&DPM_Ports[PortNum].DPM_RcvSNKExtendedCapa;
+        memcpy(_snk_ext_capa, Ptr, Size);
+      }
+      break;
 #endif /* USBPDCORE_SNK_CAPA_EXT */
 
-    /* In case of unexpected data type (Set request could not be fulfilled) :
-    */
-  default :
-    DPM_USER_DEBUG_TRACE(PortNum, "ADVICE: update USBPD_DPM_SetDataInfo:%d", DataId);
-    break;
+      /* In case of unexpected data type (Set request could not be fulfilled) :
+      */
+    default :
+      DPM_USER_DEBUG_TRACE(PortNum, "ADVICE: update USBPD_DPM_SetDataInfo:%d", DataId);
+      break;
   }
 /* USER CODE END USBPD_DPM_SetDataInfo */
 
@@ -865,7 +881,17 @@ USBPD_StatusTypeDef USBPD_DPM_PE_VconnPwr(uint8_t PortNum, USBPD_FunctionalState
 void USBPD_DPM_ExtendedMessageReceived(uint8_t PortNum, USBPD_ExtendedMsg_TypeDef MsgType, uint8_t *ptrData, uint16_t DataSize)
 {
 /* USER CODE BEGIN USBPD_DPM_ExtendedMessageReceived */
+  if (DataSize == 0)
+  {
+    /* No data received. */
+    return;
+  }
 
+  switch(MsgType)
+  {
+    default:
+      break;
+  }
 /* USER CODE END USBPD_DPM_ExtendedMessageReceived */
 }
 

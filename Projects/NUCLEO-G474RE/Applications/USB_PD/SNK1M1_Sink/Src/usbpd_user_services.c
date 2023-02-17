@@ -103,7 +103,7 @@ USBPD_StatusTypeDef USBPD_USER_SERV_EvaluateReqMess(uint8_t PortNum, USBPD_CORE_
   /* Set unchuncked bit if supported by ports */
   DPM_Params[PortNum].PE_UnchunkSupport   = USBPD_FALSE;
   if ((USBPD_TRUE == rdo.GenericRDO.UnchunkedExtendedMessage)
-   && (USBPD_TRUE == DPM_Settings[PortNum].PE_PD3_Support.d.PE_UnchunkSupport))
+      && (USBPD_TRUE == DPM_Settings[PortNum].PE_PD3_Support.d.PE_UnchunkSupport))
   {
     DPM_Params[PortNum].PE_UnchunkSupport   = USBPD_TRUE;
   }
@@ -122,7 +122,7 @@ USBPD_StatusTypeDef USBPD_USER_SERV_EvaluateReqMess(uint8_t PortNum, USBPD_CORE_
     return USBPD_REJECT;
   }
 
-  switch(pdo.GenericPDO.PowerObject)
+  switch (pdo.GenericPDO.PowerObject)
   {
     case USBPD_CORE_PDO_TYPE_FIXED:
     {
@@ -132,14 +132,14 @@ USBPD_StatusTypeDef USBPD_USER_SERV_EvaluateReqMess(uint8_t PortNum, USBPD_CORE_
       DPM_Ports[PortNum].DPM_RequestedCurrent = rdoopcurrent * 10U;
       rdovoltage    = pdo.SRCFixedPDO.VoltageIn50mVunits * 50U;
 
-      if(rdoopcurrent > pdomaxcurrent)
+      if (rdoopcurrent > pdomaxcurrent)
       {
         /* Sink requests too much operating current */
         /* USBPD_USER_SERV_EvaluateReqMess: Sink requests too much operating current*/
         return USBPD_REJECT;
       }
 
-      if(rdomaxcurrent > pdomaxcurrent)
+      if (rdomaxcurrent > pdomaxcurrent)
       {
         /* Sink requests too much maximum operating current */
         /* USBPD_USER_SERV_EvaluateReqMess: Sink requests too much maximum operating current */
@@ -154,7 +154,7 @@ USBPD_StatusTypeDef USBPD_USER_SERV_EvaluateReqMess(uint8_t PortNum, USBPD_CORE_
       pdomaxcurrent                           = pdo.SRCSNKAPDO.MaxCurrentIn50mAunits;
       rdoopcurrent                            = rdo.ProgRDO.OperatingCurrentIn50mAunits;
       DPM_Ports[PortNum].DPM_RequestedCurrent = rdoopcurrent * 50U;
-      if(rdoopcurrent > pdomaxcurrent)
+      if (rdoopcurrent > pdomaxcurrent)
       {
         /* Sink requests too much operating current */
         return USBPD_REJECT;
@@ -303,7 +303,8 @@ static uint32_t USER_SERV_SNK_EvaluateMatchWithSRCPDO(uint8_t PortNum,
                                                       uint32_t *PtrRequestedVoltage,
                                                       uint32_t *PtrRequestedPower)
 {
-  USBPD_PDO_TypeDef  srcpdo, snkpdo;
+  USBPD_PDO_TypeDef srcpdo;
+  USBPD_PDO_TypeDef snkpdo;
   uint32_t match = USBPD_FALSE;
   uint32_t nbsnkpdo;
   uint32_t snkpdo_array[USBPD_MAX_NB_PDO];
@@ -424,17 +425,17 @@ static uint32_t USER_SERV_SNK_EvaluateMatchWithSRCPDO(uint8_t PortNum,
             snkmaxcurrent50ma = snkpdo.SRCSNKAPDO.MaxCurrentIn50mAunits;
 
             /* Match if SNK APDO voltage overlaps with the SRC APDO voltage range */
-              if (((srcminvoltage100mv <= snkmaxvoltage100mv) && (srcminvoltage100mv >= snkminvoltage100mv)) ||
-                  ((snkminvoltage100mv <= srcmaxvoltage100mv) && (snkminvoltage100mv >= srcminvoltage100mv)))
+            if (((srcminvoltage100mv <= snkmaxvoltage100mv) && (srcminvoltage100mv >= snkminvoltage100mv)) ||
+                ((snkminvoltage100mv <= srcmaxvoltage100mv) && (snkminvoltage100mv >= srcminvoltage100mv)))
+            {
+              if (snkmaxcurrent50ma <= srcmaxcurrent50ma)
               {
-                if(snkmaxcurrent50ma <= srcmaxcurrent50ma)
-                {
-                  *PtrRequestedVoltage = MIN(PWR_DECODE_100MV(srcmaxvoltage100mv),
-                                             PWR_DECODE_100MV(snkmaxvoltage100mv));
-                  currentrequestedpower = (*PtrRequestedVoltage * PWR_DECODE_50MA(snkmaxcurrent50ma)) / 1000U; /* mW */
-                  currentrequestedvoltage = (*PtrRequestedVoltage / 50U);
-                }
+                *PtrRequestedVoltage = MIN(PWR_DECODE_100MV(srcmaxvoltage100mv),
+                                           PWR_DECODE_100MV(snkmaxvoltage100mv));
+                currentrequestedpower = (*PtrRequestedVoltage * PWR_DECODE_50MA(snkmaxcurrent50ma)) / 1000U; /* mW */
+                currentrequestedvoltage = (*PtrRequestedVoltage / 50U);
               }
+            }
           }
           break;
 
@@ -599,7 +600,7 @@ static uint32_t USER_SERV_FindVoltageIndex(uint32_t PortNum,
   {
     /* Fill the request power details */
     PtrRequestPowerDetails->MaxOperatingCurrentInmAunits = puser->DPM_SNKRequestedPower.MaxOperatingCurrentInmAunits;
-    PtrRequestPowerDetails->OperatingCurrentInmAunits    = (1000U * selpower) / voltage;
+    PtrRequestPowerDetails->OperatingCurrentInmAunits    = (1000U * selpower) / reqvoltage;
     PtrRequestPowerDetails->MaxOperatingPowerInmWunits   = puser->DPM_SNKRequestedPower.MaxOperatingPowerInmWunits;
     PtrRequestPowerDetails->OperatingPowerInmWunits      = selpower;
     PtrRequestPowerDetails->RequestedVoltageInmVunits    = reqvoltage;

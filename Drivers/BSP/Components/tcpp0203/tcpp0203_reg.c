@@ -42,7 +42,7 @@
   * Input         : Register Address, length of buffer
   * Output        : data Read
   *******************************************************************************/
-int32_t tcpp0203_read_reg(TCPP0203_ctx_t *ctx, uint8_t reg, uint8_t *data, uint8_t length)
+int32_t tcpp0203_read_reg(const TCPP0203_ctx_t *ctx, uint8_t reg, uint8_t *data, uint8_t length)
 {
   return ctx->ReadReg(ctx->handle, reg, data, length);
 }
@@ -54,7 +54,7 @@ int32_t tcpp0203_read_reg(TCPP0203_ctx_t *ctx, uint8_t reg, uint8_t *data, uint8
   * Input         : Register Address, data to be written, length of buffer
   * Output        : None
   *******************************************************************************/
-int32_t tcpp0203_write_reg(TCPP0203_ctx_t *ctx, uint8_t reg, uint8_t *data, uint8_t length)
+int32_t tcpp0203_write_reg(const TCPP0203_ctx_t *ctx, uint8_t reg, uint8_t *data, uint8_t length)
 {
   return ctx->WriteReg(ctx->handle, reg, data, length);
 }

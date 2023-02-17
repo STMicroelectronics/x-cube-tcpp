@@ -60,8 +60,8 @@ extern "C" {
 
 /************** Generic Function  *******************/
 
-typedef int32_t (*TCPP0203_Write_Func)(void *, uint8_t, uint8_t *, uint8_t);
-typedef int32_t (*TCPP0203_Read_Func)(void *, uint8_t, uint8_t *, uint8_t);
+typedef int32_t (*TCPP0203_Write_Func)(const void *, uint8_t, uint8_t *, uint8_t);
+typedef int32_t (*TCPP0203_Read_Func)(const void *, uint8_t, uint8_t *, uint8_t);
 
 typedef struct
 {
@@ -76,8 +76,8 @@ typedef struct
   * Bit Group Name: None
   * Permission    : W
   *******************************************************************************/
-int32_t tcpp0203_write_reg(TCPP0203_ctx_t *ctx, uint8_t reg, uint8_t *data, uint8_t length);
-int32_t tcpp0203_read_reg(TCPP0203_ctx_t *ctx, uint8_t reg, uint8_t *data, uint8_t length);
+int32_t tcpp0203_write_reg(const TCPP0203_ctx_t *ctx, uint8_t reg, uint8_t *data, uint8_t length);
+int32_t tcpp0203_read_reg(const TCPP0203_ctx_t *ctx, uint8_t reg, uint8_t *data, uint8_t length);
 
 #ifdef __cplusplus
 }

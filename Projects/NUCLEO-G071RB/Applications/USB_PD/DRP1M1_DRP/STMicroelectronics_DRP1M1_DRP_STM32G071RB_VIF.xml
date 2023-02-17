@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vif:VIF xmlns:opt="http://usb.org/VendorInfoFileOptionalContent.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vif="http://usb.org/VendorInfoFile.xsd">
-  <vif:VIF_Specification>3.15</vif:VIF_Specification>
+  <vif:VIF_Specification>3.23</vif:VIF_Specification>
   <vif:VIF_App>
     <vif:Vendor>USB-IF</vif:Vendor>
     <vif:Name>VIF Editor</vif:Name>
-    <vif:Version>3.2.1.0</vif:Version>
+    <vif:Version>3.4.3.0</vif:Version>
   </vif:VIF_App>
   <vif:Vendor_Name>STMicroelectronics</vif:Vendor_Name>
-  <vif:Model_Part_Number>X-NUCLEO-DRP1M1-G0_DRP</vif:Model_Part_Number>
+  <vif:Model_Part_Number>G0_DRP1M1</vif:Model_Part_Number>
   <vif:Product_Revision>1.0</vif:Product_Revision>
   <vif:TID>0</vif:TID>
   <vif:VIF_Product_Type value="0">Port Product</vif:VIF_Product_Type>
@@ -33,9 +33,9 @@
     <!--;General PD-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <vif:PD_Spec_Revision_Major value="3" />
-    <vif:PD_Spec_Revision_Minor value="0" />
-    <vif:PD_Spec_Version_Major value="2" />
-    <vif:PD_Spec_Version_Minor value="0" />
+    <vif:PD_Spec_Revision_Minor value="1" />
+    <vif:PD_Spec_Version_Major value="1" />
+    <vif:PD_Spec_Version_Minor value="7" />
     <vif:PD_Specification_Revision value="2">Revision 3</vif:PD_Specification_Revision>
     <vif:SOP_Capable value="true" />
     <vif:SOP_P_Capable value="false" />
@@ -62,6 +62,8 @@
     <vif:Responds_To_Discov_SOP_DFP value="false" />
     <vif:Attempts_Discov_SOP value="false" />
     <vif:Power_Interruption_Available value="0">No Interruption Possible</vif:Power_Interruption_Available>
+    <vif:Data_Reset_Supported value="false" />
+    <vif:Enter_USB_Supported value="false" />
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;USB Type-C®-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -78,6 +80,7 @@
     <vif:Type_C_Power_Source value="2">Both</vif:Type_C_Power_Source>
     <vif:Type_C_Sources_VCONN value="false" />
     <vif:Type_C_Is_Alt_Mode_Controller value="false" />
+    <vif:Type_C_Is_Alt_Mode_Adapter value="false" />
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;Product Power-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -87,10 +90,12 @@
     <!--;PD Source-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <vif:PD_Power_As_Source value="7500">7500 mW</vif:PD_Power_As_Source>
+    <vif:EPR_Supported_As_Src value="false" />
     <vif:USB_Suspend_May_Be_Cleared value="true" />
     <vif:Sends_Pings value="false" />
     <vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink value="0">FR_Swap not supported</vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink>
     <vif:Master_Port value="false" />
+    <vif:Has_Invariant_PDOs value="true" />
     <vif:Num_Src_PDOs value="1" />
     <vif:PD_OC_Protection value="false" />
     <!--Bundle: SrcPdoList-->
@@ -107,6 +112,7 @@
     <!--;PD Sink-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <vif:PD_Power_As_Sink value="7500">7500 mW</vif:PD_Power_As_Sink>
+    <vif:EPR_Supported_As_Snk value="false" />
     <vif:No_USB_Suspend_May_Be_Set value="true" />
     <vif:GiveBack_May_Be_Set value="false" />
     <vif:Higher_Capability_Set value="false" />

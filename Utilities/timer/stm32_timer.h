@@ -31,10 +31,9 @@
  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
  * All rights reserved.</center></h2>
  *
- * This software component is licensed by ST under BSD 3-Clause license,
- * the "License"; You may not use this file except in compliance with the
- * License. You may obtain a copy of the License at:
- *                        opensource.org/licenses/BSD-3-Clause
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
  *
  ******************************************************************************
  */
@@ -264,9 +263,20 @@ UTIL_TIMER_Time_t UTIL_TIMER_GetCurrentTime(void);
   * @brief return the elapsed time
   *
   * @param past a value returned by the function UTIL_TIMER_GetCurrentTime
-  * @retval elasped time value
+  * @retval elapsed time value
   */
 UTIL_TIMER_Time_t UTIL_TIMER_GetElapsedTime(UTIL_TIMER_Time_t past );
+
+/**
+  * @brief return the list of the current timer
+  *
+  * @retval pointer on @ref UTIL_TIMER_Object_t
+  *
+  * @Note : the use of this function is dangerous and must be done with precaution, the risks are:
+  *         1 - an update of this data structure may affect the operation of timer server
+  *         2 - data structure is moving according the events, so read must be under critical section
+  */
+UTIL_TIMER_Object_t *UTIL_TIMER_GetTimerList(void);
 
 /**
  * @brief Timer IRQ event handler
@@ -291,4 +301,3 @@ void UTIL_TIMER_IRQ_Handler( void );
 
 #endif /* UTIL_TIME_SERVER_H__*/
 
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

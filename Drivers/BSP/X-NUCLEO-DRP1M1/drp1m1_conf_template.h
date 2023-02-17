@@ -69,7 +69,7 @@ extern "C" {
 
 #ifndef BUS_I2C_FREQUENCY
 #define BUS_I2C_FREQUENCY                400000U /* Frequency of I2Cn = 400 kHz*/
-#endif
+#endif /* !BUS_I2C_FREQUENCY */
 
 #define BUS_I2C_CLK_ENABLE()             __HAL_RCC_I2C1_CLK_ENABLE()
 #define BUS_I2C_CLK_DISABLE()            __HAL_RCC_I2C1_CLK_DISABLE()
@@ -231,11 +231,12 @@ extern "C" {
 #define TCPP0203_PORT0_VBUSCONS_GPIO_PIN            LL_GPIO_PIN_4
 #define TCPP0203_PORT0_VBUSCONS_GPIO_MODE           LL_GPIO_MODE_ANALOG
 
-#define DRP1M1_VSENSE_RA                           200
-#define DRP1M1_VSENSE_RB                           40
+#define DRP1M1_VSENSE_RA                            200u /* VBUS voltage divider RA in milliohm */
+#define DRP1M1_VSENSE_RB                            40u  /* VBUS voltage divider RB in milliohm */
 
-#define DRP1M1_ISENSE_GA                           42  /* in V/V */
-#define DRP1M1_ISENSE_RS                           7   /* in milliohm */
+#define DRP1M1_ISENSE_GA                            42u  /* Current measure gain In V/V */
+#define DRP1M1_ISENSE_RS                            7u   /* Current measure shunt resistor in milliohm */
+
 /**
   * @}
   */

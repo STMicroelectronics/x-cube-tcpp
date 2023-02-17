@@ -34,7 +34,7 @@ extern "C" {
 #include "stm32g0xx_nucleo.h"
 #include "drp1m1_errno.h"
 #else
-##warning "Please select include files according to HW setup"
+#warning "Please select include files according to HW setup"
 #endif /* USE_STM32G4XX_NUCLEO */
 
 /** @addtogroup BSP

@@ -1,0 +1,9 @@
+[ProjectFiles]
+HeaderPath=..\..\..\..\..\..\Drivers\BSP\STM32G0xx_Nucleo
+[Others]
+Define=_PPS
+HALModule=
+[Groups]
+Doc=../README.md;
+Application/User=../Src/usbpd_user_services.c
+Drivers/BSP/STM32G0xx_Nucleo=../../../../../../Drivers/BSP/STM32G0xx_Nucleo/stm32g0xx_nucleo.c;

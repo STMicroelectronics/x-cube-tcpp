@@ -422,6 +422,21 @@ void USBPD_DPM_GetDataInfo(uint8_t PortNum, USBPD_CORE_DataInfoType_TypeDef Data
     // break;
  // case USBPD_CORE_BATTERY_CAPABILITY:         /*!< Retrieve of Battery capability message content        */
     // break;
+    case USBPD_CORE_REVISION:
+      {
+        *Size = sizeof(USBPD_RevisionDO_TypeDef);
+        USBPD_RevisionDO_TypeDef rev =
+        {
+          /* Hardcoded values as example, user may want to use a global USBPD_RevisionDO_TypeDef variable */
+          .b.Revision_major = 3,                  /*!< Major revision */
+          .b.Revision_minor = 1,                  /*!< Minor revision */
+          .b.Version_major  = 1,                  /*!< Major version  */
+          .b.Version_minor  = 7,                  /*!< Minor version  */
+        };
+        memcpy((uint8_t *)Ptr, &rev, *Size);
+      }
+      break;
+
     default:
     DPM_USER_DEBUG_TRACE(PortNum, "ADVICE: update USBPD_DPM_GetDataInfo:%d", DataId);
     break;
@@ -533,7 +548,7 @@ USBPD_StatusTypeDef USBPD_DPM_EvaluateRequest(uint8_t PortNum, USBPD_CORE_PDO_Ty
   switch(pdo.GenericPDO.PowerObject)
   {
     case USBPD_CORE_PDO_TYPE_FIXED:
-  {
+    {
       pdomaxcurrent = pdo.SRCFixedPDO.MaxCurrentIn10mAunits;
       rdomaxcurrent = rdo.FixedVariableRDO.MaxOperatingCurrent10mAunits;
       rdoopcurrent  = rdo.FixedVariableRDO.OperatingCurrentIn10mAunits;
@@ -541,7 +556,7 @@ USBPD_StatusTypeDef USBPD_DPM_EvaluateRequest(uint8_t PortNum, USBPD_CORE_PDO_Ty
       rdovoltage    = pdo.SRCFixedPDO.VoltageIn50mVunits * 50U;
 
       if(rdoopcurrent > pdomaxcurrent)
-    {
+      {
         /* Sink requests too much operating current */
         /* USBPD_DPM_EvaluateRequest: Sink requests too much operating current*/
         return USBPD_REJECT;
@@ -584,7 +599,7 @@ USBPD_StatusTypeDef USBPD_DPM_EvaluateRequest(uint8_t PortNum, USBPD_CORE_PDO_Ty
     default:
     {
       return USBPD_REJECT;
-  }
+    }
   }
 
   /* Set RDO position and requested voltage in DPM port structure */

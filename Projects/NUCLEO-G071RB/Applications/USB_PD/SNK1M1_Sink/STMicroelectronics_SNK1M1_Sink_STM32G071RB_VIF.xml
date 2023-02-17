@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vif:VIF xmlns:opt="http://usb.org/VendorInfoFileOptionalContent.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vif="http://usb.org/VendorInfoFile.xsd">
-  <vif:VIF_Specification>3.17</vif:VIF_Specification>
+  <vif:VIF_Specification>3.23</vif:VIF_Specification>
   <vif:VIF_App>
     <vif:Vendor>USB-IF</vif:Vendor>
     <vif:Name>VIF Editor</vif:Name>
-    <vif:Version>3.2.2.1</vif:Version>
+    <vif:Version>3.4.3.0</vif:Version>
   </vif:VIF_App>
   <vif:Vendor_Name>STMicroelectronics</vif:Vendor_Name>
-  <vif:Model_Part_Number>X-NUCLEO-SNK1M1-G0</vif:Model_Part_Number>
+  <vif:Model_Part_Number>G0_SNK1M1</vif:Model_Part_Number>
   <vif:Product_Revision>1.0</vif:Product_Revision>
   <vif:TID>0</vif:TID>
   <vif:VIF_Product_Type value="0">Port Product</vif:VIF_Product_Type>
@@ -33,9 +33,9 @@
     <!--;General PD-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <vif:PD_Spec_Revision_Major value="3" />
-    <vif:PD_Spec_Revision_Minor value="0" />
-    <vif:PD_Spec_Version_Major value="2" />
-    <vif:PD_Spec_Version_Minor value="0" />
+    <vif:PD_Spec_Revision_Minor value="1" />
+    <vif:PD_Spec_Version_Major value="1" />
+    <vif:PD_Spec_Version_Minor value="7" />
     <vif:PD_Specification_Revision value="2">Revision 3</vif:PD_Specification_Revision>
     <vif:SOP_Capable value="true" />
     <vif:SOP_P_Capable value="false" />

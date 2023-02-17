@@ -36,6 +36,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/SRC1M1_Source.ioc</locationURI>
 		</link>
 		<link>
+			<name>Doc/README.md</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/README.md</locationURI>
+		</link>
+		<link>
 			<name>Utilities/bsp_gui.c</name>
 			<type>1</type>
 			<locationURI>PARENT-6-PROJECT_LOC/Utilities/GUI_INTERFACE/bsp_gui.c</locationURI>

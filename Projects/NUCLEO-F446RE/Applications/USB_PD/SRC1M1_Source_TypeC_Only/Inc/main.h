@@ -105,6 +105,7 @@ void USBnoPD_TCPPFaultHandling(void);
 #define FLGN_EXTI_IRQn EXTI4_IRQn
 #define ENABLE_Pin GPIO_PIN_8
 #define ENABLE_GPIO_Port GPIOC
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

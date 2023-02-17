@@ -1,4 +1,3 @@
-#Ignore modules added by the repo script
 *.bak
 **/*.log
 **/EWARM/*/

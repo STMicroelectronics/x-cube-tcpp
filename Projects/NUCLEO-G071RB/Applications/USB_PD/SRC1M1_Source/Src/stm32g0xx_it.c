@@ -52,7 +52,9 @@
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN PFP */
-
+#if defined(TCPP0203_SUPPORT)
+void TCPP0203_PORT0_FLG_EXTI_IRQHANDLER(void);
+#endif /* TCPP0203_SUPPORT */
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -153,7 +155,6 @@ void DMA1_Channel2_3_IRQHandler(void)
   /* USER CODE BEGIN DMA1_Channel2_3_IRQn 0 */
 
   /* USER CODE END DMA1_Channel2_3_IRQn 0 */
-
   TRACER_EMB_IRQHandlerDMA();
   /* USER CODE BEGIN DMA1_Channel2_3_IRQn 1 */
 
@@ -182,7 +183,6 @@ void USART3_4_LPUART1_IRQHandler(void)
   /* USER CODE BEGIN USART3_4_LPUART1_IRQn 0 */
 
   /* USER CODE END USART3_4_LPUART1_IRQn 0 */
-
   TRACER_EMB_IRQHandlerUSART();
   /* USER CODE BEGIN USART3_4_LPUART1_IRQn 1 */
 
@@ -210,4 +210,3 @@ void TCPP0203_PORT0_FLG_EXTI_IRQHANDLER(void)
 }
 #endif /* TCPP0203_SUPPORT */
 /* USER CODE END 1 */
-

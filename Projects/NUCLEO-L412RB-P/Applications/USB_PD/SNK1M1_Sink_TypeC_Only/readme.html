@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Readme</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="./../../../../_htmresc/mini-st_2020.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div class="row">
+<div class="col-sm-12 col-lg-8">
+<h2 id="snk1m1_sink_typec_only-application-description"><b>SNK1M1_Sink_TypeC_Only Application Description</b></h2>
+<p>This application provides an example for managing the Port 0 as a Consumer Only Type-C connector.</p>
+<p>USB device application based on the Mass Storage Class (MSC) is enabled.</p>
+<p>Goal is to identify a Type-C connection to power supply and to determine the RP Resistor exposed by it (thanks to ADC).</p>
+<p>In this application, USB Device MSC (Mass Storage Class) is enabled and shows how USB on Type-C should cohabit.</p>
+<h4 id="expected-success-behavior"><b>Expected success behavior</b></h4>
+<p>When Type-C cable is plugged: LED1 on X-NUCLEO-SNK1M1 shield switches on which means that VBUS is provided by the port partner. The Rp resistor exposed by port partner will be indicated thanks to the blinking of LED4 on NUCLEO-L412RB-P board:</p>
+<ul>
+<li>1 blink every 2sec: Default USB, allows up to 500mA</li>
+<li>2 blinks every 2sec: 1.5A</li>
+<li>3 blinks every 2sec: 3.0A</li>
+</ul>
+<p>USB2.0 device should be recognized when you connect the L4 application to a computer.</p>
+<h4 id="error-behaviors"><b>Error behaviors</b></h4>
+<p>Errors are detected and the corresponding message is displayed on the STM32CubeMonUCPD.</p>
+<h4 id="assumptions-if-any"><b>Assumptions if any</b></h4>
+<p>User is familiar with USB-PD 3.1 “Universal Serial BUS Power Delivery” Specification.</p>
+<h4 id="known-limitations"><b>Known limitations</b></h4>
+<p>None.</p>
+<h3 id="keywords"><b>Keywords</b></h3>
+<p>Connectivity, UART/USART, USB_PD_Lib, UCPD, Type C, USBPD</p>
+<h3 id="hardware-and-software-environment"><b>Hardware and Software environment</b></h3>
+<ul>
+<li>This application runs on STM32L4XX devices</li>
+<li><p>This application has been tested with STMicroelectronics NUCLEO-L412RB-P board with X-NUCLEO-SNK1M1 shield and can be easily tailored to any other supported device and development board.</p></li>
+<li>X-NUCLEO-SNK1M1 Set-up
+<ul>
+<li>JP3/JP4 jumper setting : [RESET] and [LDO_OUT] jumpers OFF</li>
+<li>Solders bridges J1 and J2 connected in position 2/3</li>
+</ul></li>
+</ul>
+<h3 id="how-to-use-it"><b>How to use it ?</b></h3>
+<p>In order to make the program work, you must do the following :</p>
+<ul>
+<li>Open your preferred toolchain</li>
+<li>Rebuild all files and load your image into target memory</li>
+<li>Run the application</li>
+</ul>
+</body>
+</html>

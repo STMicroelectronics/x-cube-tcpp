@@ -36,6 +36,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/SRC1M1_Source_TypeC_Only.ioc</locationURI>
 		</link>
 		<link>
+			<name>Doc/README.md</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/README.md</locationURI>
+		</link>
+		<link>
 			<name>Application/User/main.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/Src/main.c</locationURI>

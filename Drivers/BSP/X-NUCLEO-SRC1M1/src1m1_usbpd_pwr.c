@@ -612,9 +612,6 @@ int32_t BSP_USBPD_PWR_VBUSOn(uint32_t PortNum)
     {
       ret = BSP_ERROR_COMPONENT_FAILURE;
     }
-#if defined(USE_ST_POWER_ADAPTER)
-    BSP_ST_PWR_ADAPTER_Enable(PortNum);
-#endif /* USE_ST_POWER_ADAPTER */
   }
   return ret;
 }
@@ -650,10 +647,6 @@ int32_t BSP_USBPD_PWR_VBUSOff(uint32_t PortNum)
 #if (BSP_USBPD_PWR_DONT_WAIT_VBUSOFF_DISCHARGE == 0)
     else
     {
-#if defined(USE_ST_POWER_ADAPTER)
-      BSP_ST_PWR_ADAPTER_Disable(PortNum);
-#endif /* USE_ST_POWER_ADAPTER */
-
       /* Set Discharge On */
       if (USBPD_PWR_PortCompDrv[PortNum]->SetVBusDischarge(&USBPD_PWR_PortCompObj[PortNum],
                                                            TCPP0203_VBUS_DISCHARGE_ON) != TCPP0203_OK)

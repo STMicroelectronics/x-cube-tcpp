@@ -36,11 +36,55 @@
 <div class="col-sm-12 col-lg-8">
 <h1 id="update-history">Update History</h1>
 <div class="collapse">
-<input type="checkbox" id="collapse-section5" checked aria-hidden="true"> <label for="collapse-section5" aria-hidden="true">V1.4.0 / 21-December-2021</label>
+<input type="checkbox" id="collapse-section6" checked aria-hidden="true"> <label for="collapse-section6" aria-hidden="true">V1.5.0 / 27-Jan-2023</label>
 <div>
 <h2 id="main-changes">Main Changes</h2>
 <h3 id="maintenance-release">Maintenance release</h3>
 <h2 id="contents">Contents</h2>
+<table>
+<caption>Fixed bugs list</caption>
+<thead>
+<tr class="header">
+<th>Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MCUAStyle corrections</td>
+</tr>
+<tr class="even">
+<td>Update comments, code clean, unused code removal</td>
+</tr>
+<tr class="odd">
+<td>Addition of division by zero protection</td>
+</tr>
+<tr class="even">
+<td>Test TCPP version before trying to open sink gate driver</td>
+</tr>
+</tbody>
+</table>
+<h2 id="known-limitations">Known Limitations</h2>
+<p>Outstanding bugs list : None</p>
+<p>Requirements not met or planned in a forthcoming release : None</p>
+<h2 id="development-toolchains-and-compilers">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.6</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.31</li>
+<li>STM32CubeIDE toolchain V1.8.0</li>
+</ul>
+<h2 id="supported-devices-and-boards">Supported Devices and boards</h2>
+<p>The X-NUCLEO-DRP1M1 is an expansion board for the NUCLEO-G071RB and NUCLEO-G474RE.</p>
+<h2 id="backward-compatibility">Backward compatibility</h2>
+<p>No compatibility break with previous version</p>
+<h2 id="dependencies">Dependencies</h2>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section5" aria-hidden="true"> <label for="collapse-section5" aria-hidden="true">V1.4.0 / 21-December-2021</label>
+<div>
+<h2 id="main-changes-1">Main Changes</h2>
+<h3 id="maintenance-release-1">Maintenance release</h3>
+<h2 id="contents-1">Contents</h2>
 <table>
 <caption>Fixed bugs list</caption>
 <thead>
@@ -56,45 +100,10 @@
 <td>CodeSpell &amp; MCUAStyle corrections</td>
 </tr>
 <tr class="odd">
-<td>In case of false OCP detection when in SRC mode, attempt to reopen Provider path without trigerring the Error Recovery mechanism at protocol level</td>
+<td>In case of false OCP detection when in SRC mode, attempt to reopen Provider path without triggering the Error Recovery mechanism at protocol level</td>
 </tr>
 <tr class="even">
 <td>Remove old references to USBPDM3</td>
-</tr>
-</tbody>
-</table>
-<h2 id="known-limitations">Known Limitations</h2>
-<p>Outstanding bugs list : None</p>
-<p>Requirements not met or planned in a forthcoming release : None</p>
-<h2 id="development-toolchains-and-compilers">Development Toolchains and Compilers</h2>
-<ul>
-<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.6</li>
-<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.31</li>
-<li>STM32CubeIDE toolchain V1.7.0</li>
-</ul>
-<h2 id="supported-devices-and-boards">Supported Devices and boards</h2>
-<p>The X-NUCLEO-DRP1M1 is an expansion board for the NUCLEO-G071RB and NUCLEO-G474RE.</p>
-<h2 id="backward-compatibility">Backward compatibility</h2>
-<p>No compatibility break with previous version</p>
-<h2 id="dependencies">Dependencies</h2>
-</div>
-</div>
-<div class="collapse">
-<input type="checkbox" id="collapse-section4"  aria-hidden="true"> <label for="collapse-section4" aria-hidden="true">V1.3.0 / 22-October-2021</label>
-<div>
-<h2 id="main-changes-1">Main Changes</h2>
-<h3 id="maintenance-release-1">Maintenance release</h3>
-<h2 id="contents-1">Contents</h2>
-<table>
-<caption>Fixed bugs list</caption>
-<thead>
-<tr class="header">
-<th>Headline</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Update BSP to support current sensing (measurement available in STM32CubeMonitor-UCPD)</td>
 </tr>
 </tbody>
 </table>
@@ -115,7 +124,7 @@
 </div>
 </div>
 <div class="collapse">
-<input type="checkbox" id="collapse-section3" aria-hidden="true"> <label for="collapse-section3" aria-hidden="true">V1.2.0 / 06-July-2021</label>
+<input type="checkbox" id="collapse-section4"  aria-hidden="true"> <label for="collapse-section4" aria-hidden="true">V1.3.0 / 22-October-2021</label>
 <div>
 <h2 id="main-changes-2">Main Changes</h2>
 <h3 id="maintenance-release-2">Maintenance release</h3>
@@ -129,13 +138,7 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td>Implementation of OCP recovery procedure in case of recoverable errors (OCP detected at USB key insertion)</td>
-</tr>
-<tr class="even">
-<td>Update calls to TCP0203 component API, using TCPP0203_Driver structure</td>
-</tr>
-<tr class="odd">
-<td>Update Port descriptor Pwr mode when forced to Low Power in SRC case</td>
+<td>Update BSP to support current sensing (measurement available in STM32CubeMonitor-UCPD)</td>
 </tr>
 </tbody>
 </table>
@@ -156,11 +159,52 @@
 </div>
 </div>
 <div class="collapse">
-<input type="checkbox" id="collapse-section2" aria-hidden="true"> <label for="collapse-section2" aria-hidden="true">V1.1.0 / 12-Mar-2021</label>
+<input type="checkbox" id="collapse-section3" aria-hidden="true"> <label for="collapse-section3" aria-hidden="true">V1.2.0 / 06-July-2021</label>
 <div>
 <h2 id="main-changes-3">Main Changes</h2>
 <h3 id="maintenance-release-3">Maintenance release</h3>
 <h2 id="contents-3">Contents</h2>
+<table>
+<caption>Fixed bugs list</caption>
+<thead>
+<tr class="header">
+<th>Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Implementation of OCP recovery procedure in case of recoverable errors (OCP detected at USB key insertion)</td>
+</tr>
+<tr class="even">
+<td>Update calls to TCP0203 component API, using TCPP0203_Driver structure</td>
+</tr>
+<tr class="odd">
+<td>Update Port descriptor Pwr mode when forced to Low Power in SRC case</td>
+</tr>
+</tbody>
+</table>
+<h2 id="known-limitations-3">Known Limitations</h2>
+<p>Outstanding bugs list : None</p>
+<p>Requirements not met or planned in a forthcoming release : None</p>
+<h2 id="development-toolchains-and-compilers-3">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.50.6</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.31</li>
+<li>STM32CubeIDE toolchain V1.7.0</li>
+</ul>
+<h2 id="supported-devices-and-boards-3">Supported Devices and boards</h2>
+<p>The X-NUCLEO-DRP1M1 is an expansion board for the NUCLEO-G071RB and NUCLEO-G474RE.</p>
+<h2 id="backward-compatibility-3">Backward compatibility</h2>
+<p>No compatibility break with previous version</p>
+<h2 id="dependencies-3">Dependencies</h2>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section2" aria-hidden="true"> <label for="collapse-section2" aria-hidden="true">V1.1.0 / 12-Mar-2021</label>
+<div>
+<h2 id="main-changes-4">Main Changes</h2>
+<h3 id="maintenance-release-4">Maintenance release</h3>
+<h2 id="contents-4">Contents</h2>
 <table>
 <caption>Fixed bugs list</caption>
 <thead>
@@ -201,39 +245,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="known-limitations-3">Known Limitations</h2>
-<p>Outstanding bugs list : None</p>
-<p>Requirements not met or planned in a forthcoming release : None</p>
-<h2 id="development-toolchains-and-compilers-3">Development Toolchains and Compilers</h2>
-<ul>
-<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3</li>
-<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27.1</li>
-<li>STM32CubeIDE toolchain V1.5.0</li>
-</ul>
-<h2 id="supported-devices-and-boards-3">Supported Devices and boards</h2>
-<p>The X-NUCLEO-DRP1M1 is an expansion board for the NUCLEO-G071RB and NUCLEO-G474RE.</p>
-<h2 id="backward-compatibility-3">Backward compatibility</h2>
-<p>No compatibility break with previous version</p>
-<h2 id="dependencies-3">Dependencies</h2>
-</div>
-</div>
-<div class="collapse">
-<input type="checkbox" id="collapse-section1" aria-hidden="true"> <label for="collapse-section1" aria-hidden="true">V1.0.0 / 29-June-2020</label>
-<div>
-<h2 id="contents-4">Contents</h2>
-<table>
-<caption>Fixed bugs list</caption>
-<thead>
-<tr class="header">
-<th>Headline</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Initial release of BSP driver for Nucleo G4 + TCPP03 (DRP configuration)</td>
-</tr>
-</tbody>
-</table>
 <h2 id="known-limitations-4">Known Limitations</h2>
 <p>Outstanding bugs list : None</p>
 <p>Requirements not met or planned in a forthcoming release : None</p>
@@ -248,6 +259,39 @@
 <h2 id="backward-compatibility-4">Backward compatibility</h2>
 <p>No compatibility break with previous version</p>
 <h2 id="dependencies-4">Dependencies</h2>
+</div>
+</div>
+<div class="collapse">
+<input type="checkbox" id="collapse-section1" aria-hidden="true"> <label for="collapse-section1" aria-hidden="true">V1.0.0 / 29-June-2020</label>
+<div>
+<h2 id="contents-5">Contents</h2>
+<table>
+<caption>Fixed bugs list</caption>
+<thead>
+<tr class="header">
+<th>Headline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Initial release of BSP driver for Nucleo G4 + TCPP03 (DRP configuration)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="known-limitations-5">Known Limitations</h2>
+<p>Outstanding bugs list : None</p>
+<p>Requirements not met or planned in a forthcoming release : None</p>
+<h2 id="development-toolchains-and-compilers-5">Development Toolchains and Compilers</h2>
+<ul>
+<li>IAR Embedded Workbench for ARM (EWARM) toolchain V8.32.3</li>
+<li>RealView Microcontroller Development Kit (MDK-ARM) toolchain V5.27.1</li>
+<li>STM32CubeIDE toolchain V1.5.0</li>
+</ul>
+<h2 id="supported-devices-and-boards-5">Supported Devices and boards</h2>
+<p>The X-NUCLEO-DRP1M1 is an expansion board for the NUCLEO-G071RB and NUCLEO-G474RE.</p>
+<h2 id="backward-compatibility-5">Backward compatibility</h2>
+<p>No compatibility break with previous version</p>
+<h2 id="dependencies-5">Dependencies</h2>
 </div>
 </div>
 </div>

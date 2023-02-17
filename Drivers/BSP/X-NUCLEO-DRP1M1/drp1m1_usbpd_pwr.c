@@ -33,9 +33,6 @@
 #include "stdio.h"
 #endif /* _STDIO */
 #endif /* _TRACE */
-#if defined(USE_ST_POWER_ADAPTER)
-#include "st_power_adapter.h"
-#endif /* USE_ST_POWER_ADAPTER */
 
 /** @addtogroup BSP
   * @{
@@ -90,7 +87,7 @@ typedef struct
   */
 
 /* Maximum digital value of the ADC output (12 Bits resolution)
-   To converting ADC measurement to an absolute voltage value:
+   To convert ADC measurement to an absolute voltage value:
    VCHANNELx = ADCx_DATA x (VDD/ADC_FULL_SCALE)
   */
 #define ADC_FULL_SCALE       (0x0FFFU)
@@ -156,8 +153,8 @@ uint16_t usbpd_pwr_adcx_buff[VISENSE_ADC_BUFFER_SIZE]; /* Global ADC buffer to b
 static USBPD_PWR_PortConfig_t USBPD_PWR_Port_Configs[USBPD_PWR_INSTANCES_NBR] =
 {
   {
-    USBPD_PWR_HW_CONFIG_TYPE_TCPP03,             /* Port 0 : TCPP Type                               */
-    TCPP0203_I2C_ADDRESS_X68,                    /* TCPP03 on shield (Address 0x34)                  */
+    USBPD_PWR_HW_CONFIG_TYPE_TCPP03,             /* Port 0 : TCPP Type - default, will be read  */
+    TCPP0203_I2C_ADDRESS_X68,                    /* TCPP0x on shield (Address 0x34)             */
   },
 };
 
@@ -567,40 +564,39 @@ int32_t BSP_USBPD_PWR_VBUSDeInit(uint32_t PortNum)
   {
     BSP_USBPD_PWR_TRACE(PortNum, "-- BSP_USBPD_PWR_VBUSDeInit --");
 
-    /* De-Initialize required HW for VBUS management */
-    switch (USBPD_PWR_Port_Configs[PortNum].Type)
+    /* Only for TCPP03 */
+    if (USBPD_PWR_HW_CONFIG_TYPE_TCPP03 == USBPD_PWR_Port_Configs[PortNum].Type)
     {
-      case USBPD_PWR_HW_CONFIG_TYPE_TCPP02:
-      case USBPD_PWR_HW_CONFIG_TYPE_TCPP03:
-        /* Restore default gates configuration for Low power mode */
-        /* => Close Gate Driver Consumer */
-        if (USBPD_PWR_PortCompDrv[PortNum]->SetGateDriverConsumer(&USBPD_PWR_PortCompObj[PortNum],
-                                                                  TCPP0203_GD_CONSUMER_SWITCH_CLOSED) != TCPP0203_OK)
-        {
-          ret = BSP_ERROR_COMPONENT_FAILURE;
-        }
-        else
-        {
-          BSP_USBPD_PWR_TRACE(PortNum, "-- GDP/GDC setting : default --");
+      /* Close Gate Driver Consumer, only for TCPP03 */
+      if (USBPD_PWR_PortCompDrv[PortNum]->SetGateDriverConsumer(&USBPD_PWR_PortCompObj[PortNum],
+                                                                TCPP0203_GD_CONSUMER_SWITCH_CLOSED) != TCPP0203_OK)
+      {
+        ret = BSP_ERROR_COMPONENT_FAILURE;
+        return ret;
+      }
+    }
 
-          if (USBPD_PWR_Port_Status[PortNum].PwrRole == POWER_ROLE_SOURCE)
-          {
-            /* Switch to Low Power mode */
-            ret = BSP_USBPD_PWR_SetPowerMode(PortNum, USBPD_PWR_MODE_LOWPOWER);
-          }
-          else
-          {
-            /* Switch to Hibernate mode */
-            ret = BSP_USBPD_PWR_SetPowerMode(PortNum, USBPD_PWR_MODE_HIBERNATE);
-          }
-        }
-        break;
+    /* Common for TCPP02 / TCPP03 */
+    if ((USBPD_PWR_HW_CONFIG_TYPE_TCPP02 == USBPD_PWR_Port_Configs[PortNum].Type) ||
+        (USBPD_PWR_HW_CONFIG_TYPE_TCPP03 == USBPD_PWR_Port_Configs[PortNum].Type))
+    {
+      /* Restore default gates configuration for Low power mode */
+      BSP_USBPD_PWR_TRACE(PortNum, "-- GDP/GDC setting : default --");
 
-      case USBPD_PWR_HW_CONFIG_TYPE_DEFAULT:
-      case USBPD_PWR_HW_CONFIG_TYPE_TCPP01:
-      default:
-        ret = BSP_ERROR_FEATURE_NOT_SUPPORTED;
-        break;
+      if (USBPD_PWR_Port_Status[PortNum].PwrRole == POWER_ROLE_SOURCE)
+      {
+        /* Switch to Low Power mode */
+        ret = BSP_USBPD_PWR_SetPowerMode(PortNum, USBPD_PWR_MODE_LOWPOWER);
+      }
+      else
+      {
+        /* Switch to Hibernate mode */
+        ret = BSP_USBPD_PWR_SetPowerMode(PortNum, USBPD_PWR_MODE_HIBERNATE);
+      }
+    }
+    else
+    {
+      ret = BSP_ERROR_FEATURE_NOT_SUPPORTED;
     }
   }
   return ret;
@@ -625,15 +621,25 @@ int32_t BSP_USBPD_PWR_VBUSOn(uint32_t PortNum)
   else
   {
     BSP_USBPD_PWR_TRACE(PortNum, "-- BSP_USBPD_PWR_VBUSOn --");
+
     /* Port Role is now SRC : Close Gate Driver Provider */
     if (USBPD_PWR_Port_Status[PortNum].PwrRole == POWER_ROLE_SOURCE)
     {
-      if (USBPD_PWR_PortCompDrv[PortNum]->SetGateDriverConsumer(&USBPD_PWR_PortCompObj[PortNum],
-                                                                TCPP0203_GD_PROVIDER_SWITCH_OPEN) != TCPP0203_OK)
+      /* Only for TCPP03 */
+      if (USBPD_PWR_HW_CONFIG_TYPE_TCPP03 == USBPD_PWR_Port_Configs[PortNum].Type)
       {
-        ret = BSP_ERROR_COMPONENT_FAILURE;
+        /* Open Gate Driver Consumer, only for TCPP03 */
+        if (USBPD_PWR_PortCompDrv[PortNum]->SetGateDriverConsumer(&USBPD_PWR_PortCompObj[PortNum],
+                                                                  TCPP0203_GD_CONSUMER_SWITCH_OPEN) != TCPP0203_OK)
+        {
+          ret = BSP_ERROR_COMPONENT_FAILURE;
+          return ret;
+        }
       }
-      else
+
+      /* Common for TCPP02 / TCPP03 */
+      if ((USBPD_PWR_HW_CONFIG_TYPE_TCPP02 == USBPD_PWR_Port_Configs[PortNum].Type) ||
+          (USBPD_PWR_HW_CONFIG_TYPE_TCPP03 == USBPD_PWR_Port_Configs[PortNum].Type))
       {
         HAL_Delay(2);
 
@@ -644,14 +650,15 @@ int32_t BSP_USBPD_PWR_VBUSOn(uint32_t PortNum)
         }
         BSP_USBPD_PWR_TRACE(PortNum, "-- GDP/GDC setting : SRC --");
       }
+      else
+      {
+        ret = BSP_ERROR_FEATURE_NOT_SUPPORTED;
+      }
     }
     else
     {
       ret = BSP_ERROR_COMPONENT_FAILURE;
     }
-#if defined(USE_ST_POWER_ADAPTER)
-    BSP_ST_PWR_ADAPTER_Enable(PortNum);
-#endif /* USE_ST_POWER_ADAPTER */
   }
   return ret;
 }
@@ -684,10 +691,6 @@ int32_t BSP_USBPD_PWR_VBUSOff(uint32_t PortNum)
     }
     else
     {
-#if defined(USE_ST_POWER_ADAPTER)
-      BSP_ST_PWR_ADAPTER_Disable(PortNum);
-#endif /* USE_ST_POWER_ADAPTER */
-
       /* Set Discharge On */
       if (USBPD_PWR_PortCompDrv[PortNum]->SetVBusDischarge(&USBPD_PWR_PortCompObj[PortNum],
                                                            TCPP0203_VBUS_DISCHARGE_ON) != TCPP0203_OK)
@@ -787,16 +790,7 @@ int32_t BSP_USBPD_PWR_VBUSSetVoltage_Fixed(uint32_t PortNum,
   {
     ret = BSP_ERROR_WRONG_PARAM;
   }
-#if defined(USE_ST_POWER_ADAPTER)
-  if (VbusTargetInmv == 5000)
-  {
-    BSP_ST_PWR_ADAPTER_Select5V(PortNum);
-  }
-  else
-  {
-    BSP_ST_PWR_ADAPTER_Select12V(PortNum);
-  }
-#endif /* USE_ST_POWER_ADAPTER */
+
   return ret;
 }
 
@@ -1541,7 +1535,7 @@ static void PWR_TCPP0203_Configure_ADC(void)
   /* Set DMA transfer size */
   LL_DMA_SetDataLength(VISENSE_DMA_INSTANCE, VISENSE_DMA_CHANNEL, VISENSE_ADC_BUFFER_SIZE);
 
-  /*## Activation of DMA #####################################################*/
+  /* Activation of DMA ---------------------------------------------------------*/
   /* Enable the DMA transfer */
   LL_DMA_EnableChannel(VISENSE_DMA_INSTANCE, VISENSE_DMA_CHANNEL);
 
@@ -1658,11 +1652,11 @@ static void PWR_TCPP0203_Activate_ADC(void)
   uint32_t Timeout = 0U; /* Variable used for timeout management */
 #endif /* USE_TIMEOUT */
 
-  /*## Operation on ADC hierarchical scope: ADC instance #####################*/
+  /* Operation on ADC hierarchical scope: ADC instance -----------------------*/
 
   /* Note: Hardware constraint (refer to description of the functions         */
   /*       below):                                                            */
-  /*       On this STM32 series, setting of these features is conditioned to   */
+  /*       On this STM32 series, setting of these features is conditioned to  */
   /*       ADC state:                                                         */
   /*       ADC must be disabled.                                              */
   /* Note: In this example, all these checks are not necessary but are        */
@@ -1675,7 +1669,7 @@ static void PWR_TCPP0203_Activate_ADC(void)
   {
 #if defined(STM32G474xx)
     LL_ADC_DisableDeepPowerDown(VISENSE_ADC_INSTANCE);
-#endif
+#endif /* STM32G474xx */
     /* Enable ADC internal voltage regulator */
     LL_ADC_EnableInternalRegulator(VISENSE_ADC_INSTANCE);
 
@@ -1766,13 +1760,13 @@ static void PWR_TCPP0203_Activate_ADC(void)
     /*       ADC activation, using function "LL_ADC_ClearFlag_ADRDY()".       */
   }
 
-  /*## Operation on ADC hierarchical scope: ADC group regular ################*/
+  /* Operation on ADC hierarchical scope: ADC group regular ------------------*/
   /* Note: No operation on ADC group regular performed here.                  */
   /*       ADC group regular conversions to be performed after this function  */
   /*       using function:                                                    */
   /*       "LL_ADC_REG_StartConversion();"                                    */
 
-  /*## Operation on ADC hierarchical scope: ADC group injected ###############*/
+  /* Operation on ADC hierarchical scope: ADC group injected -----------------*/
   /* Note: Feature not available on this STM32 series */
 }
 
@@ -1854,14 +1848,6 @@ static int32_t PWR_TCPP0203_BUSConfigInit(uint32_t PortNum, uint16_t Address)
     {
       ret = BSP_ERROR_UNKNOWN_COMPONENT;
     }
-    /* Check the component type is same as declared in config */
-    else if (((USBPD_PWR_HW_CONFIG_TYPE_TCPP02 == USBPD_PWR_Port_Configs[PortNum].Type)
-              && (tcpp_type != TCPP0203_DEVICE_TYPE_02))
-             || ((USBPD_PWR_HW_CONFIG_TYPE_TCPP03 == USBPD_PWR_Port_Configs[PortNum].Type)
-                 && (tcpp_type != TCPP0203_DEVICE_TYPE_03)))
-    {
-      ret = BSP_ERROR_UNKNOWN_COMPONENT;
-    }
     /* Reset TCPP0203 Reg0 register */
     else if (USBPD_PWR_PortCompDrv[PortNum]->Reset(&USBPD_PWR_PortCompObj[PortNum]) != TCPP0203_OK)
     {
@@ -1869,6 +1855,21 @@ static int32_t PWR_TCPP0203_BUSConfigInit(uint32_t PortNum, uint16_t Address)
     }
     else
     {
+      /* Check the component type and update config accordingly */
+      USBPD_PWR_Port_Configs[PortNum].Type = tcpp_type;
+
+      /* Update Port Config */
+      if (TCPP0203_DEVICE_TYPE_02 == tcpp_type)
+      {
+        USBPD_PWR_Port_Configs[PortNum].Type = USBPD_PWR_HW_CONFIG_TYPE_TCPP02;
+        BSP_USBPD_PWR_TRACE(PortNum, "-- TCPP02 detected");
+      }
+      else if (TCPP0203_DEVICE_TYPE_03 == tcpp_type)
+      {
+        USBPD_PWR_Port_Configs[PortNum].Type = USBPD_PWR_HW_CONFIG_TYPE_TCPP03;
+        BSP_USBPD_PWR_TRACE(PortNum, "-- TCPP03 detected");
+      }
+
       /* Registration completed */
     }
   }
@@ -2043,9 +2044,16 @@ static uint32_t PWR_TCPP0203_ConvertADCDataToVoltage(uint32_t ADCData, uint32_t 
   uint32_t voltage;
   uint32_t vadc;
 
-  vadc = (ADCData * VDD_VALUE) / ADC_FULL_SCALE;
-
-  voltage = vadc * (Ra + Rb) / Rb;
+  /* Avoid dividing by zero */
+  if (Rb == 0u)
+  {
+    voltage = 0u;
+  }
+  else
+  {
+    vadc = (ADCData * VDD_VALUE) / ADC_FULL_SCALE;
+    voltage = vadc * (Ra + Rb) / Rb;
+  }
 
   return voltage;
 }
@@ -2063,9 +2071,16 @@ static int32_t PWR_TCPP0203_ConvertADCDataToCurrent(uint32_t ADCData, uint32_t G
   int32_t current;
   uint32_t vadc;
 
-  vadc = (ADCData * VDD_VALUE) / ADC_FULL_SCALE;
-
-  current = (int32_t)((vadc * 1000) / (Ga * Rs));
+  /* Avoid dividing by zero */
+  if ((Ga == 0u) || (Rs == 0u))
+  {
+    current = 0u;
+  }
+  else
+  {
+    vadc = (ADCData * VDD_VALUE) / ADC_FULL_SCALE;
+    current = (int32_t)((vadc * 1000u) / (Ga * Rs));
+  }
 
   return current;
 }

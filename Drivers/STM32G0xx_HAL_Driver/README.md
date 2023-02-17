@@ -21,30 +21,13 @@ Two models of publication are proposed for the STM32Cube embedded software:
 
 This **stm32g0xx_hal_driver** MCU component repo is one element of the STM32CubeG0 MCU embedded software package, providing the **HAL-LL Drivers** part.
 
-## License
-
-Copyright (c) 2018 STMicroelectronics.
-
-This software component is licensed by STMicroelectronics under BSD 3-Clause license. You may not use this file except in compliance with the License. 
-You may obtain a copy of the License [here](https://opensource.org/licenses/BSD-3-Clause).
-
 ## Release note
 
 Details about the content of this release are available in the release note [here](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/stm32g0xx_hal_driver/blob/master/Release_Notes.html).
 
 ## Compatibility information
 
-In this table, you can find the successive versions of this HAL-LL Driver component, in line with the corresponding versions of the full MCU package:
-
-It is **crucial** that you use a consistent set of versions for the CMSIS Core - CMSIS Device - HAL, as mentioned in this table.
-
-HAL Driver G0 | CMSIS Device G0 | CMSIS Core     | Was delivered in the full MCU package
-------------- | --------------- | -------------- | -----------------------------------------------------
-Tag v1.2.0    | Tag v1.2.0      | Tag v4.5_cm0   | Tag v1.2.0 (and following, if any, till next new tag)
-Tag v1.3.0    | Tag v1.3.0      | Tag v5.4.0_cm0 | Tag v1.3.0 (and following, if any, till next new tag)
-Tag v1.4.0    | Tag v1.4.0      | Tag v5.6.0_cm0 | Tag v1.4.0 (and following, if any, till next new tag)
-Tag v1.4.1    | Tag v1.4.0      | Tag v5.6.0_cm0 | Tag v1.4.1 (and following, if any, till next new tag)
-Tag v1.4.2    | Tag v1.4.1      | Tag v5.6.0_cm0 | Tag v1.5.0 (and following, if any, till next new tag)
+It is **crucial** that you use a consistent set of versions for the CMSIS Core - CMSIS Device - HAL, as mentioned in [this](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/STM32CubeG0/blob/master/Release_Notes.html) release note.
 
 The full **STM32CubeG0** MCU package is available [here](https://github.com/STMicroelectronics/STM32CubeG0).
 

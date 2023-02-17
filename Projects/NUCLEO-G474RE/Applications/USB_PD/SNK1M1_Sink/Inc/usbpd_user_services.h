@@ -22,7 +22,7 @@
 #define __USBPD_USER_SERVICES_H_
 
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -46,9 +46,9 @@ typedef struct
 } USBPD_DPM_SNKPowerRequestDetailsTypeDef;
 #endif /* _SNK */
 
- /** @brief  USBPD Handle Structure definition
-   *
-   */
+/** @brief  USBPD Handle Structure definition
+  *
+  */
 typedef struct
 {
 #if defined(_SRC)
@@ -80,8 +80,8 @@ typedef struct
 } USBPD_HandleTypeDef;
 
 /** @brief  USBPD Port PDO Structure definition
- *
- */
+  *
+  */
 typedef struct
 {
   uint32_t              *ListOfPDO;                 /*!< Pointer on Power Data Objects list,

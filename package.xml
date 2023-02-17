@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
 <Package DBVersion="2.0">
- <PackDescription Release="FW.X-CUBE-TCPP.3.2.0">
+ <PackDescription Release="FW.X-CUBE-TCPP.4.0.0">
   <Note  Release="Release_Notes.html"/>
  </PackDescription>
 </Package>

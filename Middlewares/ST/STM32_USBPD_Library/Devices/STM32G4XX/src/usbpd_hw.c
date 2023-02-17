@@ -103,15 +103,15 @@ void USBPD_HW_SetFRSSignalling(uint8_t PortNum, uint8_t cc)
 {
   (void)PortNum;
 
-  /* Configure the GPIO with the AF corresponding to UCPD */
+  /* Configure FRSTX GPIO */
   if (1u == cc)
   {
-    /* FRS_TX1 PA2 (CC1) */
+    /* FRS_TX common */
     UCPDFRS_INSTANCE0_FRSCC1;
   }
   else
   {
-    /* FRS_TX2 PB0 (CC2) */
+    /* FRS_TX common */
     UCPDFRS_INSTANCE0_FRSCC2;
   }
 }

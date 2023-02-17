@@ -87,31 +87,39 @@ extern "C" {
 #define UCPDDMA_INSTANCE1_CHANNEL_TX   DMA1_Channel4
 
 /* Defines used to configure  USBPD_HW_SetFRSSignalling */
-#define UCPDFRS_INSTANCE0_FRSCC1  do{                                                                  \
-                                      LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA);              \
-                                      LL_GPIO_SetPinMode(GPIOA, LL_GPIO_PIN_2, LL_GPIO_MODE_ALTERNATE); \
-                                      LL_GPIO_SetAFPin_0_7(GPIOA, LL_GPIO_PIN_2, LL_GPIO_AF_4);        \
-                                    } while(0)
+#define UCPDFRS_INSTANCE0_FRSCC1                                                      \
+  do                                                                                  \
+  {                                                                                   \
+    LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA);                              \
+    LL_GPIO_SetPinMode(GPIOA, LL_GPIO_PIN_2, LL_GPIO_MODE_ALTERNATE);                \
+    LL_GPIO_SetAFPin_0_7(GPIOA, LL_GPIO_PIN_2, LL_GPIO_AF_4);                       \
+  } while(0)
 
 #define UCPDFRS_INSTANCE1_FRSCC1
 
-#define UCPDFRS_INSTANCE0_FRSCC2  do{                                                                  \
-                                      LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOB);              \
-                                      LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_0, LL_GPIO_MODE_ALTERNATE); \
-                                      LL_GPIO_SetAFPin_0_7(GPIOB, LL_GPIO_PIN_0, LL_GPIO_AF_6);        \
-                                    } while(0)
+#define UCPDFRS_INSTANCE0_FRSCC2                                                      \
+  do                                                                                  \
+  {                                                                                   \
+    LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOB);                              \
+    LL_GPIO_SetPinMode(GPIOB, LL_GPIO_PIN_0, LL_GPIO_MODE_ALTERNATE);                \
+    LL_GPIO_SetAFPin_0_7(GPIOB, LL_GPIO_PIN_0, LL_GPIO_AF_6);                       \
+  } while(0)
 
 #define UCPDFRS_INSTANCE1_FRSCC2
 
-#define UCPD_INSTANCE0_ENABLEIRQ  do{                                                                  \
-                                        NVIC_SetPriority(UCPD1_2_IRQn,2);                               \
-                                        NVIC_EnableIRQ(UCPD1_2_IRQn);                                   \
-                                    } while(0)
+#define UCPD_INSTANCE0_ENABLEIRQ               \
+  do                                           \
+  {                                            \
+    NVIC_SetPriority(UCPD1_2_IRQn,2);           \
+    NVIC_EnableIRQ(UCPD1_2_IRQn);               \
+  } while(0)
 
-#define UCPD_INSTANCE1_ENABLEIRQ  do{                                                                  \
-                                        NVIC_SetPriority(UCPD1_2_IRQn,2);                               \
-                                        NVIC_EnableIRQ(UCPD1_2_IRQn);                                   \
-                                    } while(0)
+#define UCPD_INSTANCE1_ENABLEIRQ               \
+  do                                           \
+  {                                            \
+    NVIC_SetPriority(UCPD1_2_IRQn,2);           \
+    NVIC_EnableIRQ(UCPD1_2_IRQn);               \
+  } while(0)
 
 /* -----------------------------------------------------------------------------
       Definitions for timer service feature
@@ -124,22 +132,30 @@ extern "C" {
 #define TIMX_CHANNEL_CH2               LL_TIM_CHANNEL_CH2
 #define TIMX_CHANNEL_CH3               LL_TIM_CHANNEL_CH3
 #define TIMX_CHANNEL_CH4               LL_TIM_CHANNEL_CH4
-#define TIMX_CHANNEL1_SETEVENT         do{                                                                    \
-                                           LL_TIM_OC_SetCompareCH1(TIMX, (TimeUs + TIMX->CNT) % TIM_MAX_TIME);\
-                                           LL_TIM_ClearFlag_CC1(TIMX);                                        \
-                                         }while(0)
-#define TIMX_CHANNEL2_SETEVENT         do{                                                                    \
-                                           LL_TIM_OC_SetCompareCH2(TIMX, (TimeUs + TIMX->CNT) % TIM_MAX_TIME);\
-                                           LL_TIM_ClearFlag_CC2(TIMX);                                        \
-                                         }while(0)
-#define TIMX_CHANNEL3_SETEVENT         do{                                                                    \
-                                           LL_TIM_OC_SetCompareCH3(TIMX, (TimeUs + TIMX->CNT) % TIM_MAX_TIME);\
-                                           LL_TIM_ClearFlag_CC3(TIMX);                                        \
-                                         }while(0)
-#define TIMX_CHANNEL4_SETEVENT         do{                                                                    \
-                                           LL_TIM_OC_SetCompareCH4(TIMX, (TimeUs + TIMX->CNT) % TIM_MAX_TIME);\
-                                           LL_TIM_ClearFlag_CC4(TIMX);                                        \
-                                         }while(0)
+#define TIMX_CHANNEL1_SETEVENT                                         \
+  do                                                                   \
+  {                                                                    \
+    LL_TIM_OC_SetCompareCH1(TIMX, (TimeUs + TIMX->CNT) % TIM_MAX_TIME);\
+    LL_TIM_ClearFlag_CC1(TIMX);                                        \
+  } while(0)
+#define TIMX_CHANNEL2_SETEVENT                                         \
+  do                                                                   \
+  {                                                                    \
+    LL_TIM_OC_SetCompareCH2(TIMX, (TimeUs + TIMX->CNT) % TIM_MAX_TIME);\
+    LL_TIM_ClearFlag_CC2(TIMX);                                        \
+  }while(0)
+#define TIMX_CHANNEL3_SETEVENT                                         \
+  do                                                                   \
+  {                                                                    \
+    LL_TIM_OC_SetCompareCH3(TIMX, (TimeUs + TIMX->CNT) % TIM_MAX_TIME);\
+    LL_TIM_ClearFlag_CC3(TIMX);                                        \
+  } while(0)
+#define TIMX_CHANNEL4_SETEVENT                                         \
+  do                                                                   \
+  {                                                                    \
+    LL_TIM_OC_SetCompareCH4(TIMX, (TimeUs + TIMX->CNT) % TIM_MAX_TIME);\
+    LL_TIM_ClearFlag_CC4(TIMX);                                        \
+  } while(0)
 #define TIMX_CHANNEL1_GETFLAG          LL_TIM_IsActiveFlag_CC1
 #define TIMX_CHANNEL2_GETFLAG          LL_TIM_IsActiveFlag_CC2
 #define TIMX_CHANNEL3_GETFLAG          LL_TIM_IsActiveFlag_CC3

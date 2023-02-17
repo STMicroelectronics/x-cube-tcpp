@@ -97,6 +97,7 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
   /* USER CODE BEGIN ADC1_MspInit 0 */
 
   /* USER CODE END ADC1_MspInit 0 */
+
   /** Initializes the peripherals clocks
   */
     PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC12;
@@ -156,4 +157,3 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* hadc)
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */
-

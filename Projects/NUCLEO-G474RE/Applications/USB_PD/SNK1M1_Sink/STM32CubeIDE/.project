@@ -36,9 +36,9 @@
 			<locationURI>PARENT-1-PROJECT_LOC/SNK1M1_Sink.ioc</locationURI>
 		</link>
 		<link>
-			<name>Doc/readme.txt</name>
+			<name>Doc/README.md</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/readme.txt</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/README.md</locationURI>
 		</link>
 		<link>
 			<name>Utilities/bsp_gui.c</name>
