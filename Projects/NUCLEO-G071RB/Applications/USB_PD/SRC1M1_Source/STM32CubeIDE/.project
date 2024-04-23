@@ -24,6 +24,7 @@
 		<nature>com.st.stm32cube.ide.mcu.MCUCubeIdeServicesRevAev2ProjectNature</nature>
 		<nature>com.st.stm32cube.ide.mcu.MCUNonUnderRootProjectNature</nature>
 		<nature>com.st.stm32cube.ide.mcu.MCUCubeProjectNature</nature>
+		<nature>com.st.stm32cube.ide.mcu.MCUAdvancedStructureProjectNature</nature>
 		<nature>com.st.stm32cube.ide.mcu.MCUSingleCpuProjectNature</nature>
 		<nature>com.st.stm32cube.ide.mcu.MCURootProjectNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
@@ -34,11 +35,6 @@
 			<name>SRC1M1_Source.ioc</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/SRC1M1_Source.ioc</locationURI>
-		</link>
-		<link>
-			<name>Doc/README.md</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/README.md</locationURI>
 		</link>
 		<link>
 			<name>Utilities/bsp_gui.c</name>
@@ -66,59 +62,9 @@
 			<locationURI>PARENT-6-PROJECT_LOC/Utilities/TRACER_EMB/tracer_emb_hw.c</locationURI>
 		</link>
 		<link>
-			<name>Application/User/app_freertos.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Src/app_freertos.c</locationURI>
-		</link>
-		<link>
-			<name>Application/User/main.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Src/main.c</locationURI>
-		</link>
-		<link>
-			<name>Application/User/stm32g0xx_hal_msp.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Src/stm32g0xx_hal_msp.c</locationURI>
-		</link>
-		<link>
-			<name>Application/User/stm32g0xx_it.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Src/stm32g0xx_it.c</locationURI>
-		</link>
-		<link>
-			<name>Application/User/usbpd.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Src/usbpd.c</locationURI>
-		</link>
-		<link>
-			<name>Application/User/usbpd_dpm_core.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Src/usbpd_dpm_core.c</locationURI>
-		</link>
-		<link>
-			<name>Application/User/usbpd_dpm_user.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Src/usbpd_dpm_user.c</locationURI>
-		</link>
-		<link>
-			<name>Application/User/usbpd_pwr_if.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Src/usbpd_pwr_if.c</locationURI>
-		</link>
-		<link>
-			<name>Application/User/usbpd_pwr_user.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Src/usbpd_pwr_user.c</locationURI>
-		</link>
-		<link>
-			<name>Application/User/usbpd_vdm_user.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Src/usbpd_vdm_user.c</locationURI>
-		</link>
-		<link>
 			<name>Drivers/CMSIS/system_stm32g0xx.c</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Src/system_stm32g0xx.c</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/Core/Src/system_stm32g0xx.c</locationURI>
 		</link>
 		<link>
 			<name>Drivers/STM32G0xx_HAL_Driver/stm32g0xx_hal.c</name>
@@ -351,9 +297,34 @@
 			<locationURI>PARENT-6-PROJECT_LOC/Middlewares/ST/STM32_USBPD_Library/Core/src/usbpd_trace.c</locationURI>
 		</link>
 		<link>
-			<name>Drivers/BSP/STM32G0xx_Nucleo/stm32g0xx_nucleo.c</name>
+			<name>Application/User/Core/app_freertos.c</name>
 			<type>1</type>
-			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/STM32G0xx_Nucleo/stm32g0xx_nucleo.c</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/Core/Src/app_freertos.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/Core/main.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Core/Src/main.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/Core/stm32g0xx_hal_msp.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Core/Src/stm32g0xx_hal_msp.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/Core/stm32g0xx_it.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Core/Src/stm32g0xx_it.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/BSP/Components/tcpp0203.c</name>
+			<type>1</type>
+			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/Components/tcpp0203/tcpp0203.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/BSP/Components/tcpp0203_reg.c</name>
+			<type>1</type>
+			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/Components/tcpp0203/tcpp0203_reg.c</locationURI>
 		</link>
 		<link>
 			<name>Drivers/BSP/X-NUCLEO-SRC1M1/src1m1_bus.c</name>
@@ -366,14 +337,39 @@
 			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/X-NUCLEO-SRC1M1/src1m1_usbpd_pwr.c</locationURI>
 		</link>
 		<link>
-			<name>Drivers/BSP/Components/tcpp0203/tcpp0203.c</name>
+			<name>Application/User/TCPP/App/app_tcpp.c</name>
 			<type>1</type>
-			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/Components/tcpp0203/tcpp0203.c</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/TCPP/App/app_tcpp.c</locationURI>
 		</link>
 		<link>
-			<name>Drivers/BSP/Components/tcpp0203/tcpp0203_reg.c</name>
+			<name>Application/User/USBPD/App/usbpd.c</name>
 			<type>1</type>
-			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/Components/tcpp0203/tcpp0203_reg.c</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/USBPD/App/usbpd.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/USBPD/App/usbpd_dpm_core.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/USBPD/App/usbpd_dpm_core.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/USBPD/App/usbpd_pwr_if.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/USBPD/App/usbpd_pwr_if.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/USBPD/Target/usbpd_dpm_user.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/USBPD/Target/usbpd_dpm_user.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/USBPD/Target/usbpd_pwr_user.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/USBPD/Target/usbpd_pwr_user.c</locationURI>
+		</link>
+		<link>
+			<name>Application/User/USBPD/Target/usbpd_vdm_user.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/USBPD/Target/usbpd_vdm_user.c</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

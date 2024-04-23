@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2018 STMicroelectronics.
+  * Copyright (c) 2021 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -51,8 +51,8 @@
 void NMI_Handler(void);
 void HardFault_Handler(void);
 void UCPD1_2_IRQHandler(void);
+void DMA1_Channel1_IRQHandler(void);
 void DMA1_Channel2_3_IRQHandler(void);
-void DMA1_Ch4_7_DMAMUX1_OVR_IRQHandler(void);
 void TIM6_DAC_LPTIM1_IRQHandler(void);
 void USART3_4_LPUART1_IRQHandler(void);
 /* USER CODE BEGIN EFP */

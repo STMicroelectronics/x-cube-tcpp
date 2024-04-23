@@ -152,6 +152,7 @@ static int32_t  PWR_TCPP0203_ConvertADCDataToCurrent(uint32_t ADCData, uint32_t 
   * @{
   */
 uint16_t usbpd_pwr_adcx_buff[VISENSE_ADC_BUFFER_SIZE]; /* Global ADC buffer to be filled by DMA */
+uint8_t  adc_configured = 0U;
 
 static USBPD_PWR_PortConfig_t USBPD_PWR_Port_Configs[USBPD_PWR_INSTANCES_NBR] =
 {
@@ -519,9 +520,15 @@ int32_t BSP_USBPD_PWR_VBUSInit(uint32_t PortNum)
       case USBPD_PWR_HW_CONFIG_TYPE_TCPP02:
         /* Switch to Normal mode */
         ret = BSP_USBPD_PWR_SetPowerMode(PortNum, USBPD_PWR_MODE_NORMAL);
+
 #if !defined(USBPD_CONFIG_MX)
-        PWR_TCPP0203_Configure_ADC();
-        PWR_TCPP0203_Activate_ADC();
+        /* Configure and start adc once */
+        if (adc_configured == 0U)
+        {
+          PWR_TCPP0203_Configure_ADC();
+          PWR_TCPP0203_Activate_ADC();
+          adc_configured = 1U;
+        }
 
         /*  Start Conversion */
         LL_ADC_REG_StartConversion(VISENSE_ADC_INSTANCE);

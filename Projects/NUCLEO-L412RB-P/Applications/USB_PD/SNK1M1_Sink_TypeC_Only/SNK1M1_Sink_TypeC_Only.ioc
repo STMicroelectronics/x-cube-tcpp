@@ -110,7 +110,6 @@ ProjectManager.CustomerFirmwarePackage=..\\..\\..\\..\\..
 ProjectManager.DefaultFWLocation=false
 ProjectManager.DeletePrevious=true
 ProjectManager.DeviceId=STM32L412RBTxP
-ProjectManager.FirmwarePackage=STM32Cube FW_L4 V1.15.1
 ProjectManager.FreePins=false
 ProjectManager.HalAssertFull=false
 ProjectManager.HeapSize=0x200

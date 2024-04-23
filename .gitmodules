@@ -1,0 +1,54 @@
+[submodule "Utilities/TRACER_EMB"]
+	path = Utilities/TRACER_EMB
+	url = https://github.com/STMicroelectronics/stm32-util-usbpd-tracer-emb
+[submodule "Middlewares/ST/STM32_USBPD_Library/Core"]
+	path = Middlewares/ST/STM32_USBPD_Library/Core
+	url = https://github.com/STMicroelectronics/stm32-mw-usbpd-core
+[submodule "Middlewares/ST/STM32_USBPD_Library/Devices/STM32G0XX"]
+	path = Middlewares/ST/STM32_USBPD_Library/Devices/STM32G0XX
+	url = https://github.com/STMicroelectronics/stm32-mw-usbpd-device-g0
+[submodule "Middlewares/Third_Party/FreeRTOS"]
+	path = Middlewares/Third_Party/FreeRTOS
+	url = https://github.com/STMicroelectronics/stm32_mw_freertos
+[submodule "Middlewares/ST/STM32_USB_Device_Library"]
+	path = Middlewares/ST/STM32_USB_Device_Library
+	url = https://github.com/STMicroelectronics/stm32_mw_usb_device
+[submodule "Drivers/BSP/Components/tcpp0203"]
+	path = Drivers/BSP/Components/tcpp0203
+	url = https://github.com/STMicroelectronics/stm32-tcpp0203
+[submodule "Drivers/BSP/STM32G4xx_Nucleo"]
+	path = Drivers/BSP/STM32G4xx_Nucleo
+	url = https://github.com/STMicroelectronics/stm32g4xx-nucleo-bsp
+[submodule "Drivers/BSP/STM32L4xx_Nucleo"]
+	path = Drivers/BSP/STM32L4xx_Nucleo
+	url = https://github.com/STMicroelectronics/stm32l4xx-nucleo-bsp
+[submodule "Drivers/BSP/STM32G0xx_Nucleo"]
+	path = Drivers/BSP/STM32G0xx_Nucleo
+	url = https://github.com/STMicroelectronics/stm32g0xx-nucleo-bsp
+[submodule "Drivers/BSP/STM32F4xx_Nucleo"]
+	path = Drivers/BSP/STM32F4xx_Nucleo
+	url = https://github.com/STMicroelectronics/stm32f4xx-nucleo-bsp
+[submodule "Drivers/STM32F4xx_HAL_Driver"]
+	path = Drivers/STM32F4xx_HAL_Driver
+	url = https://github.com/STMicroelectronics/stm32f4xx_hal_driver
+[submodule "Drivers/STM32G4xx_HAL_Driver"]
+	path = Drivers/STM32G4xx_HAL_Driver
+	url = https://github.com/STMicroelectronics/stm32g4xx_hal_driver
+[submodule "Drivers/STM32G0xx_HAL_Driver"]
+	path = Drivers/STM32G0xx_HAL_Driver
+	url = https://github.com/STMicroelectronics/stm32g0xx_hal_driver
+[submodule "Drivers/STM32L4xx_HAL_Driver"]
+	path = Drivers/STM32L4xx_HAL_Driver
+	url = https://github.com/STMicroelectronics/stm32l4xx_hal_driver
+[submodule "Drivers/CMSIS/Device/ST/STM32G0xx"]
+	path = Drivers/CMSIS/Device/ST/STM32G0xx
+	url = https://github.com/STMicroelectronics/cmsis_device_g0
+[submodule "Drivers/CMSIS/Device/ST/STM32G4xx"]
+	path = Drivers/CMSIS/Device/ST/STM32G4xx
+	url = https://github.com/STMicroelectronics/cmsis_device_g4
+[submodule "Drivers/CMSIS/Device/ST/STM32L4xx"]
+	path = Drivers/CMSIS/Device/ST/STM32L4xx
+	url = https://github.com/STMicroelectronics/cmsis_device_l4
+[submodule "Drivers/CMSIS/Device/ST/STM32F4xx"]
+	path = Drivers/CMSIS/Device/ST/STM32F4xx
+	url = https://github.com/STMicroelectronics/cmsis_device_f4

@@ -66,7 +66,7 @@
         </option>
         <option>
           <name>OGLastSavedByProductVersion</name>
-          <state>8.50.6.28611</state>
+          <state>8.50.1.24770</state>
         </option>
         <option>
           <name>GeneralEnableMisra</name>
@@ -138,12 +138,12 @@
         </option>
         <option>
           <name>GFPUDeviceSlave</name>
-          <state>STM32F446RE	ST STM32F446RE</state>
+          <state></state>
         </option>
         <option>
           <name>FPU2</name>
           <version>0</version>
-          <state>4</state>
+          <state>6</state>
         </option>
         <option>
           <name>NrRegs</name>
@@ -198,7 +198,7 @@
         </option>
         <option>
           <name>DSPExtension</name>
-          <state>1</state>
+          <state>0</state>
         </option>
         <option>
           <name>TrustZone</name>
@@ -224,11 +224,13 @@
         </option>
         <option>
           <name>CCDefines</name>
-          <state>TCPP0203_SUPPORT</state>
+          <state>_SRCnoPD</state>
           <state>USBPD_CONFIG_MX</state>
-          <state>USE_STM32F4XX_NUCLEO</state>
+          <state>TCPP0203_SUPPORT</state>
+          <state>HAL_TIM_MODULE_ENABLED</state>
           <state>USE_HAL_DRIVER</state>
           <state>STM32F446xx</state>
+          <state></state>
         </option>
         <option>
           <name>CCPreprocFile</name>
@@ -289,7 +291,7 @@
         <option>
           <name>CCAllowList</name>
           <version>1</version>
-          <state>00000000</state>
+          <state>11111110</state>
         </option>
         <option>
           <name>CCDebugInfo</name>
@@ -321,7 +323,7 @@
         </option>
         <option>
           <name>CCRequirePrototypes</name>
-          <state>1</state>
+          <state>0</state>
         </option>
         <option>
           <name>CCDiagWarnAreErr</name>
@@ -359,7 +361,6 @@
           <state>$PROJ_DIR$/../../../../../../Drivers/CMSIS/Device/ST/STM32F4xx/Include</state>
           <state>$PROJ_DIR$/../../../../../../Drivers/CMSIS/Include</state>
           <state>$PROJ_DIR$/../../../../../../Drivers/BSP/X-NUCLEO-SRC1M1</state>
-          <state>$PROJ_DIR$/../../../../../../Drivers/BSP/STM32F4xx_Nucleo</state>
           <state>$PROJ_DIR$/../../../../../../Drivers/BSP/Components/tcpp0203</state>
         </option>
         <option>
@@ -614,7 +615,7 @@
         </option>
         <option>
           <name>AOutputFile</name>
-          <state>$FILE_BNAME$.o</state>
+          <state></state>
         </option>
         <option>
           <name>ALimitErrorsCheck</name>
@@ -656,7 +657,7 @@
         <option>
           <name>OOCOutputFormat</name>
           <version>3</version>
-          <state>3</state>
+          <state>1</state>
         </option>
         <option>
           <name>OCOutputOverride</name>
@@ -664,7 +665,7 @@
         </option>
         <option>
           <name>OOCOutputFile</name>
-          <state>SRC1M1_Source_TypeC_Only.bin</state>
+          <state>SRC1M1_Source_TypeC_Only.hex</state>
         </option>
         <option>
           <name>OOCCommandLineProducer</name>
@@ -1016,7 +1017,7 @@
         </option>
         <option>
           <name>IlinkTrustzoneImportLibraryOut</name>
-          <state>SRC1M1_Source_TypeC_Only_import_lib.o</state>
+          <state></state>
         </option>
         <option>
           <name>OILinkExtraOption</name>
@@ -1077,19 +1078,22 @@
     <group>
       <name>EWARM</name>
       <file>
-        <name>$PROJ_DIR$\startup_stm32f446xx.s</name>
+        <name>$PROJ_DIR$/startup_stm32f446xx.s</name>
       </file>
     </group>
     <group>
       <name>User</name>
       <file>
-        <name>$PROJ_DIR$\..\Src\main.c</name>
+        <name>$PROJ_DIR$/../Src/main.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\Src\stm32f4xx_it.c</name>
+        <name>$PROJ_DIR$/../Src/app_tcpp.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\Src\stm32f4xx_hal_msp.c</name>
+        <name>$PROJ_DIR$/../Src/stm32f4xx_it.c</name>
+      </file>
+      <file>
+        <name>$PROJ_DIR$/../Src/stm32f4xx_hal_msp.c</name>
       </file>
     </group>
   </group>
@@ -1098,108 +1102,93 @@
     <group>
       <name>BSP</name>
       <group>
-        <name>Components</name>
-        <group>
-          <name>tcpp0203</name>
-          <file>
-            <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\BSP\Components\tcpp0203\tcpp0203.c</name>
-          </file>
-          <file>
-            <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\BSP\Components\tcpp0203\tcpp0203_reg.c</name>
-          </file>
-        </group>
-      </group>
-      <group>
-        <name>STM32F4xx_Nucleo</name>
-        <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\BSP\STM32F4xx_Nucleo\stm32f4xx_nucleo.c</name>
-        </file>
-      </group>
-      <group>
         <name>X-NUCLEO-SRC1M1</name>
         <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\BSP\X-NUCLEO-SRC1M1\src1m1_usbpd_pwr.c</name>
+          <name>$PROJ_DIR$/../../../../../../Drivers/BSP/X-NUCLEO-SRC1M1/src1m1_bus.c</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\BSP\X-NUCLEO-SRC1M1\src1m1_bus.c</name>
+          <name>$PROJ_DIR$/../../../../../../Drivers/BSP/X-NUCLEO-SRC1M1/src1m1_usbpd_pwr.c</name>
         </file>
       </group>
-    </group>
-    <group>
-      <name>CMSIS</name>
-      <file>
-        <name>$PROJ_DIR$\..\Src\system_stm32f4xx.c</name>
-      </file>
+      <group>
+        <name>Components</name>
+        <file>
+          <name>$PROJ_DIR$/../../../../../../Drivers/BSP/Components/tcpp0203/tcpp0203.c</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$/../../../../../../Drivers/BSP/Components/tcpp0203/tcpp0203_reg.c</name>
+        </file>
+      </group>
     </group>
     <group>
       <name>STM32F4xx_HAL_Driver</name>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc_ex.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_adc.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_adc.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc_ex.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ramfunc.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_exti.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_i2c_ex.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c</name>
       </file>
       <file>
-        <name>$PROJ_DIR$\..\..\..\..\..\..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c</name>
+        <name>$PROJ_DIR$/../../../../../../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c</name>
       </file>
     </group>
-  </group>
-  <group>
-    <name>Doc</name>
-    <file>
-      <name>$PROJ_DIR$/../README.md</name>
-    </file>
+    <group>
+      <name>CMSIS</name>
+      <file>
+        <name>$PROJ_DIR$/../Src/system_stm32f4xx.c</name>
+      </file>
+    </group>
   </group>
 </project>
 

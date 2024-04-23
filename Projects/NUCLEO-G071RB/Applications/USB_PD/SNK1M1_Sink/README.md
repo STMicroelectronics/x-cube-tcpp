@@ -21,7 +21,7 @@ The following sink PDOs are configured in STM32CubeMX:
   - 15V 2A
   - 20V 1A
 
-By default, the sink asks for the highest power matching PDO of the connected source. User can change 
+By default, the sink asks for the highest power matching PDO of the connected source. User can change
 this behaviour by changing the USER_SERV_PDO_Sel_Method variable in usbpd_user_services.c.
 For example, if your source supports 5V/2A, 9V/2A, 15V/2A and 20V/2A, the sink will ask for the 15V profile,
 as it is the highest power profile the sink and the source can support.
@@ -43,7 +43,7 @@ You can change the PDO selection method with the USER_SERV_PDO_Sel_Method variab
   - Max current
   - Min current
 
-For debug purpose, TRACER_EMB and GUI_INTERFACE utilities are enabled in this application. 
+For debug purpose, TRACER_EMB and GUI_INTERFACE utilities are enabled in this application.
 
 ####  <b>Expected success behavior</b>
 Connect STM32CubeMonUCPD on the VCP associated to our board (only available if USB cable is connected)
@@ -65,13 +65,13 @@ Connectivity, UART/USART, USB_PD_Lib, UCPD, Type C, USBPD
 ### <b>Hardware and Software environment</b>
 
   - This application runs on STM32G0XX devices
-  - This application has been tested with STMicroelectronics NUCLEO-G071RB board with X-NUCLEO-SNK1M1 shield
+  - This application has been tested with STMicroelectronics NUCLEO-G071RB board with X-NUCLEO-SNK1M1 expansion board
     and can be easily tailored to any other supported device and development board.
 
 - X-NUCLEO-SNK1M1 Set-up
     - JP3/JP4 jumper setting : [RESET] and [LDO_OUT] jumpers OFF
     - Solders bridges J1 and J2 connected in position 1/2
-	
+
 ### <b>How to use it ?</b>
 
 In order to make the program work, you must do the following :

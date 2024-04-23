@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2018 STMicroelectronics.
+  * Copyright (c) 2021 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -27,9 +27,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 /* USER CODE BEGIN Include */
-#ifdef _RTOS
-#include "cmsis_os.h"
-#endif /* _RTOS */
+
 /* USER CODE END Include */
 
 /** @addtogroup STM32_USBPD_APPLICATION
@@ -41,25 +39,17 @@
   */
 
 /* Exported typedef ----------------------------------------------------------*/
-/* USER CODE BEGIN Typedef */
-#if !defined(_GUI_INTERFACE)
 typedef struct
 {
-  uint32_t PE_DataSwap                                    : 1;  /*!< support data swap                                     */
-  uint32_t PE_VconnSwap                                   : 1;  /*!< support VCONN swap                                    */
-  uint32_t PE_DR_Swap_To_DFP                              : 1U; /*!< If supported, DR Swap to DFP can be accepted or not by the user else directly rejected */
-  uint32_t PE_DR_Swap_To_UFP                              : 1U; /*!< If supported, DR Swap to UFP can be accepted or not by the user else directly rejected */
-  uint32_t Reserved1                                      : 28U;  /*!< Reserved bits */
+  uint32_t PE_DataSwap                                    : 1U;  /*!< support data swap                                     */
+  uint32_t PE_VconnSwap                                   : 1U;  /*!< support VCONN swap                                    */
+  uint32_t PE_DR_Swap_To_DFP                              : 1U;  /*!< If supported, DR Swap to DFP can be accepted or not by the user else directly rejected */
+  uint32_t PE_DR_Swap_To_UFP                              : 1U;  /*!< If supported, DR Swap to UFP can be accepted or not by the user else directly rejected */
+  uint32_t Reserved1                                      :28U;  /*!< Reserved bits */
   USBPD_SNKPowerRequest_TypeDef DPM_SNKRequestedPower;          /*!< Requested Power by the sink board                     */
-  uint32_t            ReservedManu[7];                          /*!< Reserved bits to match with Manufacturer information            */
-  uint32_t            ReservedSrcCapa[6];                       /*!< Reserved bits to match with SrcCapa information            */
-#if defined(USBPDCORE_SNK_CAPA_EXT)
   USBPD_SKEDB_TypeDef DPM_SNKExtendedCapa;                      /*!< SNK Extended Capability                                */
-  uint8_t             ReservedSnkCapa[3];                       /*!< Reserved bits to match with SnkCapaExt information     */
-#else
-  uint32_t            ReservedSnkCapa[6];                       /*!< Reserved bits to match with SnkCapaExt information     */
-#endif /* USBPDCORE_SNK_CAPA_EXT */
-  uint32_t ReservedByte;                                        /*!< Reserved bits */
+  USBPD_MIDB_TypeDef  DPM_ManuInfoPort;                         /*!< Manufacturer information used for the port            */
+  uint16_t            ReservedManu;                             /*!< Reserved bits to match with Manufacturer information            */
 } USBPD_USER_SettingsTypeDef;
 
 typedef struct
@@ -68,69 +58,13 @@ typedef struct
   uint16_t VID;               /*!< Vendor ID (assigned by the USB-IF)                     */
   uint16_t PID;               /*!< Product ID (assigned by the manufacturer)              */
 } USBPD_IdSettingsTypeDef;
-#endif /* !_GUI_INTERFACE */
-
-typedef enum {
-  DPM_USER_EVENT_TIMER,         /* TIMER EVENT */
-  DPM_USER_EVENT_GUI,           /* GUI EVENT */
-  DPM_USER_EVENT_NONE,          /* NO EVENT */
-} DPM_USER_EVENT;
-
-/**
-  * @brief  USBPD DPM handle Structure definition
-  * @{
-  */
-typedef struct
-{
-  uint32_t                      DPM_ListOfRcvSRCPDO[USBPD_MAX_NB_PDO];   /*!< The list of received Source Power Data Objects from Port partner
-                                                                              (when Port partner is a Source or a DRP port).                       */
-  uint32_t                      DPM_NumberOfRcvSRCPDO;                   /*!< The number of received Source Power Data Objects from port Partner
-                                                                              (when Port partner is a Source or a DRP port).
-                                                                              This parameter must be set to a value lower than USBPD_MAX_NB_PDO    */
-  uint32_t                      DPM_ListOfRcvSNKPDO[USBPD_MAX_NB_PDO];   /*!< The list of received Sink Power Data Objects from Port partner
-                                                                              (when Port partner is a Sink or a DRP port).                         */
-  uint32_t                      DPM_NumberOfRcvSNKPDO;                   /*!< The number of received Sink Power Data Objects from port Partner
-                                                                              (when Port partner is a Sink or a DRP port).
-                                                                              This parameter must be set to a value lower than USBPD_MAX_NB_PDO    */
-  uint32_t                      DPM_RDOPosition;                         /*!< RDO Position of requested DO in Source list of capabilities          */
-  uint32_t                      DPM_RequestedVoltage;                    /*!< Value of requested voltage                                           */
-  uint32_t                      DPM_RequestedCurrent;                    /*!< Value of requested current                                           */
-  int16_t                       DPM_MeasuredCurrent;                     /*!< Value of measured current                                            */
-  uint32_t                      DPM_RDOPositionPrevious;                 /*!< RDO Position of previous requested DO in Source list of capabilities */
-  uint32_t                      DPM_RequestDOMsg;                        /*!< Request Power Data Object message to be sent                         */
-  uint32_t                      DPM_RequestDOMsgPrevious;                /*!< Previous Request Power Data Object message to be sent                */
-  uint32_t                      DPM_RcvRequestDOMsg;                     /*!< Received request Power Data Object message from the port Partner     */
-  volatile uint32_t             DPM_ErrorCode;                           /*!< USB PD Error code                                                    */
-  volatile uint8_t              DPM_IsConnected;                         /*!< USB PD connection state                                              */
-  uint16_t                      DPM_Reserved:14;                         /*!< Reserved bytes                                                       */
-  USBPD_PPSSDB_TypeDef          DPM_RcvPPSStatus;                        /*!< PPS Status received by port partner                                  */
-#if defined(USBPDCORE_SNK_CAPA_EXT)
-  USBPD_SKEDB_TypeDef           DPM_RcvSNKExtendedCapa;                  /*!< SNK Extended Capability received by port partner                     */
-#endif /* USBPDCORE_SNK_CAPA_EXT */
-#if defined(_GUI_INTERFACE)
-  volatile uint16_t             DPM_TimerMeasReport;                     /*!< Timer used to send measurement report                                */
-#endif /* _GUI_INTERFACE */
-} USBPD_HandleTypeDef;
+/* USER CODE BEGIN Typedef */
 
 /* USER CODE END Typedef */
 
 /* Exported define -----------------------------------------------------------*/
 /* USER CODE BEGIN Define */
 
-/*
- * USBPD FW version
- */
-#define USBPD_FW_VERSION  0x05022020u
-
-/*
- * USBPD Start Port Number
- */
-#define USBPD_START_PORT_NUMBER  0u
-
-/*
- * Number af thread defined by user to include in the low power control
- */
-#define USBPD_USER_THREAD_COUNT    0
 /* USER CODE END Define */
 
 /* Exported constants --------------------------------------------------------*/
@@ -145,20 +79,6 @@ typedef struct
 
 /* Exported variables --------------------------------------------------------*/
 /* USER CODE BEGIN Private_Variables */
-
-#if !defined(USBPD_DPM_USER_C)
-extern USBPD_HandleTypeDef DPM_Ports[USBPD_PORT_COUNT];
-#else
-USBPD_HandleTypeDef DPM_Ports[USBPD_PORT_COUNT] =
-{
-  {
-    .DPM_Reserved = 0,
-#if defined(USBPDCORE_SNK_CAPA_EXT)
-    .DPM_RcvSNKExtendedCapa = {0},                  /*!< SNK Extended Capability received by port partner                     */
-#endif /* USBPDCORE_SNK_CAPA_EXT */
-  }
-};
-#endif /* !USBPD_DPM_USER_C */
 
 /* USER CODE END Private_Variables */
 

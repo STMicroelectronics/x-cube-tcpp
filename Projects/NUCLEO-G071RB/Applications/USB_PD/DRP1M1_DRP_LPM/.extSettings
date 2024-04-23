@@ -1,0 +1,11 @@
+[ProjectFiles]
+HeaderPath=..\..\..\..\..\..\Drivers\BSP\X-NUCLEO-DRP1M1
+[Others]
+Define=USE_STM32G0XX_NUCLEO;NUCLEO_MB1360A;TCPP0203_SUPPORT
+HALModule=
+[Groups]
+Doc=../README.md;
+Drivers/BSP/X-NUCLEO-DRP1M1=../../../../../../Drivers/BSP/X-NUCLEO-DRP1M1/drp1m1_usbpd_pwr.c;
+Drivers/BSP/X-NUCLEO-DRP1M1=../../../../../../Drivers/BSP/X-NUCLEO-DRP1M1/drp1m1_bus.c;
+Drivers/BSP/Components/Tcpp03=../../../../../../Drivers/BSP/Components/tcpp0203/tcpp0203.c;
+Drivers/BSP/Components/Tcpp03=../../../../../../Drivers/BSP/Components/tcpp0203/tcpp0203_reg.c;

@@ -47,6 +47,7 @@ extern "C" {
 #include "stm32g0xx_ll_dma.h"
 #include "stm32g0xx_nucleo.h"
 /* STM32G0 series using BSP V1 framework, no conf template file, no error definitions, ... */
+#include "drp1m1_errno.h"
 #else
 #warning "Please select include files according to HW setup"
 #endif /* USE_STM32G4XX_NUCLEO */

@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2018 STMicroelectronics.
+  * Copyright (c) 2021 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -77,7 +77,7 @@ USBPD_SettingsTypeDef       DPM_Settings[USBPD_PORT_COUNT] =
     {
       .PE_UnchunkSupport                = USBPD_FALSE,  /* support Unchunked mode (valid only spec revision 3.0)   */
       .PE_FastRoleSwapSupport           = USBPD_FALSE,   /* support fast role swap only spec revision 3.0            */
-      .Is_GetPPSStatus_Supported        = USBPD_TRUE,  /*!< PPS message NOT supported by PE stack */
+      .Is_GetPPSStatus_Supported        = USBPD_FALSE,  /*!< PPS message NOT supported by PE stack */
       .Is_SrcCapaExt_Supported          = USBPD_FALSE,  /*!< Source_Capabilities_Extended message supported or not by DPM */
       .Is_Alert_Supported               = USBPD_FALSE,   /*!< Alert message supported or not by DPM */
       .Is_GetStatus_Supported           = USBPD_FALSE,   /*!< Status message supported or not by DPM (Is_Alert_Supported should be enabled) */
@@ -103,75 +103,61 @@ USBPD_IdSettingsTypeDef          DPM_ID_Settings[USBPD_PORT_COUNT] =
   },
 };
 
+USBPD_USER_SettingsTypeDef       DPM_USER_Settings[USBPD_PORT_COUNT] =
+{
+  {
+    .PE_DataSwap = USBPD_FALSE,                  /* support data swap                                       */
+    .PE_VconnSwap = USBPD_FALSE,                 /* support VCONN swap                                  */
+    .PE_DR_Swap_To_DFP = USBPD_FALSE,                  /*  Support of DR Swap to DFP                                  */
+    .PE_DR_Swap_To_UFP = USBPD_FALSE,                  /*  Support of DR Swap to UFP                                  */
+    .DPM_SNKExtendedCapa =                        /*!< SNK Extended Capability           */
+    {
+      .VID                = USBPD_VID, /*!< Vendor ID (assigned by the USB-IF)                             */
+      .PID                = USBPD_PID, /*!< Product ID (assigned by the manufacturer)                      */
+      .XID                = USBPD_XID, /*!< Value provided by the USB-IF assigned to the product           */
+      .FW_revision        = 1,         /*!< Firmware version number                                        */
+      .HW_revision        = 2,         /*!< Hardware version number                                        */
+      .SKEDB_Version      = USBPD_SKEDB_VERSION_1P0, /*!< SKEDB Version (not the specification Version)
+                                                          based on @ref USBPD_SKEDB_VERSION                */
+      .LoadStep           = USBPD_SKEDB_LOADSTEP_150MA, /*!< Load Step based on @ref USBPD_SKEDB_LOADSTEP  */
+      .SinkLoadCharac.b   =          /*!< Sink Load Characteristics                */
+      {
+        .PercentOverload  = 0,         /*!< Percent overload in 10% increments Values higher than 25
+                                             (11001b) are clipped to 250%. 00000b is the default.    */
+        .OverloadPeriod   = 0,         /*!< Overload period in 20ms when bits 0-4 non-zero.          */
+        .DutyCycle        = 0,         /*!< Duty cycle in 5% increments when bits 0-4 are non-zero.  */
+        .VBusVoltageDrop  = 0,         /*!< Can tolerate VBUS Voltage drop.                          */
+      },
+      .Compliance         = 0,         /*!< Compliance based on combination of @ref USBPD_SKEDB_COMPLIANCE */
+      .Touchtemp          = USBPD_SKEDB_TOUCHTEMP_NA, /*!< Touch Temp based on @ref USBPD_SKEDB_TOUCHTEMP  */
+      .BatteryInfo        = 0,         /*!< Battery info                                                   */
+      .SinkModes          = 0,         /*!< Sink Modes based on combination of @ref USBPD_SKEDB_SINKMODES  */
+      .SinkMinimumPDP     = 0,         /*!< The Minimum PDP required by the Sink to operate without
+                                            consuming any power from its Battery(s) should it have one     */
+      .SinkOperationalPDP = 0,         /*!< The PDP the Sink requires to operate normally. For Sinks with
+                                            a Battery, it is the PDP Rating of the charger supplied with
+                                            it or recommended for it.                                      */
+      .SinkMaximumPDP     = 0,         /*!< The Maximum PDP the Sink can consume to operate and
+                                            charge its Battery(s) should it have one.                      */
+    },
+#if defined(USBPD_REV30_SUPPORT)
+#if _MANU_INFO
+    .DPM_ManuInfoPort =                      /*!< Manufacturer information used for the port            */
+    {
+      .VID = USBPD_VID,                      /*!< Vendor ID (assigned by the USB-IF)        */
+      .PID = USBPD_PID,                      /*!< Product ID (assigned by the manufacturer) */
+      .ManuString = "STMicroelectronics",    /*!< Vendor defined byte array                 */
+    },
+#endif /* _MANU_INFO */
+#endif /* USBPD_REV30_SUPPORT */
+  },
+};
+
 #endif /* !__USBPD_DPM_CORE_C */
 
 /* USER CODE BEGIN Variable */
-#ifndef __USBPD_DPM_CORE_C
-extern USBPD_USER_SettingsTypeDef       DPM_USER_Settings[USBPD_PORT_COUNT];
-#else /* __USBPD_DPM_CORE_C */
+/* Section where Variable can be added */
 
-/* If re-generation with STM32CubeMX is made, remove
-   the generated DPM_USER_Settings redefinition and keep the one below: */
-USBPD_USER_SettingsTypeDef DPM_USER_Settings[USBPD_PORT_COUNT] =
-{
-  {
-    .PE_VconnSwap = USBPD_FALSE,                /* support VCONN swap   */
-    .DPM_SNKRequestedPower =                                             /*!< Requested Power by the sink board                                    */
-    {
-      .MaxOperatingCurrentInmAunits = USBPD_CORE_PDO_SNK_FIXED_MAX_CURRENT,
-      .OperatingVoltageInmVunits    = USBPD_BOARD_REQUESTED_VOLTAGE_MV,
-      .MaxOperatingVoltageInmVunits = USBPD_BOARD_MAX_VOLTAGE_MV,
-      .MinOperatingVoltageInmVunits = USBPD_BOARD_MIN_VOLTAGE_MV,
-      .OperatingPowerInmWunits      = (USBPD_CORE_PDO_SNK_FIXED_MAX_CURRENT * USBPD_BOARD_REQUESTED_VOLTAGE_MV)/1000,
-      .MaxOperatingPowerInmWunits   = (USBPD_CORE_PDO_SNK_FIXED_MAX_CURRENT * USBPD_BOARD_MAX_VOLTAGE_MV)/1000
-    },
-#if defined(USBPDCORE_SNK_CAPA_EXT)
-    .DPM_SNKExtendedCapa =                        /*!< SRC Extended Capability           */
-      {
-        .VID                = USBPD_VID, /*!< Vendor ID (assigned by the USB-IF)                             */
-        .PID                = USBPD_PID, /*!< Product ID (assigned by the manufacturer)                      */
-        .XID                = USBPD_XID, /*!< Value provided by the USB-IF assigned to the product           */
-        .FW_revision        = 1,         /*!< Firmware version number                                        */
-        .HW_revision        = 2,         /*!< Hardware version number                                        */
-        .SKEDB_Version      = USBPD_SKEDB_VERSION_1P0, /*!< SKEDB Version (not the specification Version)
-                                                            based on @ref USBPD_SKEDB_VERSION                */
-        .LoadStep           = USBPD_SKEDB_LOADSTEP_150MA, /*!< Load Step based on @ref USBPD_SKEDB_LOADSTEP  */
-        .SinkLoadCharac.b   =          /*!< Sink Load Characteristics                */
-        {
-          .PercentOverload  = 0,         /*!< Percent overload in 10% increments Values higher than 25
-                                               (11001b) are clipped to 250%. 00000b is the default.    */
-          .OverloadPeriod   = 0,         /*!< Overload period in 20ms when bits 0-4 non-zero.          */
-          .DutyCycle        = 0,         /*!< Duty cycle in 5% increments when bits 0-4 are non-zero.  */
-          .VBusVoltageDrop  = 0,         /*!< Can tolerate VBUS Voltage drop.                          */
-        },
-        .Compliance         = 0,         /*!< Compliance based on combination of @ref USBPD_SKEDB_COMPLIANCE */
-        .Touchtemp          = USBPD_SKEDB_TOUCHTEMP_NA, /*!< Touch Temp based on @ref USBPD_SKEDB_TOUCHTEMP  */
-        .BatteryInfo        = 0,         /*!< Battery info                                                   */
-        .SinkModes          = 0,         /*!< Sink Modes based on combination of @ref USBPD_SKEDB_SINKMODES  */
-        .SinkMinimumPDP     = 0,         /*!< The Minimum PDP required by the Sink to operate without
-                                              consuming any power from its Battery(s) should it have one     */
-        .SinkOperationalPDP = 0,         /*!< The PDP the Sink requires to operate normally. For Sinks with
-                                              a Battery, it is the PDP Rating of the charger supplied with
-                                              it or recommended for it.                                      */
-        .SinkMaximumPDP     = 0,         /*!< The Maximum PDP the Sink can consume to operate and
-                                              charge its Battery(s) should it have one.                      */
-      },
-#endif /* USBPDCORE_SNK_CAPA_EXT */
-#if defined(_GUI_INTERFACE)
-    .PWR_AccessoryDetection     = USBPD_FALSE,  /*!< It enables or disables powered accessory detection */
-    .PWR_AccessoryTransition    = USBPD_FALSE,  /*!< It enables or disables transition from Powered.accessory to Try.SNK */
-    .PWR_UnconstrainedPower     = USBPD_CORE_PDO_NOT_EXT_POWERED, /*!< UUT has an external power source available that is sufficient to adequately power the system while charging external devices or the UUT's primary function is to charge external devices. */
-    .PWR_RpResistorValue        = vRd_3_0A,     /*!< RP resistor value based on @ref CAD_SNK_Source_Current_Adv_Typedef */
-    .USB_Support                = USBPD_CORE_PDO_USBCOMM_NOT_CAPABLE, /*!< USB_Comms_Capable, is the UUT capable of enumerating as a USB host or device? */
-    .USB_Device                 = USBPD_FALSE,  /*!< Type_C_Can_Act_As_Device, Indicates whether the UUT can communicate with USB 2.0 or USB 3.1 as a device or as the Upstream Facing Port of a hub. */
-    .USB_Host                   = USBPD_FALSE,  /*!<  Type_C_Can_Act_As_Host, Indicates whether the UUT can communicate with USB 2.0 or USB 3.1 as a host or as the Downstream Facing Port of a hub */
-    .USB_SuspendSupport         = USBPD_CORE_PDO_USBSUSP_NOT_SUPPORTED, /*!<  USB Suspend support values in PDO definition (Source) */
-    .CAD_tDRP                   = 80,           /*!<  Type_C_Can_Act_As_Host, Indicates whether the UUT can communicate with USB 2.0 or USB 3.1 as a host or as the Downstream Facing Port of a hub */
-    .CAD_dcSRC_DRP              = 50,           /*!<  USB Suspend support values in PDO definition (Source) */
-#endif /* _GUI_INTERFACE */
-  },
-};
-#endif /* !__USBPD_DPM_CORE_C */
 /* USER CODE END Variable */
 
 /* Exported constants --------------------------------------------------------*/

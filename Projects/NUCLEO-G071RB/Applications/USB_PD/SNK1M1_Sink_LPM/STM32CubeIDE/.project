@@ -36,6 +36,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/SNK1M1_Sink_LPM.ioc</locationURI>
 		</link>
 		<link>
+			<name>Doc/README.md</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/README.md</locationURI>
+		</link>
+		<link>
 			<name>Utilities/stm32_lpm.c</name>
 			<type>1</type>
 			<locationURI>PARENT-6-PROJECT_LOC/Utilities/lpm/tiny_lpm/stm32_lpm.c</locationURI>
@@ -56,24 +61,9 @@
 			<locationURI>PARENT-6-PROJECT_LOC/Utilities/TRACER_EMB/tracer_emb_hw.c</locationURI>
 		</link>
 		<link>
-			<name>Application/User/adc.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Src/adc.c</locationURI>
-		</link>
-		<link>
 			<name>Application/User/app_freertos.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/Src/app_freertos.c</locationURI>
-		</link>
-		<link>
-			<name>Application/User/dma.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Src/dma.c</locationURI>
-		</link>
-		<link>
-			<name>Application/User/gpio.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Src/gpio.c</locationURI>
 		</link>
 		<link>
 			<name>Application/User/main.c</name>
@@ -111,16 +101,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/Src/stm32g0xx_it.c</locationURI>
 		</link>
 		<link>
-			<name>Application/User/ucpd.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Src/ucpd.c</locationURI>
-		</link>
-		<link>
-			<name>Application/User/usart.c</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/Src/usart.c</locationURI>
-		</link>
-		<link>
 			<name>Application/User/usbpd.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/Src/usbpd.c</locationURI>
@@ -151,6 +131,11 @@
 			<locationURI>PARENT-1-PROJECT_LOC/Src/usbpd_pwr_user.c</locationURI>
 		</link>
 		<link>
+			<name>Application/User/usbpd_user_services.c</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Src/usbpd_user_services.c</locationURI>
+		</link>
+		<link>
 			<name>Application/User/usbpd_vdm_user.c</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/Src/usbpd_vdm_user.c</locationURI>
@@ -164,6 +149,16 @@
 			<name>Drivers/STM32G0xx_HAL_Driver/stm32g0xx_hal.c</name>
 			<type>1</type>
 			<locationURI>PARENT-6-PROJECT_LOC/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/STM32G0xx_HAL_Driver/stm32g0xx_hal_adc.c</name>
+			<type>1</type>
+			<locationURI>PARENT-6-PROJECT_LOC/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_adc.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/STM32G0xx_HAL_Driver/stm32g0xx_hal_adc_ex.c</name>
+			<type>1</type>
+			<locationURI>PARENT-6-PROJECT_LOC/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_adc_ex.c</locationURI>
 		</link>
 		<link>
 			<name>Drivers/STM32G0xx_HAL_Driver/stm32g0xx_hal_cortex.c</name>
@@ -381,9 +376,9 @@
 			<locationURI>PARENT-6-PROJECT_LOC/Middlewares/ST/STM32_USBPD_Library/Core/src/usbpd_trace.c</locationURI>
 		</link>
 		<link>
-			<name>Drivers/BSP/X-NUCLEO-USBPDM1/usbpdm1_usbpd_pwr.c</name>
+			<name>Drivers/BSP/STM32G0xx_Nucleo/stm32g0xx_nucleo.c</name>
 			<type>1</type>
-			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/X-NUCLEO-USBPDM1/usbpdm1_usbpd_pwr.c</locationURI>
+			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/STM32G0xx_Nucleo/stm32g0xx_nucleo.c</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

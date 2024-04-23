@@ -36,9 +36,9 @@
 			<locationURI>PARENT-1-PROJECT_LOC/SRC1M1_Source_TypeC_Only.ioc</locationURI>
 		</link>
 		<link>
-			<name>Doc/README.md</name>
+			<name>Application/User/app_tcpp.c</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/README.md</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/Src/app_tcpp.c</locationURI>
 		</link>
 		<link>
 			<name>Application/User/main.c</name>
@@ -161,9 +161,14 @@
 			<locationURI>PARENT-6-PROJECT_LOC/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_adc.c</locationURI>
 		</link>
 		<link>
-			<name>Drivers/BSP/STM32F4xx_Nucleo/stm32f4xx_nucleo.c</name>
+			<name>Drivers/BSP/Components/tcpp0203.c</name>
 			<type>1</type>
-			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/STM32F4xx_Nucleo/stm32f4xx_nucleo.c</locationURI>
+			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/Components/tcpp0203/tcpp0203.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/BSP/Components/tcpp0203_reg.c</name>
+			<type>1</type>
+			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/Components/tcpp0203/tcpp0203_reg.c</locationURI>
 		</link>
 		<link>
 			<name>Drivers/BSP/X-NUCLEO-SRC1M1/src1m1_bus.c</name>
@@ -174,16 +179,6 @@
 			<name>Drivers/BSP/X-NUCLEO-SRC1M1/src1m1_usbpd_pwr.c</name>
 			<type>1</type>
 			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/X-NUCLEO-SRC1M1/src1m1_usbpd_pwr.c</locationURI>
-		</link>
-		<link>
-			<name>Drivers/BSP/Components/tcpp0203/tcpp0203.c</name>
-			<type>1</type>
-			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/Components/tcpp0203/tcpp0203.c</locationURI>
-		</link>
-		<link>
-			<name>Drivers/BSP/Components/tcpp0203/tcpp0203_reg.c</name>
-			<type>1</type>
-			<locationURI>PARENT-6-PROJECT_LOC/Drivers/BSP/Components/tcpp0203/tcpp0203_reg.c</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

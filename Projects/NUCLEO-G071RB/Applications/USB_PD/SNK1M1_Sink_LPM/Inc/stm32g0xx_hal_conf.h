@@ -34,7 +34,7 @@ extern "C" {
   * @brief This is the list of modules to be used in the HAL driver
   */
 #define HAL_MODULE_ENABLED
-/* #define HAL_ADC_MODULE_ENABLED   */
+#define HAL_ADC_MODULE_ENABLED
 /* #define HAL_CEC_MODULE_ENABLED   */
 /* #define HAL_COMP_MODULE_ENABLED   */
 /* #define HAL_CRC_MODULE_ENABLED   */
@@ -154,7 +154,7 @@ in voltage and temperature.*/
   *        frequency.
   */
 #if !defined  (EXTERNAL_I2S1_CLOCK_VALUE)
-#define EXTERNAL_I2S1_CLOCK_VALUE    (48000UL) /*!< Value of the I2S1 External clock source in Hz*/
+#define EXTERNAL_I2S1_CLOCK_VALUE    (12288000UL) /*!< Value of the I2S1 External clock source in Hz*/
 #endif /* EXTERNAL_I2S1_CLOCK_VALUE */
 
 #if defined(STM32G0C1xx) || defined(STM32G0B1xx) || defined(STM32G0B0xx)

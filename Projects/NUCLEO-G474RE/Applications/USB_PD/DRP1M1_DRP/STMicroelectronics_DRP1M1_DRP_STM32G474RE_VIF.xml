@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vif:VIF xmlns:opt="http://usb.org/VendorInfoFileOptionalContent.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:vif="http://usb.org/VendorInfoFile.xsd">
-  <vif:VIF_Specification>3.23</vif:VIF_Specification>
+  <vif:VIF_Specification>3.27</vif:VIF_Specification>
   <vif:VIF_App>
     <vif:Vendor>USB-IF</vif:Vendor>
     <vif:Name>VIF Editor</vif:Name>
-    <vif:Version>3.4.3.0</vif:Version>
+    <vif:Version>3.6.1.0</vif:Version>
   </vif:VIF_App>
   <vif:Vendor_Name>STMicroelectronics</vif:Vendor_Name>
   <vif:Model_Part_Number>G4_DRP1M1</vif:Model_Part_Number>
@@ -32,10 +32,10 @@
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;General PD-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
-    <vif:PD_Spec_Revision_Major value="3" />
-    <vif:PD_Spec_Revision_Minor value="1" />
-    <vif:PD_Spec_Version_Major value="1" />
-    <vif:PD_Spec_Version_Minor value="7" />
+    <vif:PD_Spec_Revision_Major value="3">3</vif:PD_Spec_Revision_Major>
+    <vif:PD_Spec_Revision_Minor value="1">1</vif:PD_Spec_Revision_Minor>
+    <vif:PD_Spec_Version_Major value="1">1</vif:PD_Spec_Version_Major>
+    <vif:PD_Spec_Version_Minor value="7">7</vif:PD_Spec_Version_Minor>
     <vif:PD_Specification_Revision value="2">Revision 3</vif:PD_Specification_Revision>
     <vif:SOP_Capable value="true" />
     <vif:SOP_P_Capable value="false" />
@@ -47,15 +47,15 @@
     <vif:Unchunked_Extended_Messages_Supported value="false" />
     <vif:Security_Msgs_Supported_SOP value="false" />
     <vif:Unconstrained_Power value="false" />
-    <vif:Num_Fixed_Batteries value="0" />
-    <vif:Num_Swappable_Battery_Slots value="0" />
+    <vif:Num_Fixed_Batteries value="0">0</vif:Num_Fixed_Batteries>
+    <vif:Num_Swappable_Battery_Slots value="0">0</vif:Num_Swappable_Battery_Slots>
     <vif:ID_Header_Connector_Type_SOP value="2">USB Type-C® Receptacle</vif:ID_Header_Connector_Type_SOP>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <!--;PD Capabilities-->
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <vif:USB_Comms_Capable value="false" />
-    <vif:DR_Swap_To_DFP_Supported value="true" />
-    <vif:DR_Swap_To_UFP_Supported value="true" />
+    <vif:DR_Swap_To_DFP_Supported value="false" />
+    <vif:DR_Swap_To_UFP_Supported value="false" />
     <vif:VCONN_Swap_To_On_Supported value="false" />
     <vif:VCONN_Swap_To_Off_Supported value="false" />
     <vif:Responds_To_Discov_SOP_UFP value="false" />
@@ -96,7 +96,8 @@
     <vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink value="0">FR_Swap not supported</vif:FR_Swap_Type_C_Current_Capability_As_Initial_Sink>
     <vif:Master_Port value="false" />
     <vif:Has_Invariant_PDOs value="true" />
-    <vif:Num_Src_PDOs value="1" />
+    <vif:Port_Managed_Guaranteed_Type value="1">Guaranteed Capability</vif:Port_Managed_Guaranteed_Type>
+    <vif:Num_Src_PDOs value="1">1 Src PDO</vif:Num_Src_PDOs>
     <vif:PD_OC_Protection value="false" />
     <!--Bundle: SrcPdoList-->
     <vif:SrcPdoList>
@@ -104,8 +105,8 @@
         <!--Source PDO 1-->
         <vif:Src_PDO_Supply_Type value="0">Fixed</vif:Src_PDO_Supply_Type>
         <vif:Src_PDO_Peak_Current value="0">100% IOC</vif:Src_PDO_Peak_Current>
-        <vif:Src_PDO_Voltage value="100">5000 mV</vif:Src_PDO_Voltage>
-        <vif:Src_PDO_Max_Current value="150">1500 mA</vif:Src_PDO_Max_Current>
+        <vif:Src_PDO_Voltage value="100">5000 mV (Factor = 50, saved to 100)</vif:Src_PDO_Voltage>
+        <vif:Src_PDO_Max_Current value="150">1500 mA (Factor = 10, saved to 150)</vif:Src_PDO_Max_Current>
       </vif:SrcPDO>
     </vif:SrcPdoList>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
@@ -113,18 +114,18 @@
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
     <vif:PD_Power_As_Sink value="7500">7500 mW</vif:PD_Power_As_Sink>
     <vif:EPR_Supported_As_Snk value="false" />
-    <vif:No_USB_Suspend_May_Be_Set value="true" />
+    <vif:No_USB_Suspend_May_Be_Set value="false" />
     <vif:GiveBack_May_Be_Set value="false" />
     <vif:Higher_Capability_Set value="false" />
     <vif:FR_Swap_Reqd_Type_C_Current_As_Initial_Source value="0">FR_Swap not supported</vif:FR_Swap_Reqd_Type_C_Current_As_Initial_Source>
-    <vif:Num_Snk_PDOs value="1" />
+    <vif:Num_Snk_PDOs value="1">1 Snk PDO</vif:Num_Snk_PDOs>
     <!--Bundle: SnkPdoList-->
     <vif:SnkPdoList>
       <vif:SnkPDO>
         <!--Sink PDO 1-->
         <vif:Snk_PDO_Supply_Type value="0">Fixed</vif:Snk_PDO_Supply_Type>
-        <vif:Snk_PDO_Voltage value="100">5000 mV</vif:Snk_PDO_Voltage>
-        <vif:Snk_PDO_Op_Current value="150">1500 mA</vif:Snk_PDO_Op_Current>
+        <vif:Snk_PDO_Voltage value="100">5000 mV (Factor = 50, saved to 100)</vif:Snk_PDO_Voltage>
+        <vif:Snk_PDO_Op_Current value="150">1500 mA (Factor = 10, saved to 150)</vif:Snk_PDO_Op_Current>
       </vif:SnkPDO>
     </vif:SnkPdoList>
     <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->

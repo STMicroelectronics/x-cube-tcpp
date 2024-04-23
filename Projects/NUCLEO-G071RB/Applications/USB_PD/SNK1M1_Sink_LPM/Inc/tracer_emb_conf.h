@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2018 STMicroelectronics.
+  * Copyright (c) 2021 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -77,13 +77,13 @@ extern "C" {
 #define TRACER_EMB_DMA_INSTANCE                      DMA1
 #define TRACER_EMB_ENABLE_CLK_DMA()                  LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_DMA1)
 #define TRACER_EMB_TX_DMA_REQUEST                    LL_DMAMUX_REQ_LPUART1_TX
-#define TRACER_EMB_TX_DMA_CHANNEL                    LL_DMA_CHANNEL_7
+#define TRACER_EMB_TX_DMA_CHANNEL                    LL_DMA_CHANNEL_3
 #define TRACER_EMB_ENABLECHANNEL                     LL_DMA_EnableChannel
 #define TRACER_EMB_DISABLECHANNEL                    LL_DMA_DisableChannel
-#define TRACER_EMB_TX_DMA_IRQ                        DMA1_Ch4_7_DMAMUX1_OVR_IRQn
-#define TRACER_EMB_TX_DMA_IRQHANDLER                 DMA1_Ch4_7_DMAMUX1_OVR_IRQHandler
-#define TRACER_EMB_TX_DMA_ACTIVE_FLAG                LL_DMA_IsActiveFlag_TC7
-#define TRACER_EMB_TX_DMA_CLEAR_FLAG                 LL_DMA_ClearFlag_GI7
+#define TRACER_EMB_TX_DMA_IRQ                        DMA1_Channel2_3_IRQn
+#define TRACER_EMB_TX_DMA_IRQHANDLER                 DMA1_Channel2_3_IRQHandler
+#define TRACER_EMB_TX_DMA_ACTIVE_FLAG                LL_DMA_IsActiveFlag_TC3
+#define TRACER_EMB_TX_DMA_CLEAR_FLAG                 LL_DMA_ClearFlag_GI3
 #define TRACER_EMB_TX_DMA_PRIORITY                   0
  /* TRACER_EMB_DMA_MODE == 1UL */
 

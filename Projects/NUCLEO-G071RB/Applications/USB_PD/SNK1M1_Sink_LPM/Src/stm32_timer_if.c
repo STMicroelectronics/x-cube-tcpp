@@ -28,11 +28,11 @@ extern RTC_HandleTypeDef hrtc;
 typedef struct
 {
   uint32_t Rtc_Time; /* Reference time */
-  
+
   RTC_TimeTypeDef RTC_Calndr_Time; /* Reference time in calendar format */
 
   RTC_DateTypeDef RTC_Calndr_Date; /* Reference date in calendar format */
-  
+
 } RtcTimerContext_t;
 /* Private define ------------------------------------------------------------*/
 #define MIN_ALARM_DELAY               2 /* in ticks */
@@ -117,19 +117,19 @@ const UTIL_TIMER_Driver_s UTIL_TimerDriver =
 {
     RTC_Init,
     RTC_DeInit,
-    
+
     RTC_StartTimer,
-    RTC_StopTimer, 
-    
+    RTC_StopTimer,
+
     RTC_SetTimerContext,
     RTC_GetTimerContext,
-    
+
     RTC_GetTimerElapsedTime,
     RTC_GetTimerValue,
     RTC_GetMinimumTimeout,
-    
+
     RTC_ms2Tick,
-    RTC_Tick2ms, 
+    RTC_Tick2ms,
 };
 
 /*!
@@ -221,7 +221,7 @@ uint32_t RTC_GetTimerElapsedTime( void )
 {
   RTC_TimeTypeDef RTC_TimeStruct;
   RTC_DateTypeDef RTC_DateStruct;
-  
+
   uint32_t CalendarValue = RTC_GetCalendarValue(&RTC_DateStruct, &RTC_TimeStruct );
 
   return( ( uint32_t )( CalendarValue - RtcTimerContext.Rtc_Time ));
@@ -236,7 +236,7 @@ uint32_t RTC_GetTimerValue( void )
 {
   RTC_TimeTypeDef RTC_TimeStruct;
   RTC_DateTypeDef RTC_DateStruct;
-  
+
   uint32_t CalendarValue = (uint32_t) RTC_GetCalendarValue(&RTC_DateStruct, &RTC_TimeStruct );
 
   return( CalendarValue );
@@ -250,7 +250,7 @@ uint32_t RTC_GetTimerValue( void )
 void RTC_IrqHandler ( void )
 {
   RTC_HandleTypeDef* pRtcHandle=&RtcHandle;
-  
+
   /* Get the AlarmA interrupt source enable status */
   if(__HAL_RTC_ALARM_GET_IT_SOURCE(pRtcHandle, RTC_IT_ALRA) != RESET)
   {
@@ -258,7 +258,7 @@ void RTC_IrqHandler ( void )
     if(__HAL_RTC_ALARM_GET_FLAG(pRtcHandle, RTC_FLAG_ALRAF) != RESET)
     {
       /* Clear the AlarmA interrupt pending bit */
-      __HAL_RTC_ALARM_CLEAR_FLAG(pRtcHandle, RTC_FLAG_ALRAF); 
+      __HAL_RTC_ALARM_CLEAR_FLAG(pRtcHandle, RTC_FLAG_ALRAF);
       /* Clear the EXTI's line Flag for RTC Alarm */
       /* AlarmA callback */
       UTIL_TIMER_IRQ_Handler();
@@ -301,13 +301,13 @@ static void RTC_StartWakeUpAlarm( uint32_t timeoutValue )
   RTC_DateTypeDef RTC_DateStruct = RtcTimerContext.RTC_Calndr_Date;
 
   RTC_StopTimer();
-    
+
   /*reverse counter */
   rtcAlarmSubSeconds =  RTC_PREDIV_S - RTC_TimeStruct.SubSeconds;
   rtcAlarmSubSeconds+= ( timeoutValue & RTC_PREDIV_S);
   /* convert timeout  to seconds */
   timeoutValue >>= RTC_N_PREDIV_S;  /* convert timeout  in seconds */
-  
+
   /*convert microsecs to RTC format and add to 'Now' */
   rtcAlarmDays =  RTC_DateStruct.Date;
   while (timeoutValue >= SECONDS_IN_1DAY)
@@ -315,7 +315,7 @@ static void RTC_StartWakeUpAlarm( uint32_t timeoutValue )
     timeoutValue -= SECONDS_IN_1DAY;
     rtcAlarmDays++;
   }
-  
+
   /* calc hours */
   rtcAlarmHours = RTC_TimeStruct.Hours;
   while (timeoutValue >= SECONDS_IN_1HOUR)
@@ -323,7 +323,7 @@ static void RTC_StartWakeUpAlarm( uint32_t timeoutValue )
     timeoutValue -= SECONDS_IN_1HOUR;
     rtcAlarmHours++;
   }
-  
+
   /* calc minutes */
   rtcAlarmMinutes = RTC_TimeStruct.Minutes;
   while (timeoutValue >= SECONDS_IN_1MINUTE)
@@ -331,7 +331,7 @@ static void RTC_StartWakeUpAlarm( uint32_t timeoutValue )
     timeoutValue -= SECONDS_IN_1MINUTE;
     rtcAlarmMinutes++;
   }
-   
+
   /* calc seconds */
   rtcAlarmSeconds =  RTC_TimeStruct.Seconds + timeoutValue;
 
@@ -341,9 +341,9 @@ static void RTC_StartWakeUpAlarm( uint32_t timeoutValue )
     rtcAlarmSubSeconds -= (RTC_PREDIV_S+1);
     rtcAlarmSeconds++;
   }
-  
+
   while (rtcAlarmSeconds >= SECONDS_IN_1MINUTE)
-  { 
+  {
     rtcAlarmSeconds -= SECONDS_IN_1MINUTE;
     rtcAlarmMinutes++;
   }
@@ -353,42 +353,42 @@ static void RTC_StartWakeUpAlarm( uint32_t timeoutValue )
     rtcAlarmMinutes -= MINUTES_IN_1HOUR;
     rtcAlarmHours++;
   }
-  
+
   while (rtcAlarmHours >= HOURS_IN_1DAY)
   {
     rtcAlarmHours -= HOURS_IN_1DAY;
     rtcAlarmDays++;
   }
 
-  if( RTC_DateStruct.Year % 4 == 0 ) 
+  if( RTC_DateStruct.Year % 4 == 0 )
   {
-    if( rtcAlarmDays > DaysInMonthLeapYear[ RTC_DateStruct.Month - 1 ] )    
+    if( rtcAlarmDays > DaysInMonthLeapYear[ RTC_DateStruct.Month - 1 ] )
     {
       rtcAlarmDays = rtcAlarmDays % DaysInMonthLeapYear[ RTC_DateStruct.Month - 1 ];
     }
   }
   else
   {
-    if( rtcAlarmDays > DaysInMonth[ RTC_DateStruct.Month - 1 ] )    
-    {   
+    if( rtcAlarmDays > DaysInMonth[ RTC_DateStruct.Month - 1 ] )
+    {
       rtcAlarmDays = rtcAlarmDays % DaysInMonth[ RTC_DateStruct.Month - 1 ];
     }
   }
 
   /* Set RTC_AlarmStructure with calculated values*/
   RTC_AlarmStructure.AlarmTime.SubSeconds = RTC_PREDIV_S-rtcAlarmSubSeconds;
-  RTC_AlarmStructure.AlarmSubSecondMask  = RTC_ALARMSUBSECONDMASK; 
+  RTC_AlarmStructure.AlarmSubSecondMask  = RTC_ALARMSUBSECONDMASK;
   RTC_AlarmStructure.AlarmTime.Seconds = rtcAlarmSeconds;
   RTC_AlarmStructure.AlarmTime.Minutes = rtcAlarmMinutes;
   RTC_AlarmStructure.AlarmTime.Hours   = rtcAlarmHours;
   RTC_AlarmStructure.AlarmDateWeekDay    = ( uint8_t )rtcAlarmDays;
   RTC_AlarmStructure.AlarmTime.TimeFormat   = RTC_TimeStruct.TimeFormat;
-  RTC_AlarmStructure.AlarmDateWeekDaySel   = RTC_ALARMDATEWEEKDAYSEL_DATE; 
+  RTC_AlarmStructure.AlarmDateWeekDaySel   = RTC_ALARMDATEWEEKDAYSEL_DATE;
   RTC_AlarmStructure.AlarmMask       = RTC_ALARMMASK_NONE;
   RTC_AlarmStructure.Alarm = RTC_ALARM_A;
   RTC_AlarmStructure.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
   RTC_AlarmStructure.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
-  
+
   /* Set RTC_Alarm */
   HAL_RTC_SetAlarm_IT( &RtcHandle, &RTC_AlarmStructure, RTC_FORMAT_BIN );
 }
@@ -398,30 +398,30 @@ static uint32_t RTC_GetCalendarValue( RTC_DateTypeDef* RTC_DateStruct, RTC_TimeT
   uint32_t calendarValue = 0;
   uint32_t first_read;
   uint32_t correction;
-    
+
   /* Get Time and Date*/
 //  HAL_RTC_GetTime( &RtcHandle, RTC_TimeStruct, RTC_FORMAT_BIN );
- 
+
   /* make sure it is correct due to asynchronus nature of RTC*/
   do {
     first_read = LL_RTC_TIME_GetSubSecond(RTC);
     HAL_RTC_GetTime( &RtcHandle, RTC_TimeStruct, RTC_FORMAT_BIN );
   } while (first_read != LL_RTC_TIME_GetSubSecond(RTC) );
-  HAL_RTC_GetDate( &RtcHandle, RTC_DateStruct, RTC_FORMAT_BIN );    
+  HAL_RTC_GetDate( &RtcHandle, RTC_DateStruct, RTC_FORMAT_BIN );
 
   /* calculte amount of elapsed days since 01/01/2000 */
   calendarValue= DIVC( (DAYS_IN_YEAR*3 + DAYS_IN_LEAP_YEAR)* RTC_DateStruct->Year , 4);
 
   correction = ( (RTC_DateStruct->Year % 4) == 0 ) ? DAYS_IN_MONTH_CORRECTION_LEAP : DAYS_IN_MONTH_CORRECTION_NORM ;
- 
+
   calendarValue +=( DIVC( (RTC_DateStruct->Month-1)*(30+31) ,2 ) - (((correction>> ((RTC_DateStruct->Month-1)*2) )&0x3)));
 
   calendarValue += (RTC_DateStruct->Date -1);
-  
-  /* convert from days to seconds */
-  calendarValue *= SECONDS_IN_1DAY; 
 
-  calendarValue += ( ( uint32_t )RTC_TimeStruct->Seconds + 
+  /* convert from days to seconds */
+  calendarValue *= SECONDS_IN_1DAY;
+
+  calendarValue += ( ( uint32_t )RTC_TimeStruct->Seconds +
                      ( ( uint32_t )RTC_TimeStruct->Minutes * SECONDS_IN_1MINUTE ) +
                      ( ( uint32_t )RTC_TimeStruct->Hours * SECONDS_IN_1HOUR ) ) ;
 

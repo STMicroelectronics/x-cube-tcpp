@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<IP xmlns="http://mcd.rou.st.com/modules.php?name=mcu" xmlns:ns0="http://www.w3.org/2001/XMLSchema-instance" CodeTemplate="app_X-CUBE-TCPP_h.ftl;app_X-CUBE-TCPP_c.ftl" DBVersion="V4.0" Name="X-CUBE-TCPP" RootFolder="Packs/STMicroelectronics/X-CUBE-TCPP/4.1.0/" Version="4.1.0" ns0:schemaLocation="http://mcd.rou.st.com/modules.php?name=mcu ../../../../../../../doc/V4/Development/Specifications/db/thirdPartyDb.xsd">
+    <RefConfig Name="DeviceJjUSBPDOoApplication">
+        <Component Name="USBPDOoApplicationCcDevice:Application:Sink:$USBPDOoApplicationCcDeviceJjApplication"/>
+        <Component Name="USBPDOoApplicationCcDevice:Application:Source:$USBPDOoApplicationCcDeviceJjApplication"/>
+        <Component Name="USBPDOoApplicationCcDevice:Application:DualIiRole:$USBPDOoApplicationCcDeviceJjApplication"/>
+        <ConfigFile Name="usbpd_dpm_user_c_CableDetection_SRC"/>
+        <ConfigFile Name="usbpd_dpm_user_c_CableDetection_DRP"/>
+        <ConfigFile Name="usbpd_dpm_user_c_EvaluateRequest_SRCDRP"/>
+        <ConfigFile Name="usbpd_dpm_user_c_GetDataInfo_SNK"/>
+        <ConfigFile Name="usbpd_dpm_user_c_GetDataInfo_SRC"/>
+        <ConfigFile Name="usbpd_dpm_user_c_GetDataInfo_DRP"/>
+        <ConfigFile Name="usbpd_dpm_user_c_SetDataInfo_SNK"/>
+        <ConfigFile Name="usbpd_dpm_user_c_SetDataInfo_SRC"/>
+        <ConfigFile Name="usbpd_dpm_user_c_SetDataInfo_DRP"/>
+        <ConfigFile Name="usbpd_dpm_user_c_Hardreset_SRCDRP"/>
+        <ConfigFile Name="usbpd_dpm_user_c_Typedef_SNKDRP"/>
+        <ConfigFile Name="usbpd_dpm_user_c_PowerRoleSwap_DRP"/>
+        <ConfigFile Name="usbpd_dpm_user_c_EvaluateCapa_SNKDRP"/>
+        <ConfigFile Name="usbpd_dpm_user_c_Prototypes_SNK"/>
+        <ConfigFile Name="usbpd_dpm_user_c_Prototypes_SRC"/>
+        <ConfigFile Name="usbpd_dpm_user_c_Prototypes_DRP"/>
+        <ConfigFile Name="usbpd_dpm_user_c_Functions_SNK"/>
+        <ConfigFile Name="usbpd_dpm_user_c_Functions_SRC"/>
+        <ConfigFile Name="usbpd_dpm_user_c_Functions_DRP"/>
+        <ConfigFile Name="usbpd_dpm_user_c_RequestMessage_DRP"/>
+        <ConfigFile Name="usbpd_dpm_user_c_Variables_DRP"/>
+        <ConfigFile Name="usbpd_dpm_user_h_variables_SRC"/>
+        <ConfigFile Name="usbpd_dpm_user_h_Variables_DRP"/>
+        <ConfigFile Name="usbpd_dpm_user_h_Define_SNKDRP"/>
+        <ConfigFile Name="usbpd_dpm_user_h_Typedef_DRP"/>
+        <ConfigFile Name="usbpd_pdo_defs_h_Typedef_SNKSRCDRP"/>
+        <ConfigFile Name="usbpd_pdo_defs_h_Variables_SNKSRCDRP"/>
+        <ConfigFile Name="usbpd_pwr_if_c_GetPortPDOs_SNK"/>
+        <ConfigFile Name="usbpd_pwr_if_c_GetPortPDOs_SRC"/>
+        <ConfigFile Name="usbpd_pwr_if_c_GetPortPDOs_DRP"/>
+        <ConfigFile Name="usbpd_pwr_if_c_Init_SNK"/>
+        <ConfigFile Name="usbpd_pwr_if_c_Init_SRC"/>
+        <ConfigFile Name="usbpd_pwr_if_c_Init_DRP"/>
+        <ConfigFile Name="usbpd_pwr_if_c_Macro_DRP"/>
+        <ConfigFile Name="usbpd_pwr_if_c_PrivateDefine_DRP"/>
+        <ConfigFile Name="usbpd_pwr_if_c_Prototypes_DRP"/>
+        <ConfigFile Name="usbpd_pwr_if_c_ResetVbusThreshold_DRP"/>
+        <ConfigFile Name="usbpd_pwr_if_c_SearchRequestedPDO_SRCDRP"/>
+        <ConfigFile Name="usbpd_pwr_if_c_Setprofile_SRCDRP"/>
+        <ConfigFile Name="usbpd_pwr_if_c_UpdateVbusThreshold_DRP"/>
+        <ConfigFile Name="usbpd_pwr_if_c_Variables_SNKSRC"/>
+        <ConfigFile Name="usbpd_pwr_if_c_Variables_DRP"/>
+        <ConfigFile Name="usbpd_pwr_if_c_Functions_DRP"/>
+        <ConfigFile Name="usbpd_dpm_user_c_Init_SRCDRP"/>
+        <ConfigFile Name="usbpd_c_Include_SNKSRCDRP"/>
+        <ConfigFile Name="usbpd_c_PreInitOs_SNKSRCDRP"/>
+        <ConfigFile Name="usbpd_dpm_user_c_Include_SNKSRCDRP"/>
+        <ConfigFile Name="app_SRC1M1_c"/>
+        <ConfigFile Name="app_SRC1M1_h"/>
+        <ConfigFile Name="app_DRP1M1_c"/>
+        <ConfigFile Name="app_DRP1M1_h"/>
+        <ConfigFile Name="app_SNK1M1_c"/>
+        <ConfigFile Name="app_SNK1M1_h"/>
+        <ConfigFile Name="app_DRP_c"/>
+        <ConfigFile Name="app_DRP_h"/>
+        <ConfigFile Name="app_SNK_TCPP01_c"/>
+        <ConfigFile Name="app_SNK_TCPP01_h"/>
+        <ConfigFile Name="app_SNK_TCPP03_c"/>
+        <ConfigFile Name="app_SNK_TCPP03_h"/>
+        <ConfigFile Name="drp1m1_conf_h"/>
+        <ConfigFile Name="src1m1_conf_h"/>
+        <ConfigFile Name="usbpd_pwr_user_c_VbusGetVoltage_SNK"/>
+        <ConfigFile Name="usbpd_pwr_user_c_Include_SNK"/>
+        <ConfigFile Name="snk1m1_conf_h"/>
+        <ConfigFile Name="usbpd_pwr_user_c_VbusGetCurrent_SNK"/>
+        <ConfigFile Name="usbpd_pwr_user_c_Include_SNK1M1"/>
+        <ConfigFile Name="usbpd_pwr_user_c_VbusGetVoltage_SNK1M1"/>
+        <ConfigFile Name="custom_usbpd_pwr_c_SNK"/>
+        <ConfigFile Name="custom_usbpd_pwr_h_SNK"/>
+        <ConfigFile Name="custom_usbpd_pwr_c_SRCDRP"/>
+        <ConfigFile Name="custom_usbpd_pwr_h_SRCDRP"/>
+        <ConfigFile Name="app_SRC_c"/>
+        <ConfigFile Name="app_SRC_h"/>
+        <ConfigFile Name="usbpd_dpm_user_c_RequestMessage_SNK"/>
+        <ConfigFile Name="usbpd_dpm_user_h_Typedef_SNK"/>
+        <ConfigFile Name="usbpd_dpm_user_h_Typedef_SRC"/>
+        <ConfigFile Name="usbpd_dpm_user_c_Variables_SNK"/>
+        <ConfigFile Name="usbpd_dpm_user_c_Variables_SRC"/>
+        <ConfigFile Name="DeviceJjUSBPDOoApplication_conf"/>
+        <Defines Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="_DRP" Type="Cdefine"/>
+        <Defines Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink" Name="_SNK" Type="Cdefine"/>
+        <Defines Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource" Name="_SRC" Type="Cdefine"/>
+    </RefConfig>
+    <RefConfig Name="DeviceJjUSBOonoOoPDOoApplication">
+        <Component Name="USBOonoOoPDOoApplicationCcDevice:Application:SourceIiwithoutIiUCPD:$USBOonoOoPDOoApplicationCcDeviceJjApplication"/>
+        <ConfigFile Name="app_USBnoPD_SRC_c"/>
+        <ConfigFile Name="app_USBnoPD_SRC_h"/>
+        <ConfigFile Name="app_USBnoPD_SRC1M1_c"/>
+        <ConfigFile Name="app_USBnoPD_SRC1M1_h"/>
+        <ConfigFile Name="src1m1_noPD_conf_h"/>
+        <ConfigFile Name="custom_usbpd_pwr_c_SRCnoPD"/>
+        <ConfigFile Name="custom_usbpd_pwr_h_SRCnoPD"/>
+        <ConfigFile Name="DeviceJjUSBOonoOoPDOoApplication_conf"/>
+        <Defines Name="_SRCnoPD" Type="Cdefine"/>
+        <Defines Name="USBPD_CONFIG_MX" Type="Cdefine"/>
+    </RefConfig>
+    <RefConfig Name="BoardOoPartJjtcpp01">
+        <Component Name="tcpp01CcBoardOoPart:tcpp01:tcpp01:$tcpp01CcBoardOoPartJjtcpp01Jjtcpp01"/>
+    </RefConfig>
+    <RefConfig Name="BoardOoPartJjtcpp0203">
+        <Component Name="tcpp0203CcBoardOoPart:tcpp0203:tcpp0203:$tcpp0203CcBoardOoPartJjtcpp0203Jjtcpp0203"/>
+        <Defines Name="TCPP0203_SUPPORT" Type="Cdefine"/>
+    </RefConfig>
+    <RefConfig Name="BoardOoSupportJjXAaNUCLEOAaSNK1M1">
+        <Component Name="XAaNUCLEOAaSNK1M1CcBoardOoSupport:XAaNUCLEOAaSNK1M1:Common:$XAaNUCLEOAaSNK1M1CcBoardOoSupportJjXAaNUCLEOAaSNK1M1JjCommon"/>
+    </RefConfig>
+    <RefConfig Name="BoardOoSupportJjXAaNUCLEOAaSRC1M1">
+        <Component Name="XAaNUCLEOAaSRC1M1CcBoardOoSupport:XAaNUCLEOAaSRC1M1:Common:$XAaNUCLEOAaSRC1M1CcBoardOoSupportJjXAaNUCLEOAaSRC1M1JjCommon"/>
+        <Defines Condition="SEMUSBOonoOoPDOoApplicationCcDeviceJjApplicationJjSourceIiwithoutIiUCPD" Name="HAL_TIM_MODULE_ENABLED" Type="Cdefine"/>
+    </RefConfig>
+    <RefConfig Name="BoardOoSupportJjXAaNUCLEOAaDRP1M1">
+        <Component Name="XAaNUCLEOAaDRP1M1CcBoardOoSupport:XAaNUCLEOAaDRP1M1:Common:$XAaNUCLEOAaDRP1M1CcBoardOoSupportJjXAaNUCLEOAaDRP1M1JjCommon"/>
+    </RefConfig>
+    <RefConfig Name="BoardOoPartJjCurrentOoMeasurementOoADC">
+        <Component Name="CurrentOoMeasurementOoADCCcBoardOoPart:CurrentOoMeasurement:ADC:$CurrentOoMeasurementOoADCCcBoardOoPartJjCurrentOoMeasurementJjADC"/>
+    </RefConfig>
+    <RefConfig Name="BoardOoPartJjVprovOoMeasurementOoADC">
+        <Component Name="VprovOoMeasurementOoADCCcBoardOoPart:VprovOoMeasurement:ADC:$VprovOoMeasurementOoADCCcBoardOoPartJjVprovOoMeasurementJjADC"/>
+    </RefConfig>
+    <RefConfig Name="BoardOoPartJjVconsOoMeasurementOoADC">
+        <Component Name="VconsOoMeasurementOoADCCcBoardOoPart:VconsOoMeasurement:ADC:$VconsOoMeasurementOoADCCcBoardOoPartJjVconsOoMeasurementJjADC"/>
+    </RefConfig>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_CableDetection Source for SRC" Name="usbpd_dpm_user_c_CableDetection_SRC" Template="usbpd_dpm_user_c_CableDetection_SRC.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource" Name="./usbpd_dpm_user_c_CableDetection.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_CableDetection Source for DRP" Name="usbpd_dpm_user_c_CableDetection_DRP" Template="usbpd_dpm_user_c_CableDetection_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_dpm_user_c_CableDetection.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_EvaluateRequest Source for SRC and DRP&#9;" Name="usbpd_dpm_user_c_EvaluateRequest_SRCDRP" Template="usbpd_dpm_user_c_EvaluateRequest_SRCDRP.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole )" Name="./usbpd_dpm_user_c_EvaluateRequest.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_GetDataInfo Source for SNK application" Name="usbpd_dpm_user_c_GetDataInfo_SNK" Template="usbpd_dpm_user_c_GetDataInfo_SNK.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink" Name="./usbpd_dpm_user_c_GetDataInfo.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_GetDataInfo Source for Source Application" Name="usbpd_dpm_user_c_GetDataInfo_SRC" Template="usbpd_dpm_user_c_GetDataInfo_SRC.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource" Name="./usbpd_dpm_user_c_GetDataInfo.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_GetDataInfo Source for Dual Application" Name="usbpd_dpm_user_c_GetDataInfo_DRP" Template="usbpd_dpm_user_c_GetDataInfo_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_dpm_user_c_GetDataInfo.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_SetDataInfo Source for Sink Application" Name="usbpd_dpm_user_c_SetDataInfo_SNK" Template="usbpd_dpm_user_c_SetDataInfo_SNK.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink" Name="./usbpd_dpm_user_c_SetDataInfo.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_SetDataInfo Source for Source Application" Name="usbpd_dpm_user_c_SetDataInfo_SRC" Template="usbpd_dpm_user_c_SetDataInfo_SRC.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource" Name="./usbpd_dpm_user_c_SetDataInfo.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_SetDataInfo Source for Dual Application" Name="usbpd_dpm_user_c_SetDataInfo_DRP" Template="usbpd_dpm_user_c_SetDataInfo_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_dpm_user_c_SetDataInfo.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_Hardreset Source dor Source and Dual Applications" Name="usbpd_dpm_user_c_Hardreset_SRCDRP" Template="usbpd_dpm_user_c_Hardreset_SRCDRP.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole )" Name="./usbpd_dpm_user_c_Hardreset.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_Typedef Source for Sink and Dual Applications" Name="usbpd_dpm_user_c_Typedef_SNKDRP" Template="usbpd_dpm_user_c_Typedef_SNKDRP.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole )" Name="./usbpd_dpm_user_c_Typedef.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_PowerRoleSwap Source for Dual Application" Name="usbpd_dpm_user_c_PowerRoleSwap_DRP" Template="usbpd_dpm_user_c_PowerRoleSwap_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_dpm_user_c_PowerRoleSwap.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_EvaluateCapa Source for Sink and Dual Applications" Name="usbpd_dpm_user_c_EvaluateCapa_SNKDRP" Template="usbpd_dpm_user_c_EvaluateCapa_SNKDRP.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole )" Name="./usbpd_dpm_user_c_EvaluateCapa.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_Prototypes for Sink Application" Name="usbpd_dpm_user_c_Prototypes_SNK" Template="usbpd_dpm_user_c_Prototypes_SNK.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink" Name="./usbpd_dpm_user_c_Prototypes.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_Prototypes for Source Application" Name="usbpd_dpm_user_c_Prototypes_SRC" Template="usbpd_dpm_user_c_Prototypes_SRC.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource" Name="./usbpd_dpm_user_c_Prototypes.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_Prototypes for Dual Application" Name="usbpd_dpm_user_c_Prototypes_DRP" Template="usbpd_dpm_user_c_Prototypes_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_dpm_user_c_Prototypes.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_Functions Source for Sink Application" Name="usbpd_dpm_user_c_Functions_SNK" Template="usbpd_dpm_user_c_Functions_SNK.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink" Name="./usbpd_dpm_user_c_Functions.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_Functions Source for Source Application" Name="usbpd_dpm_user_c_Functions_SRC" Template="usbpd_dpm_user_c_Functions_SRC.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource" Name="./usbpd_dpm_user_c_Functions.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_Functions Source for Dual Application" Name="usbpd_dpm_user_c_Functions_DRP" Template="usbpd_dpm_user_c_Functions_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_dpm_user_c_Functions.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_RequestMessage Source for DRP Application" Name="usbpd_dpm_user_c_RequestMessage_DRP" Template="usbpd_dpm_user_c_RequestMessage_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_dpm_user_c_RequestMessage.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_Variables for DRP Application" Name="usbpd_dpm_user_c_Variables_DRP" Template="usbpd_dpm_user_c_Variables_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_dpm_user_c_Variables.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_h_Variables for Source Application" Name="usbpd_dpm_user_h_variables_SRC" Template="usbpd_dpm_user_h_Variables_SRC.ftl">
+        <File Category="header" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource" Name="./usbpd_dpm_user_h_Variables.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_h_Variables for Dual Application" Name="usbpd_dpm_user_h_Variables_DRP" Template="usbpd_dpm_user_h_Variables_DRP.ftl">
+        <File Category="header" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_dpm_user_h_Variables.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_h_Define for Sink and Dual Applications" Name="usbpd_dpm_user_h_Define_SNKDRP" Template="usbpd_dpm_user_h_Define_SNKDRP.ftl">
+        <File Category="header" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole )" Name="./usbpd_dpm_user_h_Define.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="uspbd_dpm_user_h_Typedef Header for Dual Application" Name="usbpd_dpm_user_h_Typedef_DRP" Template="usbpd_dpm_user_h_Typedef_DRP.ftl">
+        <File Category="header" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_dpm_user_h_Typedef.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pdo_defs_h_Typedef for all applications" Name="usbpd_pdo_defs_h_Typedef_SNKSRCDRP" Template="usbpd_pdo_defs_h_Typedef_SNKSRCDRP.ftl">
+        <File Category="header" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole )" Name="./usbpd_pdo_defs_h_Typedef.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pdo_defs_h_Variables for all Applications" Name="usbpd_pdo_defs_h_Variables_SNKSRCDRP" Template="usbpd_pdo_defs_h_Variables_SNKSRCDRP.ftl">
+        <File Category="header" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole )" Name="./usbpd_pdo_defs_h_Variables.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_if_c_GetPortPDOs Source for Sink Application" Name="usbpd_pwr_if_c_GetPortPDOs_SNK" Template="usbpd_pwr_if_c_GetPortPDOs_SNK.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink" Name="./usbpd_pwr_if_c_GetPortPDOs.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_if_c_GetPortPDOs Source for Source Application" Name="usbpd_pwr_if_c_GetPortPDOs_SRC" Template="usbpd_pwr_if_c_GetPortPDOs_SRC.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource" Name="./usbpd_pwr_if_c_GetPortPDOs.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_if_c_GetPortPDOs Source for Dual application" Name="usbpd_pwr_if_c_GetPortPDOs_DRP" Template="usbpd_pwr_if_c_GetPortPDOs_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_pwr_if_c_GetPortPDOs.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_if_c_Init Source for Sink Application" Name="usbpd_pwr_if_c_Init_SNK" Template="usbpd_pwr_if_c_Init_SNK.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink" Name="./usbpd_pwr_if_c_Init.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_if_c_Init Source for Source Application" Name="usbpd_pwr_if_c_Init_SRC" Template="usbpd_pwr_if_c_Init_SRC.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource" Name="./usbpd_pwr_if_c_Init.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_if_c_Init Source for Dual Application" Name="usbpd_pwr_if_c_Init_DRP" Template="usbpd_pwr_if_c_Init_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_pwr_if_c_Init.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_if_c_Macro Source for Dual Applicaion" Name="usbpd_pwr_if_c_Macro_DRP" Template="usbpd_pwr_if_c_Macro_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_pwr_if_c_Macro.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_if_c_PrivateDefine Source for Dual Application" Name="usbpd_pwr_if_c_PrivateDefine_DRP" Template="usbpd_pwr_if_c_PrivateDefine_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_pwr_if_c_PrivateDefine.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_if_c_Prototypes Source for Dual Application" Name="usbpd_pwr_if_c_Prototypes_DRP" Template="usbpd_pwr_if_c_Prototypes_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_pwr_if_c_Prototypes.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_if_c_ResetVbusThreshold Source for Dual Application" Name="usbpd_pwr_if_c_ResetVbusThreshold_DRP" Template="usbpd_pwr_if_c_ResetVbusThreshold_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_pwr_if_c_ResetVbusThreshold.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_if_c_SearchRequestedPDO Source for Source and Dual Applications" Name="usbpd_pwr_if_c_SearchRequestedPDO_SRCDRP" Template="usbpd_pwr_if_c_SearchRequestedPDO_SRCDRP.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole )" Name="./usbpd_pwr_if_c_SearchRequestedPDO.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_if_c_Setprofile Source for Source and Dual Applications" Name="usbpd_pwr_if_c_Setprofile_SRCDRP" Template="usbpd_pwr_if_c_Setprofile_SRCDRP.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole )" Name="./usbpd_pwr_if_c_Setprofile.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_if_c_UpdateVbusthreshold Source for DRP Application" Name="usbpd_pwr_if_c_UpdateVbusThreshold_DRP" Template="usbpd_pwr_if_c_UpdateVbusThreshold_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_pwr_if_c_UpdateVbusThreshold.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_if_c_Variables Source for Sink and Source Applications" Name="usbpd_pwr_if_c_Variables_SNKSRC" Template="usbpd_pwr_if_c_Variables_SNKSRC.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource )" Name="./usbpd_pwr_if_c_Variables.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_if_c_variables Source for Dual Application" Name="usbpd_pwr_if_c_Variables_DRP" Template="usbpd_pwr_if_c_Variables_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_pwr_if_c_Variables.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_if_c_Functions Soure for Dual Application" Name="usbpd_pwr_if_c_Functions_DRP" Template="usbpd_pwr_if_c_Functions_DRP.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole" Name="./usbpd_pwr_if_c_Functions.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_Init Source for Source and Dual Applications" Name="usbpd_dpm_user_c_Init_SRCDRP" Template="usbpd_dpm_user_c_Init_SRCDRP.ftl">
+        <File Category="source" Condition="SEMtcpp0203CcBoardOoPartJjtcpp0203Jjtcpp0203" Name="./usbpd_dpm_user_c_Init.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_c_Include for All Applications" Name="usbpd_c_Include_SNKSRCDRP" Template="usbpd_c_Include_SNKSRCDRP.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole )" Name="./usbpd_c_Include.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_c_PreInitOs for All Applications" Name="usbpd_c_PreInitOs_SNKSRCDRP" Template="usbpd_c_PreInitOs_SNKSRCDRP.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole )" Name="./usbpd_c_PreInitOs.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user source for Include" Name="usbpd_dpm_user_c_Include_SNKSRCDRP" Template="usbpd_dpm_user_c_Include_SNKSRCDRP.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource ) | ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole )" Name="./usbpd_dpm_user_c_Include.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_SRC1M1_c source" Name="app_SRC1M1_c" Template="app_SRC1M1_c.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource ) &amp; ( SEMXAaNUCLEOAaSRC1M1CcBoardOoSupportJjXAaNUCLEOAaSRC1M1JjCommon )" Name="./app_USBPD_c.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_SRC1M1 header" Name="app_SRC1M1_h" Template="app_SRC1M1_h.ftl">
+        <File Category="header" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource ) &amp; ( SEMXAaNUCLEOAaSRC1M1CcBoardOoSupportJjXAaNUCLEOAaSRC1M1JjCommon )" Name="./app_USBPD_h.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_DRP1M1_c source" Name="app_DRP1M1_c" Template="app_DRP1M1_c.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole ) &amp; ( SEMXAaNUCLEOAaDRP1M1CcBoardOoSupportJjXAaNUCLEOAaDRP1M1JjCommon )" Name="./app_USBPD_c.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_DRP1M1 header" Name="app_DRP1M1_h" Template="app_DRP1M1_h.ftl">
+        <File Category="header" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole ) &amp; ( SEMXAaNUCLEOAaDRP1M1CcBoardOoSupportJjXAaNUCLEOAaDRP1M1JjCommon )" Name="./app_USBPD_h.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_SNK1M1_c source" Name="app_SNK1M1_c" Template="app_SNK1M1_c.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) &amp; ( SEMXAaNUCLEOAaSNK1M1CcBoardOoSupportJjXAaNUCLEOAaSNK1M1JjCommon )" Name="./app_USBPD_c.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_SNK1M1_h header" Name="app_SNK1M1_h" Template="app_SNK1M1_h.ftl">
+        <File Category="header" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) &amp; ( SEMXAaNUCLEOAaSNK1M1CcBoardOoSupportJjXAaNUCLEOAaSNK1M1JjCommon )" Name="./app_USBPD_h.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_DRP_c Source" Name="app_DRP_c" Template="app_DRP_c.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole ) &amp; ( ! SEMXAaNUCLEOAaDRP1M1CcBoardOoSupportJjXAaNUCLEOAaDRP1M1JjCommon )" Name="./app_USBPD_c.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_DRP header" Name="app_DRP_h" Template="app_DRP_h.ftl">
+        <File Category="header" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole ) &amp; ( ! SEMXAaNUCLEOAaDRP1M1CcBoardOoSupportJjXAaNUCLEOAaDRP1M1JjCommon )" Name="./app_USBPD_h.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_SNK_TCPP01 source" Name="app_SNK_TCPP01_c" Template="app_SNK_TCPP01_c.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) &amp; ( SEMtcpp01CcBoardOoPartJjtcpp01Jjtcpp01 ) &amp; ( ! SEMXAaNUCLEOAaSNK1M1CcBoardOoSupportJjXAaNUCLEOAaSNK1M1JjCommon )" Name="./app_USBPD_c.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_SNK_TCPP01 header" Name="app_SNK_TCPP01_h" Template="app_SNK_TCPP01_h.ftl">
+        <File Category="header" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) &amp; ( SEMtcpp01CcBoardOoPartJjtcpp01Jjtcpp01 ) &amp; ( ! SEMXAaNUCLEOAaSNK1M1CcBoardOoSupportJjXAaNUCLEOAaSNK1M1JjCommon )" Name="./app_USBPD_h.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_SNK_TCPP03 source" Name="app_SNK_TCPP03_c" Template="app_SNK_TCPP03_c.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) &amp; ( SEMtcpp0203CcBoardOoPartJjtcpp0203Jjtcpp0203 )" Name="./app_USBPD_c.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_SNK_TCPP03 header" Name="app_SNK_TCPP03_h" Template="app_SNK_TCPP03_h.ftl">
+        <File Category="header" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) &amp; ( SEMtcpp0203CcBoardOoPartJjtcpp0203Jjtcpp0203 )" Name="./app_USBPD_h.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="drp1m1_conf header" Name="drp1m1_conf_h" Template="drp1m1_conf_h.ftl">
+        <File Category="header" Condition="( SEMXAaNUCLEOAaDRP1M1CcBoardOoSupportJjXAaNUCLEOAaDRP1M1JjCommon )" Name="Target/drp1m1_conf.h"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="src1m1_conf header" Name="src1m1_conf_h" Template="src1m1_conf_h.ftl">
+        <File Category="header" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource ) &amp; ( SEMXAaNUCLEOAaSRC1M1CcBoardOoSupportJjXAaNUCLEOAaSRC1M1JjCommon )" Name="Target/src1m1_conf.h"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_user_c_VbusGetVoltage_SNK Source" Name="usbpd_pwr_user_c_VbusGetVoltage_SNK" Template="usbpd_pwr_user_c_VbusGetVoltage_SNK.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) &amp; ( SEMtcpp01CcBoardOoPartJjtcpp01Jjtcpp01 ) &amp; ( ! SEMXAaNUCLEOAaSNK1M1CcBoardOoSupportJjXAaNUCLEOAaSNK1M1JjCommon )" Name="./usbpd_pwr_user_c_VbusGetVoltage.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_user_c_Include_SNK Source" Name="usbpd_pwr_user_c_Include_SNK" Template="usbpd_pwr_user_c_Include_SNK.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) &amp; ( SEMtcpp01CcBoardOoPartJjtcpp01Jjtcpp01 ) &amp; ( ! SEMXAaNUCLEOAaSNK1M1CcBoardOoSupportJjXAaNUCLEOAaSNK1M1JjCommon )" Name="./usbpd_pwr_user_c_Include.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="snk1m1_conf header" Name="snk1m1_conf_h" Template="snk1m1_conf_h.ftl">
+        <File Category="header" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) &amp; ( SEMXAaNUCLEOAaSNK1M1CcBoardOoSupportJjXAaNUCLEOAaSNK1M1JjCommon )" Name="Target/snk1m1_conf.h"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_user_c_VbusGetCurrent_SNK Source" Name="usbpd_pwr_user_c_VbusGetCurrent_SNK" Template="usbpd_pwr_user_c_VbusGetCurrent_SNK.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) &amp; ( SEMtcpp01CcBoardOoPartJjtcpp01Jjtcpp01 )" Name="./usbpd_pwr_user_c_VbusGetCurrent.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_user_c_Include_SNK1M1 Source" Name="usbpd_pwr_user_c_Include_SNK1M1" Template="usbpd_pwr_user_c_Include_SNK1M1.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) &amp; ( SEMtcpp01CcBoardOoPartJjtcpp01Jjtcpp01 ) &amp; ( SEMXAaNUCLEOAaSNK1M1CcBoardOoSupportJjXAaNUCLEOAaSNK1M1JjCommon )" Name="./usbpd_pwr_user_c_Include.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_pwr_user_c_VbusGetVoltage_SNK1M1 source" Name="usbpd_pwr_user_c_VbusGetVoltage_SNK1M1" Template="usbpd_pwr_user_c_VbusGetVoltage_SNK1M1.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) &amp; ( SEMtcpp01CcBoardOoPartJjtcpp01Jjtcpp01 ) &amp; ( SEMXAaNUCLEOAaSNK1M1CcBoardOoSupportJjXAaNUCLEOAaSNK1M1JjCommon )" Name="./usbpd_pwr_user_c_VbusGetVoltage.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="custom_usbpd_pwr_c_SNK source" Name="custom_usbpd_pwr_c_SNK" Template="custom_usbpd_pwr_c_SNK.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) &amp; ( SEMtcpp0203CcBoardOoPartJjtcpp0203Jjtcpp0203 )" Name="Target/custom_board_usbpd_pwr.c"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="custom_usbpd_pwr_h_SNK header" Name="custom_usbpd_pwr_h_SNK" Template="custom_usbpd_pwr_h_SNK.ftl">
+        <File Category="header" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink ) &amp; ( SEMtcpp0203CcBoardOoPartJjtcpp0203Jjtcpp0203 )" Name="Target/custom_board_usbpd_pwr.h"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="custom_usbpd_pwr_c_SRCDRP source" Name="custom_usbpd_pwr_c_SRCDRP" Template="custom_usbpd_pwr_c_SRCDRP.ftl">
+        <File Category="source" Condition="( ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource ) &amp; ( ! SEMXAaNUCLEOAaSRC1M1CcBoardOoSupportJjXAaNUCLEOAaSRC1M1JjCommon ) ) | ( ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole ) &amp; ( ! SEMXAaNUCLEOAaDRP1M1CcBoardOoSupportJjXAaNUCLEOAaDRP1M1JjCommon ) )" Name="Target/custom_board_usbpd_pwr.c"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="custom_usbpd_pwr_h_SRCDRP header" Name="custom_usbpd_pwr_h_SRCDRP" Template="custom_usbpd_pwr_h_SRCDRP.ftl">
+        <File Category="header" Condition="( ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource ) &amp; ( ! SEMXAaNUCLEOAaSRC1M1CcBoardOoSupportJjXAaNUCLEOAaSRC1M1JjCommon ) ) | ( ( SEMUSBPDOoApplicationCcDeviceJjApplicationJjDualIiRole ) &amp; ( ! SEMXAaNUCLEOAaDRP1M1CcBoardOoSupportJjXAaNUCLEOAaDRP1M1JjCommon ) )" Name="Target/custom_board_usbpd_pwr.h"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_SRC source" Name="app_SRC_c" Template="app_SRC_c.ftl">
+        <File Category="source" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource ) &amp; ( ! SEMXAaNUCLEOAaSRC1M1CcBoardOoSupportJjXAaNUCLEOAaSRC1M1JjCommon )" Name="./app_USBPD_c.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_SRC header" Name="app_SRC_h" Template="app_SRC_h.ftl">
+        <File Category="header" Condition="( SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource ) &amp; ( ! SEMXAaNUCLEOAaSRC1M1CcBoardOoSupportJjXAaNUCLEOAaSRC1M1JjCommon )" Name="./app_USBPD_h.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_RequestMessage Source for SNK Application" Name="usbpd_dpm_user_c_RequestMessage_SNK" Template="usbpd_dpm_user_c_RequestMessage_SNK.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink" Name="./usbpd_dpm_user_c_RequestMessage.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_h_Typedef Header for Sink Applications" Name="usbpd_dpm_user_h_Typedef_SNK" Template="usbpd_dpm_user_h_Typedef_SNK.ftl">
+        <File Category="header" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink" Name="./usbpd_dpm_user_h_Typedef.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_h_Typedef Header for Source Applications" Name="usbpd_dpm_user_h_Typedef_SRC" Template="usbpd_dpm_user_h_Typedef_SRC.ftl">
+        <File Category="header" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource" Name="./usbpd_dpm_user_h_Typedef.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_Variables for Sink Applications" Name="usbpd_dpm_user_c_Variables_SNK" Template="usbpd_dpm_user_c_Variables_SNK.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSink" Name="./usbpd_dpm_user_c_Variables.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="usbpd_dpm_user_c_Variables for Source Applications" Name="usbpd_dpm_user_c_Variables_SRC" Template="usbpd_dpm_user_c_Variables_SRC.ftl">
+        <File Category="source" Condition="SEMUSBPDOoApplicationCcDeviceJjApplicationJjSource" Name="./usbpd_dpm_user_c_Variables.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Name="DeviceJjUSBPDOoApplication_conf" Template="default_conf.ftl">
+        <File Category="header" Condition="all" Name="./STMicroelectronics.X-CUBE-TCPP_conf.h"/>
+        <Argument AddressOf="false" Comment="USBPD_PWR_VSENSE_RA" GenericType="simple" Name="USBPD_PWR_VSENSE_RA" OptimizationCondition="equal"/>
+        <Argument AddressOf="false" Comment="USBPD_PWR_ISENSE_RS" GenericType="simple" Name="USBPD_PWR_ISENSE_RS" OptimizationCondition="equal"/>
+        <Argument AddressOf="false" Comment="VDDA_APPLI" GenericType="simple" Name="VDDA_APPLI" OptimizationCondition="equal"/>
+        <Argument AddressOf="false" Comment="USBPD_PWR_VSENSE_RB" GenericType="simple" Name="USBPD_PWR_VSENSE_RB" OptimizationCondition="equal"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_USBnoPD Source for Source application without Extension Board" Name="app_USBnoPD_SRC_c" Template="app_USBnoPD_SRC_c.ftl">
+        <File Category="source" Condition="( SEMUSBOonoOoPDOoApplicationCcDeviceJjApplicationJjSourceIiwithoutIiUCPD ) &amp; ( ! SEMXAaNUCLEOAaSRC1M1CcBoardOoSupportJjXAaNUCLEOAaSRC1M1JjCommon )" Name="./app_USBPD_c.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_USBnoPD Header for Source application without Extension Board" Name="app_USBnoPD_SRC_h" Template="app_USBnoPD_SRC_h.ftl">
+        <File Category="header" Condition="( SEMUSBOonoOoPDOoApplicationCcDeviceJjApplicationJjSourceIiwithoutIiUCPD ) &amp; ( ! SEMXAaNUCLEOAaSRC1M1CcBoardOoSupportJjXAaNUCLEOAaSRC1M1JjCommon )" Name="./app_USBPD_h.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_USBnoPD Source for Source Application with Extension Board" Name="app_USBnoPD_SRC1M1_c" Template="app_USBnoPD_SRC1M1_c.ftl">
+        <File Category="source" Condition="( SEMUSBOonoOoPDOoApplicationCcDeviceJjApplicationJjSourceIiwithoutIiUCPD ) &amp; ( SEMXAaNUCLEOAaSRC1M1CcBoardOoSupportJjXAaNUCLEOAaSRC1M1JjCommon )" Name="./app_USBPD_c.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="app_USBPD Header for Source Application with Extension Board" Name="app_USBnoPD_SRC1M1_h" Template="app_USBnoPD_SRC1M1_h.ftl">
+        <File Category="header" Condition="( SEMUSBOonoOoPDOoApplicationCcDeviceJjApplicationJjSourceIiwithoutIiUCPD ) &amp; ( SEMXAaNUCLEOAaSRC1M1CcBoardOoSupportJjXAaNUCLEOAaSRC1M1JjCommon )" Name="./app_USBPD_h.tmp"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="src1m1_noPD_conf header" Name="src1m1_noPD_conf_h" Template="src1m1_noPD_conf_h.ftl">
+        <File Category="header" Condition="( SEMUSBOonoOoPDOoApplicationCcDeviceJjApplicationJjSourceIiwithoutIiUCPD ) &amp; ( SEMXAaNUCLEOAaSRC1M1CcBoardOoSupportJjXAaNUCLEOAaSRC1M1JjCommon )" Name="Target/src1m1_conf.h"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="custom_usbpd_pwr_c_SRCnoPD source" Name="custom_usbpd_pwr_c_SRCnoPD" Template="custom_usbpd_pwr_c_SRCnoPD.ftl">
+        <File Category="source" Condition="( SEMUSBOonoOoPDOoApplicationCcDeviceJjApplicationJjSourceIiwithoutIiUCPD ) &amp; ( ! SEMXAaNUCLEOAaSRC1M1CcBoardOoSupportJjXAaNUCLEOAaSRC1M1JjCommon )" Name="Target/custom_board_usbpd_pwr.c"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Description="custom_usbpd_pwr_h_SRCnoPD header" Name="custom_usbpd_pwr_h_SRCnoPD" Template="custom_usbpd_pwr_h_SRCnoPD.ftl">
+        <File Category="header" Condition="( SEMUSBOonoOoPDOoApplicationCcDeviceJjApplicationJjSourceIiwithoutIiUCPD ) &amp; ( ! SEMXAaNUCLEOAaSRC1M1CcBoardOoSupportJjXAaNUCLEOAaSRC1M1JjCommon )" Name="Target/custom_board_usbpd_pwr.h"/>
+    </RefConfigFile>
+    <RefConfigFile Added="true" Name="DeviceJjUSBOonoOoPDOoApplication_conf" Template="default_conf.ftl">
+        <File Category="header" Condition="all" Name="./STMicroelectronics.X-CUBE-TCPP_conf.h"/>
+        <Argument AddressOf="false" Comment="USBPD_PWR_VSENSE_RA" GenericType="simple" Name="USBPD_PWR_VSENSE_RA" OptimizationCondition="equal"/>
+        <Argument AddressOf="false" Comment="USBPD_PWR_ISENSE_RS" GenericType="simple" Name="USBPD_PWR_ISENSE_RS" OptimizationCondition="equal"/>
+        <Argument AddressOf="false" Comment="VDDA_APPLI" GenericType="simple" Name="VDDA_APPLI" OptimizationCondition="equal"/>
+        <Argument AddressOf="false" Comment="USBPD_PWR_VSENSE_RB" GenericType="simple" Name="USBPD_PWR_VSENSE_RB" OptimizationCondition="equal"/>
+    </RefConfigFile>
+    <RefBspComponent BspIpName="GPIO" BspModeName="EXTI" Name="TCPP0203 FLG">
+        <File Category="template" Condition="all" Name="./usbpd_GPIO_c.ftl"/>
+        <File Category="template" Condition="all" Name="./usbpd_GPIO_h.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent BspIpName="GPIO" BspModeName="Output" Name="TCPP01 VCC OUT">
+        <File Category="template" Condition="all" Name="./usbpd_GPIO_SNK_h.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent BspIpName="GPIO" BspModeName="Output" Name="TCPP01 DB OUT">
+        <File Category="template" Condition="all" Name="./usbpd_GPIO_SNK_h.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent BspIpName="ADC" BspModeName="IN[0-9]+( Single-ended)?" Name="ADC VSENSE">
+        <File Category="template" Condition="all" Name="./usbpd_ADC_SNK_c.ftl"/>
+        <File Category="template" Condition="all" Name="./usbpd_ADC_SNK_h.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent BspIpName="ADC" BspModeName="IN[0-9]+( Single-ended)?" Name="ADC VBUS">
+        <File Category="template" Condition="all" Name="./usbpd_ADC_c.ftl"/>
+        <File Category="template" Condition="all" Name="./usbpd_ADC_h.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent BspIpName="GPIO" BspModeName="Output" Name="TCPP0203 ENABLE">
+        <File Category="template" Condition="all" Name="./usbpd_GPIO_c.ftl"/>
+        <File Category="template" Condition="all" Name="./usbpd_GPIO_h.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent BspIpName="I2C" BspModeName="I2C" Name="TCPP0203 BUS IO driver">
+        <File Category="template" Condition="all" Name="./usbpd_GPIO_c.ftl"/>
+        <File Category="template" Condition="all" Name="./usbpd_GPIO_h.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent BspIpName="TIM.*" BspModeName="Internal Clock" Name="TIM NoPD">
+        <File Category="template" Condition="all" Name="./USBnoPD_Tim_h.ftl"/>
+        <File Category="template" Condition="all" Name="./USBnoPD_Tim_c.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent BspIpName="ADC" BspModeName="IN[0-9]+( Single-ended)?" Name="ADC VBUS NOPD">
+        <File Category="template" Condition="all" Name="./usbpd_ADCnoPD_h.ftl"/>
+        <File Category="template" Condition="all" Name="./usbpd_ADCnoPD_c.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent BspIpName="ADC" BspModeName="IN[0-9]+( Single-ended)?" Name="ADC CC1">
+        <File Category="template" Condition="all" Name="./usbpd_ADCnoPD_h.ftl"/>
+        <File Category="template" Condition="all" Name="./usbpd_ADCnoPD_c.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent BspIpName="ADC" BspModeName="IN[0-9]+( Single-ended)?" Name="ADC VPROV NOPD">
+        <File Category="template" Condition="all" Name="./usbpd_ADCnoPD_c.ftl"/>
+        <File Category="template" Condition="all" Name="./usbpd_ADCnoPD_h.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent BspIpName="ADC" BspModeName="IN[0-9]+( Single-ended)?" Name="ADC CC2">
+        <File Category="template" Condition="all" Name="./usbpd_ADCnoPD_h.ftl"/>
+        <File Category="template" Condition="all" Name="./usbpd_ADCnoPD_c.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent BspIpName="ADC" BspModeName="IN[0-9]+( Single-ended)?" Name="ADC ISENSE NOPD">
+        <File Category="template" Condition="all" Name="./usbpd_ADCnoPD_h.ftl"/>
+        <File Category="template" Condition="all" Name="./usbpd_ADCnoPD_c.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent BspIpName="ADC" BspModeName="IN[0-9]+( Single-ended)?" Name="ADC ISENSE">
+        <File Category="template" Condition="all" Name="./usbpd_ADC_h.ftl"/>
+        <File Category="template" Condition="all" Name="./usbpd_ADC_c.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent BspIpName="ADC" BspModeName="IN[0-9]+( Single-ended)?" Name="ADC VPROV">
+        <File Category="template" Condition="all" Name="./usbpd_ADC_h.ftl"/>
+        <File Category="template" Condition="all" Name="./usbpd_ADC_c.ftl"/>
+    </RefBspComponent>
+    <RefBspComponent BspIpName="ADC" BspModeName="IN[0-9]+( Single-ended)?" Name="ADC VCONS">
+        <File Category="template" Condition="all" Name="./usbpd_ADC_h.ftl"/>
+        <File Category="template" Condition="all" Name="./usbpd_ADC_c.ftl"/>
+    </RefBspComponent>
+    <RefComponent Cclass="USBPDOoApplicationCcDevice" Cgroup="Application" Cversion="4Gg1Gg0">
+        <SubComponent Csub="" Cvariant="DualIiRole:DualIiRole" ModuleName="TCPP"/>
+        <SubComponent Csub="" Cvariant="Source:Source" ModuleName="TCPP"/>
+        <SubComponent Csub="" Cvariant="Sink:Sink" ModuleName="TCPP"/>
+    </RefComponent>
+    <RefComponent Cclass="USBOonoOoPDOoApplicationCcDevice" Cgroup="Application" Cversion="4Gg1Gg0">
+        <SubComponent Csub="" Cvariant="SourceIiwithoutIiUCPD:SourceIiwithoutIiUCPD" ModuleName="TCPP"/>
+    </RefComponent>
+    <RefComponent Cclass="tcpp01CcBoardOoPart" Cgroup="tcpp01" Cversion="4Gg1Gg0">
+        <SubComponent Csub="tcpp01" Cvariant="true" Cversion="4Gg1Gg0"/>
+    </RefComponent>
+    <RefComponent Cclass="tcpp0203CcBoardOoPart" Cgroup="tcpp0203" Cversion="1Gg2Gg3">
+        <SubComponent Csub="tcpp0203" Cvariant="true" Cversion="1Gg2Gg3">
+            <File Category="source" Condition="" Name="Drivers/BSP/Components/tcpp0203/tcpp0203.c"/>
+            <File Category="header" Condition="" Name="Drivers/BSP/Components/tcpp0203/tcpp0203.h"/>
+            <File Category="source" Condition="" Name="Drivers/BSP/Components/tcpp0203/tcpp0203_reg.c"/>
+            <File Category="header" Condition="" Name="Drivers/BSP/Components/tcpp0203/tcpp0203_reg.h"/>
+        </SubComponent>
+    </RefComponent>
+    <RefComponent Cclass="XAaNUCLEOAaSNK1M1CcBoardOoSupport" Cgroup="XAaNUCLEOAaSNK1M1" Cversion="4Gg1Gg0">
+        <SubComponent Csub="Common" Cvariant="true" Cversion="4Gg1Gg0"/>
+    </RefComponent>
+    <RefComponent Cclass="XAaNUCLEOAaSRC1M1CcBoardOoSupport" Cgroup="XAaNUCLEOAaSRC1M1" Cversion="1Gg2Gg1">
+        <SubComponent Csub="Common" Cvariant="true" Cversion="1Gg2Gg1">
+            <File Category="source" Condition="" Name="Drivers/BSP/X-NUCLEO-SRC1M1/src1m1_bus.c"/>
+            <File Category="header" Condition="" Name="Drivers/BSP/X-NUCLEO-SRC1M1/src1m1_bus.h"/>
+            <File Category="header" Condition="" Name="Drivers/BSP/X-NUCLEO-SRC1M1/src1m1_errno.h"/>
+            <File Category="source" Condition="" Name="Drivers/BSP/X-NUCLEO-SRC1M1/src1m1_usbpd_pwr.c"/>
+            <File Category="header" Condition="" Name="Drivers/BSP/X-NUCLEO-SRC1M1/src1m1_usbpd_pwr.h"/>
+        </SubComponent>
+    </RefComponent>
+    <RefComponent Cclass="XAaNUCLEOAaDRP1M1CcBoardOoSupport" Cgroup="XAaNUCLEOAaDRP1M1" Cversion="1Gg5Gg1">
+        <SubComponent Csub="Common" Cvariant="true" Cversion="1Gg5Gg1">
+            <File Category="source" Condition="" Name="Drivers/BSP/X-NUCLEO-DRP1M1/drp1m1_bus.c"/>
+            <File Category="header" Condition="" Name="Drivers/BSP/X-NUCLEO-DRP1M1/drp1m1_bus.h"/>
+            <File Category="header" Condition="" Name="Drivers/BSP/X-NUCLEO-DRP1M1/drp1m1_errno.h"/>
+            <File Category="source" Condition="" Name="Drivers/BSP/X-NUCLEO-DRP1M1/drp1m1_usbpd_pwr.c"/>
+            <File Category="header" Condition="" Name="Drivers/BSP/X-NUCLEO-DRP1M1/drp1m1_usbpd_pwr.h"/>
+        </SubComponent>
+    </RefComponent>
+    <RefComponent Cclass="CurrentOoMeasurementOoADCCcBoardOoPart" Cgroup="CurrentOoMeasurement" Cversion="4Gg1Gg0">
+        <SubComponent Csub="ADC" Cvariant="true" Cversion="4Gg1Gg0"/>
+    </RefComponent>
+    <RefComponent Cclass="VprovOoMeasurementOoADCCcBoardOoPart" Cgroup="VprovOoMeasurement" Cversion="4Gg1Gg0">
+        <SubComponent Csub="ADC" Cvariant="true" Cversion="4Gg1Gg0"/>
+    </RefComponent>
+    <RefComponent Cclass="VconsOoMeasurementOoADCCcBoardOoPart" Cgroup="VconsOoMeasurement" Cversion="4Gg1Gg0">
+        <SubComponent Csub="ADC" Cvariant="true" Cversion="4Gg1Gg0"/>
+    </RefComponent>
+</IP>

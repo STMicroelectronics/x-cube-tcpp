@@ -130,7 +130,7 @@ uint32_t PORT0_PDO_ListSNK[USBPD_MAX_NB_PDO] =
   /* PDO 4 */
         (0x0006412CU),
   /* PDO 5 */
-        (0xC0762114U),
+        (0xC1903214),
   /* PDO 6 */
         (0x00000000U),
   /* PDO 7 */

@@ -65,7 +65,7 @@ Connectivity, UART/USART, USB_PD_Lib, UCPD, Type C, USBPD
 ### <b>Hardware and Software environment</b>
 
   - This application runs on STM32G4XX devices
-  - This application has been tested with STMicroelectronics NUCLEO-G474RE board with X-NUCLEO-SNK1M1 shield
+  - This application has been tested with STMicroelectronics NUCLEO-G474RE board with X-NUCLEO-SNK1M1 expansion board
     and can be easily tailored to any other supported device and development board.
 
 - X-NUCLEO-SNK1M1 Set-up

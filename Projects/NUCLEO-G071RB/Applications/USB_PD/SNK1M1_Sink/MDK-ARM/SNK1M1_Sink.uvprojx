@@ -41,7 +41,7 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>SNK1M1_Sink\Exe\</OutputDirectory>
+          <OutputDirectory>SNK1M1_Sink\</OutputDirectory>
           <OutputName>SNK1M1_Sink</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
@@ -332,7 +332,7 @@
               <MiscControls />
               <Define>USE_FULL_LL_DRIVER,USBPD_PORT_COUNT=1,_RTOS,_SNK,_TRACE,_GUI_INTERFACE,USBPDCORE_LIB_PD3_FULL,USE_HAL_DRIVER,STM32G071xx</Define>
               <Undefine />
-              <IncludePath>../Inc;../../../../../../Drivers/STM32G0xx_HAL_Driver/Inc;../../../../../../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy;../../../../../../Utilities/GUI_INTERFACE;../../../../../../Utilities/TRACER_EMB;../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include;../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0;../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc;../../../../../../Middlewares/ST/STM32_USBPD_Library/Devices/STM32G0XX/inc;../../../../../../Drivers/CMSIS/Device/ST/STM32G0xx/Include;../../../../../../Drivers/CMSIS/Include;../../../../../../Drivers/BSP/STM32G0xx_Nucleo</IncludePath>
+              <IncludePath>../Core/Inc;../TCPP/App;../TCPP/Target;../TCPP;../USBPD/App;../USBPD/Target;../../../../../../Drivers/STM32G0xx_HAL_Driver/Inc;../../../../../../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy;../../../../../../Utilities/GUI_INTERFACE;../../../../../../Utilities/TRACER_EMB;../../../../../../Middlewares/Third_Party/FreeRTOS/Source/include;../../../../../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../../../../../../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM0;../../../../../../Middlewares/ST/STM32_USBPD_Library/Core/inc;../../../../../../Middlewares/ST/STM32_USBPD_Library/Devices/STM32G0XX/inc;../../../../../../Drivers/CMSIS/Device/ST/STM32G0xx/Include;../../../../../../Drivers/CMSIS/Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -350,7 +350,7 @@
               <MiscControls />
               <Define />
               <Undefine />
-              <IncludePath>..\Inc</IncludePath>
+              <IncludePath>../Core/Inc</IncludePath>
             </VariousControls>
           </Aads>
           <LDads>
@@ -384,72 +384,77 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Application/User</GroupName>
+          <GroupName>Application/User/Core</GroupName>
           <Files>
-            <File>
-              <FileName>usbpd_user_services.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Src/usbpd_user_services.c</FilePath>
-            </File>
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Src/main.c</FilePath>
+              <FilePath>../Core/Src/main.c</FilePath>
             </File>
             <File>
               <FileName>app_freertos.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Src/app_freertos.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbpd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Src/usbpd.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbpd_dpm_user.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Src/usbpd_dpm_user.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbpd_pwr_user.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Src/usbpd_pwr_user.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbpd_pwr_if.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Src/usbpd_pwr_if.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbpd_vdm_user.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Src/usbpd_vdm_user.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbpd_dpm_core.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Src/usbpd_dpm_core.c</FilePath>
+              <FilePath>../Core/Src/app_freertos.c</FilePath>
             </File>
             <File>
               <FileName>stm32g0xx_it.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Src/stm32g0xx_it.c</FilePath>
+              <FilePath>../Core/Src/stm32g0xx_it.c</FilePath>
             </File>
             <File>
               <FileName>stm32g0xx_hal_msp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Src/stm32g0xx_hal_msp.c</FilePath>
+              <FilePath>../Core/Src/stm32g0xx_hal_msp.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Drivers/BSP/STM32G0xx_Nucleo</GroupName>
+          <GroupName>Application/User/USBPD/Target</GroupName>
           <Files>
             <File>
-              <FileName>stm32g0xx_nucleo.c</FileName>
+              <FileName>usbpd_dpm_user.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../../../../../../Drivers/BSP/STM32G0xx_Nucleo/stm32g0xx_nucleo.c</FilePath>
+              <FilePath>../USBPD/Target/usbpd_dpm_user.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbpd_pwr_user.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../USBPD/Target/usbpd_pwr_user.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbpd_vdm_user.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../USBPD/Target/usbpd_vdm_user.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Application/User/USBPD/App</GroupName>
+          <Files>
+            <File>
+              <FileName>usbpd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../USBPD/App/usbpd.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbpd_pwr_if.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../USBPD/App/usbpd_pwr_if.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbpd_dpm_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../USBPD/App/usbpd_dpm_core.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Application/User/TCPP/App</GroupName>
+          <Files>
+            <File>
+              <FileName>app_tcpp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../TCPP/App/app_tcpp.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -594,7 +599,7 @@
             <File>
               <FileName>system_stm32g0xx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Src/system_stm32g0xx.c</FilePath>
+              <FilePath>../Core/Src/system_stm32g0xx.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -730,183 +735,6 @@
               <FileName>tracer_emb_hw.c</FileName>
               <FileType>1</FileType>
               <FilePath>../../../../../../Utilities/TRACER_EMB/tracer_emb_hw.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Doc</GroupName>
-          <GroupOption>
-            <CommonProperty>
-              <UseCPPCompiler>0</UseCPPCompiler>
-              <RVCTCodeConst>0</RVCTCodeConst>
-              <RVCTZI>0</RVCTZI>
-              <RVCTOtherData>0</RVCTOtherData>
-              <ModuleSelection>0</ModuleSelection>
-              <IncludeInBuild>2</IncludeInBuild>
-              <AlwaysBuild>2</AlwaysBuild>
-              <GenerateAssemblyFile>2</GenerateAssemblyFile>
-              <AssembleAssemblyFile>2</AssembleAssemblyFile>
-              <PublicsOnly>2</PublicsOnly>
-              <StopOnExitCode>11</StopOnExitCode>
-              <ComprImg>1</ComprImg>
-            </CommonProperty>
-            <GroupArmAds>
-              <Cads>
-                <interw>2</interw>
-                <Optim>0</Optim>
-                <oTime>2</oTime>
-                <SplitLS>2</SplitLS>
-                <OneElfS>2</OneElfS>
-                <Strict>2</Strict>
-                <EnumInt>2</EnumInt>
-                <PlainCh>2</PlainCh>
-                <Ropi>2</Ropi>
-                <Rwpi>2</Rwpi>
-                <wLevel>4</wLevel>
-                <uThumb>2</uThumb>
-                <uSurpInc>2</uSurpInc>
-                <uC99>2</uC99>
-                <uGnu>2</uGnu>
-                <useXO>2</useXO>
-                <v6Lang>0</v6Lang>
-                <v6LangP>0</v6LangP>
-                <vShortEn>2</vShortEn>
-                <vShortWch>2</vShortWch>
-                <v6Lto>2</v6Lto>
-                <v6WtE>2</v6WtE>
-                <v6Rtti>2</v6Rtti>
-              </Cads>
-              <Aads>
-                <interw>2</interw>
-                <Ropi>2</Ropi>
-                <Rwpi>2</Rwpi>
-                <thumb>2</thumb>
-                <SplitLS>2</SplitLS>
-                <SwStkChk>2</SwStkChk>
-                <NoWarn>2</NoWarn>
-                <uSurpInc>2</uSurpInc>
-                <useXO>2</useXO>
-                <ClangAsOpt>1</ClangAsOpt>
-              </Aads>
-            </GroupArmAds>
-          </GroupOption>
-          <Files>
-            <File>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>1</IncludeInBuild>
-                  <AlwaysBuild>2</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>0</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                  </Cads>
-                  <Aads>
-                    <interw>2</interw>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <thumb>2</thumb>
-                    <SplitLS>2</SplitLS>
-                    <SwStkChk>2</SwStkChk>
-                    <NoWarn>2</NoWarn>
-                    <uSurpInc>2</uSurpInc>
-                    <useXO>2</useXO>
-                    <ClangAsOpt>1</ClangAsOpt>
-                  </Aads>
-                </FileArmAds>
-              </FileOption>
-            </File>
-            <File>
-              <FileName>README.md</FileName>
-              <FileType>5</FileType>
-              <FilePath>../README.md</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>1</IncludeInBuild>
-                  <AlwaysBuild>2</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>0</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <uGnu>2</uGnu>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                  </Cads>
-                  <Aads>
-                    <interw>2</interw>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <thumb>2</thumb>
-                    <SplitLS>2</SplitLS>
-                    <SwStkChk>2</SwStkChk>
-                    <NoWarn>2</NoWarn>
-                    <uSurpInc>2</uSurpInc>
-                    <useXO>2</useXO>
-                    <ClangAsOpt>1</ClangAsOpt>
-                  </Aads>
-                </FileArmAds>
-              </FileOption>
             </File>
           </Files>
         </Group>

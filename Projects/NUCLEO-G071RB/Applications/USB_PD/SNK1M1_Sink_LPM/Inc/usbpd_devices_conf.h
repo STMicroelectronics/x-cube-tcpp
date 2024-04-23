@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2018 STMicroelectronics.
+  * Copyright (c) 2021 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -37,7 +37,6 @@ extern "C" {
 #include "usbpd_pwr_if.h"
 
 /* USER CODE BEGIN Includes */
-#include "usbpd_pwr_if.h"
 
 /* USER CODE END Includes */
 
@@ -60,9 +59,9 @@ extern "C" {
 
 #define UCPDDMA_INSTANCE0_REQUEST_RX   DMA_REQUEST_UCPD1_RX
 
-#define UCPDDMA_INSTANCE0_LL_CHANNEL_RX   LL_DMA_CHANNEL_5
+#define UCPDDMA_INSTANCE0_LL_CHANNEL_RX   LL_DMA_CHANNEL_1
 
-#define UCPDDMA_INSTANCE0_CHANNEL_RX   DMA1_Channel5
+#define UCPDDMA_INSTANCE0_CHANNEL_RX   DMA1_Channel1
 
 /* defined used to configure function : USBPD_HW_Init_DMATxInstance, USBPD_HW_DeInit_DMATxInstance */
 #define UCPDDMA_INSTANCE0_CLOCKENABLE_TX  LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_DMA1)
@@ -71,9 +70,9 @@ extern "C" {
 
 #define UCPDDMA_INSTANCE0_REQUEST_TX   DMA_REQUEST_UCPD1_TX
 
-#define UCPDDMA_INSTANCE0_LL_CHANNEL_TX   LL_DMA_CHANNEL_3
+#define UCPDDMA_INSTANCE0_LL_CHANNEL_TX   LL_DMA_CHANNEL_2
 
-#define UCPDDMA_INSTANCE0_CHANNEL_TX   DMA1_Channel3
+#define UCPDDMA_INSTANCE0_CHANNEL_TX   DMA1_Channel2
 
 /* defined used to configure  BSP_USBPD_SetFRSSignalling */
 #define UCPDFRS_INSTANCE0_FRSCC1

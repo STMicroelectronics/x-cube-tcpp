@@ -8,7 +8,7 @@ You will find different reports done on different configuration.
 
 #### __Ellisys__
 
-- **[G071RB-SNK1M1_Sink](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/Ellisys/x-cube-tcpp_v4.0.0_NUCLEO-G071RB-SNK1M1_Sink_USB_Compliance_Report.html)**
+- **[G071RB-SNK1M1_Sink](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/Ellisys/x-cube-tcpp_v4.1.0_NUCLEO-G071RB-SNK1M1_Sink_USB_Compliance_Report.html)**
   - Test report done on Ellisys tool with application 'NUCLEO-G071RB-SNK1M1_Sink'
   - Application: Projects/NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink/
   - VIF: STMicroelectronics_SNK1M1_Sink_STM32G071RB_VIF.xml
@@ -23,29 +23,29 @@ You will find different reports done on different configuration.
   - Application: Projects/NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink_LPM/
   - VIF: STMicroelectronics_SNK1M1_Sink_LPM_STM32G071RB_VIF.xml
 
-- **[G071RB-SRC1M1_Source](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/Ellisys/x-cube-tcpp_v4.0.0_NUCLEO-G071RB-SRC1M1_Source_USB_Compliance_Report.html)**
+- **[G071RB-SRC1M1_Source](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/Ellisys/x-cube-tcpp_v4.1.0_NUCLEO-G071RB-SRC1M1_Source_USB_Compliance_Report.html)**
   - Test report done on Ellisys tool with application 'NUCLEO-G071RB-SRC1M1_Source'
   - Application: Projects/NUCLEO-G071RB/Applications/USB_PD/SRC1M1_Source/
   - VIF: STMicroelectronics_SRC1M1_Source_STM32G071RB_VIF.xml
 
-- **[G071RB-DRP1M1_DRP](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/Ellisys/x-cube-tcpp_v4.0.0_NUCLEO-G071RB-DRP1M1_DRP_USB_Compliance_Report.html)**
+- **[G071RB-DRP1M1_DRP](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/Ellisys/x-cube-tcpp_v4.1.0_NUCLEO-G071RB-DRP1M1_DRP_USB_Compliance_Report.html)**
   - Test report done on Ellisys tool with application 'NUCLEO-G071RB-DRP1M1_DRP'
   - Application: Projects/NUCLEO-G071RB/Applications/USB_PD/DRP1M1_DRP/
   - VIF: STMicroelectronics_DRP1M1_DRP_STM32G071RB_VIF.xml
 
 
 
-- **[G474RE-SNK1M1_Sink](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/Ellisys/x-cube-tcpp_v4.0.0_NUCLEO-G474RE-SNK1M1_Sink_USB_Compliance_Report.html)**
+- **[G474RE-SNK1M1_Sink](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/Ellisys/x-cube-tcpp_v4.1.0_NUCLEO-G474RE-SNK1M1_Sink_USB_Compliance_Report.html)**
   - Test report done on Ellisys tool with application 'NUCLEO-G474RE-SNK1M1_Sink'
   - Application: Projects/NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink/
   - VIF: STMicroelectronics_SNK1M1_Sink_STM32G474RE_VIF.xml
 
-- **[G474RE-SRC1M1_Source](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/Ellisys/x-cube-tcpp_v4.0.0_NUCLEO-G474RE-SRC1M1_Source_USB_Compliance_Report.html)**
+- **[G474RE-SRC1M1_Source](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/Ellisys/x-cube-tcpp_v4.1.0_NUCLEO-G474RE-SRC1M1_Source_USB_Compliance_Report.html)**
   - Test report done on Ellisys tool with application 'NUCLEO-G474RE-SRC1M1_Source'
   - Application: Projects/NUCLEO-G474RE/Applications/USB_PD/SRC1M1_Source/
   - VIF: STMicroelectronics_SRC1M1_Source_STM32G474RE_VIF.xml
 
-- **[G474RE-DRP1M1_DRP](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/Ellisys/x-cube-tcpp_v4.0.0_NUCLEO-G474RE-DRP1M1_DRP_USB_Compliance_Report.html)**
+- **[G474RE-DRP1M1_DRP](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/Ellisys/x-cube-tcpp_v4.1.0_NUCLEO-G474RE-DRP1M1_DRP_USB_Compliance_Report.html)**
   - Test report done on Ellisys tool with application 'NUCLEO-G474RE-DRP1M1_DRP'
   - Application: Projects/NUCLEO-G474RE/Applications/USB_PD/DRP1M1_DRP/
   - VIF: STMicroelectronics_DRP1M1_DRP_STM32G474RE_VIF.xml
@@ -53,8 +53,7 @@ You will find different reports done on different configuration.
 #### __Teledyne LeCroy__
 
 - G071RB-SNK1M1_Sink
-  **[Tests_PD](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/LeCroy/G071RB-SNK1M1_Sink/x-cube-tcpp_v4.0.0_NUCLEO-G071RB-SNK1M1_Sink_PD_Teledyne_LeCroy_USB_Compliance_Result.html)** &
-  **[Tests_TypeC](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/LeCroy/G071RB-SNK1M1_Sink/x-cube-tcpp_v4.0.0_NUCLEO-G071RB-SNK1M1_Sink_TypeC_Teledyne_LeCroy_USB_Compliance_Result.html)**
+  **[Tests_PD&TypeC](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/LeCroy/G071RB-SNK1M1_Sink/x-cube-tcpp_v4.1.0_NUCLEO-G071RB-SNK1M1_Sink_Teledyne_LeCroy_USB_Compliance_Result.html)** 
   - Test report done on Teledyne LeCroy tool with application 'NUCLEO-G071RB-SNK1M1_Sink'
   - Application: Projects/NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink/
   - VIF: STMicroelectronics_SNK1M1_Sink_STM32G071RB_VIF.xml
@@ -69,21 +68,19 @@ You will find different reports done on different configuration.
 
 
 - G474RE-SNK1M1_Sink
-  **[Tests_PD](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/LeCroy/G474RE-SNK1M1_Sink/x-cube-tcpp_v4.0.0_NUCLEO-G474RE-SNK1M1_Sink_PD_Teledyne_LeCroy_USB_Compliance_Result.html)** &
-  **[Tests_TypeC](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/LeCroy/G474RE-SNK1M1_Sink/x-cube-tcpp_v4.0.0_NUCLEO-G474RE-SNK1M1_Sink_TypeC_Teledyne_LeCroy_USB_Compliance_Result.html)**
+  **[Tests_PD&TypeC](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/LeCroy/G474RE-SNK1M1_Sink/x-cube-tcpp_v4.1.0_NUCLEO-G474RE-SNK1M1_Sink_Teledyne_LeCroy_USB_Compliance_Result.html)**
   - Test report done on Ellisys tool with application 'NUCLEO-G474RE-SNK1M1_Sink'
   - Application: Projects/NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink/
   - VIF: STMicroelectronics_SNK1M1_Sink_STM32G474RE_VIF.xml
 
 - G474RE-SRC1M1_Source
-  **[Tests_PD](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/LeCroy/G474RE-SRC1M1_Source/x-cube-tcpp_v4.0.0_NUCLEO-G474RE-SRC1M1_Source_PD_Teledyne_LeCroy_USB_Compliance_Result.html)** &
-  **[Tests_TypeC](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/LeCroy/G474RE-SRC1M1_Source/x-cube-tcpp_v4.0.0_NUCLEO-G474RE-SRC1M1_Source_TypeC_Teledyne_LeCroy_USB_Compliance_Result.html)**
+  **[Tests_PD&TypeC](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/LeCroy/G474RE-SRC1M1_Source/x-cube-tcpp_v4.1.0_NUCLEO-G474RE-SRC1M1_Source_Teledyne_LeCroy_USB_Compliance_Result.html)** 
   - Test report done on Ellisys tool with application 'NUCLEO-G474RE-SRC1M1_Source'
   - Application: Projects/NUCLEO-G474RE/Applications/USB_PD/SRC1M1_Source/
   - VIF: STMicroelectronics_SRC1M1_Source_STM32G474RE_VIF.xml
 
 - G474RE-DRP1M1_DRP
-  **[Tests_PD&TypeC](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/LeCroy/G474RE-DRP1M1_DRP/x-cube-tcpp_v4.0.0_NUCLEO-G474RE-DRP1M1_DRP_PD-TypeC_Teledyne_LeCroy_USB_Compliance_Result.html)**
+  **[Tests_PD&TypeC](https://htmlpreview.github.io/?https://github.com/STMicroelectronics/x-cube-tcpp/blob/main/Documentation/TestResults/LeCroy/G474RE-DRP1M1_DRP/x-cube-tcpp_v4.1.0_NUCLEO-G474RE-DRP1M1_DRP_PD-TypeC_Teledyne_LeCroy_USB_Compliance_Result.html)**
   - Test report done on Ellisys tool with application 'NUCLEO-G474RE-DRP1M1_DRP'
   - Application: Projects/NUCLEO-G474RE/Applications/USB_PD/DRP1M1_DRP/
   - VIF: STMicroelectronics_DRP1M1_DRP_STM32G474RE_VIF.xml
@@ -102,13 +99,13 @@ You will find different reports done on different configuration.
   - **Ellisys** tester:
     - Generator used Ellisys USB Explorer 350 (EX350-62238) or (EX350-62501)
     - Analyzer used Ellisys USB Explorer 350 (EX350-62239) or  (EX350-62500)
-    - Software version: **3.1.8361**
+    - Software version: **3.1.8703**
 
   - **MQP** tester:
     - Software version: **V6.40.03**
 
   - **Teledyne LeCroy** tester:
-    - USB Compliance Suite Version **6.75 Build 1073** or **6.80 Build 1080**
-    - USB Protocol Suite Version **8.95 Build 4171** or **8.96 Build 4180**
-    - Analyzer: **Voyager M310e 23906**: **BusEngine 3.03 Firmware 4.04**
+    - USB Compliance Suite Version **7.54 Build 1154** or **6.75 Build 1073**
+    - USB Protocol Suite Version **9.21 Build 4507** or **8.95 Build 4171**
+    - Analyzer: **Voyager M310e 23906**: **BusEngine 3.08 Firmware 4.05** or **BusEngine 3.03 Firmware 4.04**
     - Attached:	**Load-Box 8601** from **B&K PRECISION** via RS232

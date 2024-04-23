@@ -10,7 +10,7 @@ Goal is to identify a Type-C connection to power supply and to determine the RP 
 In this application, USB Device MSC (Mass Storage Class) is enabled and shows how USB on Type-C should cohabit.
 
 ####  <b>Expected success behavior</b>
-When Type-C cable is plugged: LED1 on X-NUCLEO-SNK1M1 shield switches on which means that VBUS is provided by the port partner.
+When Type-C cable is plugged: LED1 on X-NUCLEO-SNK1M1 expansion board switches on which means that VBUS is provided by the port partner.
 The Rp resistor exposed by port partner will be indicated thanks to the blinking of 
 LED4 on NUCLEO-L412RB-P board:
 
@@ -36,7 +36,7 @@ Connectivity, UART/USART, USB_PD_Lib, UCPD, Type C, USBPD
 ### <b>Hardware and Software environment</b>
 
   - This application runs on STM32L4XX devices
-  - This application has been tested with STMicroelectronics NUCLEO-L412RB-P board with X-NUCLEO-SNK1M1 shield
+  - This application has been tested with STMicroelectronics NUCLEO-L412RB-P board with X-NUCLEO-SNK1M1 expansion board
     and can be easily tailored to any other supported device and development board.
 
 - X-NUCLEO-SNK1M1 Set-up

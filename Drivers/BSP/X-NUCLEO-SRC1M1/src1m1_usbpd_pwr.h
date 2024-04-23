@@ -27,7 +27,7 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "src1m1_conf.h"
 /* Include TCPP0203 component driver */
-#include "../Components/tcpp0203/tcpp0203.h"
+#include "tcpp0203.h"
 
 /** @addtogroup BSP
   * @{

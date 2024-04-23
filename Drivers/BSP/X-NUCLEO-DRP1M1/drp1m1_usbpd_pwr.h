@@ -26,27 +26,8 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "drp1m1_conf.h"
-
-#if defined(USE_STM32G4XX_NUCLEO)
-#include "stm32g4xx_ll_bus.h"
-#include "stm32g4xx_ll_gpio.h"
-#include "stm32g4xx_ll_exti.h"
-#include "stm32g4xx_ll_system.h"
-#include "stm32g4xx_nucleo_errno.h"
-#elif defined(USE_STM32G0XX_NUCLEO)
-#include "stm32g0xx_ll_bus.h"
-#include "stm32g0xx_ll_gpio.h"
-#include "stm32g0xx_ll_exti.h"
-#include "stm32g0xx_ll_system.h"
-/* STM32G0 series using BSP V1 framework, no conf template file, no error definitions, ... */
-#include "drp1m1_errno.h"
-#else
-#warning "Please select include files according to HW setup"
-#endif /* USE_STM32G4XX_NUCLEO */
-
-#include "drp1m1_conf.h"
 /* Include TCPP0203 component driver */
-#include "../Components/tcpp0203/tcpp0203.h"
+#include "tcpp0203.h"
 
 /** @addtogroup BSP
   * @{

@@ -36,7 +36,7 @@ Connectivity, UART/USART, Type C
 ### <b>Hardware and Software environment</b>
 
   - This application runs on STM32F4XX devices
-  - This application has been tested with STMicroelectronics NUCLEO-F446RE board with X-NUCLEO-SRC1M1 shield
+  - This application has been tested with STMicroelectronics NUCLEO-F446RE board with X-NUCLEO-SRC1M1 expansion board
     and can be easily tailored to any other supported device and development board.
 
 - X-NUCLEO-SRC1M1 Set-up

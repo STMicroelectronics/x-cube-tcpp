@@ -3,11 +3,10 @@
   ******************************************************************************
   * @file    usbpd_pdo_defs.h
   * @author  MCD Application Team
-  * @brief   Header file for definition of PDO/APDO values for 1 port/SNK configuration
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2018 STMicroelectronics.
+  * Copyright (c) 2021 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -29,9 +28,7 @@
 #include "usbpd_def.h"
 
 /* USER CODE BEGIN Includes */
-#if defined(_GUI_INTERFACE)
-#include "usbpd_gui_memmap.h"
-#endif /* _GUI_INTERFACE */
+
 /* USER CODE END Includes */
 
 /* Define   ------------------------------------------------------------------*/
@@ -52,21 +49,6 @@
   * @brief  USBPD Port PDO Structure definition
   *
   */
-typedef struct
-{
-  uint32_t *ListOfPDO;                          /*!< Pointer on Power Data Objects list, defining
-                                                     port capabilities */
-  uint8_t  *NumberOfPDO;                         /*!< Number of Power Data Objects defined in ListOfPDO
-                                                     This parameter must be set at max to @ref USBPD_MAX_NB_PDO value */
-} USBPD_PortPDO_TypeDef;
-
-/**
-  * @brief  USBPD Port PDO Storage Structure definition
-  */
-typedef struct
-{
-  USBPD_PortPDO_TypeDef    SinkPDO;          /*!< SNK Power Data Objects */
-}USBPD_PWR_Port_PDO_Storage_TypeDef;
 
 /* USER CODE END typedef */
 
@@ -74,15 +56,6 @@ typedef struct
 
 /* USER CODE BEGIN Exported_Define */
 
-/* Define board operating power and max power */
-/* Request 5V */
-#define USBPD_BOARD_REQUESTED_VOLTAGE_MV       5000
-#define USBPD_BOARD_MIN_VOLTAGE_MV             5000
-#define USBPD_BOARD_MAX_VOLTAGE_MV             20000
-
-/* Max current */
-/* 5000mA in sink mode */
-#define USBPD_CORE_PDO_SNK_FIXED_MAX_CURRENT   3000
 /* USER CODE END Exported_Define */
 
 /* Exported constants --------------------------------------------------------*/
