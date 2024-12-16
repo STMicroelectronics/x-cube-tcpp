@@ -146,7 +146,7 @@ USBPD_USER_SettingsTypeDef       DPM_USER_Settings[USBPD_PORT_COUNT] =
     {
       .VID = USBPD_VID,                      /*!< Vendor ID (assigned by the USB-IF)        */
       .PID = USBPD_PID,                      /*!< Product ID (assigned by the manufacturer) */
-      .ManuString = "STMicroelectronics",    /*!< Vendor defined byte array                 */
+      .ManuString = "STMicroelectronics\0",  /*!< Vendor defined byte array                 */
     },
 #endif /* _MANU_INFO */
 #endif /* USBPD_REV30_SUPPORT */

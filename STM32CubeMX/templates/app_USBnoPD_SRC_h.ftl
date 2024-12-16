@@ -59,6 +59,18 @@ typedef enum
 
 #define BSP_USBPD_PWR_DONT_WAIT_VBUSOFF_DISCHARGE 1u
 
+/* USER CODE BEGIN EC */
+[#if MCU_FAMILY == "stm32h7rs"]
+/**
+  * This project uses custom linker settings to place the HEAP in a non-cacheable section of RAM. This is due to
+  * the dynamic allocation of DMA buffers in the HEAP that must not be cached for DMA to access the data directly.
+  * The following address corresponds to the location of the HEAP.
+  */
+#define DMABUFFER_AREA          0x24071000
+#define DMABUFFER_AREA_SIZE     MPU_REGION_SIZE_4KB
+[/#if]
+/* USER CODE END EC */
+
 #ifdef __cplusplus
 }
 #endif

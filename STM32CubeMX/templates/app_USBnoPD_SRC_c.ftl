@@ -26,9 +26,45 @@ static void USBnoPD_ProcessADC(void);
 static void USBnoPD_IncrementDebounceCount(void);
 static void USBnoPD_StateMachineRun(void);
 
+[#if MCU_FAMILY == "stm32h7rs"]
+void MPU_Config(void)
+{
+  MPU_Region_InitTypeDef MPU_InitStruct = {0};
+
+  /* Disable the MPU */
+  HAL_MPU_Disable();
+
+  /* Configure the MPU attributes as Normal Non Cacheable for SRAM1 */
+  MPU_InitStruct.Enable = MPU_REGION_ENABLE;
+  MPU_InitStruct.BaseAddress = DMABUFFER_AREA;
+  MPU_InitStruct.Size = DMABUFFER_AREA_SIZE;
+  MPU_InitStruct.AccessPermission = MPU_REGION_FULL_ACCESS;
+  MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
+  MPU_InitStruct.IsCacheable = MPU_ACCESS_NOT_CACHEABLE;
+  MPU_InitStruct.IsShareable = MPU_ACCESS_NOT_SHAREABLE;
+  MPU_InitStruct.Number = MPU_REGION_NUMBER3;
+  MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
+  MPU_InitStruct.SubRegionDisable = 0x00;
+  MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_DISABLE;
+
+  HAL_MPU_ConfigRegion(&MPU_InitStruct);
+
+  /* Enable the MPU */
+  HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);
+}
+[/#if]
 
 void MX_TCPP_Init(void)
 {
+[#if MCU_FAMILY == "stm32h7rs"]
+  /* USER CODE BEGIN MX_TCPP_Init */
+  // Tracer for USBPD needs Dcache to be disabled to avoid corrupted transfer
+  SCB_DisableDCache();
+  
+  MPU_Config();
+  /* USER CODE END MX_TCPP_Init */
+[/#if]
+
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(TCPP0203_PORT0_FLG_EXTI_IRQN, 0, 0);
   HAL_NVIC_EnableIRQ(TCPP0203_PORT0_FLG_EXTI_IRQN);

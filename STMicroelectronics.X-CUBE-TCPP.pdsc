@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<package schemaVersion="1.7.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+<package schemaVersion="1.7.40" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
     <vendor>STMicroelectronics</vendor>
     <name>X-CUBE-TCPP</name>
     <description>Software package for TCPP0x support</description>
     <url>http://sw-center.st.com/packs/x-cube/</url>
     <license>en.DM00218346.pdf</license>
-	<supportContact>https://community.st.com</supportContact>
+    <supportContact>https://community.st.com</supportContact>
     <releases>
+        <release date="2024-11-01" version="4.2.0">Pack generated for CubeMX from release 6.13.0</release>
         <release date="2023-09-14" version="4.1.0">Pack generated for CubeMX from release 6.11.0
 </release>
     </releases>
@@ -46,10 +47,13 @@
             <accept Dcore="Cortex-M0+"/>
             <accept Dcore="Cortex-M4"/>
             <accept Dcore="Cortex-M33"/>
+            <accept Dcore="Cortex-M7"/>
         </condition>
         <condition id="Appli_Source_USBnoPD">
             <require condition="tcpp0203_Component"/>
             <deny Cbundle="USBPD Application" Cclass="Device" Cgroup="Application"/>
+            <deny Dfamily ="STM32WB0"/>
+            <deny Dfamily ="STM32WL3"/>
         </condition>
         <condition id="BOARD Support SNK1M1 G0 G4">
             <require condition="STM32G0_G4"/>
@@ -89,6 +93,7 @@
             <accept Cclass="CMSIS" Cgroup="RTOS" Csub="FreeRTOS"/>
             <accept Cclass="RTOS" Cgroup="ThreadX" Csub="Core"/>
             <accept Cclass="CMSIS" Cgroup="RTOS2" Csub="FreeRTOS"/>
+            <accept Cclass="CMSIS" Cgroup="RTOS2" Csub="Core" Cvariant="TZ_Non_Supported"/>
         </condition>
         <condition id="I2C_HAL">
             <require Cclass="Device" Cgroup="I2C" Csub="HAL"/>
@@ -136,7 +141,7 @@
         </condition>
     </conditions>
     <components>
-        <bundle Cbundle="USBPD Application" Cclass="Device" Cversion="4.1.0">
+        <bundle Cbundle="USBPD Application" Cclass="Device" Cversion="4.2.0">
             <description>USBPD Application with TCPP0x</description>
             <doc>Documentation/STMicroelectronics.X-CUBE-TCPP_GettingStarted.pdf</doc>
             <component Cgroup="Application" Cvariant="Sink" condition="Appli_Sink_USBPD" maxInstances="1">
@@ -152,7 +157,7 @@
                 <files/>
             </component>
         </bundle>
-        <bundle Cbundle="USB no PD Application" Cclass="Device" Cversion="4.1.0">
+        <bundle Cbundle="USB no PD Application" Cclass="Device" Cversion="4.2.0">
             <description>USB no PD Application with TCPP0x</description>
             <doc>Documentation/STMicroelectronics.X-CUBE-TCPP_GettingStarted.pdf</doc>
             <component Cgroup="Application" Cvariant="Source_without_UCPD" condition="Appli_Source_USBnoPD" maxInstances="1">
@@ -160,7 +165,7 @@
                 <files/>
             </component>
         </bundle>
-        <bundle Cbundle="tcpp01" Cclass="Board Part" Cversion="4.1.0">
+        <bundle Cbundle="tcpp01" Cclass="Board Part" Cversion="4.2.0">
             <description>Board Part tcpp01</description>
             <doc>Documentation/STMicroelectronics.X-CUBE-TCPP_GettingStarted.pdf</doc>
             <component Cgroup="tcpp01" Csub="tcpp01" maxInstances="1">
@@ -181,7 +186,7 @@
                 </files>
             </component>
         </bundle>
-        <bundle Cbundle="X-NUCLEO-SNK1M1" Cclass="Board Support" Cversion="4.1.0">
+        <bundle Cbundle="X-NUCLEO-SNK1M1" Cclass="Board Support" Cversion="4.2.0">
             <description>Board support for X-NUCLEO-SNK1M1</description>
             <doc>Documentation/STMicroelectronics.X-CUBE-TCPP_GettingStarted.pdf</doc>
             <component Cgroup="X-NUCLEO-SNK1M1" Csub="Common" condition="BOARD Support SNK1M1 G0 G4" maxInstances="1">
@@ -217,7 +222,7 @@
                 </files>
             </component>
         </bundle>
-        <bundle Cbundle="Current Measurement ADC" Cclass="Board Part" Cversion="4.1.0">
+        <bundle Cbundle="Current Measurement ADC" Cclass="Board Part" Cversion="4.2.0">
             <description>ADC for Vbus Current Measurement</description>
             <doc>Documentation/STMicroelectronics.X-CUBE-TCPP_GettingStarted.pdf</doc>
             <component Cgroup="Current Measurement" Csub="ADC" condition="Appli_Source_or_Dual_NoExtension" maxInstances="1">
@@ -225,7 +230,7 @@
                 <files/>
             </component>
         </bundle>
-        <bundle Cbundle="Vprov Measurement ADC" Cclass="Board Part" Cversion="4.1.0">
+        <bundle Cbundle="Vprov Measurement ADC" Cclass="Board Part" Cversion="4.2.0">
             <description>ADC for Vprov Measurement</description>
             <doc>Documentation/STMicroelectronics.X-CUBE-TCPP_GettingStarted.pdf</doc>
             <component Cgroup="Vprov Measurement" Csub="ADC" condition="Appli_Source_or_Dual_NoExtension" maxInstances="1">
@@ -233,7 +238,7 @@
                 <files/>
             </component>
         </bundle>
-        <bundle Cbundle="Vcons Measurement ADC" Cclass="Board Part" Cversion="4.1.0">
+        <bundle Cbundle="Vcons Measurement ADC" Cclass="Board Part" Cversion="4.2.0">
             <description>ADC for Vcons Measurement</description>
             <doc>Documentation/STMicroelectronics.X-CUBE-TCPP_GettingStarted.pdf</doc>
             <component Cgroup="Vcons Measurement" Csub="ADC" condition="Appli_Dual_NoExtension" maxInstances="1">
@@ -247,7 +252,7 @@
             <description>Sink Application TypeC only</description>
             <board Dvendor="STMicroelectronics:13" name="NUCLEO-L412RB-P" vendor="STMicroelectronics"/>
             <project>
-                <environment folder="SNK1M1_Sink_TypeC_Only" load="DRP1M1_DRP_LPM.ewp" name="iar"/>
+                <environment folder="USB_PD\SNK1M1_Sink_TypeC_Only" load="SNK1M1_Sink_TypeC_Only.ewp" name="iar"/>
             </project>
             <attributes>
                 <keyword>Connectivity</keyword>
@@ -258,7 +263,7 @@
             <description>Source Application TypeC_5V-only</description>
             <board Dvendor="STMicroelectronics:13" name="NUCLEO-F446RE" vendor="STMicroelectronics"/>
             <project>
-                <environment folder="SRC1M1_Source_TypeC_Only" load="DRP1M1_DRP_LPM.ewp" name="iar"/>
+                <environment folder="USB_PD\SRC1M1_Source_TypeC_Only" load="SRC1M1_Source_TypeC_Only.ewp" name="iar"/>
             </project>
             <attributes>
                 <component Cbundle="USB no PD Application" Cclass="Device" Cgroup="Application" Cvariant="Source_without_UCPD" Cvendor="STMicroelectronics" Cversion="4.1.0"/>
@@ -272,7 +277,7 @@
             <description>Dual Role Power-Delivery in Low power mode Application for NUCLEO-G071</description>
             <board Dvendor="STMicroelectronics:13" name="NUCLEO-G071RB" vendor="STMicroelectronics"/>
             <project>
-                <environment folder="DRP1M1_DRP_LPM" load="DRP1M1_DRP_LPM.ewp" name="iar"/>
+                <environment folder="USB_PD\DRP1M1_DRP_LPM" load="DRP1M1_DRP_LPM.ewp" name="iar"/>
             </project>
             <attributes>
                 <keyword>Connectivity</keyword>
@@ -288,7 +293,7 @@
             <description>Sink Power-Delivery Application for NUCLEO-G071</description>
             <board Dvendor="STMicroelectronics:13" name="NUCLEO-G071RB" vendor="STMicroelectronics"/>
             <project>
-                <environment folder="SNK1M1_Sink_LPM" load="DRP1M1_DRP_LPM.ewp" name="iar"/>
+                <environment folder="USB_PD\SNK1M1_Sink_LPM" load="SNK1M1_Sink_LPM.ewp" name="iar"/>
             </project>
             <attributes>
                 <keyword>Connectivity</keyword>
@@ -304,28 +309,9 @@
             <description>Sink Power-Delivery Application for NUCLEO-G071</description>
             <board Dvendor="STMicroelectronics:13" name="NUCLEO-G071RB" vendor="STMicroelectronics"/>
             <project>
-                <environment folder="SNK1M1_Sink_PPS" load="DRP1M1_DRP_LPM.ewp" name="iar"/>
+                <environment folder="USB_PD\SNK1M1_Sink_PPS" load="SNK1M1_Sink_PPS.ewp" name="iar"/>
             </project>
             <attributes>
-                <keyword>Connectivity</keyword>
-                <keyword>USBPD</keyword>
-                <keyword>FreeRTOS</keyword>
-                <keyword>UART/USART</keyword>
-                <keyword>USB_PD_Lib</keyword>
-                <keyword>UCPD</keyword>
-                <keyword>Type C</keyword>
-            </attributes>
-        </example>
-        <example doc="readme.html" folder="Projects/NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink" name="USB_PD\SNK1M1_Sink" public="true" version="4.1.0">
-            <description>Sink Power-Delivery Application for NUCLEO-G474RE</description>
-            <board Dvendor="STMicroelectronics:13" name="NUCLEO-G474RE" vendor="STMicroelectronics"/>
-            <project>
-                <environment folder="SNK1M1_Sink" load="DRP1M1_DRP_LPM.ewp" name="iar"/>
-            </project>
-            <attributes>
-                <component Cbundle="USBPD Application" Cclass="Device" Cgroup="Application" Cvariant="Sink" Cvendor="STMicroelectronics" Cversion="4.1.0"/>
-                <component Cbundle="SNK1M1" Cclass="Board Support" Cgroup="X-NUCLEO-SNK1M1" Csub="Common" Cvendor="STMicroelectronics" Cversion="4.1.0"/>
-                <component Cbundle="tcpp01" Cclass="Board Part" Cgroup="tcpp01" Csub="tcpp01" Cvendor="STMicroelectronics" Cversion="4.1.0"/>
                 <keyword>Connectivity</keyword>
                 <keyword>USBPD</keyword>
                 <keyword>FreeRTOS</keyword>
@@ -339,7 +325,7 @@
             <description>Dual-Role Power-Delivery Application for NUCLEO-G474RE</description>
             <board Dvendor="STMicroelectronics:13" name="NUCLEO-G474RE" vendor="STMicroelectronics"/>
             <project>
-                <environment folder="DRP1M1_DRP" load="DRP1M1_DRP_LPM.ewp" name="iar"/>
+                <environment folder="USB_PD\DRP1M1_DRP" load="DRP1M1_DRP.ewp" name="iar"/>
             </project>
             <attributes>
                 <component Cbundle="USBPD Application" Cclass="Device" Cgroup="Application" Cvariant="Dual_Role" Cvendor="STMicroelectronics" Cversion="4.1.0"/>
@@ -359,7 +345,7 @@
             <description>Source Power-Deilery Application for NUCLEO-G474RE</description>
             <board Dvendor="STMicroelectronics:13" name="NUCLEO-G474RE" vendor="STMicroelectronics"/>
             <project>
-                <environment folder="SRC1M1_Source" load="DRP1M1_DRP_LPM.ewp" name="iar"/>
+                <environment folder="USB_PD\SRC1M1_Source" load="SRC1M1_Source.ewp" name="iar"/>
             </project>
             <attributes>
                 <component Cbundle="USBPD Application" Cclass="Device" Cgroup="Application" Cvariant="Source" Cvendor="STMicroelectronics" Cversion="4.1.0"/>
@@ -379,7 +365,7 @@
             <description>Dual-Role Power-Delivery Application for NUCLEO-G071RB</description>
             <board Dvendor="STMicroelectronics:13" name="NUCLEO-G071RB" vendor="STMicroelectronics"/>
             <project>
-                <environment folder="DRP1M1_DRP" load="DRP1M1_DRP_LPM.ewp" name="iar"/>
+                <environment folder="USB_PD\DRP1M1_DRP" load="DRP1M1_DRP.ewp" name="iar"/>
             </project>
             <attributes>
                 <component Cbundle="USBPD Application" Cclass="Device" Cgroup="Application" Cvariant="Dual_Role" Cvendor="STMicroelectronics" Cversion="4.1.0"/>
@@ -399,7 +385,7 @@
             <description>Sink Power-Delivery Application for NUCLEO-G071</description>
             <board Dvendor="STMicroelectronics:13" name="NUCLEO-G071RB" vendor="STMicroelectronics"/>
             <project>
-                <environment folder="SNK1M1_Sink" load="DRP1M1_DRP_LPM.ewp" name="iar"/>
+                <environment folder="USB_PD\SNK1M1_Sink" load="SNK1M1_Sink.ewp" name="iar"/>
             </project>
             <attributes>
                 <component Cbundle="USBPD Application" Cclass="Device" Cgroup="Application" Cvariant="Sink" Cvendor="STMicroelectronics" Cversion="4.1.0"/>
@@ -418,13 +404,53 @@
             <description>Source Power-Delivery Application for NUCLEO-G071RB</description>
             <board Dvendor="STMicroelectronics:13" name="NUCLEO-G071RB" vendor="STMicroelectronics"/>
             <project>
-                <environment folder="SRC1M1_Source" load="DRP1M1_DRP_LPM.ewp" name="iar"/>
+                <environment folder="USB_PD\SRC1M1_Source" load="SRC1M1_Source.ewp" name="iar"/>
             </project>
             <attributes>
                 <component Cbundle="USBPD Application" Cclass="Device" Cgroup="Application" Cvariant="Source" Cvendor="STMicroelectronics" Cversion="4.1.0"/>
                 <component Cbundle="SRC1M1" Cclass="Board Support" Cgroup="X-NUCLEO-SRC1M1" Csub="Common" Cvendor="STMicroelectronics" Cversion="1.2.0"/>
                 <component Cbundle="Current Measurement ADC" Cclass="Board Part" Cgroup="Current Measurement" Csub="ADC" Cvendor="STMicroelectronics" Cversion="4.1.0"/>
                 <component Cbundle="tcpp0203" Cclass="Board Part" Cgroup="tcpp0203" Csub="tcpp0203" Cvendor="STMicroelectronics" Cversion="1.2.3"/>
+                <keyword>Connectivity</keyword>
+                <keyword>USBPD</keyword>
+                <keyword>FreeRTOS</keyword>
+                <keyword>UART/USART</keyword>
+                <keyword>USB_PD_Lib</keyword>
+                <keyword>UCPD</keyword>
+                <keyword>Type C</keyword>
+            </attributes>
+        </example>
+        <example doc="readme.html" folder="Projects/NUCLEO-G474RE/Applications/USB_PD/SNK1M1_Sink" name="USB_PD\SNK1M1_Sink" public="true" version="4.1.0">
+            <description>Sink Power-Delivery Application for NUCLEO-G474RE</description>
+            <board Dvendor="STMicroelectronics:13" name="NUCLEO-G474RE" vendor="STMicroelectronics"/>
+            <project>
+                <environment folder="USB_PD\SNK1M1_Sink" load="SNK1M1_Sink.ewp" name="iar"/>
+            </project>
+            <attributes>
+                <component Cbundle="USBPD Application" Cclass="Device" Cgroup="Application" Cvariant="Sink" Cvendor="STMicroelectronics" Cversion="4.1.0"/>
+                <component Cbundle="SNK1M1" Cclass="Board Support" Cgroup="X-NUCLEO-SNK1M1" Csub="Common" Cvendor="STMicroelectronics" Cversion="4.1.0"/>
+                <component Cbundle="tcpp01" Cclass="Board Part" Cgroup="tcpp01" Csub="tcpp01" Cvendor="STMicroelectronics" Cversion="4.1.0"/>
+                <keyword>Connectivity</keyword>
+                <keyword>USBPD</keyword>
+                <keyword>FreeRTOS</keyword>
+                <keyword>UART/USART</keyword>
+                <keyword>USB_PD_Lib</keyword>
+                <keyword>UCPD</keyword>
+                <keyword>Type C</keyword>
+            </attributes>
+        </example>
+        <example doc="readme.html" folder="Projects/NUCLEO-G0B1RE/Applications/USB_PD/DRP1M1_DRP_DRD" name="USB_PD\DRP1M1_DRP_DRD" public="false" version="4.2.0">
+            <description>Dual-Role Power-Delivery with Dual-Role Data Port Application for NUCLEO-G0B1RE</description>
+            <board Dvendor="STMicroelectronics:13" name="NUCLEO-G0B1RE" vendor="STMicroelectronics"/>
+            <project>
+                <environment folder="USB_PD\DRP1M1_DRP_DRD" load="DRP1M1_DRP_DRD.ioc" name="stm32cubemx"/>
+                <environment folder="EWARM" load="DRP1M1_DRP_DRD.ewp" name="iar"/>
+            </project>
+            <attributes>
+                <component Cbundle="X-NUCLEO-DRP1M1" Cclass="Board Support" Cgroup="X-NUCLEO-DRP1M1" Csub="Common" Cvendor="STMicroelectronics" Cversion="1.5.1"/>
+                <component Cbundle="tcpp0203" Cclass="Board Part" Cgroup="tcpp0203" Csub="tcpp0203" Cvendor="STMicroelectronics" Cversion="1.2.3"/>
+                <component Cbundle="USBPD Application" Cclass="Device" Cgroup="Application" Cvariant="Dual_Role" Cvendor="STMicroelectronics" Cversion="4.2.0"/>
+                <component Cbundle="Current Measurement ADC" Cclass="Board Part" Cgroup="Current Measurement" Csub="ADC" Cvendor="STMicroelectronics" Cversion="4.2.0"/>
                 <keyword>Connectivity</keyword>
                 <keyword>USBPD</keyword>
                 <keyword>FreeRTOS</keyword>

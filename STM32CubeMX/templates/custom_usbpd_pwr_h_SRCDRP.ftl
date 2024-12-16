@@ -29,6 +29,10 @@ extern "C" {
 /* Include TCPP0203 component driver */
 #include "tcpp0203.h"
 
+/* USER CODE BEGIN Includes */
+
+/* USER CODE END Includes */
+
 /** @addtogroup BSP
   * @{
   */
@@ -89,7 +93,9 @@ typedef enum
   */
 typedef void USBPD_PWR_VBUSDetectCallbackFunc(uint32_t PortNum,
                                               USBPD_PWR_VBUSConnectionStatusTypeDef VBUSConnectionStatus);
+/* USER CODE BEGIN Typedef */
 
+/* USER CODE END Typedef */
 /**
   * @}
   */
@@ -167,6 +173,9 @@ typedef void USBPD_PWR_VBUSDetectCallbackFunc(uint32_t PortNum,
   */
 #define USBPD_PWR_INVALID_VALUE           0xFFFFFFFFU
 
+/* USER CODE BEGIN constants */
+
+/* USER CODE END constants */
 /**
   * @}
   */
@@ -229,6 +238,9 @@ int32_t BSP_USBPD_PWR_VCONNDischargeOff(uint32_t PortNum);
 
 void    BSP_USBPD_PWR_EventCallback(uint32_t PortNum);
 
+/* USER CODE BEGIN functions */
+
+/* USER CODE END functions */
 /**
   * @}
   */

@@ -34,6 +34,10 @@
 #endif /* _STDIO */
 #endif /* _TRACE */
 
+/* USER CODE BEGIN Includes */
+
+/* USER CODE END Includes */
+
 /** @addtogroup BSP
   * @{
   */
@@ -78,6 +82,10 @@ typedef struct
   USBPD_PWR_VBUSDetectCallbackFunc *VBUSDetectCallback;/*!< Port callback for VBUS detection event   */
 } USBPD_PWR_PortStatus_t;
 
+/* USER CODE BEGIN Typedef */
+
+/* USER CODE END Typedef */
+
 /**
   * @}
   */
@@ -105,6 +113,10 @@ typedef struct
    => if 2 faults occurred in less than that duration, no recovery will be executed */
 #define USBPD_PWR_FAULT_MIN_TIME_RECOVERY             (1000U)             /* 1s */
 
+/* USER CODE BEGIN constants */
+
+/* USER CODE END constants */
+
 /**
   * @}
   */
@@ -118,6 +130,10 @@ typedef struct
 #else
 #define BSP_USBPD_PWR_TRACE(_PORT_,_MSG_)
 #endif /* _TRACE */
+
+/* USER CODE BEGIN macro */
+
+/* USER CODE END macro */
 
 /**
   * @}
@@ -136,6 +152,10 @@ static uint32_t PWR_TCPP0203_ConvertADCDataToVoltage(uint32_t ADCData, uint32_t 
 #if !defined(ADC_VBUS_ONLY)
 static int32_t  PWR_TCPP0203_ConvertADCDataToCurrent(uint32_t ADCData, uint32_t Ga, uint32_t Rs);
 #endif
+
+/* USER CODE BEGIN functions */
+
+/* USER CODE END functions */
 
 /**
   * @}
@@ -166,6 +186,10 @@ static USBPD_PWR_PortStatus_t USBPD_PWR_Port_Status[USBPD_PWR_INSTANCES_NBR] =
 TCPP0203_Object_t      USBPD_PWR_PortCompObj[USBPD_PWR_INSTANCES_NBR] = { 0 };
 TCPP0203_Drv_t        *USBPD_PWR_PortCompDrv[USBPD_PWR_INSTANCES_NBR] = { NULL };
 
+/* USER CODE BEGIN variables */
+
+/* USER CODE END variables */
+
 /**
   * @}
   */
@@ -183,6 +207,7 @@ int32_t BSP_USBPD_PWR_Init(uint32_t PortNum)
 {
   int32_t ret = BSP_ERROR_NONE;
 
+  /* USER CODE BEGIN BSP_USBPD_PWR_Init */
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
   {
@@ -236,7 +261,9 @@ int32_t BSP_USBPD_PWR_Init(uint32_t PortNum)
         USBPD_PWR_Port_Status[PortNum].IsInitialized = 1U;
       }
     }
-  }
+  } 
+  /* USER CODE END BSP_USBPD_PWR_Init */
+	
   return ret;
 }
 
@@ -251,6 +278,7 @@ int32_t BSP_USBPD_PWR_Deinit(uint32_t PortNum)
 {
   int32_t ret;
 
+  /* USER CODE BEGIN BSP_USBPD_PWR_Deinit */
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
   {
@@ -279,7 +307,8 @@ int32_t BSP_USBPD_PWR_Deinit(uint32_t PortNum)
     /* Reset Initialisation flag */
     USBPD_PWR_Port_Status[PortNum].IsInitialized = 0U;
   }
-
+  /* USER CODE END BSP_USBPD_PWR_Deinit */
+  
   return ret;
 }
 
@@ -298,6 +327,7 @@ int32_t BSP_USBPD_PWR_SetRole(uint32_t PortNum, USBPD_PWR_PowerRoleTypeDef Role)
 {
   int32_t ret = BSP_ERROR_NONE;
 
+  /* USER CODE BEGIN BSP_USBPD_PWR_SetRole */
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
   {
@@ -340,7 +370,8 @@ int32_t BSP_USBPD_PWR_SetRole(uint32_t PortNum, USBPD_PWR_PowerRoleTypeDef Role)
         break;
     }
   }
-
+  /* USER CODE END BSP_USBPD_PWR_SetRole */
+  
   return ret;
 }
 
@@ -360,8 +391,10 @@ int32_t BSP_USBPD_PWR_SetRole(uint32_t PortNum, USBPD_PWR_PowerRoleTypeDef Role)
   */
 int32_t BSP_USBPD_PWR_SetPowerMode(uint32_t PortNum, USBPD_PWR_PowerModeTypeDef PwrMode)
 {
-  uint8_t flg_reg;
   int32_t ret = BSP_ERROR_NONE;
+  
+  /* USER CODE BEGIN BSP_USBPD_PWR_SetPowerMode */
+  uint8_t flg_reg;
 
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
@@ -459,7 +492,8 @@ int32_t BSP_USBPD_PWR_SetPowerMode(uint32_t PortNum, USBPD_PWR_PowerModeTypeDef 
     /* Set port low power operating mode */
     USBPD_PWR_Port_Status[PortNum].PwrSavingMode = PwrMode;
   }
-
+  /* USER CODE END BSP_USBPD_PWR_SetPowerMode */
+  
   return ret;
 }
 
@@ -479,7 +513,8 @@ int32_t BSP_USBPD_PWR_SetPowerMode(uint32_t PortNum, USBPD_PWR_PowerModeTypeDef 
 int32_t BSP_USBPD_PWR_GetPowerMode(uint32_t PortNum, USBPD_PWR_PowerModeTypeDef *PwrMode)
 {
   int32_t ret = BSP_ERROR_NONE;
-
+  
+  /* USER CODE BEGIN BSP_USBPD_PWR_GetPowerMode */
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
   {
@@ -492,7 +527,8 @@ int32_t BSP_USBPD_PWR_GetPowerMode(uint32_t PortNum, USBPD_PWR_PowerModeTypeDef 
     /* Get port low power operating mode */
     *PwrMode = USBPD_PWR_Port_Status[PortNum].PwrSavingMode;
   }
-
+  /* USER CODE END BSP_USBPD_PWR_GetPowerMode */ 
+  
   return ret;
 }
 
@@ -508,6 +544,7 @@ int32_t BSP_USBPD_PWR_VBUSInit(uint32_t PortNum)
 {
   int32_t ret;
 
+  /* USER CODE BEGIN BSP_USBPD_PWR_VBUSInit */
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
   {
@@ -539,6 +576,8 @@ int32_t BSP_USBPD_PWR_VBUSInit(uint32_t PortNum)
         break;
     }
   }
+  
+  /* USER CODE END BSP_USBPD_PWR_VBUSInit */
   return ret;
 }
 
@@ -553,7 +592,8 @@ int32_t BSP_USBPD_PWR_VBUSInit(uint32_t PortNum)
 int32_t BSP_USBPD_PWR_VBUSDeInit(uint32_t PortNum)
 {
   int32_t ret;
-
+  
+  /* USER CODE BEGIN BSP_USBPD_PWR_VBUSDeInit */
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
   {
@@ -598,6 +638,8 @@ int32_t BSP_USBPD_PWR_VBUSDeInit(uint32_t PortNum)
       ret = BSP_ERROR_FEATURE_NOT_SUPPORTED;
     }
   }
+  /* USER CODE END BSP_USBPD_PWR_VBUSDeInit */
+  
   return ret;
 }
 
@@ -611,7 +653,8 @@ int32_t BSP_USBPD_PWR_VBUSDeInit(uint32_t PortNum)
 int32_t BSP_USBPD_PWR_VBUSOn(uint32_t PortNum)
 {
   int32_t ret = BSP_ERROR_NONE;
-
+  
+  /* USER CODE BEGIN BSP_USBPD_PWR_VBUSOn */
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
   {
@@ -659,6 +702,8 @@ int32_t BSP_USBPD_PWR_VBUSOn(uint32_t PortNum)
       ret = BSP_ERROR_COMPONENT_FAILURE;
     }
   }
+  /* USER CODE END BSP_USBPD_PWR_VBUSOn */
+	
   return ret;
 }
 
@@ -672,6 +717,8 @@ int32_t BSP_USBPD_PWR_VBUSOn(uint32_t PortNum)
 int32_t BSP_USBPD_PWR_VBUSOff(uint32_t PortNum)
 {
   int32_t ret = BSP_ERROR_NONE;
+  
+  /* USER CODE BEGIN BSP_USBPD_PWR_VBUSOff */
 #if (BSP_USBPD_PWR_DONT_WAIT_VBUSOFF_DISCHARGE == 0)
   uint32_t vbus;
 #endif /* BSP_USBPD_PWR_DONT_WAIT_VBUSOFF_DISCHARGE == 0 */
@@ -725,6 +772,8 @@ int32_t BSP_USBPD_PWR_VBUSOff(uint32_t PortNum)
     }
 #endif /* BSP_USBPD_PWR_DONT_WAIT_VBUSOFF_DISCHARGE == 0 */
   }
+  /* USER CODE END BSP_USBPD_PWR_VBUSOff */
+  
   return ret;
 }
 
@@ -739,6 +788,8 @@ int32_t BSP_USBPD_PWR_VBUSOff(uint32_t PortNum)
 int32_t BSP_USBPD_PWR_VBUSIsOn(uint32_t PortNum, uint8_t *pState)
 {
   int32_t ret = BSP_ERROR_NONE;
+  
+  /* USER CODE BEGIN BSP_USBPD_PWR_VBUSIsOn */
   uint8_t val = 0;
 
   /* Check if instance is valid */
@@ -765,6 +816,8 @@ int32_t BSP_USBPD_PWR_VBUSIsOn(uint32_t PortNum, uint8_t *pState)
       }
     }
   }
+  /* USER CODE END BSP_USBPD_PWR_VBUSIsOn */
+	
   return ret;
 }
 
@@ -784,6 +837,8 @@ int32_t BSP_USBPD_PWR_VBUSSetVoltage_Fixed(uint32_t PortNum,
                                            uint32_t MaxOperatingCurrent)
 {
   int32_t ret = BSP_ERROR_NONE;
+  
+  /* USER CODE BEGIN BSP_USBPD_PWR_VBUSSetVoltage_Fixed */
   UNUSED(MaxOperatingCurrent);
   UNUSED(OperatingCurrent);
   UNUSED(VbusTargetInmv);
@@ -793,7 +848,8 @@ int32_t BSP_USBPD_PWR_VBUSSetVoltage_Fixed(uint32_t PortNum,
   {
     ret = BSP_ERROR_WRONG_PARAM;
   }
-
+  /* USER CODE END BSP_USBPD_PWR_VBUSSetVoltage_Fixed */
+  
   return ret;
 }
 
@@ -815,6 +871,8 @@ int32_t BSP_USBPD_PWR_VBUSSetVoltage_Variable(uint32_t PortNum,
                                               uint32_t MaxOperatingCurrent)
 {
   int32_t ret;
+  
+  /* USER CODE BEGIN BSP_USBPD_PWR_VBUSSetVoltage_Variable */
   UNUSED(MaxOperatingCurrent);
   UNUSED(OperatingCurrent);
   UNUSED(VbusTargetMaxInmv);
@@ -829,6 +887,8 @@ int32_t BSP_USBPD_PWR_VBUSSetVoltage_Variable(uint32_t PortNum,
   {
     ret = BSP_ERROR_FEATURE_NOT_SUPPORTED;
   }
+  /* USER CODE END BSP_USBPD_PWR_VBUSSetVoltage_Variable */
+  
   return ret;
 }
 
@@ -850,6 +910,8 @@ int32_t BSP_USBPD_PWR_VBUSSetVoltage_Battery(uint32_t PortNum,
                                              uint32_t MaxOperatingPower)
 {
   int32_t ret;
+  
+  /* USER CODE BEGIN BSP_USBPD_PWR_VBUSSetVoltage_Battery */
   UNUSED(OperatingPower);
   UNUSED(VbusTargetMax);
   UNUSED(VbusTargetMin);
@@ -868,6 +930,8 @@ int32_t BSP_USBPD_PWR_VBUSSetVoltage_Battery(uint32_t PortNum,
 
     ret = BSP_ERROR_FEATURE_NOT_SUPPORTED;
   }
+  /* USER CODE END BSP_USBPD_PWR_VBUSSetVoltage_Battery */
+	
   return ret;
 }
 
@@ -887,6 +951,8 @@ int32_t BSP_USBPD_PWR_VBUSSetVoltage_APDO(uint32_t PortNum,
                                           int32_t Delta)
 {
   int32_t ret;
+  
+  /* USER CODE BEGIN BSP_USBPD_PWR_VBUSSetVoltage_APDO */
   UNUSED(Delta);
   UNUSED(OperatingCurrent);
   UNUSED(VbusTargetInmv);
@@ -900,6 +966,8 @@ int32_t BSP_USBPD_PWR_VBUSSetVoltage_APDO(uint32_t PortNum,
   {
     ret = BSP_ERROR_FEATURE_NOT_SUPPORTED;
   }
+  /* USER CODE END BSP_USBPD_PWR_VBUSSetVoltage_APDO */
+	
   return ret;
 }
 
@@ -916,9 +984,10 @@ int32_t BSP_USBPD_PWR_VBUSSetVoltage_APDO(uint32_t PortNum,
 int32_t BSP_USBPD_PWR_SetVBUSDisconnectionThreshold(uint32_t PortNum,
                                                     uint32_t VoltageThreshold)
 {
-  UNUSED(VoltageThreshold);
   int32_t ret;
 
+  /* USER CODE BEGIN BSP_USBPD_PWR_SetVBUSDisconnectionThreshold */
+  UNUSED(VoltageThreshold);
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
   {
@@ -928,6 +997,8 @@ int32_t BSP_USBPD_PWR_SetVBUSDisconnectionThreshold(uint32_t PortNum,
   {
     ret = BSP_ERROR_FEATURE_NOT_SUPPORTED;
   }
+  /* USER CODE END BSP_USBPD_PWR_SetVBUSDisconnectionThreshold */
+	
   return ret;
 }
 
@@ -948,6 +1019,7 @@ int32_t BSP_USBPD_PWR_RegisterVBUSDetectCallback(uint32_t PortNum,
 {
   int32_t ret = BSP_ERROR_NONE;
 
+  /* USER CODE BEGIN BSP_USBPD_PWR_RegisterVBUSDetectCallback */
   /* Check if instance is valid */
   if ((PortNum >= USBPD_PWR_INSTANCES_NBR) || (NULL == pfnVBUSDetectCallback))
   {
@@ -958,6 +1030,8 @@ int32_t BSP_USBPD_PWR_RegisterVBUSDetectCallback(uint32_t PortNum,
     /* Set port callback for VBUS detection event */
     USBPD_PWR_Port_Status[PortNum].VBUSDetectCallback = pfnVBUSDetectCallback;
   }
+  /* USER CODE END BSP_USBPD_PWR_RegisterVBUSDetectCallback */
+	
   return ret;
 }
 
@@ -972,7 +1046,8 @@ int32_t BSP_USBPD_PWR_RegisterVBUSDetectCallback(uint32_t PortNum,
 int32_t BSP_USBPD_PWR_VBUSGetVoltage(uint32_t PortNum, uint32_t *pVoltage)
 {
   int32_t ret = BSP_ERROR_NONE;
-
+  
+  /* USER CODE BEGIN BSP_USBPD_PWR_VBUSGetVoltage */
   /* Check if instance is valid */
   if ((PortNum >= USBPD_PWR_INSTANCES_NBR) || (NULL == pVoltage))
   {
@@ -991,6 +1066,8 @@ int32_t BSP_USBPD_PWR_VBUSGetVoltage(uint32_t PortNum, uint32_t *pVoltage)
 
     *pVoltage = voltage;
   }
+  /* USER CODE END BSP_USBPD_PWR_VBUSGetVoltage */
+  
   return ret;
 }
 
@@ -1006,6 +1083,7 @@ int32_t BSP_USBPD_PWR_VBUSGetCurrent(uint32_t PortNum, int32_t *pCurrent)
 {
   int32_t ret = BSP_ERROR_NONE;
 
+  /* USER CODE BEGIN BSP_USBPD_PWR_VBUSGetCurrent */
   /* Check if instance is valid */
   if ((PortNum >= USBPD_PWR_INSTANCES_NBR) || (NULL == pCurrent))
   {
@@ -1024,6 +1102,8 @@ int32_t BSP_USBPD_PWR_VBUSGetCurrent(uint32_t PortNum, int32_t *pCurrent)
 
     *pCurrent = current;
   }
+  /* USER CODE END BSP_USBPD_PWR_VBUSGetCurrent */
+  
   return ret;
 }
 
@@ -1038,6 +1118,7 @@ int32_t BSP_USBPD_PWR_VBUSDischargeOn(uint32_t PortNum)
 {
   int32_t ret = BSP_ERROR_NONE;
 
+  /* USER CODE BEGIN BSP_USBPD_PWR_VBUSDischargeOn */
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
   {
@@ -1061,6 +1142,8 @@ int32_t BSP_USBPD_PWR_VBUSDischargeOn(uint32_t PortNum)
       }
     }
   }
+  /* USER CODE END BSP_USBPD_PWR_VBUSDischargeOn */
+  
   return ret;
 }
 
@@ -1075,6 +1158,7 @@ int32_t BSP_USBPD_PWR_VBUSDischargeOff(uint32_t PortNum)
 {
   int32_t ret = BSP_ERROR_NONE;
 
+  /* USER CODE BEGIN BSP_USBPD_PWR_VBUSDischargeOff */
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
   {
@@ -1090,6 +1174,8 @@ int32_t BSP_USBPD_PWR_VBUSDischargeOff(uint32_t PortNum)
       ret = BSP_ERROR_COMPONENT_FAILURE;
     }
   }
+  /* USER CODE END BSP_USBPD_PWR_VBUSDischargeOff */
+  
   return ret;
 }
 
@@ -1107,9 +1193,10 @@ int32_t BSP_USBPD_PWR_VBUSDischargeOff(uint32_t PortNum)
 int32_t BSP_USBPD_PWR_VCONNInit(uint32_t PortNum,
                                 uint32_t CCPinId)
 {
-  UNUSED(CCPinId);
   int32_t ret = BSP_ERROR_NONE;
-
+  
+  /* USER CODE BEGIN BSP_USBPD_PWR_VCONNInit */
+  UNUSED(CCPinId);
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
   {
@@ -1136,6 +1223,8 @@ int32_t BSP_USBPD_PWR_VCONNInit(uint32_t PortNum,
       ret = BSP_ERROR_COMPONENT_FAILURE;
     }
   }
+  /* USER CODE END BSP_USBPD_PWR_VCONNInit */
+  
   return ret;
 }
 
@@ -1153,9 +1242,10 @@ int32_t BSP_USBPD_PWR_VCONNInit(uint32_t PortNum,
 int32_t BSP_USBPD_PWR_VCONNDeInit(uint32_t PortNum,
                                   uint32_t CCPinId)
 {
-  UNUSED(CCPinId);
   int32_t ret = BSP_ERROR_NONE;
-
+  
+  /* USER CODE BEGIN BSP_USBPD_PWR_VCONNDeInit */
+  UNUSED(CCPinId);
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
   {
@@ -1184,6 +1274,8 @@ int32_t BSP_USBPD_PWR_VCONNDeInit(uint32_t PortNum,
       }
     }
   }
+  /* USER CODE END BSP_USBPD_PWR_VCONNDeInit */
+  
   return ret;
 }
 
@@ -1203,6 +1295,7 @@ int32_t BSP_USBPD_PWR_VCONNOn(uint32_t PortNum,
 {
   int32_t ret = BSP_ERROR_NONE;
 
+  /* USER CODE BEGIN BSP_USBPD_PWR_VCONNOn */
   /* Check if parameters are valid */
   if ((PortNum >= USBPD_PWR_INSTANCES_NBR)
       || ((CCPinId != USBPD_PWR_TYPE_C_CC1) && (CCPinId != USBPD_PWR_TYPE_C_CC2))
@@ -1230,6 +1323,8 @@ int32_t BSP_USBPD_PWR_VCONNOn(uint32_t PortNum,
       }
     }
   }
+  /* USER CODE END BSP_USBPD_PWR_VCONNOn */
+  
   return ret;
 }
 
@@ -1247,8 +1342,9 @@ int32_t BSP_USBPD_PWR_VCONNOn(uint32_t PortNum,
 int32_t BSP_USBPD_PWR_VCONNOff(uint32_t PortNum,
                                uint32_t CCPinId)
 {
-  UNUSED(CCPinId);
   int32_t ret = BSP_ERROR_NONE;
+  /* USER CODE BEGIN BSP_USBPD_PWR_VCONNOff */
+  UNUSED(CCPinId);
 
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
@@ -1283,6 +1379,8 @@ int32_t BSP_USBPD_PWR_VCONNOff(uint32_t PortNum,
       }
     }
   }
+  /* USER CODE END BSP_USBPD_PWR_VCONNOff */
+  
   return ret;
 }
 
@@ -1302,6 +1400,8 @@ int32_t BSP_USBPD_PWR_VCONNIsOn(uint32_t PortNum,
                                 uint32_t CCPinId, uint8_t *pState)
 {
   int32_t ret = BSP_ERROR_NONE;
+  
+  /* USER CODE BEGIN BSP_USBPD_PWR_VCONNIsOn */
   uint8_t vconnSwitch;
 
   *pState = 0U;
@@ -1331,6 +1431,8 @@ int32_t BSP_USBPD_PWR_VCONNIsOn(uint32_t PortNum,
       }
     }
   }
+  /* USER CODE END BSP_USBPD_PWR_VCONNIsOn */
+  
   return ret;
 }
 
@@ -1344,7 +1446,8 @@ int32_t BSP_USBPD_PWR_VCONNIsOn(uint32_t PortNum,
 int32_t BSP_USBPD_PWR_VCONNDischargeOn(uint32_t PortNum)
 {
   int32_t ret = BSP_ERROR_NONE;
-
+  
+  /* USER CODE BEGIN BSP_USBPD_PWR_VCONNDischargeOn */
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
   {
@@ -1368,6 +1471,8 @@ int32_t BSP_USBPD_PWR_VCONNDischargeOn(uint32_t PortNum)
       }
     }
   }
+  /* USER CODE END BSP_USBPD_PWR_VCONNDischargeOn */
+  
   return ret;
 }
 
@@ -1381,7 +1486,8 @@ int32_t BSP_USBPD_PWR_VCONNDischargeOn(uint32_t PortNum)
 int32_t BSP_USBPD_PWR_VCONNDischargeOff(uint32_t PortNum)
 {
   int32_t ret = BSP_ERROR_NONE;
-
+  
+  /* USER CODE BEGIN BSP_USBPD_PWR_VCONNDischargeOff */
   /* Check if instance is valid */
   if (PortNum >= USBPD_PWR_INSTANCES_NBR)
   {
@@ -1397,6 +1503,8 @@ int32_t BSP_USBPD_PWR_VCONNDischargeOff(uint32_t PortNum)
       ret = BSP_ERROR_COMPONENT_FAILURE;
     }
   }
+  /* USER CODE END BSP_USBPD_PWR_VCONNDischargeOff */  
+  
   return ret;
 }
 
@@ -1409,6 +1517,7 @@ int32_t BSP_USBPD_PWR_VCONNDischargeOff(uint32_t PortNum)
   */
 void BSP_USBPD_PWR_EventCallback(uint32_t PortNum)
 {
+  /* USER CODE BEGIN BSP_USBPD_PWR_EventCallback */
   BSP_USBPD_PWR_TRACE(PortNum, "-- BSP_USBPD_PWR_EventCallback --");
 
   /* Handle USBPD PWR event */
@@ -1426,6 +1535,7 @@ void BSP_USBPD_PWR_EventCallback(uint32_t PortNum)
     default:
       break;
   }
+  /* USER CODE END BSP_USBPD_PWR_EventCallback */
 }
 
 /**
@@ -1453,8 +1563,10 @@ void BSP_USBPD_PWR_EventCallback(uint32_t PortNum)
   */
 static void PWR_TCPP0203_Activate_ADC(void)
 {
+  /* USER CODE BEGIN PWR_TCPP0203_Activate_ADC */
   /* Defined in ADC.c */
   ADC_Start();
+  /* USER CODE END PWR_TCPP0203_Activate_ADC */
 }
 
 /**
@@ -1466,6 +1578,8 @@ static void PWR_TCPP0203_Activate_ADC(void)
 static int32_t PWR_TCPP0203_BUSConfigInit(uint32_t PortNum, uint16_t Address)
 {
   int32_t                  ret = BSP_ERROR_NONE;
+  
+  /* USER CODE BEGIN PWR_TCPP0203_BUSConfigInit */
   TCPP0203_IO_t            TCPP0203IOCtx;
   uint8_t                  tcpp_type;
 
@@ -1527,6 +1641,8 @@ static int32_t PWR_TCPP0203_BUSConfigInit(uint32_t PortNum, uint16_t Address)
       /* Registration completed */
     }
   }
+  /* USER CODE END PWR_TCPP0203_BUSConfigInit */
+  
   return ret;
 }
 
@@ -1548,6 +1664,7 @@ static int32_t PWR_TCPP0203_ConfigDeInit(uint32_t PortNum)
   */
 static void PWR_TCPP0203_EventCallback(uint32_t PortNum)
 {
+  /* USER CODE BEGIN PWR_TCPP0203_EventCallback */
   uint8_t flg_reg;
 
   /* In case of TCPP0203, this callback could be called when an event is detected
@@ -1676,6 +1793,7 @@ static void PWR_TCPP0203_EventCallback(uint32_t PortNum)
       }
     }
   }
+  /* USER CODE END PWR_TCPP0203_EventCallback */
 }
 
 /**
@@ -1696,6 +1814,8 @@ static void PWR_TCPP0203_EventCallback(uint32_t PortNum)
 static uint32_t PWR_TCPP0203_ConvertADCDataToVoltage(uint32_t ADCData, uint32_t Ra, uint32_t Rb)
 {
   uint32_t voltage;
+  
+  /* USER CODE BEGIN PWR_TCPP0203_ConvertADCDataToVoltage */  
   uint32_t vadc;
 
   /* Avoid dividing by zero */
@@ -1708,7 +1828,8 @@ static uint32_t PWR_TCPP0203_ConvertADCDataToVoltage(uint32_t ADCData, uint32_t 
     vadc = (ADCData * VDD_VALUE) / ADC_FULL_SCALE;
     voltage = vadc * (Ra + Rb) / Rb;
   }
-
+  /* USER CODE END PWR_TCPP0203_ConvertADCDataToVoltage */
+  
   return voltage;
 }
 
@@ -1724,6 +1845,8 @@ static uint32_t PWR_TCPP0203_ConvertADCDataToVoltage(uint32_t ADCData, uint32_t 
 static int32_t PWR_TCPP0203_ConvertADCDataToCurrent(uint32_t ADCData, uint32_t Ga, uint32_t Rs)
 {
   int32_t current;
+  
+  /* USER CODE BEGIN PWR_TCPP0203_ConvertADCDataToCurrent */
   uint32_t vadc;
 
   /* Avoid dividing by zero */
@@ -1736,7 +1859,8 @@ static int32_t PWR_TCPP0203_ConvertADCDataToCurrent(uint32_t ADCData, uint32_t G
     vadc = (ADCData * VDD_VALUE) / ADC_FULL_SCALE;
     current = (int32_t)((vadc * 1000u) / (Ga * Rs));
   }
-
+  /* USER CODE END PWR_TCPP0203_ConvertADCDataToCurrent */
+  
   return current;
 }
 #endif

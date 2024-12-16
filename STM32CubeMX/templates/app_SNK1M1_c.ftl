@@ -140,8 +140,8 @@ void USBPD_ADC1_Init(void)
   sConfig.SamplingTime = ADC_SAMPLINGTIME_COMMON_1;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
-    Error_Handler();
   }
+  
 [#elseif MCU_FAMILY == "stm32g4"]
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};

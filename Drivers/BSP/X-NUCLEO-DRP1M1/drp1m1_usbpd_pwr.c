@@ -1673,9 +1673,9 @@ static void PWR_TCPP0203_Activate_ADC(void)
   /*       in user application.                                               */
   if (0U == LL_ADC_IsEnabled(VISENSE_ADC_INSTANCE))
   {
-#if defined(STM32G474xx)
+#if (defined(STM32G431xx) || defined(STM32G441xx) || defined(STM32G471xx) || defined(STM32G473xx) || defined(STM32G474xx) || defined(STM32G483xx) || defined(STM32G491xx) || defined (STM32G4A1xx))
     LL_ADC_DisableDeepPowerDown(VISENSE_ADC_INSTANCE);
-#endif /* STM32G474xx */
+#endif /* STM32G431xx */
     /* Enable ADC internal voltage regulator */
     LL_ADC_EnableInternalRegulator(VISENSE_ADC_INSTANCE);
 
@@ -1700,10 +1700,11 @@ static void PWR_TCPP0203_Activate_ADC(void)
     backup_setting_adc_dma_transfer = LL_ADC_REG_GetDMATransfer(VISENSE_ADC_INSTANCE);
     LL_ADC_REG_SetDMATransfer(VISENSE_ADC_INSTANCE, LL_ADC_REG_DMA_TRANSFER_NONE);
 
-#if !defined (STM32G474xx)
-    /* Run ADC self calibration */
+#if (defined(STM32G431xx) || defined(STM32G441xx) || defined(STM32G471xx) || defined(STM32G473xx) || defined(STM32G474xx) || defined(STM32G483xx) || defined(STM32G491xx) || defined (STM32G4A1xx))
+    LL_ADC_StartCalibration(VISENSE_ADC_INSTANCE,LL_ADC_SINGLE_ENDED);
+#else
     LL_ADC_StartCalibration(VISENSE_ADC_INSTANCE);
-#endif /* STM32G474xx */
+#endif
 
     /* Poll for ADC effectively calibrated */
 #if (USE_TIMEOUT == 1)

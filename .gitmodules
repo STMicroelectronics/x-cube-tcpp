@@ -52,3 +52,6 @@
 [submodule "Drivers/CMSIS/Device/ST/STM32F4xx"]
 	path = Drivers/CMSIS/Device/ST/STM32F4xx
 	url = https://github.com/STMicroelectronics/cmsis_device_f4
+[submodule "Middlewares/ST/STM32_USB_Host_Library"]
+	path = Middlewares/ST/STM32_USB_Host_Library
+	url = https://github.com/STMicroelectronics/stm32-mw-usb-host.git
