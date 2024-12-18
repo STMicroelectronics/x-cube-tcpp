@@ -82,7 +82,7 @@ git clone --recursive  --depth 1 --branch vX.Y.Z https://github.com/STMicroelect
 
 ## Applications
 |   Applications     |     Board     | Expansion board                    | Format |       Short Description      |
-|--------------------|---------------|------------------------------------|--------|------------------------------|
+|--------------------|---------------|------------------------------------|--------|------------------------------|
 | [SNK1M1_Sink](./Projects/NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink)| NUCLEO-G071RB | X-NUCLEO-SNK1M1 | MX + SW pack | USBPD Sink application running on STM32G0XX devices, with X-NUCLEO-SNK1M1 expansion board. |
 | [SNK1M1_Sink_PPS](./Projects/NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink_PPS)| NUCLEO-G071RB | X-NUCLEO-SNK1M1 | MX | USBPD Sink application (with **PPS**) running on STM32G0XX devices, with X-NUCLEO-SNK1M1 expansion board. |
 | [SNK1M1_Sink_LPM](./Projects/NUCLEO-G071RB/Applications/USB_PD/SNK1M1_Sink_LPM)| NUCLEO-G071RB | X-NUCLEO-SNK1M1 |  | USBPD Sink application (with **Low Power Mode**) running on STM32G0XX devices, with X-NUCLEO-SNK1M1 expansion board. |
